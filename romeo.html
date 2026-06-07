@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로미오와 줄리엣과 함께하는 즐겁고 신나는 파이썬</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Malgun Gothic","Nanum Gothic",Arial,sans-serif;background:linear-gradient(135deg,#fee2e2,#fce7f3,#e0f2fe);color:#1f2937;line-height:1.7}
+header{background:linear-gradient(135deg,#881337,#be123c,#1e3a8a);color:white;text-align:center;padding:38px 18px}header h1{margin:0;font-size:34px}header p{max-width:980px;margin:10px auto 0;font-size:18px}
+nav{position:sticky;top:0;z-index:20;background:white;border-bottom:1px solid #fecdd3;box-shadow:0 4px 14px rgba(0,0,0,.08);padding:10px;display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap}
+select,button{font-family:inherit;font-size:14px;border-radius:10px;padding:9px 12px}select{min-width:360px;max-width:85vw;border:1px solid #fb7185}button{border:none;background:#be123c;color:white;font-weight:800;cursor:pointer}button:hover{filter:brightness(1.12)}
+main{max-width:1150px;margin:24px auto 60px;padding:0 16px}.intro,.card{background:white;border-radius:20px;padding:24px;margin-bottom:22px;box-shadow:0 10px 25px rgba(15,23,42,.10)}.intro h2,.card h2{margin-top:0;color:#be123c}
+table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden}th,td{border:1px solid #fecdd3;padding:10px;vertical-align:top}th{background:#ffe4e6}
+.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#fce7f3;color:#9d174d;font-weight:900;margin-bottom:10px}.eng,.kor{padding:13px 15px;border-radius:14px;margin:10px 0}.eng{background:#e0f2fe;border-left:7px solid #0284c7;font-size:18px}.kor{background:#fff1f2;border-left:7px solid #e11d48;font-size:19px;font-weight:700}
+pre{background:#111827;color:#f8fafc;padding:18px;border-radius:14px;overflow-x:auto;font-size:15px;line-height:1.55}code{font-family:Consolas,"Courier New",monospace}footer{text-align:center;padding:28px;color:#475569}.small{color:#64748b;font-size:14px}
+@media(max-width:700px){header h1{font-size:25px}select{min-width:220px}}
+</style></head><body>
+<header><h1>❤️ 《로미오와 줄리엣》과 함께하는 즐겁고 신나는 파이썬</h1><p>100개 줄거리 문장을 순서대로 빠짐없이 활용하여 파이썬 기초·응용·심화 10단계 문법을 서로 다른 예시 코드로 학습합니다.</p></header>
+<nav><label for="jump"><b>장면 이동</b></label><select id="jump" onchange="goScene()"><option value="">장면 선택</option><option value="s1">001. 베로나에는 두 명문 가문이 서로 깊은 원수로 지내고 있었다</option><option value="s2">002. 그 가문들은 몬터규 가문과 캐풀릿 가문이었다.</option><option value="s3">003. 그들의 증오는 오랫동안 이어져 왔다.</option><option value="s4">004. 잦은 싸움은 도시의 평화를 깨뜨렸다.</option><option value="s5">005. 에스칼러스 공작은 두 가문에게 싸움을 멈추라고 경고했다.</option><option value="s6">006. 로미오는 몬터규 가문의 젊은 청년이었다.</option><option value="s7">007. 처음에 그는 이루어질 수 없는 사랑 때문에 괴로워했다.</option><option value="s8">008. 그의 친구들은 그를 위로하려고 노력했다.</option><option value="s9">009. 어느 날 저녁 그들은 그를 파티에 데려갔다.</option><option value="s10">010. 그 파티는 캐풀릿 가문의 저택에서 열렸다.</option><option value="s11">011. 로미오는 변장한 채 파티에 들어갔다.</option><option value="s12">012. 그곳에서 그는 줄리엣 캐풀릿을 처음 보았다.</option><option value="s13">013. 줄리엣은 캐풀릿 가문의 딸이었다.</option><option value="s14">014. 그들이 만난 순간 사랑에 빠졌다.</option><option value="s15">015. 처음에는 서로의 정체를 알지 못했다.</option><option value="s16">016. 나중에 그들은 진실을 알게 되었다.</option><option value="s17">017. 그들은 서로 원수 가문 출신이라는 사실에 충격을 받았다.</option><option value="s18">018. 위험에도 불구하고 그들의 사랑은 더욱 깊어졌다.</option><option value="s19">019. 그날 밤 로미오는 몰래 캐풀릿의 정원으로 들어갔다.</option><option value="s20">020. 줄리엣은 발코니에 모습을 드러냈다.</option><option value="s21">021. 로미오는 줄리엣이 사랑을 고백하는 말을 들었다.</option><option value="s22">022. 두 사람은 서로의 사랑을 고백했다.</option><option value="s23">023. 그들은 서로에게 충실할 것을 약속했다.</option><option value="s24">024. 곧 그들은 결혼하기로 결심했다.</option><option value="s25">025. 로렌스 신부는 그들을 돕기로 했다.</option><option value="s26">026. 그는 이 결혼이 두 가문의 갈등을 끝내길 바랐다.</option><option value="s27">027. 로미오와 줄리엣은 비밀리에 결혼했다.</option><option value="s28">028. 짧은 시간 동안 그들은 매우 행복했다.</option><option value="s29">029. 그러나 곧 문제가 생겼다.</option><option value="s30">030. 줄리엣의 사촌 티볼트는 로미오를 몹시 싫어했다.</option><option value="s31">031. 그는 로미오에게 결투를 신청했다.</option><option value="s32">032. 로미오는 비밀 결혼 때문에 결투를 거부했다.</option><option value="s33">033. 머큐쇼는 로미오의 거절에 화가 났다.</option><option value="s34">034. 머큐쇼는 대신 티볼트와 싸웠다.</option><option value="s35">035. 싸움 도중 머큐쇼는 치명상을 입었다.</option><option value="s36">036. 로미오는 친구의 죽음에 큰 충격을 받았다.</option><option value="s37">037. 분노한 로미오는 티볼트에게 결투를 신청했다.</option><option value="s38">038. 두 사람은 치열하게 싸웠다.</option><option value="s39">039. 로미오는 티볼트를 죽였다.</option><option value="s40">040. 공작은 그 죄에 대해 로미오를 처벌했다.</option><option value="s41">041. 로미오는 베로나에서 추방되었다.</option><option value="s42">042. 그 처벌은 줄리엣의 마음을 무너뜨렸다.</option><option value="s43">043. 연인들은 마지막 밤을 함께 보냈다.</option><option value="s44">044. 다음 날 아침 로미오는 베로나를 떠났다.</option><option value="s45">045. 줄리엣의 부모는 그녀의 결혼 사실을 알지 못했다.</option><option value="s46">046. 그들은 그녀를 패리스와 결혼시키려 했다.</option><option value="s47">047. 줄리엣은 필사적으로 거부했다.</option><option value="s48">048. 그녀의 부모는 크게 화를 냈다.</option><option value="s49">049. 줄리엣은 로렌스 신부에게 도움을 청했다.</option><option value="s50">050. 신부는 위험한 계획을 세웠다.</option><option value="s51">051. 로렌스 신부는 줄리엣에게 수면 약을 주었다.</option><option value="s52">052. 그 약은 그녀가 죽은 것처럼 보이게 만들었다.</option><option value="s53">053. 줄리엣은 그 위험을 감수하기로 했다.</option><option value="s54">054. 그녀는 결혼식 전날 밤 그 약을 마셨다.</option><option value="s55">055. 다음 날 아침 가족들은 그녀가 움직이지 않는 것을 발견했다</option><option value="s56">056. 모두가 줄리엣이 죽었다고 믿었다.</option><option value="s57">057. 결혼식 준비는 장례식으로 바뀌었다.</option><option value="s58">058. 줄리엣은 캐풀릿 가문의 무덤에 안치되었다.</option><option value="s59">059. 한편 로렌스 신부는 로미오에게 편지를 보냈다.</option><option value="s60">060. 그 편지에는 모든 계획이 설명되어 있었다.</option><option value="s61">061. 불행하게도 그 편지는 로미오에게 전달되지 못했다.</option><option value="s62">062. 대신 로미오는 줄리엣이 죽었다는 소식을 들었다.</option><option value="s63">063. 그는 깊은 슬픔에 빠졌다.</option><option value="s64">064. 로미오는 줄리엣 없이 살 수 없다고 생각했다.</option><option value="s65">065. 그는 치명적인 독약을 구입했다.</option><option value="s66">066. 그리고 서둘러 베로나로 돌아갔다.</option><option value="s67">067. 늦은 밤 그는 캐풀릿 가문의 무덤으로 들어갔다.</option><option value="s68">068. 그곳에서 그는 줄리엣을 애도하는 패리스를 만났다.</option><option value="s69">069. 패리스는 로미오를 막으려 했다.</option><option value="s70">070. 두 사람은 싸우게 되었다.</option><option value="s71">071. 로미오는 결투 끝에 패리스를 죽였다.</option><option value="s72">072. 그는 줄리엣의 시신 곁으로 다가갔다.</option><option value="s73">073. 줄리엣은 평화롭고 아름답게 보였다.</option><option value="s74">074. 로미오는 마지막으로 그녀에게 입을 맞추었다.</option><option value="s75">075. 그는 독약을 마셨다.</option><option value="s76">076. 잠시 후 로미오는 줄리엣 곁에서 죽었다.</option><option value="s77">077. 얼마 후 줄리엣은 약의 효과에서 깨어났다.</option><option value="s78">078. 그녀는 로미오가 죽어 있는 것을 보았다.</option><option value="s79">079. 줄리엣은 공포와 슬픔에 휩싸였다.</option><option value="s80">080. 그녀는 무슨 일이 일어났는지 깨달았다.</option><option value="s81">081. 신부가 도착해 그녀에게 떠나자고 말했다.</option><option value="s82">082. 줄리엣은 로미오를 두고 떠나기를 거부했다.</option><option value="s83">083. 그녀는 그의 곁에 남기로 했다.</option><option value="s84">084. 줄리엣은 로미오의 단검을 집어 들었다.</option><option value="s85">085. 그녀는 스스로를 찔렀다.</option><option value="s86">086. 줄리엣은 로미오 곁에서 숨을 거두었다.</option><option value="s87">087. 그 비극적인 죽음은 베로나를 충격에 빠뜨렸다.</option><option value="s88">088. 두 가문은 무덤에 모였다.</option><option value="s89">089. 로렌스 신부는 모든 진실을 설명했다.</option><option value="s90">090. 몬터규 가문과 캐풀릿 가문은 비밀 결혼 사실을 알게 되었다</option><option value="s91">091. 그들은 자신들의 증오가 비극을 만들었다는 사실을 깨달았다.</option><option value="s92">092. 두 가문은 깊은 후회에 빠졌다.</option><option value="s93">093. 오랜 원한은 마침내 끝이 났다.</option><option value="s94">094. 몬터규 가문과 캐풀릿 가문은 화해했다.</option><option value="s95">095. 그들은 젊은 연인들의 기억을 기렸다.</option><option value="s96">096. 로미오와 줄리엣을 기념하는 동상이 세워지기로 했다.</option><option value="s97">097. 공작은 증오가 가져온 대가를 되새겼다.</option><option value="s98">098. 도시는 두 연인의 죽음을 애도했다.</option><option value="s99">099. 로미오와 줄리엣은 영원한 사랑의 상징이 되었다.</option><option value="s100">100. 그들의 이야기는 오늘날까지 세계 문학에서 가장 유명한 비극</option></select><button onclick="window.scrollTo({top:0,behavior:'smooth'})">맨 위</button></nav>
+<main><section class="intro"><h2>학습 구성</h2><p>각 장면은 <b>영어 문장 → 한글 번역 → 해당 문장을 활용한 파이썬 예시 코드</b> 순서로 구성했습니다.</p><table><thead><tr><th>단계</th><th>학습 요소</th><th>해당 문장 번호</th></tr></thead><tbody><tr><td>1단계</td><td>변수·자료형·print</td><td>1, 11, 21, 31, 41, 51, 61, 71, 81, 91</td></tr><tr><td>2단계</td><td>문자열·인덱싱·슬라이싱</td><td>2, 12, 22, 32, 42, 52, 62, 72, 82, 92</td></tr><tr><td>3단계</td><td>조건문 if</td><td>3, 13, 23, 33, 43, 53, 63, 73, 83, 93</td></tr><tr><td>4단계</td><td>반복문 for·while</td><td>4, 14, 24, 34, 44, 54, 64, 74, 84, 94</td></tr><tr><td>5단계</td><td>리스트·튜플·집합·딕셔너리</td><td>5, 15, 25, 35, 45, 55, 65, 75, 85, 95</td></tr><tr><td>6단계</td><td>함수·매개변수·반환값</td><td>6, 16, 26, 36, 46, 56, 66, 76, 86, 96</td></tr><tr><td>7단계</td><td>파일 처리·예외 처리</td><td>7, 17, 27, 37, 47, 57, 67, 77, 87, 97</td></tr><tr><td>8단계</td><td>OOP 클래스·객체</td><td>8, 18, 28, 38, 48, 58, 68, 78, 88, 98</td></tr><tr><td>9단계</td><td>모듈·라이브러리</td><td>9, 19, 29, 39, 49, 59, 69, 79, 89, 99</td></tr><tr><td>10단계</td><td>데코레이터·제너레이터</td><td>10, 20, 30, 40, 50, 60, 70, 80, 90, 100</td></tr></tbody></table><p class="small">코드 복사 버튼을 눌러 IDLE, VS Code, 코랩에서 바로 실행할 수 있습니다.</p></section>
+
+<section class="card" id="s1">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>1. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>In the city of Verona, two noble families were bitter enemies.</p>
+  <p class="kor"><b>한글 번역</b><br>베로나에는 두 명문 가문이 서로 깊은 원수로 지내고 있었다.</p>
+  <button onclick="copyCode('code1')">코드 복사</button>
+  <pre><code id="code1"># 1번 문장: 변수, 자료형, print()
+title = &quot;Romeo and Juliet&quot;
+sentence_no = 1
+kor = &#x27;베로나에는 두 명문 가문이 서로 깊은 원수로 지내고 있었다.&#x27;
+eng = &#x27;In the city of Verona, two noble families were bitter enemies.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s2">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>2. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The families were called the Montagues and the Capulets.</p>
+  <p class="kor"><b>한글 번역</b><br>그 가문들은 몬터규 가문과 캐풀릿 가문이었다.</p>
+  <button onclick="copyCode('code2')">코드 복사</button>
+  <pre><code id="code2"># 2번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그 가문들은 몬터규 가문과 캐풀릿 가문이었다.&#x27;
+eng = &#x27;The families were called the Montagues and the Capulets.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s3">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>3. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Their hatred had lasted for many years.</p>
+  <p class="kor"><b>한글 번역</b><br>그들의 증오는 오랫동안 이어져 왔다.</p>
+  <button onclick="copyCode('code3')">코드 복사</button>
+  <pre><code id="code3"># 3번 문장: 조건문 if
+kor = &#x27;그들의 증오는 오랫동안 이어져 왔다.&#x27;
+keyword = &quot;비극&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s4">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>4. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Frequent fights disturbed the peace of the city.</p>
+  <p class="kor"><b>한글 번역</b><br>잦은 싸움은 도시의 평화를 깨뜨렸다.</p>
+  <button onclick="copyCode('code4')">코드 복사</button>
+  <pre><code id="code4"># 4번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Frequent fights disturbed the peace of the city.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s5">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>5. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Prince Escalus warned both families to stop fighting.</p>
+  <p class="kor"><b>한글 번역</b><br>에스칼러스 공작은 두 가문에게 싸움을 멈추라고 경고했다.</p>
+  <button onclick="copyCode('code5')">코드 복사</button>
+  <pre><code id="code5"># 5번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 5,
+    &quot;title&quot;: &quot;로미오와 줄리엣&quot;,
+    &quot;kor&quot;: &#x27;에스칼러스 공작은 두 가문에게 싸움을 멈추라고 경고했다.&#x27;,
+    &quot;eng&quot;: &#x27;Prince Escalus warned both families to stop fighting.&#x27;,
+    &quot;theme&quot;: &quot;사랑과 비극&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s6">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>6. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Romeo Montague was a young man from the Montague family.</p>
+  <p class="kor"><b>한글 번역</b><br>로미오는 몬터규 가문의 젊은 청년이었다.</p>
+  <button onclick="copyCode('code6')">코드 복사</button>
+  <pre><code id="code6"># 6번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[로미오와 줄리엣 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(6, &#x27;로미오는 몬터규 가문의 젊은 청년이었다.&#x27;, &#x27;Romeo Montague was a young man from the Montague family.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s7">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>7. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>At first, he was unhappy because of unreturned love.</p>
+  <p class="kor"><b>한글 번역</b><br>처음에 그는 이루어질 수 없는 사랑 때문에 괴로워했다.</p>
+  <button onclick="copyCode('code7')">코드 복사</button>
+  <pre><code id="code7"># 7번 문장: 예외 처리
+sentences = [&#x27;처음에 그는 이루어질 수 없는 사랑 때문에 괴로워했다.&#x27;, &#x27;At first, he was unhappy because of unreturned love.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s8">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>8. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>His friends tried to cheer him up.</p>
+  <p class="kor"><b>한글 번역</b><br>그의 친구들은 그를 위로하려고 노력했다.</p>
+  <button onclick="copyCode('code8')">코드 복사</button>
+  <pre><code id="code8"># 8번 문장: 클래스와 객체
+class RomeoJulietScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = RomeoJulietScene(8, &#x27;그의 친구들은 그를 위로하려고 노력했다.&#x27;, &#x27;His friends tried to cheer him up.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s9">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>9. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>One evening, they persuaded him to attend a party.</p>
+  <p class="kor"><b>한글 번역</b><br>어느 날 저녁 그들은 그를 파티에 데려갔다.</p>
+  <button onclick="copyCode('code9')">코드 복사</button>
+  <pre><code id="code9"># 9번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;One evening, they persuaded him to attend a party.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s10">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>10. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The party was held at the Capulet mansion.</p>
+  <p class="kor"><b>한글 번역</b><br>그 파티는 캐풀릿 가문의 저택에서 열렸다.</p>
+  <button onclick="copyCode('code10')">코드 복사</button>
+  <pre><code id="code10"># 10번 문장: 데코레이터
+def love_frame(func):
+    def wrapper():
+        print(&quot;❤️ 로미오와 줄리엣 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@love_frame
+def show_scene():
+    print(&#x27;그 파티는 캐풀릿 가문의 저택에서 열렸다.&#x27;)
+    print(&quot;→&quot;, &#x27;The party was held at the Capulet mansion.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s11">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>11. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Romeo entered the party wearing a disguise.</p>
+  <p class="kor"><b>한글 번역</b><br>로미오는 변장한 채 파티에 들어갔다.</p>
+  <button onclick="copyCode('code11')">코드 복사</button>
+  <pre><code id="code11"># 11번 문장: 변수, 자료형, print()
+title = &quot;Romeo and Juliet&quot;
+sentence_no = 11
+kor = &#x27;로미오는 변장한 채 파티에 들어갔다.&#x27;
+eng = &#x27;Romeo entered the party wearing a disguise.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s12">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>12. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>There he saw Juliet Capulet for the first time.</p>
+  <p class="kor"><b>한글 번역</b><br>그곳에서 그는 줄리엣 캐풀릿을 처음 보았다.</p>
+  <button onclick="copyCode('code12')">코드 복사</button>
+  <pre><code id="code12"># 12번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그곳에서 그는 줄리엣 캐풀릿을 처음 보았다.&#x27;
+eng = &#x27;There he saw Juliet Capulet for the first time.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s13">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>13. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Juliet was the daughter of the Capulet family.</p>
+  <p class="kor"><b>한글 번역</b><br>줄리엣은 캐풀릿 가문의 딸이었다.</p>
+  <button onclick="copyCode('code13')">코드 복사</button>
+  <pre><code id="code13"># 13번 문장: 조건문 if
+kor = &#x27;줄리엣은 캐풀릿 가문의 딸이었다.&#x27;
+keyword = &quot;줄리엣&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s14">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>14. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The moment they met, they fell in love.</p>
+  <p class="kor"><b>한글 번역</b><br>그들이 만난 순간 사랑에 빠졌다.</p>
+  <button onclick="copyCode('code14')">코드 복사</button>
+  <pre><code id="code14"># 14번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;The moment they met, they fell in love.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s15">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>15. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Neither knew the other&#x27;s identity at first.</p>
+  <p class="kor"><b>한글 번역</b><br>처음에는 서로의 정체를 알지 못했다.</p>
+  <button onclick="copyCode('code15')">코드 복사</button>
+  <pre><code id="code15"># 15번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 15,
+    &quot;title&quot;: &quot;로미오와 줄리엣&quot;,
+    &quot;kor&quot;: &#x27;처음에는 서로의 정체를 알지 못했다.&#x27;,
+    &quot;eng&quot;: &quot;Neither knew the other&#x27;s identity at first.&quot;,
+    &quot;theme&quot;: &quot;사랑과 비극&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s16">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>16. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Later, they discovered the truth.</p>
+  <p class="kor"><b>한글 번역</b><br>나중에 그들은 진실을 알게 되었다.</p>
+  <button onclick="copyCode('code16')">코드 복사</button>
+  <pre><code id="code16"># 16번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[로미오와 줄리엣 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(16, &#x27;나중에 그들은 진실을 알게 되었다.&#x27;, &#x27;Later, they discovered the truth.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s17">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>17. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>They were shocked to learn they belonged to rival families.</p>
+  <p class="kor"><b>한글 번역</b><br>그들은 서로 원수 가문 출신이라는 사실에 충격을 받았다.</p>
+  <button onclick="copyCode('code17')">코드 복사</button>
+  <pre><code id="code17"># 17번 문장: 예외 처리
+sentences = [&#x27;그들은 서로 원수 가문 출신이라는 사실에 충격을 받았다.&#x27;, &#x27;They were shocked to learn they belonged to rival families.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s18">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>18. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Despite the danger, their feelings grew stronger.</p>
+  <p class="kor"><b>한글 번역</b><br>위험에도 불구하고 그들의 사랑은 더욱 깊어졌다.</p>
+  <button onclick="copyCode('code18')">코드 복사</button>
+  <pre><code id="code18"># 18번 문장: 클래스와 객체
+class RomeoJulietScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = RomeoJulietScene(18, &#x27;위험에도 불구하고 그들의 사랑은 더욱 깊어졌다.&#x27;, &#x27;Despite the danger, their feelings grew stronger.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s19">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>19. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>That night, Romeo secretly entered the Capulet garden.</p>
+  <p class="kor"><b>한글 번역</b><br>그날 밤 로미오는 몰래 캐풀릿의 정원으로 들어갔다.</p>
+  <button onclick="copyCode('code19')">코드 복사</button>
+  <pre><code id="code19"># 19번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;That night, Romeo secretly entered the Capulet garden.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s20">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>20. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Juliet appeared on her balcony.</p>
+  <p class="kor"><b>한글 번역</b><br>줄리엣은 발코니에 모습을 드러냈다.</p>
+  <button onclick="copyCode('code20')">코드 복사</button>
+  <pre><code id="code20"># 20번 문장: 데코레이터
+def love_frame(func):
+    def wrapper():
+        print(&quot;❤️ 로미오와 줄리엣 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@love_frame
+def show_scene():
+    print(&#x27;줄리엣은 발코니에 모습을 드러냈다.&#x27;)
+    print(&quot;→&quot;, &#x27;Juliet appeared on her balcony.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s21">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>21. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Romeo listened as Juliet spoke about her love.</p>
+  <p class="kor"><b>한글 번역</b><br>로미오는 줄리엣이 사랑을 고백하는 말을 들었다.</p>
+  <button onclick="copyCode('code21')">코드 복사</button>
+  <pre><code id="code21"># 21번 문장: 변수, 자료형, print()
+title = &quot;Romeo and Juliet&quot;
+sentence_no = 21
+kor = &#x27;로미오는 줄리엣이 사랑을 고백하는 말을 들었다.&#x27;
+eng = &#x27;Romeo listened as Juliet spoke about her love.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s22">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>22. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The two confessed their feelings to each other.</p>
+  <p class="kor"><b>한글 번역</b><br>두 사람은 서로의 사랑을 고백했다.</p>
+  <button onclick="copyCode('code22')">코드 복사</button>
+  <pre><code id="code22"># 22번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;두 사람은 서로의 사랑을 고백했다.&#x27;
+eng = &#x27;The two confessed their feelings to each other.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s23">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>23. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>They promised to remain faithful.</p>
+  <p class="kor"><b>한글 번역</b><br>그들은 서로에게 충실할 것을 약속했다.</p>
+  <button onclick="copyCode('code23')">코드 복사</button>
+  <pre><code id="code23"># 23번 문장: 조건문 if
+kor = &#x27;그들은 서로에게 충실할 것을 약속했다.&#x27;
+keyword = &quot;비극&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s24">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>24. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Soon they decided to marry.</p>
+  <p class="kor"><b>한글 번역</b><br>곧 그들은 결혼하기로 결심했다.</p>
+  <button onclick="copyCode('code24')">코드 복사</button>
+  <pre><code id="code24"># 24번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Soon they decided to marry.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s25">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>25. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Friar Laurence agreed to help them.</p>
+  <p class="kor"><b>한글 번역</b><br>로렌스 신부는 그들을 돕기로 했다.</p>
+  <button onclick="copyCode('code25')">코드 복사</button>
+  <pre><code id="code25"># 25번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 25,
+    &quot;title&quot;: &quot;로미오와 줄리엣&quot;,
+    &quot;kor&quot;: &#x27;로렌스 신부는 그들을 돕기로 했다.&#x27;,
+    &quot;eng&quot;: &#x27;Friar Laurence agreed to help them.&#x27;,
+    &quot;theme&quot;: &quot;사랑과 비극&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s26">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>26. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>He hoped the marriage would end the family feud.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 이 결혼이 두 가문의 갈등을 끝내길 바랐다.</p>
+  <button onclick="copyCode('code26')">코드 복사</button>
+  <pre><code id="code26"># 26번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[로미오와 줄리엣 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(26, &#x27;그는 이 결혼이 두 가문의 갈등을 끝내길 바랐다.&#x27;, &#x27;He hoped the marriage would end the family feud.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s27">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>27. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Romeo and Juliet were secretly married.</p>
+  <p class="kor"><b>한글 번역</b><br>로미오와 줄리엣은 비밀리에 결혼했다.</p>
+  <button onclick="copyCode('code27')">코드 복사</button>
+  <pre><code id="code27"># 27번 문장: 예외 처리
+sentences = [&#x27;로미오와 줄리엣은 비밀리에 결혼했다.&#x27;, &#x27;Romeo and Juliet were secretly married.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s28">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>28. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>For a short time, they were very happy.</p>
+  <p class="kor"><b>한글 번역</b><br>짧은 시간 동안 그들은 매우 행복했다.</p>
+  <button onclick="copyCode('code28')">코드 복사</button>
+  <pre><code id="code28"># 28번 문장: 클래스와 객체
+class RomeoJulietScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = RomeoJulietScene(28, &#x27;짧은 시간 동안 그들은 매우 행복했다.&#x27;, &#x27;For a short time, they were very happy.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s29">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>29. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>However, trouble soon appeared.</p>
+  <p class="kor"><b>한글 번역</b><br>그러나 곧 문제가 생겼다.</p>
+  <button onclick="copyCode('code29')">코드 복사</button>
+  <pre><code id="code29"># 29번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;However, trouble soon appeared.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s30">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>30. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Tybalt, Juliet&#x27;s cousin, hated Romeo.</p>
+  <p class="kor"><b>한글 번역</b><br>줄리엣의 사촌 티볼트는 로미오를 몹시 싫어했다.</p>
+  <button onclick="copyCode('code30')">코드 복사</button>
+  <pre><code id="code30"># 30번 문장: 데코레이터
+def love_frame(func):
+    def wrapper():
+        print(&quot;❤️ 로미오와 줄리엣 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@love_frame
+def show_scene():
+    print(&#x27;줄리엣의 사촌 티볼트는 로미오를 몹시 싫어했다.&#x27;)
+    print(&quot;→&quot;, &quot;Tybalt, Juliet&#x27;s cousin, hated Romeo.&quot;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s31">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>31. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>He challenged Romeo to a duel.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 로미오에게 결투를 신청했다.</p>
+  <button onclick="copyCode('code31')">코드 복사</button>
+  <pre><code id="code31"># 31번 문장: 변수, 자료형, print()
+title = &quot;Romeo and Juliet&quot;
+sentence_no = 31
+kor = &#x27;그는 로미오에게 결투를 신청했다.&#x27;
+eng = &#x27;He challenged Romeo to a duel.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s32">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>32. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Romeo refused because he was secretly related to Tybalt through marriage.</p>
+  <p class="kor"><b>한글 번역</b><br>로미오는 비밀 결혼 때문에 결투를 거부했다.</p>
+  <button onclick="copyCode('code32')">코드 복사</button>
+  <pre><code id="code32"># 32번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;로미오는 비밀 결혼 때문에 결투를 거부했다.&#x27;
+eng = &#x27;Romeo refused because he was secretly related to Tybalt through marriage.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s33">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>33. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Mercutio became angry at Romeo&#x27;s refusal.</p>
+  <p class="kor"><b>한글 번역</b><br>머큐쇼는 로미오의 거절에 화가 났다.</p>
+  <button onclick="copyCode('code33')">코드 복사</button>
+  <pre><code id="code33"># 33번 문장: 조건문 if
+kor = &#x27;머큐쇼는 로미오의 거절에 화가 났다.&#x27;
+keyword = &quot;로미오&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s34">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>34. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Mercutio fought Tybalt instead.</p>
+  <p class="kor"><b>한글 번역</b><br>머큐쇼는 대신 티볼트와 싸웠다.</p>
+  <button onclick="copyCode('code34')">코드 복사</button>
+  <pre><code id="code34"># 34번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Mercutio fought Tybalt instead.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s35">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>35. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>During the fight, Mercutio was fatally wounded.</p>
+  <p class="kor"><b>한글 번역</b><br>싸움 도중 머큐쇼는 치명상을 입었다.</p>
+  <button onclick="copyCode('code35')">코드 복사</button>
+  <pre><code id="code35"># 35번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 35,
+    &quot;title&quot;: &quot;로미오와 줄리엣&quot;,
+    &quot;kor&quot;: &#x27;싸움 도중 머큐쇼는 치명상을 입었다.&#x27;,
+    &quot;eng&quot;: &#x27;During the fight, Mercutio was fatally wounded.&#x27;,
+    &quot;theme&quot;: &quot;사랑과 비극&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s36">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>36. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Romeo was devastated by his friend&#x27;s death.</p>
+  <p class="kor"><b>한글 번역</b><br>로미오는 친구의 죽음에 큰 충격을 받았다.</p>
+  <button onclick="copyCode('code36')">코드 복사</button>
+  <pre><code id="code36"># 36번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[로미오와 줄리엣 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(36, &#x27;로미오는 친구의 죽음에 큰 충격을 받았다.&#x27;, &quot;Romeo was devastated by his friend&#x27;s death.&quot;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s37">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>37. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>In anger, Romeo challenged Tybalt.</p>
+  <p class="kor"><b>한글 번역</b><br>분노한 로미오는 티볼트에게 결투를 신청했다.</p>
+  <button onclick="copyCode('code37')">코드 복사</button>
+  <pre><code id="code37"># 37번 문장: 예외 처리
+sentences = [&#x27;분노한 로미오는 티볼트에게 결투를 신청했다.&#x27;, &#x27;In anger, Romeo challenged Tybalt.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s38">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>38. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The two fought fiercely.</p>
+  <p class="kor"><b>한글 번역</b><br>두 사람은 치열하게 싸웠다.</p>
+  <button onclick="copyCode('code38')">코드 복사</button>
+  <pre><code id="code38"># 38번 문장: 클래스와 객체
+class RomeoJulietScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = RomeoJulietScene(38, &#x27;두 사람은 치열하게 싸웠다.&#x27;, &#x27;The two fought fiercely.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s39">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>39. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Romeo killed Tybalt.</p>
+  <p class="kor"><b>한글 번역</b><br>로미오는 티볼트를 죽였다.</p>
+  <button onclick="copyCode('code39')">코드 복사</button>
+  <pre><code id="code39"># 39번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Romeo killed Tybalt.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s40">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>40. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The prince punished Romeo for the crime.</p>
+  <p class="kor"><b>한글 번역</b><br>공작은 그 죄에 대해 로미오를 처벌했다.</p>
+  <button onclick="copyCode('code40')">코드 복사</button>
+  <pre><code id="code40"># 40번 문장: 데코레이터
+def love_frame(func):
+    def wrapper():
+        print(&quot;❤️ 로미오와 줄리엣 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@love_frame
+def show_scene():
+    print(&#x27;공작은 그 죄에 대해 로미오를 처벌했다.&#x27;)
+    print(&quot;→&quot;, &#x27;The prince punished Romeo for the crime.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s41">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>41. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Romeo was banished from Verona.</p>
+  <p class="kor"><b>한글 번역</b><br>로미오는 베로나에서 추방되었다.</p>
+  <button onclick="copyCode('code41')">코드 복사</button>
+  <pre><code id="code41"># 41번 문장: 변수, 자료형, print()
+title = &quot;Romeo and Juliet&quot;
+sentence_no = 41
+kor = &#x27;로미오는 베로나에서 추방되었다.&#x27;
+eng = &#x27;Romeo was banished from Verona.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s42">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>42. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The punishment broke Juliet&#x27;s heart.</p>
+  <p class="kor"><b>한글 번역</b><br>그 처벌은 줄리엣의 마음을 무너뜨렸다.</p>
+  <button onclick="copyCode('code42')">코드 복사</button>
+  <pre><code id="code42"># 42번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그 처벌은 줄리엣의 마음을 무너뜨렸다.&#x27;
+eng = &quot;The punishment broke Juliet&#x27;s heart.&quot;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s43">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>43. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The lovers spent one last night together.</p>
+  <p class="kor"><b>한글 번역</b><br>연인들은 마지막 밤을 함께 보냈다.</p>
+  <button onclick="copyCode('code43')">코드 복사</button>
+  <pre><code id="code43"># 43번 문장: 조건문 if
+kor = &#x27;연인들은 마지막 밤을 함께 보냈다.&#x27;
+keyword = &quot;비극&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s44">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>44. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The next morning, Romeo left Verona.</p>
+  <p class="kor"><b>한글 번역</b><br>다음 날 아침 로미오는 베로나를 떠났다.</p>
+  <button onclick="copyCode('code44')">코드 복사</button>
+  <pre><code id="code44"># 44번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;The next morning, Romeo left Verona.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s45">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>45. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Juliet&#x27;s parents knew nothing about her marriage.</p>
+  <p class="kor"><b>한글 번역</b><br>줄리엣의 부모는 그녀의 결혼 사실을 알지 못했다.</p>
+  <button onclick="copyCode('code45')">코드 복사</button>
+  <pre><code id="code45"># 45번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 45,
+    &quot;title&quot;: &quot;로미오와 줄리엣&quot;,
+    &quot;kor&quot;: &#x27;줄리엣의 부모는 그녀의 결혼 사실을 알지 못했다.&#x27;,
+    &quot;eng&quot;: &quot;Juliet&#x27;s parents knew nothing about her marriage.&quot;,
+    &quot;theme&quot;: &quot;사랑과 비극&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s46">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>46. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>They arranged for her to marry Paris.</p>
+  <p class="kor"><b>한글 번역</b><br>그들은 그녀를 패리스와 결혼시키려 했다.</p>
+  <button onclick="copyCode('code46')">코드 복사</button>
+  <pre><code id="code46"># 46번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[로미오와 줄리엣 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(46, &#x27;그들은 그녀를 패리스와 결혼시키려 했다.&#x27;, &#x27;They arranged for her to marry Paris.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s47">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>47. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Juliet desperately refused.</p>
+  <p class="kor"><b>한글 번역</b><br>줄리엣은 필사적으로 거부했다.</p>
+  <button onclick="copyCode('code47')">코드 복사</button>
+  <pre><code id="code47"># 47번 문장: 예외 처리
+sentences = [&#x27;줄리엣은 필사적으로 거부했다.&#x27;, &#x27;Juliet desperately refused.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s48">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>48. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Her parents became furious.</p>
+  <p class="kor"><b>한글 번역</b><br>그녀의 부모는 크게 화를 냈다.</p>
+  <button onclick="copyCode('code48')">코드 복사</button>
+  <pre><code id="code48"># 48번 문장: 클래스와 객체
+class RomeoJulietScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = RomeoJulietScene(48, &#x27;그녀의 부모는 크게 화를 냈다.&#x27;, &#x27;Her parents became furious.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s49">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>49. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Juliet turned to Friar Laurence for help.</p>
+  <p class="kor"><b>한글 번역</b><br>줄리엣은 로렌스 신부에게 도움을 청했다.</p>
+  <button onclick="copyCode('code49')">코드 복사</button>
+  <pre><code id="code49"># 49번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Juliet turned to Friar Laurence for help.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s50">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>50. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The friar devised a risky plan.</p>
+  <p class="kor"><b>한글 번역</b><br>신부는 위험한 계획을 세웠다.</p>
+  <button onclick="copyCode('code50')">코드 복사</button>
+  <pre><code id="code50"># 50번 문장: 데코레이터
+def love_frame(func):
+    def wrapper():
+        print(&quot;❤️ 로미오와 줄리엣 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@love_frame
+def show_scene():
+    print(&#x27;신부는 위험한 계획을 세웠다.&#x27;)
+    print(&quot;→&quot;, &#x27;The friar devised a risky plan.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s51">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>51. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Friar Laurence gave Juliet a sleeping potion.</p>
+  <p class="kor"><b>한글 번역</b><br>로렌스 신부는 줄리엣에게 수면 약을 주었다.</p>
+  <button onclick="copyCode('code51')">코드 복사</button>
+  <pre><code id="code51"># 51번 문장: 변수, 자료형, print()
+title = &quot;Romeo and Juliet&quot;
+sentence_no = 51
+kor = &#x27;로렌스 신부는 줄리엣에게 수면 약을 주었다.&#x27;
+eng = &#x27;Friar Laurence gave Juliet a sleeping potion.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s52">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>52. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The potion would make her appear dead.</p>
+  <p class="kor"><b>한글 번역</b><br>그 약은 그녀가 죽은 것처럼 보이게 만들었다.</p>
+  <button onclick="copyCode('code52')">코드 복사</button>
+  <pre><code id="code52"># 52번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그 약은 그녀가 죽은 것처럼 보이게 만들었다.&#x27;
+eng = &#x27;The potion would make her appear dead.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s53">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>53. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Juliet agreed to take the risk.</p>
+  <p class="kor"><b>한글 번역</b><br>줄리엣은 그 위험을 감수하기로 했다.</p>
+  <button onclick="copyCode('code53')">코드 복사</button>
+  <pre><code id="code53"># 53번 문장: 조건문 if
+kor = &#x27;줄리엣은 그 위험을 감수하기로 했다.&#x27;
+keyword = &quot;줄리엣&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s54">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>54. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>She drank the potion before her wedding day.</p>
+  <p class="kor"><b>한글 번역</b><br>그녀는 결혼식 전날 밤 그 약을 마셨다.</p>
+  <button onclick="copyCode('code54')">코드 복사</button>
+  <pre><code id="code54"># 54번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;She drank the potion before her wedding day.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s55">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>55. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The next morning, her family found her motionless.</p>
+  <p class="kor"><b>한글 번역</b><br>다음 날 아침 가족들은 그녀가 움직이지 않는 것을 발견했다.</p>
+  <button onclick="copyCode('code55')">코드 복사</button>
+  <pre><code id="code55"># 55번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 55,
+    &quot;title&quot;: &quot;로미오와 줄리엣&quot;,
+    &quot;kor&quot;: &#x27;다음 날 아침 가족들은 그녀가 움직이지 않는 것을 발견했다.&#x27;,
+    &quot;eng&quot;: &#x27;The next morning, her family found her motionless.&#x27;,
+    &quot;theme&quot;: &quot;사랑과 비극&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s56">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>56. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Everyone believed Juliet had died.</p>
+  <p class="kor"><b>한글 번역</b><br>모두가 줄리엣이 죽었다고 믿었다.</p>
+  <button onclick="copyCode('code56')">코드 복사</button>
+  <pre><code id="code56"># 56번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[로미오와 줄리엣 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(56, &#x27;모두가 줄리엣이 죽었다고 믿었다.&#x27;, &#x27;Everyone believed Juliet had died.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s57">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>57. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The wedding preparations turned into a funeral.</p>
+  <p class="kor"><b>한글 번역</b><br>결혼식 준비는 장례식으로 바뀌었다.</p>
+  <button onclick="copyCode('code57')">코드 복사</button>
+  <pre><code id="code57"># 57번 문장: 예외 처리
+sentences = [&#x27;결혼식 준비는 장례식으로 바뀌었다.&#x27;, &#x27;The wedding preparations turned into a funeral.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s58">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>58. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Juliet was placed in the Capulet family tomb.</p>
+  <p class="kor"><b>한글 번역</b><br>줄리엣은 캐풀릿 가문의 무덤에 안치되었다.</p>
+  <button onclick="copyCode('code58')">코드 복사</button>
+  <pre><code id="code58"># 58번 문장: 클래스와 객체
+class RomeoJulietScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = RomeoJulietScene(58, &#x27;줄리엣은 캐풀릿 가문의 무덤에 안치되었다.&#x27;, &#x27;Juliet was placed in the Capulet family tomb.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s59">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>59. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Meanwhile, Friar Laurence sent a message to Romeo.</p>
+  <p class="kor"><b>한글 번역</b><br>한편 로렌스 신부는 로미오에게 편지를 보냈다.</p>
+  <button onclick="copyCode('code59')">코드 복사</button>
+  <pre><code id="code59"># 59번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Meanwhile, Friar Laurence sent a message to Romeo.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s60">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>60. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The letter explained the entire plan.</p>
+  <p class="kor"><b>한글 번역</b><br>그 편지에는 모든 계획이 설명되어 있었다.</p>
+  <button onclick="copyCode('code60')">코드 복사</button>
+  <pre><code id="code60"># 60번 문장: 데코레이터
+def love_frame(func):
+    def wrapper():
+        print(&quot;❤️ 로미오와 줄리엣 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@love_frame
+def show_scene():
+    print(&#x27;그 편지에는 모든 계획이 설명되어 있었다.&#x27;)
+    print(&quot;→&quot;, &#x27;The letter explained the entire plan.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s61">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>61. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Unfortunately, the message never reached Romeo.</p>
+  <p class="kor"><b>한글 번역</b><br>불행하게도 그 편지는 로미오에게 전달되지 못했다.</p>
+  <button onclick="copyCode('code61')">코드 복사</button>
+  <pre><code id="code61"># 61번 문장: 변수, 자료형, print()
+title = &quot;Romeo and Juliet&quot;
+sentence_no = 61
+kor = &#x27;불행하게도 그 편지는 로미오에게 전달되지 못했다.&#x27;
+eng = &#x27;Unfortunately, the message never reached Romeo.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s62">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>62. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Instead, Romeo heard that Juliet had died.</p>
+  <p class="kor"><b>한글 번역</b><br>대신 로미오는 줄리엣이 죽었다는 소식을 들었다.</p>
+  <button onclick="copyCode('code62')">코드 복사</button>
+  <pre><code id="code62"># 62번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;대신 로미오는 줄리엣이 죽었다는 소식을 들었다.&#x27;
+eng = &#x27;Instead, Romeo heard that Juliet had died.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s63">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>63. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>He was overwhelmed by grief.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 깊은 슬픔에 빠졌다.</p>
+  <button onclick="copyCode('code63')">코드 복사</button>
+  <pre><code id="code63"># 63번 문장: 조건문 if
+kor = &#x27;그는 깊은 슬픔에 빠졌다.&#x27;
+keyword = &quot;비극&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s64">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>64. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Romeo decided he could not live without Juliet.</p>
+  <p class="kor"><b>한글 번역</b><br>로미오는 줄리엣 없이 살 수 없다고 생각했다.</p>
+  <button onclick="copyCode('code64')">코드 복사</button>
+  <pre><code id="code64"># 64번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Romeo decided he could not live without Juliet.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s65">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>65. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>He bought a deadly poison.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 치명적인 독약을 구입했다.</p>
+  <button onclick="copyCode('code65')">코드 복사</button>
+  <pre><code id="code65"># 65번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 65,
+    &quot;title&quot;: &quot;로미오와 줄리엣&quot;,
+    &quot;kor&quot;: &#x27;그는 치명적인 독약을 구입했다.&#x27;,
+    &quot;eng&quot;: &#x27;He bought a deadly poison.&#x27;,
+    &quot;theme&quot;: &quot;사랑과 비극&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s66">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>66. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Then he hurried back to Verona.</p>
+  <p class="kor"><b>한글 번역</b><br>그리고 서둘러 베로나로 돌아갔다.</p>
+  <button onclick="copyCode('code66')">코드 복사</button>
+  <pre><code id="code66"># 66번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[로미오와 줄리엣 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(66, &#x27;그리고 서둘러 베로나로 돌아갔다.&#x27;, &#x27;Then he hurried back to Verona.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s67">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>67. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Late at night, he entered the Capulet tomb.</p>
+  <p class="kor"><b>한글 번역</b><br>늦은 밤 그는 캐풀릿 가문의 무덤으로 들어갔다.</p>
+  <button onclick="copyCode('code67')">코드 복사</button>
+  <pre><code id="code67"># 67번 문장: 예외 처리
+sentences = [&#x27;늦은 밤 그는 캐풀릿 가문의 무덤으로 들어갔다.&#x27;, &#x27;Late at night, he entered the Capulet tomb.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s68">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>68. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>There he found Paris mourning Juliet.</p>
+  <p class="kor"><b>한글 번역</b><br>그곳에서 그는 줄리엣을 애도하는 패리스를 만났다.</p>
+  <button onclick="copyCode('code68')">코드 복사</button>
+  <pre><code id="code68"># 68번 문장: 클래스와 객체
+class RomeoJulietScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = RomeoJulietScene(68, &#x27;그곳에서 그는 줄리엣을 애도하는 패리스를 만났다.&#x27;, &#x27;There he found Paris mourning Juliet.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s69">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>69. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Paris tried to stop Romeo.</p>
+  <p class="kor"><b>한글 번역</b><br>패리스는 로미오를 막으려 했다.</p>
+  <button onclick="copyCode('code69')">코드 복사</button>
+  <pre><code id="code69"># 69번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Paris tried to stop Romeo.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s70">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>70. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The two men fought.</p>
+  <p class="kor"><b>한글 번역</b><br>두 사람은 싸우게 되었다.</p>
+  <button onclick="copyCode('code70')">코드 복사</button>
+  <pre><code id="code70"># 70번 문장: 데코레이터
+def love_frame(func):
+    def wrapper():
+        print(&quot;❤️ 로미오와 줄리엣 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@love_frame
+def show_scene():
+    print(&#x27;두 사람은 싸우게 되었다.&#x27;)
+    print(&quot;→&quot;, &#x27;The two men fought.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s71">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>71. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Romeo killed Paris in the duel.</p>
+  <p class="kor"><b>한글 번역</b><br>로미오는 결투 끝에 패리스를 죽였다.</p>
+  <button onclick="copyCode('code71')">코드 복사</button>
+  <pre><code id="code71"># 71번 문장: 변수, 자료형, print()
+title = &quot;Romeo and Juliet&quot;
+sentence_no = 71
+kor = &#x27;로미오는 결투 끝에 패리스를 죽였다.&#x27;
+eng = &#x27;Romeo killed Paris in the duel.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s72">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>72. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>He then approached Juliet&#x27;s body.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 줄리엣의 시신 곁으로 다가갔다.</p>
+  <button onclick="copyCode('code72')">코드 복사</button>
+  <pre><code id="code72"># 72번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그는 줄리엣의 시신 곁으로 다가갔다.&#x27;
+eng = &quot;He then approached Juliet&#x27;s body.&quot;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s73">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>73. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Juliet looked peaceful and beautiful.</p>
+  <p class="kor"><b>한글 번역</b><br>줄리엣은 평화롭고 아름답게 보였다.</p>
+  <button onclick="copyCode('code73')">코드 복사</button>
+  <pre><code id="code73"># 73번 문장: 조건문 if
+kor = &#x27;줄리엣은 평화롭고 아름답게 보였다.&#x27;
+keyword = &quot;줄리엣&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s74">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>74. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Romeo kissed her one last time.</p>
+  <p class="kor"><b>한글 번역</b><br>로미오는 마지막으로 그녀에게 입을 맞추었다.</p>
+  <button onclick="copyCode('code74')">코드 복사</button>
+  <pre><code id="code74"># 74번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Romeo kissed her one last time.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s75">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>75. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>He drank the poison.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 독약을 마셨다.</p>
+  <button onclick="copyCode('code75')">코드 복사</button>
+  <pre><code id="code75"># 75번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 75,
+    &quot;title&quot;: &quot;로미오와 줄리엣&quot;,
+    &quot;kor&quot;: &#x27;그는 독약을 마셨다.&#x27;,
+    &quot;eng&quot;: &#x27;He drank the poison.&#x27;,
+    &quot;theme&quot;: &quot;사랑과 비극&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s76">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>76. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Moments later, Romeo died beside Juliet.</p>
+  <p class="kor"><b>한글 번역</b><br>잠시 후 로미오는 줄리엣 곁에서 죽었다.</p>
+  <button onclick="copyCode('code76')">코드 복사</button>
+  <pre><code id="code76"># 76번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[로미오와 줄리엣 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(76, &#x27;잠시 후 로미오는 줄리엣 곁에서 죽었다.&#x27;, &#x27;Moments later, Romeo died beside Juliet.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s77">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>77. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Soon afterward, Juliet awakened from the potion&#x27;s effects.</p>
+  <p class="kor"><b>한글 번역</b><br>얼마 후 줄리엣은 약의 효과에서 깨어났다.</p>
+  <button onclick="copyCode('code77')">코드 복사</button>
+  <pre><code id="code77"># 77번 문장: 예외 처리
+sentences = [&#x27;얼마 후 줄리엣은 약의 효과에서 깨어났다.&#x27;, &quot;Soon afterward, Juliet awakened from the potion&#x27;s effects.&quot;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s78">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>78. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>She saw Romeo lying dead beside her.</p>
+  <p class="kor"><b>한글 번역</b><br>그녀는 로미오가 죽어 있는 것을 보았다.</p>
+  <button onclick="copyCode('code78')">코드 복사</button>
+  <pre><code id="code78"># 78번 문장: 클래스와 객체
+class RomeoJulietScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = RomeoJulietScene(78, &#x27;그녀는 로미오가 죽어 있는 것을 보았다.&#x27;, &#x27;She saw Romeo lying dead beside her.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s79">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>79. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Juliet was filled with horror and sorrow.</p>
+  <p class="kor"><b>한글 번역</b><br>줄리엣은 공포와 슬픔에 휩싸였다.</p>
+  <button onclick="copyCode('code79')">코드 복사</button>
+  <pre><code id="code79"># 79번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Juliet was filled with horror and sorrow.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s80">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>80. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>She realized what had happened.</p>
+  <p class="kor"><b>한글 번역</b><br>그녀는 무슨 일이 일어났는지 깨달았다.</p>
+  <button onclick="copyCode('code80')">코드 복사</button>
+  <pre><code id="code80"># 80번 문장: 데코레이터
+def love_frame(func):
+    def wrapper():
+        print(&quot;❤️ 로미오와 줄리엣 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@love_frame
+def show_scene():
+    print(&#x27;그녀는 무슨 일이 일어났는지 깨달았다.&#x27;)
+    print(&quot;→&quot;, &#x27;She realized what had happened.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s81">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>81. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The friar arrived and urged her to leave.</p>
+  <p class="kor"><b>한글 번역</b><br>신부가 도착해 그녀에게 떠나자고 말했다.</p>
+  <button onclick="copyCode('code81')">코드 복사</button>
+  <pre><code id="code81"># 81번 문장: 변수, 자료형, print()
+title = &quot;Romeo and Juliet&quot;
+sentence_no = 81
+kor = &#x27;신부가 도착해 그녀에게 떠나자고 말했다.&#x27;
+eng = &#x27;The friar arrived and urged her to leave.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s82">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>82. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Juliet refused to abandon Romeo.</p>
+  <p class="kor"><b>한글 번역</b><br>줄리엣은 로미오를 두고 떠나기를 거부했다.</p>
+  <button onclick="copyCode('code82')">코드 복사</button>
+  <pre><code id="code82"># 82번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;줄리엣은 로미오를 두고 떠나기를 거부했다.&#x27;
+eng = &#x27;Juliet refused to abandon Romeo.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s83">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>83. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>She chose to remain beside him.</p>
+  <p class="kor"><b>한글 번역</b><br>그녀는 그의 곁에 남기로 했다.</p>
+  <button onclick="copyCode('code83')">코드 복사</button>
+  <pre><code id="code83"># 83번 문장: 조건문 if
+kor = &#x27;그녀는 그의 곁에 남기로 했다.&#x27;
+keyword = &quot;비극&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s84">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>84. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Juliet took Romeo&#x27;s dagger.</p>
+  <p class="kor"><b>한글 번역</b><br>줄리엣은 로미오의 단검을 집어 들었다.</p>
+  <button onclick="copyCode('code84')">코드 복사</button>
+  <pre><code id="code84"># 84번 문장: for문으로 영어 단어 번호 붙이기
+eng = &quot;Juliet took Romeo&#x27;s dagger.&quot;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s85">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>85. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>She stabbed herself.</p>
+  <p class="kor"><b>한글 번역</b><br>그녀는 스스로를 찔렀다.</p>
+  <button onclick="copyCode('code85')">코드 복사</button>
+  <pre><code id="code85"># 85번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 85,
+    &quot;title&quot;: &quot;로미오와 줄리엣&quot;,
+    &quot;kor&quot;: &#x27;그녀는 스스로를 찔렀다.&#x27;,
+    &quot;eng&quot;: &#x27;She stabbed herself.&#x27;,
+    &quot;theme&quot;: &quot;사랑과 비극&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s86">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>86. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Juliet died beside Romeo.</p>
+  <p class="kor"><b>한글 번역</b><br>줄리엣은 로미오 곁에서 숨을 거두었다.</p>
+  <button onclick="copyCode('code86')">코드 복사</button>
+  <pre><code id="code86"># 86번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[로미오와 줄리엣 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(86, &#x27;줄리엣은 로미오 곁에서 숨을 거두었다.&#x27;, &#x27;Juliet died beside Romeo.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s87">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>87. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The tragic deaths shocked Verona.</p>
+  <p class="kor"><b>한글 번역</b><br>그 비극적인 죽음은 베로나를 충격에 빠뜨렸다.</p>
+  <button onclick="copyCode('code87')">코드 복사</button>
+  <pre><code id="code87"># 87번 문장: 예외 처리
+sentences = [&#x27;그 비극적인 죽음은 베로나를 충격에 빠뜨렸다.&#x27;, &#x27;The tragic deaths shocked Verona.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s88">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>88. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The families gathered at the tomb.</p>
+  <p class="kor"><b>한글 번역</b><br>두 가문은 무덤에 모였다.</p>
+  <button onclick="copyCode('code88')">코드 복사</button>
+  <pre><code id="code88"># 88번 문장: 클래스와 객체
+class RomeoJulietScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = RomeoJulietScene(88, &#x27;두 가문은 무덤에 모였다.&#x27;, &#x27;The families gathered at the tomb.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s89">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>89. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Friar Laurence explained the entire story.</p>
+  <p class="kor"><b>한글 번역</b><br>로렌스 신부는 모든 진실을 설명했다.</p>
+  <button onclick="copyCode('code89')">코드 복사</button>
+  <pre><code id="code89"># 89번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Friar Laurence explained the entire story.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s90">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>90. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The Montagues and Capulets learned about the secret marriage.</p>
+  <p class="kor"><b>한글 번역</b><br>몬터규 가문과 캐풀릿 가문은 비밀 결혼 사실을 알게 되었다.</p>
+  <button onclick="copyCode('code90')">코드 복사</button>
+  <pre><code id="code90"># 90번 문장: 데코레이터
+def love_frame(func):
+    def wrapper():
+        print(&quot;❤️ 로미오와 줄리엣 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@love_frame
+def show_scene():
+    print(&#x27;몬터규 가문과 캐풀릿 가문은 비밀 결혼 사실을 알게 되었다.&#x27;)
+    print(&quot;→&quot;, &#x27;The Montagues and Capulets learned about the secret marriage.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s91">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>91. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>They realized their hatred had caused the tragedy.</p>
+  <p class="kor"><b>한글 번역</b><br>그들은 자신들의 증오가 비극을 만들었다는 사실을 깨달았다.</p>
+  <button onclick="copyCode('code91')">코드 복사</button>
+  <pre><code id="code91"># 91번 문장: 변수, 자료형, print()
+title = &quot;Romeo and Juliet&quot;
+sentence_no = 91
+kor = &#x27;그들은 자신들의 증오가 비극을 만들었다는 사실을 깨달았다.&#x27;
+eng = &#x27;They realized their hatred had caused the tragedy.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s92">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>92. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Both families were filled with regret.</p>
+  <p class="kor"><b>한글 번역</b><br>두 가문은 깊은 후회에 빠졌다.</p>
+  <button onclick="copyCode('code92')">코드 복사</button>
+  <pre><code id="code92"># 92번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;두 가문은 깊은 후회에 빠졌다.&#x27;
+eng = &#x27;Both families were filled with regret.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s93">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>93. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The long feud finally came to an end.</p>
+  <p class="kor"><b>한글 번역</b><br>오랜 원한은 마침내 끝이 났다.</p>
+  <button onclick="copyCode('code93')">코드 복사</button>
+  <pre><code id="code93"># 93번 문장: 조건문 if
+kor = &#x27;오랜 원한은 마침내 끝이 났다.&#x27;
+keyword = &quot;비극&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s94">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>94. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The Montagues and Capulets made peace.</p>
+  <p class="kor"><b>한글 번역</b><br>몬터규 가문과 캐풀릿 가문은 화해했다.</p>
+  <button onclick="copyCode('code94')">코드 복사</button>
+  <pre><code id="code94"># 94번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;The Montagues and Capulets made peace.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s95">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>95. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>They honored the memory of the young lovers.</p>
+  <p class="kor"><b>한글 번역</b><br>그들은 젊은 연인들의 기억을 기렸다.</p>
+  <button onclick="copyCode('code95')">코드 복사</button>
+  <pre><code id="code95"># 95번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 95,
+    &quot;title&quot;: &quot;로미오와 줄리엣&quot;,
+    &quot;kor&quot;: &#x27;그들은 젊은 연인들의 기억을 기렸다.&#x27;,
+    &quot;eng&quot;: &#x27;They honored the memory of the young lovers.&#x27;,
+    &quot;theme&quot;: &quot;사랑과 비극&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s96">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>96. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Statues were planned to commemorate Romeo and Juliet.</p>
+  <p class="kor"><b>한글 번역</b><br>로미오와 줄리엣을 기념하는 동상이 세워지기로 했다.</p>
+  <button onclick="copyCode('code96')">코드 복사</button>
+  <pre><code id="code96"># 96번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[로미오와 줄리엣 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(96, &#x27;로미오와 줄리엣을 기념하는 동상이 세워지기로 했다.&#x27;, &#x27;Statues were planned to commemorate Romeo and Juliet.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s97">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>97. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The prince reflected on the cost of hatred.</p>
+  <p class="kor"><b>한글 번역</b><br>공작은 증오가 가져온 대가를 되새겼다.</p>
+  <button onclick="copyCode('code97')">코드 복사</button>
+  <pre><code id="code97"># 97번 문장: 예외 처리
+sentences = [&#x27;공작은 증오가 가져온 대가를 되새겼다.&#x27;, &#x27;The prince reflected on the cost of hatred.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s98">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>98. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>The city mourned the loss of the two lovers.</p>
+  <p class="kor"><b>한글 번역</b><br>도시는 두 연인의 죽음을 애도했다.</p>
+  <button onclick="copyCode('code98')">코드 복사</button>
+  <pre><code id="code98"># 98번 문장: 클래스와 객체
+class RomeoJulietScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = RomeoJulietScene(98, &#x27;도시는 두 연인의 죽음을 애도했다.&#x27;, &#x27;The city mourned the loss of the two lovers.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s99">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>99. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Romeo and Juliet became symbols of eternal love.</p>
+  <p class="kor"><b>한글 번역</b><br>로미오와 줄리엣은 영원한 사랑의 상징이 되었다.</p>
+  <button onclick="copyCode('code99')">코드 복사</button>
+  <pre><code id="code99"># 99번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Romeo and Juliet became symbols of eternal love.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s100">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>100. 로미오와 줄리엣 장면</h2>
+  <p class="eng"><b>English</b><br>Their story remains one of the most famous tragedies in world literature.</p>
+  <p class="kor"><b>한글 번역</b><br>그들의 이야기는 오늘날까지 세계 문학에서 가장 유명한 비극 중 하나로 남아 있다.</p>
+  <button onclick="copyCode('code100')">코드 복사</button>
+  <pre><code id="code100"># 100번 문장: 데코레이터
+def love_frame(func):
+    def wrapper():
+        print(&quot;❤️ 로미오와 줄리엣 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@love_frame
+def show_scene():
+    print(&#x27;그들의 이야기는 오늘날까지 세계 문학에서 가장 유명한 비극 중 하나로 남아 있다.&#x27;)
+    print(&quot;→&quot;, &#x27;Their story remains one of the most famous tragedies in world literature.&#x27;)
+
+show_scene()</code></pre>
+</section>
+</main><footer>Romeo and Juliet × Python 10-Step Learning</footer>
+<script>
+function copyCode(id){const text=document.getElementById(id).innerText;navigator.clipboard.writeText(text).then(()=>alert("코드가 복사되었습니다."));}
+function goScene(){const id=document.getElementById("jump").value;if(id)document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"});}
+</script></body></html>
