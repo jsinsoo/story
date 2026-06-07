@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>허클베리 핀의 모험과 함께하는 파이썬 함수·데코레이터 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;background:#f5f7fb;color:#1f2937;line-height:1.75;margin:0}
+header{background:linear-gradient(135deg,#1e3a8a,#0f766e);color:white;padding:36px 24px;text-align:center}
+header h1{margin:0;font-size:30px} header p{margin:10px 0 0;font-size:16px}
+main{max-width:1100px;margin:24px auto;padding:0 18px 60px}
+.card{background:white;border-radius:18px;margin:18px 0;padding:22px;box-shadow:0 8px 22px rgba(0,0,0,.08);border-left:8px solid #0f766e}
+.level{display:inline-block;background:#dbeafe;color:#1e40af;font-weight:700;border-radius:999px;padding:5px 12px;margin-bottom:10px}
+.ko{font-size:18px;font-weight:700;color:#111827}.en{font-size:16px;color:#374151;margin-top:6px}.point{background:#ecfdf5;border-left:5px solid #10b981;padding:10px 14px;border-radius:10px;margin:12px 0}
+pre{background:#111827;color:#e5e7eb;border-radius:14px;padding:16px;overflow-x:auto;font-size:14px;line-height:1.55} code{font-family:Consolas,'Courier New',monospace}
+nav{position:sticky;top:0;background:#ffffffee;backdrop-filter:blur(8px);padding:10px;border-bottom:1px solid #e5e7eb;z-index:5;text-align:center}
+nav a{display:inline-block;margin:4px;padding:7px 10px;border-radius:999px;text-decoration:none;background:#eef2ff;color:#3730a3;font-size:13px}.out{background:#fef3c7;border-left:5px solid #f59e0b;padding:10px 14px;border-radius:10px;margin-top:10px;white-space:pre-wrap}
+</style>
+</head>
+<body>
+<header>
+<h1>허클베리 핀의 모험과 함께하는 파이썬 함수·데코레이터 학습</h1>
+<p>한글 한 줄 → 영어 번역 한 줄 → 문장을 활용한 파이썬 함수 예시 코드</p>
+</header>
+<nav>
+<a href="#s1">기초</a><a href="#s10">매개변수</a><a href="#s20">반환값</a><a href="#s30">고차함수</a><a href="#s40">데코레이터</a><a href="#s50">심화</a>
+</nav>
+<main>
+<section class="card" id="s1">
+<span class="level">01. 기초 · 함수 정의와 호출</span>
+<div class="ko">허클베리 핀은 톰 소여와 함께 찾은 보물 덕분에 부자가 되었다.</div>
+<div class="en">Huckleberry Finn became wealthy thanks to the treasure he found with Tom Sawyer.</div>
+<div class="point">학습 포인트: 함수 정의와 호출</div>
+<pre><code>def introduce_treasure():
+    print(&quot;허클베리 핀은 보물 덕분에 부자가 되었다.&quot;)
+
+introduce_treasure()</code></pre>
+</section>
+<section class="card" id="s2">
+<span class="level">02. 기초 · 매개변수 1개</span>
+<div class="ko">마을 사람들은 허크를 훌륭한 소년으로 만들려고 했다.</div>
+<div class="en">The townspeople tried to turn Huck into a respectable boy.</div>
+<div class="point">학습 포인트: 매개변수 1개</div>
+<pre><code>def teach_boy(name):
+    print(name + &quot;를 훌륭한 소년으로 만들려고 합니다.&quot;)
+
+teach_boy(&quot;허크&quot;)</code></pre>
+</section>
+<section class="card" id="s3">
+<span class="level">03. 기초 · 매개변수 2개</span>
+<div class="ko">과부 더글러스는 허크를 자신의 집에서 돌보았다.</div>
+<div class="en">Widow Douglas took Huck into her home and cared for him.</div>
+<div class="point">학습 포인트: 매개변수 2개</div>
+<pre><code>def care_for(person, place):
+    print(person + &quot;는 &quot; + place + &quot;에서 돌봄을 받았다.&quot;)
+
+care_for(&quot;허크&quot;, &quot;더글러스 부인의 집&quot;)</code></pre>
+</section>
+<section class="card" id="s4">
+<span class="level">04. 기초 · 리스트 반복 함수</span>
+<div class="ko">그녀는 허크에게 예절과 교육을 가르치려고 했다.</div>
+<div class="en">She tried to teach Huck manners and education.</div>
+<div class="point">학습 포인트: 리스트 반복 함수</div>
+<pre><code>def teach_lessons(lessons):
+    for lesson in lessons:
+        print(&quot;배울 내용:&quot;, lesson)
+
+teach_lessons([&quot;예절&quot;, &quot;교육&quot;, &quot;종교&quot;] )</code></pre>
+</section>
+<section class="card" id="s5">
+<span class="level">05. 기초 · 불리언 반환</span>
+<div class="ko">하지만 자유로운 생활을 좋아하는 허크는 답답함을 느꼈다.</div>
+<div class="en">However, Huck felt trapped because he loved a free and independent life.</div>
+<div class="point">학습 포인트: 불리언 반환</div>
+<pre><code>def likes_freedom(character):
+    return character == &quot;허크&quot;
+
+print(likes_freedom(&quot;허크&quot;))
+print(likes_freedom(&quot;팹 핀&quot;))</code></pre>
+</section>
+<section class="card" id="s6">
+<span class="level">06. 기초 · 문자열 반환</span>
+<div class="ko">어느 날 허크의 아버지 팹 핀이 마을로 돌아왔다.</div>
+<div class="en">One day, Huck&#x27;s father, Pap Finn, returned to town.</div>
+<div class="point">학습 포인트: 문자열 반환</div>
+<pre><code>def return_to_town(name):
+    return name + &quot;이 마을로 돌아왔다.&quot;
+
+message = return_to_town(&quot;팹 핀&quot;)
+print(message)</code></pre>
+</section>
+<section class="card" id="s7">
+<span class="level">07. 기초 · 조건문 함수</span>
+<div class="ko">팹 핀은 술을 많이 마시고 폭력적인 사람이었다.</div>
+<div class="en">Pap Finn was a heavy drinker and a violent man.</div>
+<div class="point">학습 포인트: 조건문 함수</div>
+<pre><code>def describe_person(name, dangerous):
+    if dangerous:
+        return name + &quot;은 위험한 인물입니다.&quot;
+    return name + &quot;은 안전한 인물입니다.&quot;
+
+print(describe_person(&quot;팹 핀&quot;, True))</code></pre>
+</section>
+<section class="card" id="s8">
+<span class="level">08. 기초 · 기본값 매개변수</span>
+<div class="ko">그는 허크의 돈을 빼앗고 싶어 했다.</div>
+<div class="en">He wanted to take Huck&#x27;s money.</div>
+<div class="point">학습 포인트: 기본값 매개변수</div>
+<pre><code>def protect_money(owner=&quot;허크&quot;, amount=100):
+    print(owner + &quot;의 돈&quot;, amount, &quot;달러를 지킨다.&quot;)
+
+protect_money()
+protect_money(&quot;짐&quot;, 50)</code></pre>
+</section>
+<section class="card" id="s9">
+<span class="level">09. 기초 · 키워드 인자</span>
+<div class="ko">팹은 허크를 강가의 오두막으로 데려가 가두었다.</div>
+<div class="en">Pap took Huck to a cabin by the river and kept him locked there.</div>
+<div class="point">학습 포인트: 키워드 인자</div>
+<pre><code>def move_character(name, place, status):
+    print(f&quot;{name}은 {place}에 있고 상태는 {status}입니다.&quot;)
+
+move_character(name=&quot;허크&quot;, place=&quot;강가 오두막&quot;, status=&quot;갇힘&quot;)</code></pre>
+</section>
+<section class="card" id="s10">
+<span class="level">10. 기초 · 여러 줄 처리 함수</span>
+<div class="ko">허크는 아버지의 학대를 견디며 탈출 계획을 세웠다.</div>
+<div class="en">Huck endured his father&#x27;s abuse while planning an escape.</div>
+<div class="point">학습 포인트: 여러 줄 처리 함수</div>
+<pre><code>def make_escape_plan():
+    steps = [&quot;상황 살피기&quot;, &quot;도구 모으기&quot;, &quot;탈출 경로 찾기&quot;]
+    for i, step in enumerate(steps, 1):
+        print(i, step)
+
+make_escape_plan()</code></pre>
+</section>
+<section class="card" id="s11">
+<span class="level">11. 기초 · 가변 위치 인자 *args</span>
+<div class="ko">그는 몰래 구멍을 파고 탈출 준비를 했다.</div>
+<div class="en">He secretly dug a hole and prepared to escape.</div>
+<div class="point">학습 포인트: 가변 위치 인자 *args</div>
+<pre><code>def prepare_escape(*tools):
+    for tool in tools:
+        print(&quot;탈출 준비 도구:&quot;, tool)
+
+prepare_escape(&quot;톱&quot;, &quot;담요&quot;, &quot;작은 배&quot;)</code></pre>
+</section>
+<section class="card" id="s12">
+<span class="level">12. 기초 · 성공 여부 반환</span>
+<div class="ko">마침내 허크는 오두막에서 탈출하는 데 성공했다.</div>
+<div class="en">At last, Huck successfully escaped from the cabin.</div>
+<div class="point">학습 포인트: 성공 여부 반환</div>
+<pre><code>def escape(place):
+    success = place == &quot;오두막&quot;
+    return success
+
+print(&quot;탈출 성공:&quot;, escape(&quot;오두막&quot;))</code></pre>
+</section>
+<section class="card" id="s13">
+<span class="level">13. 기초 · 딕셔너리 반환</span>
+<div class="ko">그는 자신이 죽은 것처럼 꾸며 사람들을 속였다.</div>
+<div class="en">He made it appear that he had been killed to fool everyone.</div>
+<div class="point">학습 포인트: 딕셔너리 반환</div>
+<pre><code>def fake_death(name):
+    return {&quot;이름&quot;: name, &quot;상태&quot;: &quot;죽은 척&quot;, &quot;목적&quot;: &quot;추적 피하기&quot;}
+
+print(fake_death(&quot;허크&quot;))</code></pre>
+</section>
+<section class="card" id="s14">
+<span class="level">14. 기초 · f-string 함수</span>
+<div class="ko">그 후 그는 잭슨 섬으로 숨어 들어갔다.</div>
+<div class="en">Afterward, he hid on Jackson&#x27;s Island.</div>
+<div class="point">학습 포인트: f-string 함수</div>
+<pre><code>def hide_on_island(name, island):
+    return f&quot;{name}은 {island}에 숨어 들어갔다.&quot;
+
+print(hide_on_island(&quot;허크&quot;, &quot;잭슨 섬&quot;))</code></pre>
+</section>
+<section class="card" id="s15">
+<span class="level">15. 기초 · 튜플 반환</span>
+<div class="ko">섬에서 허크는 짐이라는 흑인 노예를 만났다.</div>
+<div class="en">On the island, Huck met a Black slave named Jim.</div>
+<div class="point">학습 포인트: 튜플 반환</div>
+<pre><code>def meet_friend(place, friend):
+    return place, friend
+
+place, friend = meet_friend(&quot;잭슨 섬&quot;, &quot;짐&quot;)
+print(place, &quot;에서&quot;, friend, &quot;을 만났다.&quot;)</code></pre>
+</section>
+<section class="card" id="s16">
+<span class="level">16. 기초 · 상태 검사 함수</span>
+<div class="ko">짐은 자유를 얻기 위해 도망친 상태였다.</div>
+<div class="en">Jim had run away in search of freedom.</div>
+<div class="point">학습 포인트: 상태 검사 함수</div>
+<pre><code>def is_running_for_freedom(name, goal):
+    return name == &quot;짐&quot; and goal == &quot;자유&quot;
+
+print(is_running_for_freedom(&quot;짐&quot;, &quot;자유&quot;))</code></pre>
+</section>
+<section class="card" id="s17">
+<span class="level">17. 기초 · 리스트 추가 함수</span>
+<div class="ko">허크와 짐은 함께 생활하며 우정을 쌓기 시작했다.</div>
+<div class="en">Huck and Jim began building a friendship while living together.</div>
+<div class="point">학습 포인트: 리스트 추가 함수</div>
+<pre><code>friends = []
+
+def add_friend(name):
+    friends.append(name)
+    return friends
+
+add_friend(&quot;허크&quot;)
+add_friend(&quot;짐&quot;)
+print(friends)</code></pre>
+</section>
+<section class="card" id="s18">
+<span class="level">18. 기초 · 함수 안의 리스트</span>
+<div class="ko">두 사람은 뗏목을 타고 미시시피강을 따라 여행하기로 했다.</div>
+<div class="en">The two decided to travel down the Mississippi River on a raft.</div>
+<div class="point">학습 포인트: 함수 안의 리스트</div>
+<pre><code>def river_trip():
+    route = [&quot;잭슨 섬&quot;, &quot;미시시피강&quot;, &quot;자유의 길&quot;]
+    return &quot; -&gt; &quot;.join(route)
+
+print(river_trip())</code></pre>
+</section>
+<section class="card" id="s19">
+<span class="level">19. 응용 · 람다 함수</span>
+<div class="ko">강 위에서의 생활은 자유롭고 평화로웠다.</div>
+<div class="en">Life on the river was free and peaceful.</div>
+<div class="point">학습 포인트: 람다 함수</div>
+<pre><code>river_life = lambda mood: &quot;강 위의 생활은 &quot; + mood + &quot;다.&quot;
+print(river_life(&quot;자유롭고 평화롭&quot;))</code></pre>
+</section>
+<section class="card" id="s20">
+<span class="level">20. 응용 · 시간에 따른 동작 함수</span>
+<div class="ko">그들은 밤에 이동하고 낮에는 숨어 지냈다.</div>
+<div class="en">They traveled at night and hid during the day.</div>
+<div class="point">학습 포인트: 시간에 따른 동작 함수</div>
+<pre><code>def daily_action(time):
+    if time == &quot;밤&quot;:
+        return &quot;이동한다&quot;
+    return &quot;숨어 지낸다&quot;
+
+print(daily_action(&quot;밤&quot;))
+print(daily_action(&quot;낮&quot;))</code></pre>
+</section>
+<section class="card" id="s21">
+<span class="level">21. 응용 · map 함수</span>
+<div class="ko">여행 중에 폭풍우와 안개를 여러 번 만났다.</div>
+<div class="en">During the journey, they encountered storms and thick fog many times.</div>
+<div class="point">학습 포인트: map 함수</div>
+<pre><code>events = [&quot;폭풍우&quot;, &quot;안개&quot;, &quot;강물&quot;]
+result = list(map(lambda e: e + &quot;를 만났다&quot;, events))
+print(result)</code></pre>
+</section>
+<section class="card" id="s22">
+<span class="level">22. 응용 · filter 함수</span>
+<div class="ko">어느 날 그들은 강 위에 떠 있는 난파선을 발견했다.</div>
+<div class="en">One day, they discovered a wrecked steamboat drifting on the river.</div>
+<div class="point">학습 포인트: filter 함수</div>
+<pre><code>objects = [&quot;뗏목&quot;, &quot;난파선&quot;, &quot;나무&quot;, &quot;배&quot;]
+wrecks = list(filter(lambda x: x == &quot;난파선&quot;, objects))
+print(wrecks)</code></pre>
+</section>
+<section class="card" id="s23">
+<span class="level">23. 응용 · 함수를 변수에 저장</span>
+<div class="ko">허크는 호기심 때문에 배 안으로 들어갔다.</div>
+<div class="en">Out of curiosity, Huck entered the boat.</div>
+<div class="point">학습 포인트: 함수를 변수에 저장</div>
+<pre><code>def enter_boat(name):
+    return name + &quot;가 배 안으로 들어갔다.&quot;
+
+action = enter_boat
+print(action(&quot;허크&quot;))</code></pre>
+</section>
+<section class="card" id="s24">
+<span class="level">24. 응용 · any 함수 활용</span>
+<div class="ko">배 안에는 위험한 범죄자들이 숨어 있었다.</div>
+<div class="en">Dangerous criminals were hiding inside the boat.</div>
+<div class="point">학습 포인트: any 함수 활용</div>
+<pre><code>people = [&quot;선원&quot;, &quot;범죄자&quot;, &quot;여행자&quot;]
+
+def has_danger(group):
+    return any(person == &quot;범죄자&quot; for person in group)
+
+print(has_danger(people))</code></pre>
+</section>
+<section class="card" id="s25">
+<span class="level">25. 응용 · 예외 처리 함수</span>
+<div class="ko">허크와 짐은 가까스로 위험에서 벗어났다.</div>
+<div class="en">Huck and Jim barely escaped the danger.</div>
+<div class="point">학습 포인트: 예외 처리 함수</div>
+<pre><code>def avoid_danger(danger_level):
+    try:
+        if danger_level &gt; 5:
+            raise ValueError(&quot;위험합니다!&quot;)
+        return &quot;안전합니다.&quot;
+    except ValueError as e:
+        return &quot;가까스로 탈출: &quot; + str(e)
+
+print(avoid_danger(8))</code></pre>
+</section>
+<section class="card" id="s26">
+<span class="level">26. 응용 · 함수에서 리스트 길이 계산</span>
+<div class="ko">여행을 계속하던 중 두 명의 사기꾼을 만나게 되었다.</div>
+<div class="en">While continuing their journey, they met two con artists.</div>
+<div class="point">학습 포인트: 함수에서 리스트 길이 계산</div>
+<pre><code>def count_people(group):
+    return len(group)
+
+con_artists = [&quot;왕&quot;, &quot;공작&quot;]
+print(&quot;사기꾼 수:&quot;, count_people(con_artists))</code></pre>
+</section>
+<section class="card" id="s27">
+<span class="level">27. 응용 · 키워드 가변 인자 **kwargs</span>
+<div class="ko">사기꾼들은 자신들이 왕과 공작이라고 거짓말했다.</div>
+<div class="en">The con artists falsely claimed to be a king and a duke.</div>
+<div class="point">학습 포인트: 키워드 가변 인자 **kwargs</div>
+<pre><code>def claim_titles(**titles):
+    for name, title in titles.items():
+        print(name, &quot;은 자신을&quot;, title, &quot;이라고 주장했다.&quot;)
+
+claim_titles(first=&quot;왕&quot;, second=&quot;공작&quot;)</code></pre>
+</section>
+<section class="card" id="s28">
+<span class="level">28. 응용 · 누적 합계 함수</span>
+<div class="ko">그들은 여러 마을에서 사람들을 속여 돈을 벌었다.</div>
+<div class="en">They earned money by deceiving people in various towns.</div>
+<div class="point">학습 포인트: 누적 합계 함수</div>
+<pre><code>def earn_money(amounts):
+    total = 0
+    for amount in amounts:
+        total += amount
+    return total
+
+print(&quot;벌어들인 돈:&quot;, earn_money([5, 10, 20]))</code></pre>
+</section>
+<section class="card" id="s29">
+<span class="level">29. 응용 · 감정 분석 기초 함수</span>
+<div class="ko">허크는 그들의 행동을 보며 실망했다.</div>
+<div class="en">Huck was disappointed by their behavior.</div>
+<div class="point">학습 포인트: 감정 분석 기초 함수</div>
+<pre><code>def judge_behavior(action):
+    bad_actions = [&quot;거짓말&quot;, &quot;사기&quot;, &quot;도둑질&quot;]
+    if action in bad_actions:
+        return &quot;실망&quot;
+    return &quot;만족&quot;
+
+print(judge_behavior(&quot;사기&quot;))</code></pre>
+</section>
+<section class="card" id="s30">
+<span class="level">30. 응용 · 중첩 함수</span>
+<div class="ko">사기꾼들은 윌크스 가족의 유산까지 가로채려 했다.</div>
+<div class="en">The con artists even tried to steal the Wilks family&#x27;s inheritance.</div>
+<div class="point">학습 포인트: 중첩 함수</div>
+<pre><code>def protect_family(family):
+    def protect_money():
+        return family + &quot;의 유산을 지킨다.&quot;
+    return protect_money()
+
+print(protect_family(&quot;윌크스 가족&quot;))</code></pre>
+</section>
+<section class="card" id="s31">
+<span class="level">31. 응용 · 고차 함수 기초</span>
+<div class="ko">허크는 착한 사람들이 피해를 보는 것을 원하지 않았다.</div>
+<div class="en">Huck did not want innocent people to suffer.</div>
+<div class="point">학습 포인트: 고차 함수 기초</div>
+<pre><code>def help_people(name, action_func):
+    return action_func(name)
+
+def protect(name):
+    return name + &quot;을 보호한다.&quot;
+
+print(help_people(&quot;착한 사람들&quot;, protect))</code></pre>
+</section>
+<section class="card" id="s32">
+<span class="level">32. 응용 · 클로저</span>
+<div class="ko">그는 몰래 진실을 밝히기 위해 노력했다.</div>
+<div class="en">He secretly worked to reveal the truth.</div>
+<div class="point">학습 포인트: 클로저</div>
+<pre><code>def truth_maker(secret):
+    def reveal():
+        return &quot;진실 공개: &quot; + secret
+    return reveal
+
+reveal_truth = truth_maker(&quot;사기꾼의 정체&quot;)
+print(reveal_truth())</code></pre>
+</section>
+<section class="card" id="s33">
+<span class="level">33. 응용 · all 함수</span>
+<div class="ko">결국 사기꾼들의 거짓말은 모두 드러났다.</div>
+<div class="en">Eventually, all of the con artists&#x27; lies were exposed.</div>
+<div class="point">학습 포인트: all 함수</div>
+<pre><code>lies = [True, True, True]
+
+def expose_all(lie_list):
+    if all(lie_list):
+        return &quot;모든 거짓말이 드러났다.&quot;
+
+print(expose_all(lies))</code></pre>
+</section>
+<section class="card" id="s34">
+<span class="level">34. 응용 · 재귀 함수</span>
+<div class="ko">여행이 계속될수록 허크와 짐의 우정은 더욱 깊어졌다.</div>
+<div class="en">As the journey continued, the friendship between Huck and Jim grew stronger.</div>
+<div class="point">학습 포인트: 재귀 함수</div>
+<pre><code>def friendship_level(days):
+    if days == 0:
+        return 0
+    return 1 + friendship_level(days - 1)
+
+print(&quot;우정 단계:&quot;, friendship_level(5))</code></pre>
+</section>
+<section class="card" id="s35">
+<span class="level">35. 응용 · 값 변환 함수</span>
+<div class="ko">허크는 짐을 단순한 노예가 아니라 친구로 생각하게 되었다.</div>
+<div class="en">Huck came to see Jim not as a slave but as a friend.</div>
+<div class="point">학습 포인트: 값 변환 함수</div>
+<pre><code>def change_view(old_view):
+    if old_view == &quot;노예&quot;:
+        return &quot;친구&quot;
+    return old_view
+
+print(change_view(&quot;노예&quot;))</code></pre>
+</section>
+<section class="card" id="s36">
+<span class="level">36. 심화 · 데코레이터 기본</span>
+<div class="ko">하지만 당시 사회는 도망친 노예를 돕는 일을 죄라고 여겼다.</div>
+<div class="en">However, society at the time considered helping a runaway slave a crime.</div>
+<div class="point">학습 포인트: 데코레이터 기본</div>
+<pre><code>def social_rule(func):
+    def wrapper():
+        print(&quot;사회 규범 검사 중...&quot;)
+        func()
+    return wrapper
+
+@social_rule
+def help_jim():
+    print(&quot;허크는 짐을 돕고 싶어 한다.&quot;)
+
+help_jim()</code></pre>
+</section>
+<section class="card" id="s37">
+<span class="level">37. 심화 · 데코레이터로 고민 로그 출력</span>
+<div class="ko">허크는 양심과 사회 규범 사이에서 깊이 고민했다.</div>
+<div class="en">Huck struggled deeply between his conscience and society&#x27;s rules.</div>
+<div class="point">학습 포인트: 데코레이터로 고민 로그 출력</div>
+<pre><code>def log_thought(func):
+    def wrapper():
+        print(&quot;고민 시작&quot;)
+        func()
+        print(&quot;고민 끝&quot;)
+    return wrapper
+
+@log_thought
+def think():
+    print(&quot;양심과 규범 사이에서 고민한다.&quot;)
+
+think()</code></pre>
+</section>
+<section class="card" id="s38">
+<span class="level">38. 심화 · 반환값을 감싸는 데코레이터</span>
+<div class="ko">오랜 고민 끝에 그는 짐을 돕기로 결심했다.</div>
+<div class="en">After much thought, he decided to help Jim.</div>
+<div class="point">학습 포인트: 반환값을 감싸는 데코레이터</div>
+<pre><code>def decision_message(func):
+    def wrapper():
+        result = func()
+        return &quot;결심: &quot; + result
+    return wrapper
+
+@decision_message
+def decide():
+    return &quot;짐을 돕겠다&quot;
+
+print(decide())</code></pre>
+</section>
+<section class="card" id="s39">
+<span class="level">39. 심화 · 매개변수 있는 함수 데코레이터</span>
+<div class="ko">허크는 친구를 위해 위험을 감수하기로 했다.</div>
+<div class="en">Huck chose to risk danger for his friend.</div>
+<div class="point">학습 포인트: 매개변수 있는 함수 데코레이터</div>
+<pre><code>def brave_check(func):
+    def wrapper(friend):
+        print(friend + &quot;을 위해 용기를 냅니다.&quot;)
+        return func(friend)
+    return wrapper
+
+@brave_check
+def risk_for(friend):
+    return friend + &quot;을 구하기 위해 위험을 감수한다.&quot;
+
+print(risk_for(&quot;짐&quot;))</code></pre>
+</section>
+<section class="card" id="s40">
+<span class="level">40. 심화 · 상태 변경 함수</span>
+<div class="ko">여행 막바지에 짐은 사람들에게 붙잡혔다.</div>
+<div class="en">Near the end of the journey, Jim was captured by others.</div>
+<div class="point">학습 포인트: 상태 변경 함수</div>
+<pre><code>def capture(status):
+    status[&quot;짐&quot;] = &quot;붙잡힘&quot;
+    return status
+
+state = {&quot;짐&quot;: &quot;자유&quot;}
+print(capture(state))</code></pre>
+</section>
+<section class="card" id="s41">
+<span class="level">41. 심화 · 데코레이터로 실행 시간 표시 흉내</span>
+<div class="ko">그는 농장에 감금되었다.</div>
+<div class="en">He was imprisoned on a farm.</div>
+<div class="point">학습 포인트: 데코레이터로 실행 시간 표시 흉내</div>
+<pre><code>def show_place(func):
+    def wrapper(place):
+        print(&quot;장소 확인:&quot;, place)
+        return func(place)
+    return wrapper
+
+@show_place
+def imprison(place):
+    return place + &quot;에 감금되었다.&quot;
+
+print(imprison(&quot;농장&quot;))</code></pre>
+</section>
+<section class="card" id="s42">
+<span class="level">42. 심화 · 여러 인자 처리 데코레이터</span>
+<div class="ko">허크는 짐을 구하기 위한 계획을 세웠다.</div>
+<div class="en">Huck made plans to rescue Jim.</div>
+<div class="point">학습 포인트: 여러 인자 처리 데코레이터</div>
+<pre><code>def plan_logger(func):
+    def wrapper(*args):
+        print(&quot;구출 계획 준비:&quot;, args)
+        return func(*args)
+    return wrapper
+
+@plan_logger
+def rescue_plan(*steps):
+    return list(steps)
+
+print(rescue_plan(&quot;열쇠 찾기&quot;, &quot;문 열기&quot;, &quot;탈출&quot;))</code></pre>
+</section>
+<section class="card" id="s43">
+<span class="level">43. 심화 · 함수 합성</span>
+<div class="ko">그때 친구 톰 소여가 다시 등장했다.</div>
+<div class="en">At that time, his friend Tom Sawyer reappeared.</div>
+<div class="point">학습 포인트: 함수 합성</div>
+<pre><code>def appear(name):
+    return name + &quot; 등장&quot;
+
+def add_excitement(text):
+    return &quot;모험 시작! &quot; + text
+
+print(add_excitement(appear(&quot;톰 소여&quot;)))</code></pre>
+</section>
+<section class="card" id="s44">
+<span class="level">44. 심화 · 데코레이터로 문장 꾸미기</span>
+<div class="ko">톰은 탈출 작전을 거대한 모험처럼 만들고 싶어 했다.</div>
+<div class="en">Tom wanted to turn the rescue into a grand adventure.</div>
+<div class="point">학습 포인트: 데코레이터로 문장 꾸미기</div>
+<pre><code>def adventure_style(func):
+    def wrapper():
+        return &quot;거대한 모험처럼! &quot; + func()
+    return wrapper
+
+@adventure_style
+def rescue():
+    return &quot;탈출 작전을 세운다.&quot;
+
+print(rescue())</code></pre>
+</section>
+<section class="card" id="s45">
+<span class="level">45. 심화 · 이터러블 처리 함수</span>
+<div class="ko">두 소년은 여러 가지 계획을 실행했다.</div>
+<div class="en">The two boys carried out various plans.</div>
+<div class="point">학습 포인트: 이터러블 처리 함수</div>
+<pre><code>def execute_plans(plans):
+    return [plan + &quot; 실행&quot; for plan in plans]
+
+print(execute_plans([&quot;터널 파기&quot;, &quot;편지 보내기&quot;, &quot;감시 피하기&quot;]))</code></pre>
+</section>
+<section class="card" id="s46">
+<span class="level">46. 심화 · 성공 실패 래퍼</span>
+<div class="ko">많은 어려움 끝에 짐은 탈출에 성공했다.</div>
+<div class="en">After many difficulties, Jim successfully escaped.</div>
+<div class="point">학습 포인트: 성공 실패 래퍼</div>
+<pre><code>def success_wrapper(func):
+    def wrapper():
+        try:
+            return &quot;성공: &quot; + func()
+        except Exception:
+            return &quot;실패&quot;
+    return wrapper
+
+@success_wrapper
+def escape_jim():
+    return &quot;짐이 탈출했다.&quot;
+
+print(escape_jim())</code></pre>
+</section>
+<section class="card" id="s47">
+<span class="level">47. 심화 · 제너레이터 함수</span>
+<div class="ko">그러나 곧 놀라운 사실이 밝혀졌다.</div>
+<div class="en">Soon, however, a surprising truth was revealed.</div>
+<div class="point">학습 포인트: 제너레이터 함수</div>
+<pre><code>def reveal_truths():
+    yield &quot;첫 번째 진실&quot;
+    yield &quot;두 번째 진실&quot;
+    yield &quot;놀라운 사실&quot;
+
+for truth in reveal_truths():
+    print(truth)</code></pre>
+</section>
+<section class="card" id="s48">
+<span class="level">48. 심화 · 프로퍼티처럼 판단하는 함수</span>
+<div class="ko">짐은 이미 법적으로 자유인이 된 상태였다.</div>
+<div class="en">Jim had already been legally freed.</div>
+<div class="point">학습 포인트: 프로퍼티처럼 판단하는 함수</div>
+<pre><code>def legal_status(name, freed):
+    return f&quot;{name}의 법적 상태: {&#x27;자유인&#x27; if freed else &#x27;노예&#x27;}&quot;
+
+print(legal_status(&quot;짐&quot;, True))</code></pre>
+</section>
+<section class="card" id="s49">
+<span class="level">49. 심화 · 문맥 저장 클로저</span>
+<div class="ko">미스 왓슨이 죽기 전에 그를 해방시켰기 때문이다.</div>
+<div class="en">This was because Miss Watson had freed him before she died.</div>
+<div class="point">학습 포인트: 문맥 저장 클로저</div>
+<pre><code>def freedom_record(owner):
+    def free(person):
+        return owner + &quot;이 &quot; + person + &quot;을 해방시켰다.&quot;
+    return free
+
+record = freedom_record(&quot;미스 왓슨&quot;)
+print(record(&quot;짐&quot;))</code></pre>
+</section>
+<section class="card" id="s50">
+<span class="level">50. 심화 · 중첩 데코레이터</span>
+<div class="ko">모든 오해가 풀리면서 짐은 진정한 자유를 얻게 되었다.</div>
+<div class="en">As all misunderstandings were cleared up, Jim gained true freedom.</div>
+<div class="point">학습 포인트: 중첩 데코레이터</div>
+<pre><code>def clear_misunderstanding(func):
+    def wrapper():
+        return &quot;오해 해결 → &quot; + func()
+    return wrapper
+
+def give_freedom(func):
+    def wrapper():
+        return func() + &quot; → 진정한 자유&quot;
+    return wrapper
+
+@clear_misunderstanding
+@give_freedom
+def jim_status():
+    return &quot;짐&quot;
+
+print(jim_status())</code></pre>
+</section>
+<section class="card" id="s51">
+<span class="level">51. 심화 · 선택지 함수</span>
+<div class="ko">허크는 다시 문명 사회로 돌아가라는 권유를 받았다.</div>
+<div class="en">Huck was encouraged to return to civilized society.</div>
+<div class="point">학습 포인트: 선택지 함수</div>
+<pre><code>def recommend(choice):
+    options = {&quot;사회&quot;: &quot;문명 사회로 돌아가기&quot;, &quot;자유&quot;: &quot;새로운 길 찾기&quot;}
+    return options.get(choice, &quot;선택 없음&quot;)
+
+print(recommend(&quot;사회&quot;))</code></pre>
+</section>
+<section class="card" id="s52">
+<span class="level">52. 심화 · 함수 선택 실행</span>
+<div class="ko">하지만 그는 자유로운 삶을 선택했다.</div>
+<div class="en">But he chose a life of freedom.</div>
+<div class="point">학습 포인트: 함수 선택 실행</div>
+<pre><code>def civilized_life():
+    return &quot;규칙적인 삶&quot;
+
+def free_life():
+    return &quot;자유로운 삶&quot;
+
+choice = free_life
+print(choice())</code></pre>
+</section>
+<section class="card" id="s53">
+<span class="level">53. 심화 · 부분 적용 흉내</span>
+<div class="ko">허크는 새로운 모험을 찾아 서부로 떠나기로 결심했다.</div>
+<div class="en">Huck decided to head west in search of new adventures.</div>
+<div class="point">학습 포인트: 부분 적용 흉내</div>
+<pre><code>def travel(name, direction, goal):
+    return f&quot;{name}은 {goal}을 찾아 {direction}로 떠난다.&quot;
+
+west_adventure = lambda name: travel(name, &quot;서부&quot;, &quot;새로운 모험&quot;)
+print(west_adventure(&quot;허크&quot;))</code></pre>
+</section>
+<section class="card" id="s54">
+<span class="level">54. 심화 · 일급 함수</span>
+<div class="ko">그는 세상을 직접 경험하며 살아가고 싶어 했다.</div>
+<div class="en">He wanted to live by experiencing the world for himself.</div>
+<div class="point">학습 포인트: 일급 함수</div>
+<pre><code>def experience_world():
+    return &quot;세상을 직접 경험한다.&quot;
+
+def live(action):
+    return &quot;삶의 방식: &quot; + action()
+
+print(live(experience_world))</code></pre>
+</section>
+<section class="card" id="s55">
+<span class="level">55. 심화 · 데코레이터 팩토리</span>
+<div class="ko">허클베리 핀의 여행은 자유와 우정, 양심의 중요성을 보여 주었다.</div>
+<div class="en">Huckleberry Finn&#x27;s journey demonstrated the importance of freedom, friendship, and conscience.</div>
+<div class="point">학습 포인트: 데코레이터 팩토리</div>
+<pre><code>def emphasize(word):
+    def decorator(func):
+        def wrapper():
+            return word + &quot;! &quot; + func()
+        return wrapper
+    return decorator
+
+@emphasize(&quot;중요&quot;)
+def theme():
+    return &quot;자유, 우정, 양심&quot;
+
+print(theme())</code></pre>
+</section>
+<section class="card" id="s56">
+<span class="level">56. 심화 · 종합: 데코레이터 + 함수</span>
+<div class="ko">이 이야기는 미국 문학을 대표하는 성장 소설로 평가받고 있다.</div>
+<div class="en">This story is regarded as one of the greatest coming-of-age novels in American literature.</div>
+<div class="point">학습 포인트: 종합: 데코레이터 + 함수</div>
+<pre><code>def title_box(func):
+    def wrapper(title):
+        print(&quot;=&quot; * 30)
+        result = func(title)
+        print(&quot;=&quot; * 30)
+        return result
+    return wrapper
+
+@title_box
+def evaluate(title):
+    return title + &quot;은 대표적인 성장 소설입니다.&quot;
+
+print(evaluate(&quot;허클베리 핀의 모험&quot;))</code></pre>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>톰 소여의 모험과 함께 배우는 파이썬 OOP</title>
+<style>
+body{font-family:'Malgun Gothic','Nanum Gothic',Arial,sans-serif;background:#f5f7fb;color:#222;margin:0;line-height:1.75}
+header{background:linear-gradient(135deg,#244c86,#5b7fc0);color:white;padding:34px 24px;text-align:center}
+header h1{margin:0;font-size:30px} header p{margin:10px 0 0;font-size:16px;opacity:.95}
+nav{position:sticky;top:0;background:#fff;border-bottom:1px solid #ddd;padding:12px 20px;z-index:10;box-shadow:0 2px 8px #0001}
+nav select{font-size:16px;padding:8px 12px;border-radius:8px;border:1px solid #aaa;width:100%;max-width:640px}
+main{max-width:1100px;margin:24px auto;padding:0 16px 40px}
+.card{background:white;border-radius:16px;margin:22px 0;padding:24px;box-shadow:0 6px 18px #00000012;border-left:8px solid #5b7fc0}
+.level{display:inline-block;font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;background:#e8eefb;color:#244c86;margin-bottom:10px}
+h2{font-size:22px;margin:4px 0 14px;color:#244c86}.ko{font-size:18px;font-weight:700}.en{font-size:16px;color:#43506a;margin-bottom:14px}
+.desc{background:#fff8df;border-left:5px solid #e3b341;padding:12px 14px;border-radius:10px;margin:12px 0}
+pre{background:#1e1e1e;color:#f4f4f4;padding:16px;border-radius:12px;overflow:auto;font-size:14px;line-height:1.55;white-space:pre-wrap}
+button.copy{background:#244c86;color:white;border:0;border-radius:8px;padding:8px 12px;cursor:pointer;margin:8px 0}button.copy:hover{background:#18345e}
+.footer{margin-top:30px;text-align:center;color:#666;font-size:14px}.tag{color:#666;font-size:14px}
+</style>
+<script>
+function goSection(v){ if(v) location.hash=v; }
+function copyCode(id){
+  const text=document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(()=>alert('코드가 복사되었습니다.'));
+}
+</script>
+</head>
+<body>
+<header>
+<h1>톰 소여의 모험과 함께 배우는 파이썬 OOP</h1>
+<p>한글 한 줄 → 영어 번역 한 줄 → 문장을 활용한 파이썬 객체 지향 프로그래밍 예시 코드</p>
+</header>
+<nav>
+<select onchange="goSection(this.value)">
+<option value="">문법 단계 바로가기</option>
+<option value="s1">01 클래스와 객체</option><option value="s2">02 생성자</option><option value="s3">03 인스턴스 변수</option><option value="s4">04 메서드</option><option value="s5">05 여러 객체</option><option value="s6">06 리스트와 객체</option><option value="s7">07 객체 상태 변경</option><option value="s8">08 문자열 표현</option><option value="s9">09 클래스 변수</option><option value="s10">10 캡슐화</option><option value="s11">11 프로퍼티</option><option value="s12">12 상속</option><option value="s13">13 메서드 오버라이딩</option><option value="s14">14 다형성</option><option value="s15">15 합성</option><option value="s16">16 클래스 메서드</option><option value="s17">17 정적 메서드</option><option value="s18">18 매직 메서드</option><option value="s19">19 예외 처리</option><option value="s20">20 추상 클래스</option><option value="s21">21 데이터 클래스</option><option value="s22">22 타입 힌트</option><option value="s23">23 제너레이터 메서드</option><option value="s24">24 데코레이터</option><option value="s25">25 심화 설계</option>
+</select>
+</nav>
+<main>
+
+<div class="card" id="s1"><span class="level">기초 01 · 클래스와 객체</span><h2>톰 소여의 일상</h2><p class="ko">톰 소여는 미시시피 강가의 작은 마을에 살고 있었다.</p><p class="en">Tom Sawyer lived in a small town along the Mississippi River.</p><p class="desc">인물 하나를 클래스로 만들고, 객체를 생성해 정보를 출력한다.</p><button class="copy" onclick="copyCode('c1')">코드 복사</button><pre id="c1">class Character:
+    pass
+
+tom = Character()
+tom.name = "Tom Sawyer"
+tom.home = "a small town along the Mississippi River"
+
+print(tom.name)
+print(tom.home)</pre></div>
+
+<div class="card" id="s2"><span class="level">기초 02 · 생성자 __init__</span><h2>장난꾸러기 소년</h2><p class="ko">톰은 공부보다 모험과 장난을 더 좋아하는 소년이었다.</p><p class="en">Tom was a boy who loved adventures and mischief more than studying.</p><p class="desc">생성자를 사용하면 객체가 만들어질 때 필요한 정보를 바로 저장할 수 있다.</p><button class="copy" onclick="copyCode('c2')">코드 복사</button><pre id="c2">class Boy:
+    def __init__(self, name, favorite):
+        self.name = name
+        self.favorite = favorite
+
+    def introduce(self):
+        print(f"{self.name} loves {self.favorite}.")
+
+tom = Boy("Tom", "adventures and mischief")
+tom.introduce()</pre></div>
+
+<div class="card" id="s3"><span class="level">기초 03 · 인스턴스 변수</span><h2>폴리 이모의 보살핌</h2><p class="ko">그는 폴리 이모의 보살핌을 받으며 자랐다.</p><p class="en">He grew up under the care of Aunt Polly.</p><p class="desc">객체마다 다른 값을 가지는 변수를 인스턴스 변수라고 한다.</p><button class="copy" onclick="copyCode('c3')">코드 복사</button><pre id="c3">class FamilyCare:
+    def __init__(self, child, guardian):
+        self.child = child
+        self.guardian = guardian
+
+care = FamilyCare("Tom", "Aunt Polly")
+print(care.child, "is cared for by", care.guardian)</pre></div>
+
+<div class="card" id="s4"><span class="level">기초 04 · 메서드</span><h2>꾸중을 듣는 톰</h2><p class="ko">톰은 자주 말썽을 부려 이모에게 꾸중을 들었다.</p><p class="en">Tom often got into trouble and was scolded by his aunt.</p><p class="desc">객체가 할 수 있는 동작을 메서드로 표현한다.</p><button class="copy" onclick="copyCode('c4')">코드 복사</button><pre id="c4">class Tom:
+    def make_trouble(self):
+        print("Tom made trouble.")
+
+    def get_scolded(self):
+        print("Aunt Polly scolded Tom.")
+
+tom = Tom()
+tom.make_trouble()
+tom.get_scolded()</pre></div>
+
+<div class="card" id="s5"><span class="level">기초 05 · 여러 객체</span><h2>울타리 칠하기</h2><p class="ko">어느 토요일 아침 톰은 벌로 긴 울타리를 칠해야 했다.</p><p class="en">One Saturday morning, Tom was punished by having to paint a long fence.</p><p class="desc">같은 클래스로 서로 다른 역할을 가진 여러 객체를 만들 수 있다.</p><button class="copy" onclick="copyCode('c5')">코드 복사</button><pre id="c5">class Task:
+    def __init__(self, person, job):
+        self.person = person
+        self.job = job
+
+    def show(self):
+        print(f"{self.person} must {self.job}.")
+
+task = Task("Tom", "paint a long fence")
+task.show()</pre></div>
+
+<div class="card" id="s6"><span class="level">기초 06 · 리스트와 객체</span><h2>친구들의 관심</h2><p class="ko">친구들은 톰이 울타리 칠하기를 재미있어하는 것처럼 보이자 그 일을 해 보고 싶어 했다.</p><p class="en">His friends wanted to try painting because Tom made it look enjoyable.</p><p class="desc">객체 안에 리스트를 넣어 여러 친구를 관리한다.</p><button class="copy" onclick="copyCode('c6')">코드 복사</button><pre id="c6">class FenceScene:
+    def __init__(self):
+        self.friends = []
+
+    def add_friend(self, name):
+        self.friends.append(name)
+
+scene = FenceScene()
+scene.add_friend("Ben")
+scene.add_friend("Billy")
+print(scene.friends)</pre></div>
+
+<div class="card" id="s7"><span class="level">기초 07 · 객체 상태 변경</span><h2>울타리 완성</h2><p class="ko">결국 톰은 일을 거의 하지 않고도 울타리가 모두 칠해지게 만들었다.</p><p class="en">In the end, Tom got the fence painted without doing much work himself.</p><p class="desc">객체의 상태를 메서드로 바꾸는 방법을 배운다.</p><button class="copy" onclick="copyCode('c7')">코드 복사</button><pre id="c7">class Fence:
+    def __init__(self):
+        self.painted = 0
+
+    def paint(self, amount):
+        self.painted += amount
+
+fence = Fence()
+fence.paint(40)
+fence.paint(60)
+print("painted:", fence.painted, "%")</pre></div>
+
+<div class="card" id="s8"><span class="level">기초 08 · __str__</span><h2>베키 대처</h2><p class="ko">어느 날 학교에 베키 대처라는 예쁜 소녀가 전학 왔다.</p><p class="en">One day, a pretty girl named Becky Thatcher transferred to his school.</p><p class="desc">__str__ 메서드는 객체를 보기 좋은 문자열로 표현한다.</p><button class="copy" onclick="copyCode('c8')">코드 복사</button><pre id="c8">class Student:
+    def __init__(self, name, school_status):
+        self.name = name
+        self.school_status = school_status
+
+    def __str__(self):
+        return f"{self.name}: {self.school_status}"
+
+becky = Student("Becky Thatcher", "new student")
+print(becky)</pre></div>
+
+<div class="card" id="s9"><span class="level">응용 09 · 클래스 변수</span><h2>첫사랑</h2><p class="ko">톰은 첫눈에 베키를 좋아하게 되었다.</p><p class="en">Tom fell in love with Becky at first sight.</p><p class="desc">모든 객체가 공유하는 값을 클래스 변수로 표현한다.</p><button class="copy" onclick="copyCode('c9')">코드 복사</button><pre id="c9">class Feeling:
+    story = "The Adventures of Tom Sawyer"
+
+    def __init__(self, person, feeling):
+        self.person = person
+        self.feeling = feeling
+
+love = Feeling("Tom", "likes Becky")
+print(Feeling.story)
+print(love.person, love.feeling)</pre></div>
+
+<div class="card" id="s10"><span class="level">응용 10 · 캡슐화</span><h2>묘지의 비밀</h2><p class="ko">어느 밤 톰은 친구 헉 핀과 함께 묘지에 갔다.</p><p class="en">One night, Tom went to the graveyard with his friend Huckleberry Finn.</p><p class="desc">중요한 정보를 외부에서 함부로 바꾸지 못하게 숨긴다.</p><button class="copy" onclick="copyCode('c10')">코드 복사</button><pre id="c10">class SecretTrip:
+    def __init__(self, place):
+        self.__place = place
+
+    def reveal_place(self):
+        return self.__place
+
+trip = SecretTrip("graveyard")
+print("secret place:", trip.reveal_place())</pre></div>
+
+<div class="card" id="s11"><span class="level">응용 11 · property</span><h2>살인 사건 목격</h2><p class="ko">톰과 헉은 인디언 조가 의사 로빈슨을 살해하는 장면을 보았다.</p><p class="en">Tom and Huck saw Injun Joe murder Dr. Robinson.</p><p class="desc">프로퍼티로 객체 내부 값에 안전하게 접근한다.</p><button class="copy" onclick="copyCode('c11')">코드 복사</button><pre id="c11">class WitnessReport:
+    def __init__(self, witness):
+        self._witness = witness
+
+    @property
+    def witness(self):
+        return self._witness
+
+report = WitnessReport("Tom and Huck")
+print(report.witness)</pre></div>
+
+<div class="card" id="s12"><span class="level">응용 12 · 상속</span><h2>누명</h2><p class="ko">인디언 조는 그 죄를 머프 포터에게 뒤집어씌웠다.</p><p class="en">Injun Joe placed the blame on Muff Potter.</p><p class="desc">공통 인물 클래스를 만들고, 특별한 역할을 가진 클래스로 상속한다.</p><button class="copy" onclick="copyCode('c12')">코드 복사</button><pre id="c12">class Person:
+    def __init__(self, name):
+        self.name = name
+
+class Suspect(Person):
+    def blamed(self):
+        print(self.name, "is blamed.")
+
+muff = Suspect("Muff Potter")
+muff.blamed()</pre></div>
+
+<div class="card" id="s13"><span class="level">응용 13 · 오버라이딩</span><h2>비밀 맹세</h2><p class="ko">톰과 헉은 너무 무서워서 비밀을 지키기로 맹세했다.</p><p class="en">Tom and Huck were so frightened that they swore to keep the secret.</p><p class="desc">부모 클래스의 메서드를 자식 클래스에서 새롭게 정의한다.</p><button class="copy" onclick="copyCode('c13')">코드 복사</button><pre id="c13">class Promise:
+    def speak(self):
+        print("I promise.")
+
+class SecretPromise(Promise):
+    def speak(self):
+        print("We promise to keep the secret.")
+
+promise = SecretPromise()
+promise.speak()</pre></div>
+
+<div class="card" id="s14"><span class="level">응용 14 · 다형성</span><h2>해적 놀이</h2><p class="ko">톰은 조 하퍼와 헉 핀을 데리고 무인도로 떠났다.</p><p class="en">Tom took Joe Harper and Huck Finn to a deserted island.</p><p class="desc">서로 다른 객체가 같은 메서드 이름으로 각자 다르게 행동한다.</p><button class="copy" onclick="copyCode('c14')">코드 복사</button><pre id="c14">class Tom:
+    def act(self):
+        return "plans the adventure"
+
+class Huck:
+    def act(self):
+        return "enjoys freedom"
+
+class Joe:
+    def act(self):
+        return "joins the pirates"
+
+for boy in [Tom(), Huck(), Joe()]:
+    print(boy.act())</pre></div>
+
+<div class="card" id="s15"><span class="level">응용 15 · 합성</span><h2>무인도의 자유</h2><p class="ko">세 소년은 자신들이 해적이 되었다고 생각하며 자유로운 생활을 즐겼다.</p><p class="en">The three boys imagined themselves as pirates and enjoyed a free life.</p><p class="desc">객체 안에 다른 객체를 포함하는 합성 구조를 배운다.</p><button class="copy" onclick="copyCode('c15')">코드 복사</button><pre id="c15">class Island:
+    def __init__(self, name):
+        self.name = name
+
+class PirateCamp:
+    def __init__(self, island):
+        self.island = island
+
+    def describe(self):
+        print("Pirate camp on", self.island.name)
+
+camp = PirateCamp(Island("Jackson's Island"))
+camp.describe()</pre></div>
+
+<div class="card" id="s16"><span class="level">응용 16 · 클래스 메서드</span><h2>장례식의 반전</h2><p class="ko">장례식 날 죽은 줄 알았던 톰과 친구들이 교회에 갑자기 나타났다.</p><p class="en">On the day of the funeral, Tom and his friends suddenly appeared at the church.</p><p class="desc">클래스 메서드는 클래스 자체의 정보를 이용해 객체를 만들 수 있다.</p><button class="copy" onclick="copyCode('c16')">코드 복사</button><pre id="c16">class ReturnEvent:
+    def __init__(self, place, people):
+        self.place = place
+        self.people = people
+
+    @classmethod
+    def from_story(cls):
+        return cls("church", ["Tom", "Huck", "Joe"])
+
+event = ReturnEvent.from_story()
+print(event.place, event.people)</pre></div>
+
+<div class="card" id="s17"><span class="level">응용 17 · 정적 메서드</span><h2>법정의 용기</h2><p class="ko">톰은 무고한 사람이 벌을 받는 것을 견딜 수 없어 법정에서 진실을 말했다.</p><p class="en">Tom could not bear seeing an innocent man punished, so he told the truth in court.</p><p class="desc">정적 메서드는 객체 상태와 관계없는 도구 함수처럼 사용할 수 있다.</p><button class="copy" onclick="copyCode('c17')">코드 복사</button><pre id="c17">class Court:
+    @staticmethod
+    def judge_truth(statement):
+        return "truth" in statement.lower()
+
+statement = "Tom tells the truth about Injun Joe."
+print(Court.judge_truth(statement))</pre></div>
+
+<div class="card" id="s18"><span class="level">심화 18 · 매직 메서드</span><h2>진짜 범인</h2><p class="ko">진짜 범인이 인디언 조라는 사실이 밝혀지자 그는 재판장에서 도망쳤다.</p><p class="en">When Injun Joe was revealed as the real criminal, he escaped from the courtroom.</p><p class="desc">__eq__를 사용해 두 사건 기록이 같은 범인을 가리키는지 비교한다.</p><button class="copy" onclick="copyCode('c18')">코드 복사</button><pre id="c18">class CrimeRecord:
+    def __init__(self, criminal):
+        self.criminal = criminal
+
+    def __eq__(self, other):
+        return self.criminal == other.criminal
+
+r1 = CrimeRecord("Injun Joe")
+r2 = CrimeRecord("Injun Joe")
+print(r1 == r2)</pre></div>
+
+<div class="card" id="s19"><span class="level">심화 19 · 예외 처리</span><h2>보물 단서</h2><p class="ko">톰과 헉은 인디언 조가 숨긴 보물 이야기를 듣고 탐험을 시작했다.</p><p class="en">Tom and Huck heard about treasure hidden by Injun Joe and began their search.</p><p class="desc">보물 단서가 없을 때 예외를 발생시켜 안전하게 처리한다.</p><button class="copy" onclick="copyCode('c19')">코드 복사</button><pre id="c19">class TreasureMap:
+    def __init__(self, clue=None):
+        self.clue = clue
+
+    def find_clue(self):
+        if self.clue is None:
+            raise ValueError("No clue found.")
+        return self.clue
+
+try:
+    m = TreasureMap("cave")
+    print(m.find_clue())
+except ValueError as e:
+    print(e)</pre></div>
+
+<div class="card" id="s20"><span class="level">심화 20 · 추상 클래스</span><h2>동굴 모험</h2><p class="ko">톰과 베키는 소풍 중 거대한 동굴에 들어갔다가 길을 잃었다.</p><p class="en">Tom and Becky entered a huge cave during a picnic and became lost.</p><p class="desc">추상 클래스는 반드시 구현해야 할 메서드의 약속을 만든다.</p><button class="copy" onclick="copyCode('c20')">코드 복사</button><pre id="c20">from abc import ABC, abstractmethod
+
+class Adventure(ABC):
+    @abstractmethod
+    def solve_problem(self):
+        pass
+
+class CaveAdventure(Adventure):
+    def solve_problem(self):
+        return "Find a safe exit."
+
+adventure = CaveAdventure()
+print(adventure.solve_problem())</pre></div>
+
+<div class="card" id="s21"><span class="level">심화 21 · dataclass</span><h2>부족한 식량과 촛불</h2><p class="ko">식량과 촛불이 점점 부족해졌지만 톰은 침착하게 출구를 찾으려 했다.</p><p class="en">Their food and candles ran low, but Tom calmly searched for a way out.</p><p class="desc">dataclass는 데이터를 저장하는 클래스를 간단하게 만들어 준다.</p><button class="copy" onclick="copyCode('c21')">코드 복사</button><pre id="c21">from dataclasses import dataclass
+
+@dataclass
+class CaveState:
+    food: int
+    candles: int
+    calm: bool
+
+state = CaveState(food=1, candles=2, calm=True)
+print(state)</pre></div>
+
+<div class="card" id="s22"><span class="level">심화 22 · 타입 힌트</span><h2>탈출</h2><p class="ko">톰은 마침내 작은 출구를 찾아 베키와 함께 동굴을 빠져나왔다.</p><p class="en">Tom finally found a small exit and escaped from the cave with Becky.</p><p class="desc">타입 힌트는 코드의 의도를 더 명확하게 보여 준다.</p><button class="copy" onclick="copyCode('c22')">코드 복사</button><pre id="c22">class EscapePlan:
+    def __init__(self, leader: str, partner: str):
+        self.leader = leader
+        self.partner = partner
+
+    def escape(self) -> str:
+        return f"{self.leader} escapes with {self.partner}."
+
+plan = EscapePlan("Tom", "Becky")
+print(plan.escape())</pre></div>
+
+<div class="card" id="s23"><span class="level">심화 23 · 제너레이터 메서드</span><h2>인디언 조의 최후</h2><p class="ko">나중에 사람들은 동굴 안에서 죽은 인디언 조를 발견했다.</p><p class="en">Later, people found Injun Joe dead inside the cave.</p><p class="desc">yield를 사용하면 사건을 하나씩 순서대로 꺼낼 수 있다.</p><button class="copy" onclick="copyCode('c23')">코드 복사</button><pre id="c23">class CaveEvents:
+    def timeline(self):
+        yield "cave sealed"
+        yield "people return"
+        yield "Injun Joe found"
+
+for event in CaveEvents().timeline():
+    print(event)</pre></div>
+
+<div class="card" id="s24"><span class="level">심화 24 · 데코레이터</span><h2>보물 발견</h2><p class="ko">톰과 헉은 동굴에서 금화가 가득 담긴 보물 상자를 발견했다.</p><p class="en">Tom and Huck found a treasure chest filled with gold coins in the cave.</p><p class="desc">데코레이터로 메서드 실행 전후에 추가 기능을 붙인다.</p><button class="copy" onclick="copyCode('c24')">코드 복사</button><pre id="c24">def announce(func):
+    def wrapper(*args, **kwargs):
+        print("Treasure search begins!")
+        result = func(*args, **kwargs)
+        print("Treasure search ends!")
+        return result
+    return wrapper
+
+class TreasureHunter:
+    @announce
+    def find(self):
+        return "gold coins"
+
+hunter = TreasureHunter()
+print(hunter.find())</pre></div>
+
+<div class="card" id="s25"><span class="level">심화 25 · OOP 종합 설계</span><h2>성장과 책임</h2><p class="ko">톰은 장난꾸러기에서 용감하고 책임감 있는 소년으로 성장했다.</p><p class="en">Tom grew from a mischievous boy into a brave and responsible young man.</p><p class="desc">여러 클래스를 함께 설계해 성장 과정을 객체 지향적으로 표현한다.</p><button class="copy" onclick="copyCode('c25')">코드 복사</button><pre id="c25">class Trait:
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+
+class CharacterGrowth:
+    def __init__(self, name):
+        self.name = name
+        self.traits = []
+
+    def add_trait(self, trait):
+        self.traits.append(trait)
+
+    def summary(self):
+        for trait in self.traits:
+            print(f"{self.name}'s {trait.name}: {trait.score}")
+
+tom = CharacterGrowth("Tom")
+tom.add_trait(Trait("mischief", 50))
+tom.add_trait(Trait("courage", 95))
+tom.add_trait(Trait("responsibility", 90))
+tom.summary()</pre></div>
+
+<div class="footer">ⓒ 학습용 HTML · 톰 소여의 모험 줄거리 기반 파이썬 OOP 기초·응용·심화 예시</div>
+</main>
+</body>
+</html>
