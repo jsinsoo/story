@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📚 소설 속 이야기와 함께하는 파이썬</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Malgun Gothic',sans-serif;
+}
+
+/* 상단 초소형 메뉴바 */
+.topbar{
+    height:36px;
+    background:linear-gradient(
+        90deg,
+        #1e3c72,
+        #2a5298
+    );
+    display:flex;
+    align-items:center;
+    padding:0 10px;
+    box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+
+/* 드롭다운 */
+#menu{
+    height:26px;
+    min-width:260px;
+    border:none;
+    border-radius:5px;
+    padding:0 8px;
+    font-size:13px;
+    background:white;
+    cursor:pointer;
+}
+
+/* 본문 */
+#viewer{
+    width:100%;
+    height:calc(100vh - 36px);
+    border:none;
+    background:white;
+}
+</style>
+
+<script>
+function changePage(){
+
+    let page =
+    document.getElementById(
+        "menu"
+    ).value;
+
+    if(page){
+        document.getElementById(
+            "viewer"
+        ).src = page;
+    }
+}
+</script>
+
+</head>
+<body>
+
+<div class="topbar">
+
+<select
+    id="menu"
+    onchange="changePage()">
+
+<option value="little.html">
+📖 어린 왕자
+</option>
+
+<option value="tom.html">
+📖 톰 소여의 모험
+</option>
+
+<option value="huck.html">
+📖 허클베리 핀의 모험
+</option>
+
+<option value="great.html">
+📖 위대한 유산
+</option>
+
+<option value="80days.html">
+🌍 80일간의 세계 일주
+</option>
+
+<option value="pynoja.html">
+🐍 노자와 함께하는 파이썬
+</option>
+
+<option value="sonoja.html">
+📚 소철 노자해
+</option>
+
+</select>
+
+</div>
+
+<iframe
+    id="viewer"
+    src="little.html">
+</iframe>
+
+</body>
+</html>
