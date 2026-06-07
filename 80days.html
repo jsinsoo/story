@@ -1,0 +1,833 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>80일간의 세계 일주로 함께하는 즐겁고 신나는 파이썬</title><style>:root{--bg:#f3f7ff;--ink:#1f2937;--main:#1d4ed8;--sub:#0f766e;--card:#fff}*{box-sizing:border-box}body{margin:0;font-family:'Malgun Gothic','Nanum Gothic',Arial,sans-serif;background:linear-gradient(180deg,#e0f2fe,var(--bg));color:var(--ink);line-height:1.7}header{padding:42px 24px;text-align:center;color:white;background:linear-gradient(135deg,#0f172a,#1d4ed8,#0f766e)}header h1{margin:0;font-size:34px}header p{margin:10px auto 0;max-width:920px;font-size:18px}nav{position:sticky;top:0;z-index:20;background:white;border-bottom:1px solid #dbeafe;padding:12px;display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap}select,button{font-family:inherit;font-size:15px;border-radius:10px;border:1px solid #93c5fd;padding:9px 12px}button{background:var(--main);color:white;border:none;cursor:pointer;font-weight:700;margin:8px 0}button:hover{filter:brightness(1.1)}main{max-width:1150px;margin:24px auto 60px;padding:0 18px}.intro,.card{background:var(--card);border-radius:20px;padding:24px;margin-bottom:22px;box-shadow:0 10px 25px rgba(15,23,42,.10)}.intro h2,.card h2{margin-top:0;color:#1e3a8a}table{width:100%;border-collapse:collapse;background:white;overflow:hidden;border-radius:14px}th,td{border:1px solid #dbeafe;padding:10px;vertical-align:top}th{background:#dbeafe}.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#ccfbf1;color:#115e59;font-weight:800;margin-bottom:10px}.kor{font-size:20px;font-weight:800;color:#111827;background:#fef3c7;border-left:7px solid #f59e0b;padding:12px 14px;border-radius:10px}.eng{font-size:18px;color:#334155;background:#e0f2fe;border-left:7px solid #0284c7;padding:12px 14px;border-radius:10px}pre{background:#111827;color:#f8fafc;padding:18px;border-radius:14px;overflow-x:auto;font-size:15px;line-height:1.55}code{font-family:Consolas,'Courier New',monospace}footer{text-align:center;padding:28px;color:#475569}.small{color:#64748b;font-size:14px}</style></head><body><header><h1>🌍 《80일간의 세계 일주》로 함께하는 즐겁고 신나는 파이썬</h1><p>81개 줄거리 문장을 순서대로 빠짐없이 활용하여, 파이썬 기초·응용·심화 10단계 문법을 서로 다른 예시 코드로 학습합니다.</p></header><nav><label for="jump"><b>문장 바로가기</b></label><select id="jump" onchange="goScene()"><option value="">장면 선택</option><option value="s1">01. 필리어스 포그는 매우 정확하고 규칙적인 생활을 하는</option>
+<option value="s2">02. 그는 런던에 살고 있었다.</option>
+<option value="s3">03. 포그는 매일 같은 시간에 일어나고 같은 시간에 식사</option>
+<option value="s4">04. 그는 유명한 신사 클럽인 개혁 클럽의 회원이었다.</option>
+<option value="s5">05. 어느 날 그는 새로운 하인 파스파르투를 고용했다.</option>
+<option value="s6">06. 파스파르투는 모험을 좋아하는 프랑스 청년이었다.</option>
+<option value="s7">07. 그날 클럽에서는 세계 여행에 대한 토론이 벌어졌다.</option>
+<option value="s8">08. 사람들은 80일 안에 세계 일주가 가능한지 논쟁했다</option>
+<option value="s9">09. 포그는 충분히 가능하다고 주장했다.</option>
+<option value="s10">10. 다른 회원들은 불가능하다고 생각했다.</option>
+<option value="s11">11. 결국 포그는 거액의 돈을 걸고 내기를 했다.</option>
+<option value="s12">12. 그는 80일 안에 세계 일주를 마치겠다고 선언했다.</option>
+<option value="s13">13. 포그는 즉시 여행 준비를 시작했다.</option>
+<option value="s14">14. 그는 파스파르투와 함께 런던을 떠났다.</option>
+<option value="s15">15. 두 사람은 기차를 타고 항구로 향했다.</option>
+<option value="s16">16. 그들은 배를 타고 유럽을 벗어났다.</option>
+<option value="s17">17. 여행 소식은 여러 나라에 알려지기 시작했다.</option>
+<option value="s18">18. 한편 런던에서는 은행 강도 사건이 발생했다.</option>
+<option value="s19">19. 경찰은 범인을 찾기 시작했다.</option>
+<option value="s20">20. 형사 픽스는 포그를 용의자로 의심했다.</option>
+<option value="s21">21. 픽스는 포그를 몰래 추적하기 시작했다.</option>
+<option value="s22">22. 포그 일행은 이집트에 도착했다.</option>
+<option value="s23">23. 그들은 다시 배를 타고 동쪽으로 향했다.</option>
+<option value="s24">24. 포그는 항상 시간표를 꼼꼼히 확인했다.</option>
+<option value="s25">25. 그는 단 한 분도 낭비하지 않으려 했다.</option>
+<option value="s26">26. 일행은 인도에 도착했다.</option>
+<option value="s27">27. 그곳에서 철도가 완전히 연결되지 않았다는 사실을 알</option>
+<option value="s28">28. 포그는 급히 코끼리를 구입했다.</option>
+<option value="s29">29. 일행은 코끼리를 타고 정글을 통과했다.</option>
+<option value="s30">30. 그들은 위험한 의식을 목격했다.</option>
+<option value="s31">31. 젊은 여인 아우다를 발견했다.</option>
+<option value="s32">32. 아우다는 강제로 희생될 위기에 처해 있었다.</option>
+<option value="s33">33. 포그는 그녀를 구하기로 결심했다.</option>
+<option value="s34">34. 일행은 목숨을 걸고 구조 작전을 펼쳤다.</option>
+<option value="s35">35. 결국 아우다는 무사히 구출되었다.</option>
+<option value="s36">36. 그녀는 감사의 마음으로 일행과 동행하게 되었다.</option>
+<option value="s37">37. 포그 일행은 다시 여행을 계속했다.</option>
+<option value="s38">38. 그들은 홍콩에 도착했다.</option>
+<option value="s39">39. 형사 픽스도 계속 뒤를 쫓았다.</option>
+<option value="s40">40. 픽스는 포그를 체포할 기회를 노렸다.</option>
+<option value="s41">41. 파스파르투는 여러 사건에 휘말렸다.</option>
+<option value="s42">42. 때로는 일행과 떨어지기도 했다.</option>
+<option value="s43">43. 하지만 결국 다시 만나곤 했다.</option>
+<option value="s44">44. 일행은 배를 타고 태평양을 건넜다.</option>
+<option value="s45">45. 그들은 일본에 도착했다.</option>
+<option value="s46">46. 파스파르투는 서커스단에서 일하기도 했다.</option>
+<option value="s47">47. 우여곡절 끝에 그는 포그와 재회했다.</option>
+<option value="s48">48. 일행은 다시 배를 타고 이동했다.</option>
+<option value="s49">49. 그들은 샌프란시스코에 도착했다.</option>
+<option value="s50">50. 미국 대륙 횡단 여행이 시작되었다.</option>
+<option value="s51">51. 일행은 기차를 타고 동쪽으로 향했다.</option>
+<option value="s52">52. 광활한 평원이 창밖으로 펼쳐졌다.</option>
+<option value="s53">53. 그들은 여러 도시를 지나갔다.</option>
+<option value="s54">54. 여행은 순조롭게 진행되는 듯했다.</option>
+<option value="s55">55. 그러나 기차가 공격을 받았다.</option>
+<option value="s56">56. 원주민 전사들이 열차를 습격했다.</option>
+<option value="s57">57. 파스파르투는 용감하게 맞섰다.</option>
+<option value="s58">58. 그는 다른 승객들을 도왔다.</option>
+<option value="s59">59. 결국 공격은 막아 냈다.</option>
+<option value="s60">60. 하지만 시간은 계속 흘러갔다.</option>
+<option value="s61">61. 포그는 점점 일정에 쫓기기 시작했다.</option>
+<option value="s62">62. 일행은 미국 동부에 도착했다.</option>
+<option value="s63">63. 다시 배를 타고 대서양을 건넜다.</option>
+<option value="s64">64. 형사 픽스는 마침내 포그를 체포했다.</option>
+<option value="s65">65. 하지만 곧 오해였음이 밝혀졌다.</option>
+<option value="s66">66. 진범은 다른 사람이었다.</option>
+<option value="s67">67. 포그는 석방되었지만 귀중한 시간을 잃었다.</option>
+<option value="s68">68. 그는 내기에 질 것처럼 보였다.</option>
+<option value="s69">69. 일행은 서둘러 런던으로 향했다.</option>
+<option value="s70">70. 포그는 정해진 날짜를 넘겼다고 생각했다.</option>
+<option value="s71">71. 그는 큰 실망에 빠졌다.</option>
+<option value="s72">72. 내기에서 패배했다고 믿었다.</option>
+<option value="s73">73. 아우다는 포그를 위로했다.</option>
+<option value="s74">74. 두 사람은 서로에게 특별한 감정을 느끼게 되었다.</option>
+<option value="s75">75. 포그는 아우다에게 청혼하기로 결심했다.</option>
+<option value="s76">76. 결혼 준비를 위해 날짜를 확인했다.</option>
+<option value="s77">77. 그때 놀라운 사실을 발견했다.</option>
+<option value="s78">78. 동쪽으로 여행하면서 하루를 벌었다는 사실이었다.</option>
+<option value="s79">79. 그는 실제로 하루를 잃은 것이 아니었다.</option>
+<option value="s80">80. 포그는 제시간에 클럽에 도착해 내기에서 승리했다.</option>
+<option value="s81">81. 그는 사랑과 우정, 그리고 세계 일주 성공이라는 가</option></select><button onclick="window.scrollTo({top:0,behavior:'smooth'})">맨 위로</button></nav><main><section class="intro"><h2>학습 구성</h2><p>각 장면은 <b>한글 문장 한 줄 → 영어 번역 한 줄 → 해당 문장을 활용한 파이썬 예시 코드</b> 순서로 구성되어 있습니다.</p><table><thead><tr><th>단계</th><th>학습 요소</th><th>해당 문장 번호</th></tr></thead><tbody><tr><td>1단계</td><td>변수·자료형·print</td><td>1, 11, 21, 31, 41, 51, 61, 71, 81</td></tr><tr><td>2단계</td><td>문자열·인덱싱·슬라이싱</td><td>2, 12, 22, 32, 42, 52, 62, 72</td></tr><tr><td>3단계</td><td>조건문 if</td><td>3, 13, 23, 33, 43, 53, 63, 73</td></tr><tr><td>4단계</td><td>반복문 for·while</td><td>4, 14, 24, 34, 44, 54, 64, 74</td></tr><tr><td>5단계</td><td>리스트·튜플·집합·딕셔너리</td><td>5, 15, 25, 35, 45, 55, 65, 75</td></tr><tr><td>6단계</td><td>함수·매개변수·반환값</td><td>6, 16, 26, 36, 46, 56, 66, 76</td></tr><tr><td>7단계</td><td>파일 처리·예외 처리</td><td>7, 17, 27, 37, 47, 57, 67, 77</td></tr><tr><td>8단계</td><td>OOP 클래스·객체</td><td>8, 18, 28, 38, 48, 58, 68, 78</td></tr><tr><td>9단계</td><td>모듈·라이브러리</td><td>9, 19, 29, 39, 49, 59, 69, 79</td></tr><tr><td>10단계</td><td>데코레이터·제너레이터</td><td>10, 20, 30, 40, 50, 60, 70, 80</td></tr></tbody></table><p class="small">코드는 IDLE, VS Code, 코랩 등에서 복사해 실행할 수 있습니다.</p></section><section class="card" id="s1"><div class="badge">1단계 · 변수·자료형·print</div><h2>1. 장면 문장</h2><p class="kor">필리어스 포그는 매우 정확하고 규칙적인 생활을 하는 영국 신사였다.</p><p class="eng">Phileas Fogg was an English gentleman who lived a very precise and disciplined life.</p><button onclick="copyCode('code1')">코드 복사</button><pre><code id="code1"># 1번 문장: 변수, 자료형, print()
+kor = &#x27;필리어스 포그는 매우 정확하고 규칙적인 생활을 하는 영국 신사였다.&#x27;
+eng = &#x27;Phileas Fogg was an English gentleman who lived a very precise and disciplined life.&#x27;
+day = 80
+sentence_no = 1
+
+print(f&quot;[{sentence_no}] {kor}&quot;)
+print(f&quot;영어: {eng}&quot;)
+print(&quot;여행 목표:&quot;, day, &quot;일 안에 세계 일주&quot;)</code></pre></section><section class="card" id="s2"><div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div><h2>2. 장면 문장</h2><p class="kor">그는 런던에 살고 있었다.</p><p class="eng">He lived in London.</p><button onclick="copyCode('code2')">코드 복사</button><pre><code id="code2"># 2번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그는 런던에 살고 있었다.&#x27;
+eng = &#x27;He lived in London.&#x27;
+
+print(&quot;첫 글자:&quot;, kor[0])
+print(&quot;마지막 글자:&quot;, kor[-1])
+print(&quot;앞 10글자:&quot;, kor[:10])
+print(&quot;영어 앞 20글자:&quot;, eng[:20])</code></pre></section><section class="card" id="s3"><div class="badge">3단계 · 조건문 if</div><h2>3. 장면 문장</h2><p class="kor">포그는 매일 같은 시간에 일어나고 같은 시간에 식사했다.</p><p class="eng">Fogg woke up and ate his meals at the same time every day.</p><button onclick="copyCode('code3')">코드 복사</button><pre><code id="code3"># 3번 문장: 조건문 if
+sentence = &#x27;포그는 매일 같은 시간에 일어나고 같은 시간에 식사했다.&#x27;
+keyword = &quot;포그&quot;
+
+if keyword in sentence:
+    print(f&quot;핵심 인물/단어 &#x27;{keyword}&#x27;가 문장에 있습니다.&quot;)
+else:
+    print(f&quot;핵심 단어 &#x27;{keyword}&#x27;가 문장에 없습니다.&quot;)
+
+if len(sentence) &gt;= 25:
+    print(&quot;긴 문장입니다.&quot;)
+else:
+    print(&quot;짧은 문장입니다.&quot;)</code></pre></section><section class="card" id="s4"><div class="badge">4단계 · 반복문 for·while</div><h2>4. 장면 문장</h2><p class="kor">그는 유명한 신사 클럽인 개혁 클럽의 회원이었다.</p><p class="eng">He was a member of the famous gentlemen&#x27;s Reform Club.</p><button onclick="copyCode('code4')">코드 복사</button><pre><code id="code4"># 4번 문장: for문으로 단어 출력
+words = &#x27;그는 유명한 신사 클럽인 개혁 클럽의 회원이었다.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre></section><section class="card" id="s5"><div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div><h2>5. 장면 문장</h2><p class="kor">어느 날 그는 새로운 하인 파스파르투를 고용했다.</p><p class="eng">One day, he hired a new servant named Passepartout.</p><button onclick="copyCode('code5')">코드 복사</button><pre><code id="code5"># 5번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 5,
+    &quot;kor&quot;: &#x27;어느 날 그는 새로운 하인 파스파르투를 고용했다.&#x27;,
+    &quot;eng&quot;: &#x27;One day, he hired a new servant named Passepartout.&#x27;,
+    &quot;theme&quot;: &quot;80일간의 세계 일주&quot;
+}
+
+keys = list(scene.keys())
+
+print(&quot;저장된 키:&quot;, keys)
+print(&quot;한글 문장:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어 번역:&quot;, scene[&quot;eng&quot;])</code></pre></section><section class="card" id="s6"><div class="badge">6단계 · 함수·매개변수·반환값</div><h2>6. 장면 문장</h2><p class="kor">파스파르투는 모험을 좋아하는 프랑스 청년이었다.</p><p class="eng">Passepartout was a French young man who loved adventure.</p><button onclick="copyCode('code6')">코드 복사</button><pre><code id="code6"># 6번 문장: 함수와 반환값
+def make_card(no, kor, eng):
+    return f&quot;{no}번 장면\nKOR: {kor}\nENG: {eng}&quot;
+
+card = make_card(6, &#x27;파스파르투는 모험을 좋아하는 프랑스 청년이었다.&#x27;, &#x27;Passepartout was a French young man who loved adventure.&#x27;)
+print(card)</code></pre></section><section class="card" id="s7"><div class="badge">7단계 · 파일 처리·예외 처리</div><h2>7. 장면 문장</h2><p class="kor">그날 클럽에서는 세계 여행에 대한 토론이 벌어졌다.</p><p class="eng">That day, a debate about world travel took place at the club.</p><button onclick="copyCode('code7')">코드 복사</button><pre><code id="code7"># 7번 문장: 예외 처리
+sentences = [&#x27;그날 클럽에서는 세계 여행에 대한 토론이 벌어졌다.&#x27;, &#x27;That day, a debate about world travel took place at the club.&#x27;]
+
+try:
+    index = 1
+    print(&quot;선택한 문장:&quot;, sentences[index])
+except IndexError:
+    print(&quot;없는 번호입니다.&quot;)
+finally:
+    print(&quot;문장 확인 완료&quot;)</code></pre></section><section class="card" id="s8"><div class="badge">8단계 · OOP 클래스·객체</div><h2>8. 장면 문장</h2><p class="kor">사람들은 80일 안에 세계 일주가 가능한지 논쟁했다.</p><p class="eng">People argued about whether it was possible to travel around the world in eighty days.</p><button onclick="copyCode('code8')">코드 복사</button><pre><code id="code8"># 8번 문장: 클래스와 객체
+class Scene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = Scene(8, &#x27;사람들은 80일 안에 세계 일주가 가능한지 논쟁했다.&#x27;, &#x27;People argued about whether it was possible to travel around the world in eighty days.&#x27;)
+scene.show()</code></pre></section><section class="card" id="s9"><div class="badge">9단계 · 모듈·라이브러리</div><h2>9. 장면 문장</h2><p class="kor">포그는 충분히 가능하다고 주장했다.</p><p class="eng">Fogg insisted that it was certainly possible.</p><button onclick="copyCode('code9')">코드 복사</button><pre><code id="code9"># 9번 문장: 모듈 활용
+from collections import Counter
+
+text = &#x27;Fogg insisted that it was certainly possible.&#x27;
+letters = [ch.lower() for ch in text if ch.isalpha()]
+count = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 3개:&quot;)
+print(count.most_common(3))</code></pre></section><section class="card" id="s10"><div class="badge">10단계 · 데코레이터·제너레이터</div><h2>10. 장면 문장</h2><p class="kor">다른 회원들은 불가능하다고 생각했다.</p><p class="eng">The other members thought it was impossible.</p><button onclick="copyCode('code10')">코드 복사</button><pre><code id="code10"># 10번 문장: 데코레이터
+def travel_frame(func):
+    def wrapper():
+        print(&quot;🌍 80일간의 세계 일주 장면 시작&quot;)
+        func()
+        print(&quot;🚂 장면 끝&quot;)
+    return wrapper
+
+@travel_frame
+def show_scene():
+    print(&#x27;다른 회원들은 불가능하다고 생각했다.&#x27;)
+    print(&quot;→&quot;, &#x27;The other members thought it was impossible.&#x27;)
+
+show_scene()</code></pre></section><section class="card" id="s11"><div class="badge">1단계 · 변수·자료형·print</div><h2>11. 장면 문장</h2><p class="kor">결국 포그는 거액의 돈을 걸고 내기를 했다.</p><p class="eng">Eventually, Fogg made a wager involving a large amount of money.</p><button onclick="copyCode('code11')">코드 복사</button><pre><code id="code11"># 11번 문장: 변수, 자료형, print()
+kor = &#x27;결국 포그는 거액의 돈을 걸고 내기를 했다.&#x27;
+eng = &#x27;Eventually, Fogg made a wager involving a large amount of money.&#x27;
+day = 80
+sentence_no = 11
+
+print(f&quot;[{sentence_no}] {kor}&quot;)
+print(f&quot;영어: {eng}&quot;)
+print(&quot;여행 목표:&quot;, day, &quot;일 안에 세계 일주&quot;)</code></pre></section><section class="card" id="s12"><div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div><h2>12. 장면 문장</h2><p class="kor">그는 80일 안에 세계 일주를 마치겠다고 선언했다.</p><p class="eng">He declared that he would complete a journey around the world within eighty days.</p><button onclick="copyCode('code12')">코드 복사</button><pre><code id="code12"># 12번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그는 80일 안에 세계 일주를 마치겠다고 선언했다.&#x27;
+eng = &#x27;He declared that he would complete a journey around the world within eighty days.&#x27;
+
+print(&quot;첫 글자:&quot;, kor[0])
+print(&quot;마지막 글자:&quot;, kor[-1])
+print(&quot;앞 10글자:&quot;, kor[:10])
+print(&quot;영어 앞 20글자:&quot;, eng[:20])</code></pre></section><section class="card" id="s13"><div class="badge">3단계 · 조건문 if</div><h2>13. 장면 문장</h2><p class="kor">포그는 즉시 여행 준비를 시작했다.</p><p class="eng">Fogg immediately began preparing for the journey.</p><button onclick="copyCode('code13')">코드 복사</button><pre><code id="code13"># 13번 문장: 조건문 if
+sentence = &#x27;포그는 즉시 여행 준비를 시작했다.&#x27;
+keyword = &quot;포그&quot;
+
+if keyword in sentence:
+    print(f&quot;핵심 인물/단어 &#x27;{keyword}&#x27;가 문장에 있습니다.&quot;)
+else:
+    print(f&quot;핵심 단어 &#x27;{keyword}&#x27;가 문장에 없습니다.&quot;)
+
+if len(sentence) &gt;= 25:
+    print(&quot;긴 문장입니다.&quot;)
+else:
+    print(&quot;짧은 문장입니다.&quot;)</code></pre></section><section class="card" id="s14"><div class="badge">4단계 · 반복문 for·while</div><h2>14. 장면 문장</h2><p class="kor">그는 파스파르투와 함께 런던을 떠났다.</p><p class="eng">He left London with Passepartout.</p><button onclick="copyCode('code14')">코드 복사</button><pre><code id="code14"># 14번 문장: for문으로 단어 출력
+words = &#x27;그는 파스파르투와 함께 런던을 떠났다.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre></section><section class="card" id="s15"><div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div><h2>15. 장면 문장</h2><p class="kor">두 사람은 기차를 타고 항구로 향했다.</p><p class="eng">The two men headed to the port by train.</p><button onclick="copyCode('code15')">코드 복사</button><pre><code id="code15"># 15번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 15,
+    &quot;kor&quot;: &#x27;두 사람은 기차를 타고 항구로 향했다.&#x27;,
+    &quot;eng&quot;: &#x27;The two men headed to the port by train.&#x27;,
+    &quot;theme&quot;: &quot;80일간의 세계 일주&quot;
+}
+
+keys = list(scene.keys())
+
+print(&quot;저장된 키:&quot;, keys)
+print(&quot;한글 문장:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어 번역:&quot;, scene[&quot;eng&quot;])</code></pre></section><section class="card" id="s16"><div class="badge">6단계 · 함수·매개변수·반환값</div><h2>16. 장면 문장</h2><p class="kor">그들은 배를 타고 유럽을 벗어났다.</p><p class="eng">They left Europe by ship.</p><button onclick="copyCode('code16')">코드 복사</button><pre><code id="code16"># 16번 문장: 함수와 반환값
+def make_card(no, kor, eng):
+    return f&quot;{no}번 장면\nKOR: {kor}\nENG: {eng}&quot;
+
+card = make_card(16, &#x27;그들은 배를 타고 유럽을 벗어났다.&#x27;, &#x27;They left Europe by ship.&#x27;)
+print(card)</code></pre></section><section class="card" id="s17"><div class="badge">7단계 · 파일 처리·예외 처리</div><h2>17. 장면 문장</h2><p class="kor">여행 소식은 여러 나라에 알려지기 시작했다.</p><p class="eng">News of the journey began to spread across many countries.</p><button onclick="copyCode('code17')">코드 복사</button><pre><code id="code17"># 17번 문장: 예외 처리
+sentences = [&#x27;여행 소식은 여러 나라에 알려지기 시작했다.&#x27;, &#x27;News of the journey began to spread across many countries.&#x27;]
+
+try:
+    index = 1
+    print(&quot;선택한 문장:&quot;, sentences[index])
+except IndexError:
+    print(&quot;없는 번호입니다.&quot;)
+finally:
+    print(&quot;문장 확인 완료&quot;)</code></pre></section><section class="card" id="s18"><div class="badge">8단계 · OOP 클래스·객체</div><h2>18. 장면 문장</h2><p class="kor">한편 런던에서는 은행 강도 사건이 발생했다.</p><p class="eng">Meanwhile, a bank robbery occurred in London.</p><button onclick="copyCode('code18')">코드 복사</button><pre><code id="code18"># 18번 문장: 클래스와 객체
+class Scene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = Scene(18, &#x27;한편 런던에서는 은행 강도 사건이 발생했다.&#x27;, &#x27;Meanwhile, a bank robbery occurred in London.&#x27;)
+scene.show()</code></pre></section><section class="card" id="s19"><div class="badge">9단계 · 모듈·라이브러리</div><h2>19. 장면 문장</h2><p class="kor">경찰은 범인을 찾기 시작했다.</p><p class="eng">The police began searching for the criminal.</p><button onclick="copyCode('code19')">코드 복사</button><pre><code id="code19"># 19번 문장: 모듈 활용
+from collections import Counter
+
+text = &#x27;The police began searching for the criminal.&#x27;
+letters = [ch.lower() for ch in text if ch.isalpha()]
+count = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 3개:&quot;)
+print(count.most_common(3))</code></pre></section><section class="card" id="s20"><div class="badge">10단계 · 데코레이터·제너레이터</div><h2>20. 장면 문장</h2><p class="kor">형사 픽스는 포그를 용의자로 의심했다.</p><p class="eng">Detective Fix suspected Fogg of being the criminal.</p><button onclick="copyCode('code20')">코드 복사</button><pre><code id="code20"># 20번 문장: 데코레이터
+def travel_frame(func):
+    def wrapper():
+        print(&quot;🌍 80일간의 세계 일주 장면 시작&quot;)
+        func()
+        print(&quot;🚂 장면 끝&quot;)
+    return wrapper
+
+@travel_frame
+def show_scene():
+    print(&#x27;형사 픽스는 포그를 용의자로 의심했다.&#x27;)
+    print(&quot;→&quot;, &#x27;Detective Fix suspected Fogg of being the criminal.&#x27;)
+
+show_scene()</code></pre></section><section class="card" id="s21"><div class="badge">1단계 · 변수·자료형·print</div><h2>21. 장면 문장</h2><p class="kor">픽스는 포그를 몰래 추적하기 시작했다.</p><p class="eng">Fix secretly began following Fogg.</p><button onclick="copyCode('code21')">코드 복사</button><pre><code id="code21"># 21번 문장: 변수, 자료형, print()
+kor = &#x27;픽스는 포그를 몰래 추적하기 시작했다.&#x27;
+eng = &#x27;Fix secretly began following Fogg.&#x27;
+day = 80
+sentence_no = 21
+
+print(f&quot;[{sentence_no}] {kor}&quot;)
+print(f&quot;영어: {eng}&quot;)
+print(&quot;여행 목표:&quot;, day, &quot;일 안에 세계 일주&quot;)</code></pre></section><section class="card" id="s22"><div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div><h2>22. 장면 문장</h2><p class="kor">포그 일행은 이집트에 도착했다.</p><p class="eng">Fogg&#x27;s party arrived in Egypt.</p><button onclick="copyCode('code22')">코드 복사</button><pre><code id="code22"># 22번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;포그 일행은 이집트에 도착했다.&#x27;
+eng = &quot;Fogg&#x27;s party arrived in Egypt.&quot;
+
+print(&quot;첫 글자:&quot;, kor[0])
+print(&quot;마지막 글자:&quot;, kor[-1])
+print(&quot;앞 10글자:&quot;, kor[:10])
+print(&quot;영어 앞 20글자:&quot;, eng[:20])</code></pre></section><section class="card" id="s23"><div class="badge">3단계 · 조건문 if</div><h2>23. 장면 문장</h2><p class="kor">그들은 다시 배를 타고 동쪽으로 향했다.</p><p class="eng">They boarded another ship and headed east.</p><button onclick="copyCode('code23')">코드 복사</button><pre><code id="code23"># 23번 문장: 조건문 if
+sentence = &#x27;그들은 다시 배를 타고 동쪽으로 향했다.&#x27;
+keyword = &quot;여행&quot;
+
+if keyword in sentence:
+    print(f&quot;핵심 인물/단어 &#x27;{keyword}&#x27;가 문장에 있습니다.&quot;)
+else:
+    print(f&quot;핵심 단어 &#x27;{keyword}&#x27;가 문장에 없습니다.&quot;)
+
+if len(sentence) &gt;= 25:
+    print(&quot;긴 문장입니다.&quot;)
+else:
+    print(&quot;짧은 문장입니다.&quot;)</code></pre></section><section class="card" id="s24"><div class="badge">4단계 · 반복문 for·while</div><h2>24. 장면 문장</h2><p class="kor">포그는 항상 시간표를 꼼꼼히 확인했다.</p><p class="eng">Fogg always checked the timetable carefully.</p><button onclick="copyCode('code24')">코드 복사</button><pre><code id="code24"># 24번 문장: for문으로 단어 출력
+words = &#x27;포그는 항상 시간표를 꼼꼼히 확인했다.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre></section><section class="card" id="s25"><div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div><h2>25. 장면 문장</h2><p class="kor">그는 단 한 분도 낭비하지 않으려 했다.</p><p class="eng">He tried not to waste even a single minute.</p><button onclick="copyCode('code25')">코드 복사</button><pre><code id="code25"># 25번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 25,
+    &quot;kor&quot;: &#x27;그는 단 한 분도 낭비하지 않으려 했다.&#x27;,
+    &quot;eng&quot;: &#x27;He tried not to waste even a single minute.&#x27;,
+    &quot;theme&quot;: &quot;80일간의 세계 일주&quot;
+}
+
+keys = list(scene.keys())
+
+print(&quot;저장된 키:&quot;, keys)
+print(&quot;한글 문장:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어 번역:&quot;, scene[&quot;eng&quot;])</code></pre></section><section class="card" id="s26"><div class="badge">6단계 · 함수·매개변수·반환값</div><h2>26. 장면 문장</h2><p class="kor">일행은 인도에 도착했다.</p><p class="eng">The party arrived in India.</p><button onclick="copyCode('code26')">코드 복사</button><pre><code id="code26"># 26번 문장: 함수와 반환값
+def make_card(no, kor, eng):
+    return f&quot;{no}번 장면\nKOR: {kor}\nENG: {eng}&quot;
+
+card = make_card(26, &#x27;일행은 인도에 도착했다.&#x27;, &#x27;The party arrived in India.&#x27;)
+print(card)</code></pre></section><section class="card" id="s27"><div class="badge">7단계 · 파일 처리·예외 처리</div><h2>27. 장면 문장</h2><p class="kor">그곳에서 철도가 완전히 연결되지 않았다는 사실을 알게 되었다.</p><p class="eng">There, they learned that the railway was not completely connected.</p><button onclick="copyCode('code27')">코드 복사</button><pre><code id="code27"># 27번 문장: 예외 처리
+sentences = [&#x27;그곳에서 철도가 완전히 연결되지 않았다는 사실을 알게 되었다.&#x27;, &#x27;There, they learned that the railway was not completely connected.&#x27;]
+
+try:
+    index = 1
+    print(&quot;선택한 문장:&quot;, sentences[index])
+except IndexError:
+    print(&quot;없는 번호입니다.&quot;)
+finally:
+    print(&quot;문장 확인 완료&quot;)</code></pre></section><section class="card" id="s28"><div class="badge">8단계 · OOP 클래스·객체</div><h2>28. 장면 문장</h2><p class="kor">포그는 급히 코끼리를 구입했다.</p><p class="eng">Fogg quickly bought an elephant.</p><button onclick="copyCode('code28')">코드 복사</button><pre><code id="code28"># 28번 문장: 클래스와 객체
+class Scene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = Scene(28, &#x27;포그는 급히 코끼리를 구입했다.&#x27;, &#x27;Fogg quickly bought an elephant.&#x27;)
+scene.show()</code></pre></section><section class="card" id="s29"><div class="badge">9단계 · 모듈·라이브러리</div><h2>29. 장면 문장</h2><p class="kor">일행은 코끼리를 타고 정글을 통과했다.</p><p class="eng">The travelers crossed the jungle on the elephant.</p><button onclick="copyCode('code29')">코드 복사</button><pre><code id="code29"># 29번 문장: 모듈 활용
+from collections import Counter
+
+text = &#x27;The travelers crossed the jungle on the elephant.&#x27;
+letters = [ch.lower() for ch in text if ch.isalpha()]
+count = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 3개:&quot;)
+print(count.most_common(3))</code></pre></section><section class="card" id="s30"><div class="badge">10단계 · 데코레이터·제너레이터</div><h2>30. 장면 문장</h2><p class="kor">그들은 위험한 의식을 목격했다.</p><p class="eng">They witnessed a dangerous ritual.</p><button onclick="copyCode('code30')">코드 복사</button><pre><code id="code30"># 30번 문장: 데코레이터
+def travel_frame(func):
+    def wrapper():
+        print(&quot;🌍 80일간의 세계 일주 장면 시작&quot;)
+        func()
+        print(&quot;🚂 장면 끝&quot;)
+    return wrapper
+
+@travel_frame
+def show_scene():
+    print(&#x27;그들은 위험한 의식을 목격했다.&#x27;)
+    print(&quot;→&quot;, &#x27;They witnessed a dangerous ritual.&#x27;)
+
+show_scene()</code></pre></section><section class="card" id="s31"><div class="badge">1단계 · 변수·자료형·print</div><h2>31. 장면 문장</h2><p class="kor">젊은 여인 아우다를 발견했다.</p><p class="eng">They discovered a young woman named Aouda.</p><button onclick="copyCode('code31')">코드 복사</button><pre><code id="code31"># 31번 문장: 변수, 자료형, print()
+kor = &#x27;젊은 여인 아우다를 발견했다.&#x27;
+eng = &#x27;They discovered a young woman named Aouda.&#x27;
+day = 80
+sentence_no = 31
+
+print(f&quot;[{sentence_no}] {kor}&quot;)
+print(f&quot;영어: {eng}&quot;)
+print(&quot;여행 목표:&quot;, day, &quot;일 안에 세계 일주&quot;)</code></pre></section><section class="card" id="s32"><div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div><h2>32. 장면 문장</h2><p class="kor">아우다는 강제로 희생될 위기에 처해 있었다.</p><p class="eng">Aouda was in danger of being forced into sacrifice.</p><button onclick="copyCode('code32')">코드 복사</button><pre><code id="code32"># 32번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;아우다는 강제로 희생될 위기에 처해 있었다.&#x27;
+eng = &#x27;Aouda was in danger of being forced into sacrifice.&#x27;
+
+print(&quot;첫 글자:&quot;, kor[0])
+print(&quot;마지막 글자:&quot;, kor[-1])
+print(&quot;앞 10글자:&quot;, kor[:10])
+print(&quot;영어 앞 20글자:&quot;, eng[:20])</code></pre></section><section class="card" id="s33"><div class="badge">3단계 · 조건문 if</div><h2>33. 장면 문장</h2><p class="kor">포그는 그녀를 구하기로 결심했다.</p><p class="eng">Fogg decided to rescue her.</p><button onclick="copyCode('code33')">코드 복사</button><pre><code id="code33"># 33번 문장: 조건문 if
+sentence = &#x27;포그는 그녀를 구하기로 결심했다.&#x27;
+keyword = &quot;포그&quot;
+
+if keyword in sentence:
+    print(f&quot;핵심 인물/단어 &#x27;{keyword}&#x27;가 문장에 있습니다.&quot;)
+else:
+    print(f&quot;핵심 단어 &#x27;{keyword}&#x27;가 문장에 없습니다.&quot;)
+
+if len(sentence) &gt;= 25:
+    print(&quot;긴 문장입니다.&quot;)
+else:
+    print(&quot;짧은 문장입니다.&quot;)</code></pre></section><section class="card" id="s34"><div class="badge">4단계 · 반복문 for·while</div><h2>34. 장면 문장</h2><p class="kor">일행은 목숨을 걸고 구조 작전을 펼쳤다.</p><p class="eng">The group risked their lives in a rescue operation.</p><button onclick="copyCode('code34')">코드 복사</button><pre><code id="code34"># 34번 문장: for문으로 단어 출력
+words = &#x27;일행은 목숨을 걸고 구조 작전을 펼쳤다.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre></section><section class="card" id="s35"><div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div><h2>35. 장면 문장</h2><p class="kor">결국 아우다는 무사히 구출되었다.</p><p class="eng">At last, Aouda was rescued safely.</p><button onclick="copyCode('code35')">코드 복사</button><pre><code id="code35"># 35번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 35,
+    &quot;kor&quot;: &#x27;결국 아우다는 무사히 구출되었다.&#x27;,
+    &quot;eng&quot;: &#x27;At last, Aouda was rescued safely.&#x27;,
+    &quot;theme&quot;: &quot;80일간의 세계 일주&quot;
+}
+
+keys = list(scene.keys())
+
+print(&quot;저장된 키:&quot;, keys)
+print(&quot;한글 문장:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어 번역:&quot;, scene[&quot;eng&quot;])</code></pre></section><section class="card" id="s36"><div class="badge">6단계 · 함수·매개변수·반환값</div><h2>36. 장면 문장</h2><p class="kor">그녀는 감사의 마음으로 일행과 동행하게 되었다.</p><p class="eng">Out of gratitude, she joined the group on their journey.</p><button onclick="copyCode('code36')">코드 복사</button><pre><code id="code36"># 36번 문장: 함수와 반환값
+def make_card(no, kor, eng):
+    return f&quot;{no}번 장면\nKOR: {kor}\nENG: {eng}&quot;
+
+card = make_card(36, &#x27;그녀는 감사의 마음으로 일행과 동행하게 되었다.&#x27;, &#x27;Out of gratitude, she joined the group on their journey.&#x27;)
+print(card)</code></pre></section><section class="card" id="s37"><div class="badge">7단계 · 파일 처리·예외 처리</div><h2>37. 장면 문장</h2><p class="kor">포그 일행은 다시 여행을 계속했다.</p><p class="eng">Fogg&#x27;s party continued their journey again.</p><button onclick="copyCode('code37')">코드 복사</button><pre><code id="code37"># 37번 문장: 예외 처리
+sentences = [&#x27;포그 일행은 다시 여행을 계속했다.&#x27;, &quot;Fogg&#x27;s party continued their journey again.&quot;]
+
+try:
+    index = 1
+    print(&quot;선택한 문장:&quot;, sentences[index])
+except IndexError:
+    print(&quot;없는 번호입니다.&quot;)
+finally:
+    print(&quot;문장 확인 완료&quot;)</code></pre></section><section class="card" id="s38"><div class="badge">8단계 · OOP 클래스·객체</div><h2>38. 장면 문장</h2><p class="kor">그들은 홍콩에 도착했다.</p><p class="eng">They arrived in Hong Kong.</p><button onclick="copyCode('code38')">코드 복사</button><pre><code id="code38"># 38번 문장: 클래스와 객체
+class Scene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = Scene(38, &#x27;그들은 홍콩에 도착했다.&#x27;, &#x27;They arrived in Hong Kong.&#x27;)
+scene.show()</code></pre></section><section class="card" id="s39"><div class="badge">9단계 · 모듈·라이브러리</div><h2>39. 장면 문장</h2><p class="kor">형사 픽스도 계속 뒤를 쫓았다.</p><p class="eng">Detective Fix continued to follow them.</p><button onclick="copyCode('code39')">코드 복사</button><pre><code id="code39"># 39번 문장: 모듈 활용
+from collections import Counter
+
+text = &#x27;Detective Fix continued to follow them.&#x27;
+letters = [ch.lower() for ch in text if ch.isalpha()]
+count = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 3개:&quot;)
+print(count.most_common(3))</code></pre></section><section class="card" id="s40"><div class="badge">10단계 · 데코레이터·제너레이터</div><h2>40. 장면 문장</h2><p class="kor">픽스는 포그를 체포할 기회를 노렸다.</p><p class="eng">Fix looked for a chance to arrest Fogg.</p><button onclick="copyCode('code40')">코드 복사</button><pre><code id="code40"># 40번 문장: 데코레이터
+def travel_frame(func):
+    def wrapper():
+        print(&quot;🌍 80일간의 세계 일주 장면 시작&quot;)
+        func()
+        print(&quot;🚂 장면 끝&quot;)
+    return wrapper
+
+@travel_frame
+def show_scene():
+    print(&#x27;픽스는 포그를 체포할 기회를 노렸다.&#x27;)
+    print(&quot;→&quot;, &#x27;Fix looked for a chance to arrest Fogg.&#x27;)
+
+show_scene()</code></pre></section><section class="card" id="s41"><div class="badge">1단계 · 변수·자료형·print</div><h2>41. 장면 문장</h2><p class="kor">파스파르투는 여러 사건에 휘말렸다.</p><p class="eng">Passepartout became caught up in several incidents.</p><button onclick="copyCode('code41')">코드 복사</button><pre><code id="code41"># 41번 문장: 변수, 자료형, print()
+kor = &#x27;파스파르투는 여러 사건에 휘말렸다.&#x27;
+eng = &#x27;Passepartout became caught up in several incidents.&#x27;
+day = 80
+sentence_no = 41
+
+print(f&quot;[{sentence_no}] {kor}&quot;)
+print(f&quot;영어: {eng}&quot;)
+print(&quot;여행 목표:&quot;, day, &quot;일 안에 세계 일주&quot;)</code></pre></section><section class="card" id="s42"><div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div><h2>42. 장면 문장</h2><p class="kor">때로는 일행과 떨어지기도 했다.</p><p class="eng">Sometimes he became separated from the group.</p><button onclick="copyCode('code42')">코드 복사</button><pre><code id="code42"># 42번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;때로는 일행과 떨어지기도 했다.&#x27;
+eng = &#x27;Sometimes he became separated from the group.&#x27;
+
+print(&quot;첫 글자:&quot;, kor[0])
+print(&quot;마지막 글자:&quot;, kor[-1])
+print(&quot;앞 10글자:&quot;, kor[:10])
+print(&quot;영어 앞 20글자:&quot;, eng[:20])</code></pre></section><section class="card" id="s43"><div class="badge">3단계 · 조건문 if</div><h2>43. 장면 문장</h2><p class="kor">하지만 결국 다시 만나곤 했다.</p><p class="eng">But in the end, they would meet again.</p><button onclick="copyCode('code43')">코드 복사</button><pre><code id="code43"># 43번 문장: 조건문 if
+sentence = &#x27;하지만 결국 다시 만나곤 했다.&#x27;
+keyword = &quot;여행&quot;
+
+if keyword in sentence:
+    print(f&quot;핵심 인물/단어 &#x27;{keyword}&#x27;가 문장에 있습니다.&quot;)
+else:
+    print(f&quot;핵심 단어 &#x27;{keyword}&#x27;가 문장에 없습니다.&quot;)
+
+if len(sentence) &gt;= 25:
+    print(&quot;긴 문장입니다.&quot;)
+else:
+    print(&quot;짧은 문장입니다.&quot;)</code></pre></section><section class="card" id="s44"><div class="badge">4단계 · 반복문 for·while</div><h2>44. 장면 문장</h2><p class="kor">일행은 배를 타고 태평양을 건넜다.</p><p class="eng">The party crossed the Pacific Ocean by ship.</p><button onclick="copyCode('code44')">코드 복사</button><pre><code id="code44"># 44번 문장: for문으로 단어 출력
+words = &#x27;일행은 배를 타고 태평양을 건넜다.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre></section><section class="card" id="s45"><div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div><h2>45. 장면 문장</h2><p class="kor">그들은 일본에 도착했다.</p><p class="eng">They arrived in Japan.</p><button onclick="copyCode('code45')">코드 복사</button><pre><code id="code45"># 45번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 45,
+    &quot;kor&quot;: &#x27;그들은 일본에 도착했다.&#x27;,
+    &quot;eng&quot;: &#x27;They arrived in Japan.&#x27;,
+    &quot;theme&quot;: &quot;80일간의 세계 일주&quot;
+}
+
+keys = list(scene.keys())
+
+print(&quot;저장된 키:&quot;, keys)
+print(&quot;한글 문장:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어 번역:&quot;, scene[&quot;eng&quot;])</code></pre></section><section class="card" id="s46"><div class="badge">6단계 · 함수·매개변수·반환값</div><h2>46. 장면 문장</h2><p class="kor">파스파르투는 서커스단에서 일하기도 했다.</p><p class="eng">Passepartout even worked in a circus.</p><button onclick="copyCode('code46')">코드 복사</button><pre><code id="code46"># 46번 문장: 함수와 반환값
+def make_card(no, kor, eng):
+    return f&quot;{no}번 장면\nKOR: {kor}\nENG: {eng}&quot;
+
+card = make_card(46, &#x27;파스파르투는 서커스단에서 일하기도 했다.&#x27;, &#x27;Passepartout even worked in a circus.&#x27;)
+print(card)</code></pre></section><section class="card" id="s47"><div class="badge">7단계 · 파일 처리·예외 처리</div><h2>47. 장면 문장</h2><p class="kor">우여곡절 끝에 그는 포그와 재회했다.</p><p class="eng">After many twists and turns, he reunited with Fogg.</p><button onclick="copyCode('code47')">코드 복사</button><pre><code id="code47"># 47번 문장: 예외 처리
+sentences = [&#x27;우여곡절 끝에 그는 포그와 재회했다.&#x27;, &#x27;After many twists and turns, he reunited with Fogg.&#x27;]
+
+try:
+    index = 1
+    print(&quot;선택한 문장:&quot;, sentences[index])
+except IndexError:
+    print(&quot;없는 번호입니다.&quot;)
+finally:
+    print(&quot;문장 확인 완료&quot;)</code></pre></section><section class="card" id="s48"><div class="badge">8단계 · OOP 클래스·객체</div><h2>48. 장면 문장</h2><p class="kor">일행은 다시 배를 타고 이동했다.</p><p class="eng">The party traveled again by ship.</p><button onclick="copyCode('code48')">코드 복사</button><pre><code id="code48"># 48번 문장: 클래스와 객체
+class Scene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = Scene(48, &#x27;일행은 다시 배를 타고 이동했다.&#x27;, &#x27;The party traveled again by ship.&#x27;)
+scene.show()</code></pre></section><section class="card" id="s49"><div class="badge">9단계 · 모듈·라이브러리</div><h2>49. 장면 문장</h2><p class="kor">그들은 샌프란시스코에 도착했다.</p><p class="eng">They arrived in San Francisco.</p><button onclick="copyCode('code49')">코드 복사</button><pre><code id="code49"># 49번 문장: 모듈 활용
+from collections import Counter
+
+text = &#x27;They arrived in San Francisco.&#x27;
+letters = [ch.lower() for ch in text if ch.isalpha()]
+count = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 3개:&quot;)
+print(count.most_common(3))</code></pre></section><section class="card" id="s50"><div class="badge">10단계 · 데코레이터·제너레이터</div><h2>50. 장면 문장</h2><p class="kor">미국 대륙 횡단 여행이 시작되었다.</p><p class="eng">The journey across the American continent began.</p><button onclick="copyCode('code50')">코드 복사</button><pre><code id="code50"># 50번 문장: 데코레이터
+def travel_frame(func):
+    def wrapper():
+        print(&quot;🌍 80일간의 세계 일주 장면 시작&quot;)
+        func()
+        print(&quot;🚂 장면 끝&quot;)
+    return wrapper
+
+@travel_frame
+def show_scene():
+    print(&#x27;미국 대륙 횡단 여행이 시작되었다.&#x27;)
+    print(&quot;→&quot;, &#x27;The journey across the American continent began.&#x27;)
+
+show_scene()</code></pre></section><section class="card" id="s51"><div class="badge">1단계 · 변수·자료형·print</div><h2>51. 장면 문장</h2><p class="kor">일행은 기차를 타고 동쪽으로 향했다.</p><p class="eng">The party headed east by train.</p><button onclick="copyCode('code51')">코드 복사</button><pre><code id="code51"># 51번 문장: 변수, 자료형, print()
+kor = &#x27;일행은 기차를 타고 동쪽으로 향했다.&#x27;
+eng = &#x27;The party headed east by train.&#x27;
+day = 80
+sentence_no = 51
+
+print(f&quot;[{sentence_no}] {kor}&quot;)
+print(f&quot;영어: {eng}&quot;)
+print(&quot;여행 목표:&quot;, day, &quot;일 안에 세계 일주&quot;)</code></pre></section><section class="card" id="s52"><div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div><h2>52. 장면 문장</h2><p class="kor">광활한 평원이 창밖으로 펼쳐졌다.</p><p class="eng">Vast plains spread out beyond the train windows.</p><button onclick="copyCode('code52')">코드 복사</button><pre><code id="code52"># 52번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;광활한 평원이 창밖으로 펼쳐졌다.&#x27;
+eng = &#x27;Vast plains spread out beyond the train windows.&#x27;
+
+print(&quot;첫 글자:&quot;, kor[0])
+print(&quot;마지막 글자:&quot;, kor[-1])
+print(&quot;앞 10글자:&quot;, kor[:10])
+print(&quot;영어 앞 20글자:&quot;, eng[:20])</code></pre></section><section class="card" id="s53"><div class="badge">3단계 · 조건문 if</div><h2>53. 장면 문장</h2><p class="kor">그들은 여러 도시를 지나갔다.</p><p class="eng">They passed through many cities.</p><button onclick="copyCode('code53')">코드 복사</button><pre><code id="code53"># 53번 문장: 조건문 if
+sentence = &#x27;그들은 여러 도시를 지나갔다.&#x27;
+keyword = &quot;여행&quot;
+
+if keyword in sentence:
+    print(f&quot;핵심 인물/단어 &#x27;{keyword}&#x27;가 문장에 있습니다.&quot;)
+else:
+    print(f&quot;핵심 단어 &#x27;{keyword}&#x27;가 문장에 없습니다.&quot;)
+
+if len(sentence) &gt;= 25:
+    print(&quot;긴 문장입니다.&quot;)
+else:
+    print(&quot;짧은 문장입니다.&quot;)</code></pre></section><section class="card" id="s54"><div class="badge">4단계 · 반복문 for·while</div><h2>54. 장면 문장</h2><p class="kor">여행은 순조롭게 진행되는 듯했다.</p><p class="eng">The journey seemed to be going smoothly.</p><button onclick="copyCode('code54')">코드 복사</button><pre><code id="code54"># 54번 문장: for문으로 단어 출력
+words = &#x27;여행은 순조롭게 진행되는 듯했다.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre></section><section class="card" id="s55"><div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div><h2>55. 장면 문장</h2><p class="kor">그러나 기차가 공격을 받았다.</p><p class="eng">However, the train was attacked.</p><button onclick="copyCode('code55')">코드 복사</button><pre><code id="code55"># 55번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 55,
+    &quot;kor&quot;: &#x27;그러나 기차가 공격을 받았다.&#x27;,
+    &quot;eng&quot;: &#x27;However, the train was attacked.&#x27;,
+    &quot;theme&quot;: &quot;80일간의 세계 일주&quot;
+}
+
+keys = list(scene.keys())
+
+print(&quot;저장된 키:&quot;, keys)
+print(&quot;한글 문장:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어 번역:&quot;, scene[&quot;eng&quot;])</code></pre></section><section class="card" id="s56"><div class="badge">6단계 · 함수·매개변수·반환값</div><h2>56. 장면 문장</h2><p class="kor">원주민 전사들이 열차를 습격했다.</p><p class="eng">Native warriors attacked the train.</p><button onclick="copyCode('code56')">코드 복사</button><pre><code id="code56"># 56번 문장: 함수와 반환값
+def make_card(no, kor, eng):
+    return f&quot;{no}번 장면\nKOR: {kor}\nENG: {eng}&quot;
+
+card = make_card(56, &#x27;원주민 전사들이 열차를 습격했다.&#x27;, &#x27;Native warriors attacked the train.&#x27;)
+print(card)</code></pre></section><section class="card" id="s57"><div class="badge">7단계 · 파일 처리·예외 처리</div><h2>57. 장면 문장</h2><p class="kor">파스파르투는 용감하게 맞섰다.</p><p class="eng">Passepartout bravely fought back.</p><button onclick="copyCode('code57')">코드 복사</button><pre><code id="code57"># 57번 문장: 예외 처리
+sentences = [&#x27;파스파르투는 용감하게 맞섰다.&#x27;, &#x27;Passepartout bravely fought back.&#x27;]
+
+try:
+    index = 1
+    print(&quot;선택한 문장:&quot;, sentences[index])
+except IndexError:
+    print(&quot;없는 번호입니다.&quot;)
+finally:
+    print(&quot;문장 확인 완료&quot;)</code></pre></section><section class="card" id="s58"><div class="badge">8단계 · OOP 클래스·객체</div><h2>58. 장면 문장</h2><p class="kor">그는 다른 승객들을 도왔다.</p><p class="eng">He helped the other passengers.</p><button onclick="copyCode('code58')">코드 복사</button><pre><code id="code58"># 58번 문장: 클래스와 객체
+class Scene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = Scene(58, &#x27;그는 다른 승객들을 도왔다.&#x27;, &#x27;He helped the other passengers.&#x27;)
+scene.show()</code></pre></section><section class="card" id="s59"><div class="badge">9단계 · 모듈·라이브러리</div><h2>59. 장면 문장</h2><p class="kor">결국 공격은 막아 냈다.</p><p class="eng">Eventually, the attack was stopped.</p><button onclick="copyCode('code59')">코드 복사</button><pre><code id="code59"># 59번 문장: 모듈 활용
+from collections import Counter
+
+text = &#x27;Eventually, the attack was stopped.&#x27;
+letters = [ch.lower() for ch in text if ch.isalpha()]
+count = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 3개:&quot;)
+print(count.most_common(3))</code></pre></section><section class="card" id="s60"><div class="badge">10단계 · 데코레이터·제너레이터</div><h2>60. 장면 문장</h2><p class="kor">하지만 시간은 계속 흘러갔다.</p><p class="eng">But time kept passing.</p><button onclick="copyCode('code60')">코드 복사</button><pre><code id="code60"># 60번 문장: 데코레이터
+def travel_frame(func):
+    def wrapper():
+        print(&quot;🌍 80일간의 세계 일주 장면 시작&quot;)
+        func()
+        print(&quot;🚂 장면 끝&quot;)
+    return wrapper
+
+@travel_frame
+def show_scene():
+    print(&#x27;하지만 시간은 계속 흘러갔다.&#x27;)
+    print(&quot;→&quot;, &#x27;But time kept passing.&#x27;)
+
+show_scene()</code></pre></section><section class="card" id="s61"><div class="badge">1단계 · 변수·자료형·print</div><h2>61. 장면 문장</h2><p class="kor">포그는 점점 일정에 쫓기기 시작했다.</p><p class="eng">Fogg gradually began to feel pressed by the schedule.</p><button onclick="copyCode('code61')">코드 복사</button><pre><code id="code61"># 61번 문장: 변수, 자료형, print()
+kor = &#x27;포그는 점점 일정에 쫓기기 시작했다.&#x27;
+eng = &#x27;Fogg gradually began to feel pressed by the schedule.&#x27;
+day = 80
+sentence_no = 61
+
+print(f&quot;[{sentence_no}] {kor}&quot;)
+print(f&quot;영어: {eng}&quot;)
+print(&quot;여행 목표:&quot;, day, &quot;일 안에 세계 일주&quot;)</code></pre></section><section class="card" id="s62"><div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div><h2>62. 장면 문장</h2><p class="kor">일행은 미국 동부에 도착했다.</p><p class="eng">The party arrived in the eastern United States.</p><button onclick="copyCode('code62')">코드 복사</button><pre><code id="code62"># 62번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;일행은 미국 동부에 도착했다.&#x27;
+eng = &#x27;The party arrived in the eastern United States.&#x27;
+
+print(&quot;첫 글자:&quot;, kor[0])
+print(&quot;마지막 글자:&quot;, kor[-1])
+print(&quot;앞 10글자:&quot;, kor[:10])
+print(&quot;영어 앞 20글자:&quot;, eng[:20])</code></pre></section><section class="card" id="s63"><div class="badge">3단계 · 조건문 if</div><h2>63. 장면 문장</h2><p class="kor">다시 배를 타고 대서양을 건넜다.</p><p class="eng">They crossed the Atlantic Ocean by ship again.</p><button onclick="copyCode('code63')">코드 복사</button><pre><code id="code63"># 63번 문장: 조건문 if
+sentence = &#x27;다시 배를 타고 대서양을 건넜다.&#x27;
+keyword = &quot;여행&quot;
+
+if keyword in sentence:
+    print(f&quot;핵심 인물/단어 &#x27;{keyword}&#x27;가 문장에 있습니다.&quot;)
+else:
+    print(f&quot;핵심 단어 &#x27;{keyword}&#x27;가 문장에 없습니다.&quot;)
+
+if len(sentence) &gt;= 25:
+    print(&quot;긴 문장입니다.&quot;)
+else:
+    print(&quot;짧은 문장입니다.&quot;)</code></pre></section><section class="card" id="s64"><div class="badge">4단계 · 반복문 for·while</div><h2>64. 장면 문장</h2><p class="kor">형사 픽스는 마침내 포그를 체포했다.</p><p class="eng">Detective Fix finally arrested Fogg.</p><button onclick="copyCode('code64')">코드 복사</button><pre><code id="code64"># 64번 문장: for문으로 단어 출력
+words = &#x27;형사 픽스는 마침내 포그를 체포했다.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre></section><section class="card" id="s65"><div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div><h2>65. 장면 문장</h2><p class="kor">하지만 곧 오해였음이 밝혀졌다.</p><p class="eng">But soon it was revealed to be a misunderstanding.</p><button onclick="copyCode('code65')">코드 복사</button><pre><code id="code65"># 65번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 65,
+    &quot;kor&quot;: &#x27;하지만 곧 오해였음이 밝혀졌다.&#x27;,
+    &quot;eng&quot;: &#x27;But soon it was revealed to be a misunderstanding.&#x27;,
+    &quot;theme&quot;: &quot;80일간의 세계 일주&quot;
+}
+
+keys = list(scene.keys())
+
+print(&quot;저장된 키:&quot;, keys)
+print(&quot;한글 문장:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어 번역:&quot;, scene[&quot;eng&quot;])</code></pre></section><section class="card" id="s66"><div class="badge">6단계 · 함수·매개변수·반환값</div><h2>66. 장면 문장</h2><p class="kor">진범은 다른 사람이었다.</p><p class="eng">The real criminal was someone else.</p><button onclick="copyCode('code66')">코드 복사</button><pre><code id="code66"># 66번 문장: 함수와 반환값
+def make_card(no, kor, eng):
+    return f&quot;{no}번 장면\nKOR: {kor}\nENG: {eng}&quot;
+
+card = make_card(66, &#x27;진범은 다른 사람이었다.&#x27;, &#x27;The real criminal was someone else.&#x27;)
+print(card)</code></pre></section><section class="card" id="s67"><div class="badge">7단계 · 파일 처리·예외 처리</div><h2>67. 장면 문장</h2><p class="kor">포그는 석방되었지만 귀중한 시간을 잃었다.</p><p class="eng">Fogg was released, but he lost precious time.</p><button onclick="copyCode('code67')">코드 복사</button><pre><code id="code67"># 67번 문장: 예외 처리
+sentences = [&#x27;포그는 석방되었지만 귀중한 시간을 잃었다.&#x27;, &#x27;Fogg was released, but he lost precious time.&#x27;]
+
+try:
+    index = 1
+    print(&quot;선택한 문장:&quot;, sentences[index])
+except IndexError:
+    print(&quot;없는 번호입니다.&quot;)
+finally:
+    print(&quot;문장 확인 완료&quot;)</code></pre></section><section class="card" id="s68"><div class="badge">8단계 · OOP 클래스·객체</div><h2>68. 장면 문장</h2><p class="kor">그는 내기에 질 것처럼 보였다.</p><p class="eng">It seemed that he would lose the wager.</p><button onclick="copyCode('code68')">코드 복사</button><pre><code id="code68"># 68번 문장: 클래스와 객체
+class Scene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = Scene(68, &#x27;그는 내기에 질 것처럼 보였다.&#x27;, &#x27;It seemed that he would lose the wager.&#x27;)
+scene.show()</code></pre></section><section class="card" id="s69"><div class="badge">9단계 · 모듈·라이브러리</div><h2>69. 장면 문장</h2><p class="kor">일행은 서둘러 런던으로 향했다.</p><p class="eng">The party hurried toward London.</p><button onclick="copyCode('code69')">코드 복사</button><pre><code id="code69"># 69번 문장: 모듈 활용
+from collections import Counter
+
+text = &#x27;The party hurried toward London.&#x27;
+letters = [ch.lower() for ch in text if ch.isalpha()]
+count = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 3개:&quot;)
+print(count.most_common(3))</code></pre></section><section class="card" id="s70"><div class="badge">10단계 · 데코레이터·제너레이터</div><h2>70. 장면 문장</h2><p class="kor">포그는 정해진 날짜를 넘겼다고 생각했다.</p><p class="eng">Fogg thought he had missed the appointed date.</p><button onclick="copyCode('code70')">코드 복사</button><pre><code id="code70"># 70번 문장: 데코레이터
+def travel_frame(func):
+    def wrapper():
+        print(&quot;🌍 80일간의 세계 일주 장면 시작&quot;)
+        func()
+        print(&quot;🚂 장면 끝&quot;)
+    return wrapper
+
+@travel_frame
+def show_scene():
+    print(&#x27;포그는 정해진 날짜를 넘겼다고 생각했다.&#x27;)
+    print(&quot;→&quot;, &#x27;Fogg thought he had missed the appointed date.&#x27;)
+
+show_scene()</code></pre></section><section class="card" id="s71"><div class="badge">1단계 · 변수·자료형·print</div><h2>71. 장면 문장</h2><p class="kor">그는 큰 실망에 빠졌다.</p><p class="eng">He fell into great disappointment.</p><button onclick="copyCode('code71')">코드 복사</button><pre><code id="code71"># 71번 문장: 변수, 자료형, print()
+kor = &#x27;그는 큰 실망에 빠졌다.&#x27;
+eng = &#x27;He fell into great disappointment.&#x27;
+day = 80
+sentence_no = 71
+
+print(f&quot;[{sentence_no}] {kor}&quot;)
+print(f&quot;영어: {eng}&quot;)
+print(&quot;여행 목표:&quot;, day, &quot;일 안에 세계 일주&quot;)</code></pre></section><section class="card" id="s72"><div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div><h2>72. 장면 문장</h2><p class="kor">내기에서 패배했다고 믿었다.</p><p class="eng">He believed he had lost the wager.</p><button onclick="copyCode('code72')">코드 복사</button><pre><code id="code72"># 72번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;내기에서 패배했다고 믿었다.&#x27;
+eng = &#x27;He believed he had lost the wager.&#x27;
+
+print(&quot;첫 글자:&quot;, kor[0])
+print(&quot;마지막 글자:&quot;, kor[-1])
+print(&quot;앞 10글자:&quot;, kor[:10])
+print(&quot;영어 앞 20글자:&quot;, eng[:20])</code></pre></section><section class="card" id="s73"><div class="badge">3단계 · 조건문 if</div><h2>73. 장면 문장</h2><p class="kor">아우다는 포그를 위로했다.</p><p class="eng">Aouda comforted Fogg.</p><button onclick="copyCode('code73')">코드 복사</button><pre><code id="code73"># 73번 문장: 조건문 if
+sentence = &#x27;아우다는 포그를 위로했다.&#x27;
+keyword = &quot;포그&quot;
+
+if keyword in sentence:
+    print(f&quot;핵심 인물/단어 &#x27;{keyword}&#x27;가 문장에 있습니다.&quot;)
+else:
+    print(f&quot;핵심 단어 &#x27;{keyword}&#x27;가 문장에 없습니다.&quot;)
+
+if len(sentence) &gt;= 25:
+    print(&quot;긴 문장입니다.&quot;)
+else:
+    print(&quot;짧은 문장입니다.&quot;)</code></pre></section><section class="card" id="s74"><div class="badge">4단계 · 반복문 for·while</div><h2>74. 장면 문장</h2><p class="kor">두 사람은 서로에게 특별한 감정을 느끼게 되었다.</p><p class="eng">The two began to feel special affection for each other.</p><button onclick="copyCode('code74')">코드 복사</button><pre><code id="code74"># 74번 문장: for문으로 단어 출력
+words = &#x27;두 사람은 서로에게 특별한 감정을 느끼게 되었다.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre></section><section class="card" id="s75"><div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div><h2>75. 장면 문장</h2><p class="kor">포그는 아우다에게 청혼하기로 결심했다.</p><p class="eng">Fogg decided to propose to Aouda.</p><button onclick="copyCode('code75')">코드 복사</button><pre><code id="code75"># 75번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 75,
+    &quot;kor&quot;: &#x27;포그는 아우다에게 청혼하기로 결심했다.&#x27;,
+    &quot;eng&quot;: &#x27;Fogg decided to propose to Aouda.&#x27;,
+    &quot;theme&quot;: &quot;80일간의 세계 일주&quot;
+}
+
+keys = list(scene.keys())
+
+print(&quot;저장된 키:&quot;, keys)
+print(&quot;한글 문장:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어 번역:&quot;, scene[&quot;eng&quot;])</code></pre></section><section class="card" id="s76"><div class="badge">6단계 · 함수·매개변수·반환값</div><h2>76. 장면 문장</h2><p class="kor">결혼 준비를 위해 날짜를 확인했다.</p><p class="eng">He checked the date to prepare for the wedding.</p><button onclick="copyCode('code76')">코드 복사</button><pre><code id="code76"># 76번 문장: 함수와 반환값
+def make_card(no, kor, eng):
+    return f&quot;{no}번 장면\nKOR: {kor}\nENG: {eng}&quot;
+
+card = make_card(76, &#x27;결혼 준비를 위해 날짜를 확인했다.&#x27;, &#x27;He checked the date to prepare for the wedding.&#x27;)
+print(card)</code></pre></section><section class="card" id="s77"><div class="badge">7단계 · 파일 처리·예외 처리</div><h2>77. 장면 문장</h2><p class="kor">그때 놀라운 사실을 발견했다.</p><p class="eng">Then he discovered an astonishing fact.</p><button onclick="copyCode('code77')">코드 복사</button><pre><code id="code77"># 77번 문장: 예외 처리
+sentences = [&#x27;그때 놀라운 사실을 발견했다.&#x27;, &#x27;Then he discovered an astonishing fact.&#x27;]
+
+try:
+    index = 1
+    print(&quot;선택한 문장:&quot;, sentences[index])
+except IndexError:
+    print(&quot;없는 번호입니다.&quot;)
+finally:
+    print(&quot;문장 확인 완료&quot;)</code></pre></section><section class="card" id="s78"><div class="badge">8단계 · OOP 클래스·객체</div><h2>78. 장면 문장</h2><p class="kor">동쪽으로 여행하면서 하루를 벌었다는 사실이었다.</p><p class="eng">He had gained a day by traveling eastward.</p><button onclick="copyCode('code78')">코드 복사</button><pre><code id="code78"># 78번 문장: 클래스와 객체
+class Scene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = Scene(78, &#x27;동쪽으로 여행하면서 하루를 벌었다는 사실이었다.&#x27;, &#x27;He had gained a day by traveling eastward.&#x27;)
+scene.show()</code></pre></section><section class="card" id="s79"><div class="badge">9단계 · 모듈·라이브러리</div><h2>79. 장면 문장</h2><p class="kor">그는 실제로 하루를 잃은 것이 아니었다.</p><p class="eng">He had not actually lost a day.</p><button onclick="copyCode('code79')">코드 복사</button><pre><code id="code79"># 79번 문장: 모듈 활용
+from collections import Counter
+
+text = &#x27;He had not actually lost a day.&#x27;
+letters = [ch.lower() for ch in text if ch.isalpha()]
+count = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 3개:&quot;)
+print(count.most_common(3))</code></pre></section><section class="card" id="s80"><div class="badge">10단계 · 데코레이터·제너레이터</div><h2>80. 장면 문장</h2><p class="kor">포그는 제시간에 클럽에 도착해 내기에서 승리했다.</p><p class="eng">Fogg arrived at the club on time and won the wager.</p><button onclick="copyCode('code80')">코드 복사</button><pre><code id="code80"># 80번 문장: 데코레이터
+def travel_frame(func):
+    def wrapper():
+        print(&quot;🌍 80일간의 세계 일주 장면 시작&quot;)
+        func()
+        print(&quot;🚂 장면 끝&quot;)
+    return wrapper
+
+@travel_frame
+def show_scene():
+    print(&#x27;포그는 제시간에 클럽에 도착해 내기에서 승리했다.&#x27;)
+    print(&quot;→&quot;, &#x27;Fogg arrived at the club on time and won the wager.&#x27;)
+
+show_scene()</code></pre></section><section class="card" id="s81"><div class="badge">1단계 · 변수·자료형·print</div><h2>81. 장면 문장</h2><p class="kor">그는 사랑과 우정, 그리고 세계 일주 성공이라는 가장 큰 보상을 얻게 되었다.</p><p class="eng">He gained the greatest rewards: love, friendship, and success in traveling around the world.</p><button onclick="copyCode('code81')">코드 복사</button><pre><code id="code81"># 81번 문장: 변수, 자료형, print()
+kor = &#x27;그는 사랑과 우정, 그리고 세계 일주 성공이라는 가장 큰 보상을 얻게 되었다.&#x27;
+eng = &#x27;He gained the greatest rewards: love, friendship, and success in traveling around the world.&#x27;
+day = 80
+sentence_no = 81
+
+print(f&quot;[{sentence_no}] {kor}&quot;)
+print(f&quot;영어: {eng}&quot;)
+print(&quot;여행 목표:&quot;, day, &quot;일 안에 세계 일주&quot;)</code></pre></section></main><footer>80일간의 세계 일주 × 파이썬 10단계 문법 학습 HTML</footer><script>function copyCode(id){const text=document.getElementById(id).innerText;navigator.clipboard.writeText(text).then(()=>alert('코드가 복사되었습니다.'));}function goScene(){const id=document.getElementById('jump').value;if(id)document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});}</script></body></html>
