@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>피노키오와 함께하는 즐겁고 신나는 파이썬</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Malgun Gothic","Nanum Gothic",Arial,sans-serif;
+  background:linear-gradient(135deg,#fef3c7,#dcfce7,#e0f2fe);
+  color:#1f2937;
+  line-height:1.7;
+}
+header{
+  background:linear-gradient(135deg,#7c2d12,#15803d,#1e3a8a);
+  color:white;
+  text-align:center;
+  padding:38px 18px;
+}
+header h1{margin:0;font-size:34px}
+header p{max-width:980px;margin:10px auto 0;font-size:18px}
+nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:white;
+  border-bottom:1px solid #bbf7d0;
+  box-shadow:0 4px 14px rgba(0,0,0,.08);
+  padding:10px;
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+}
+select,button{
+  font-family:inherit;
+  font-size:14px;
+  border-radius:10px;
+  padding:9px 12px;
+}
+select{
+  min-width:360px;
+  max-width:85vw;
+  border:1px solid #22c55e;
+}
+button{
+  border:none;
+  background:#15803d;
+  color:white;
+  font-weight:800;
+  cursor:pointer;
+}
+button:hover{filter:brightness(1.12)}
+main{max-width:1150px;margin:24px auto 60px;padding:0 16px}
+.intro,.card{
+  background:white;
+  border-radius:20px;
+  padding:24px;
+  margin-bottom:22px;
+  box-shadow:0 10px 25px rgba(15,23,42,.10);
+}
+.intro h2,.card h2{margin-top:0;color:#15803d}
+table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden}
+th,td{border:1px solid #bbf7d0;padding:10px;vertical-align:top}
+th{background:#dcfce7}
+.badge{
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:999px;
+  background:#fef3c7;
+  color:#92400e;
+  font-weight:900;
+  margin-bottom:10px;
+}
+.eng,.kor{
+  padding:13px 15px;
+  border-radius:14px;
+  margin:10px 0;
+}
+.eng{
+  background:#e0f2fe;
+  border-left:7px solid #0284c7;
+  font-size:18px;
+}
+.kor{
+  background:#fef3c7;
+  border-left:7px solid #f59e0b;
+  font-size:19px;
+  font-weight:700;
+}
+pre{
+  background:#111827;
+  color:#f8fafc;
+  padding:18px;
+  border-radius:14px;
+  overflow-x:auto;
+  font-size:15px;
+  line-height:1.55;
+}
+code{font-family:Consolas,"Courier New",monospace}
+footer{text-align:center;padding:28px;color:#475569}
+.small{color:#64748b;font-size:14px}
+@media(max-width:700px){
+  header h1{font-size:25px}
+  select{min-width:220px}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>🪵 《피노키오》와 함께하는 즐겁고 신나는 파이썬</h1>
+  <p>100개 줄거리 문장을 순서대로 빠짐없이 활용하여 파이썬 기초·응용·심화 10단계 문법을 서로 다른 예시 코드로 학습합니다.</p>
+</header>
+
+<nav>
+  <label for="jump"><b>장면 이동</b></label>
+  <select id="jump" onchange="goScene()">
+    <option value="">장면 선택</option>
+    <option value="s1">001. 제페토는 작은 마을에 사는 가난한 목수였다.</option><option value="s2">002. 어느 날 그는 특별한 나무토막을 얻었다.</option><option value="s3">003. 그 나무는 살아 있는 것처럼 말을 할 수 있었다.</option><option value="s4">004. 제페토는 그것으로 인형을 만들기로 했다.</option><option value="s5">005. 그는 그 인형에게 피노키오라는 이름을 붙였다.</option><option value="s6">006. 피노키오의 다리가 완성되자마자 그는 움직이기 시작했다.</option><option value="s7">007. 그 인형은 넘치는 활력으로 모두를 놀라게 했다.</option><option value="s8">008. 피노키오는 자주 생각 없이 행동했다.</option><option value="s9">009. 제페토는 그가 착한 아이가 되기를 바랐다.</option><option value="s10">010. 그는 교과서를 사 주기 위해 자신의 외투까지 팔았다.</option><option value="s11">011. 피노키오는 학교에 가겠다고 약속했다.</option><option value="s12">012. 그러나 그는 쉽게 유혹에 빠졌다.</option><option value="s13">013. 학교에 가는 길에 그는 말하는 귀뚜라미를 만났다.</option><option value="s14">014. 귀뚜라미는 그에게 좋은 충고를 해 주려 했다.</option><option value="s15">015. 피노키오는 그 말을 제대로 듣지 않았다.</option><option value="s16">016. 곧 그는 곤경에 빠졌다.</option><option value="s17">017. 그는 인형극을 보기 위해 교과서를 팔아 버렸다.</option><option value="s18">018. 인형극 단장이 그를 발견했다.</option><option value="s19">019. 처음에는 단장이 무섭게 보였다.</option><option value="s20">020. 그러나 결국 그는 친절을 베풀었다.</option><option value="s21">021. 단장은 피노키오에게 금화 몇 개를 주었다.</option><option value="s22">022. 피노키오는 그것을 집으로 가져가려고 했다.</option><option value="s23">023. 길에서 그는 여우와 고양이를 만났다.</option><option value="s24">024. 여우와 고양이는 그의 친구인 척했다.</option><option value="s25">025. 그들은 쉽게 부자가 될 수 있다고 속였다.</option><option value="s26">026. 피노키오는 그들의 거짓말을 믿었다.</option><option value="s27">027. 그들은 기적의 밭 이야기를 들려주었다.</option><option value="s28">028. 그곳에서는 금화가 나무로 자란다고 말했다.</option><option value="s29">029. 피노키오는 금화를 밭에 묻었다.</option><option value="s30">030. 그러나 금화는 도난당했다.</option><option value="s31">031. 피노키오는 슬프고 어리석게 느껴졌다.</option><option value="s32">032. 곧 그는 신비한 푸른 요정을 만났다.</option><option value="s33">033. 푸른 요정은 피노키오를 아껴 주었다.</option><option value="s34">034. 그녀는 그가 정직하고 책임감 있는 아이가 되기를 바랐다.</option><option value="s35">035. 피노키오는 자주 거짓말을 했다.</option><option value="s36">036. 그가 거짓말을 할 때마다 코가 길어졌다.</option><option value="s37">037. 길어지는 코는 그를 부끄럽게 만들었다.</option><option value="s38">038. 푸른 요정은 그에게 중요한 교훈을 가르쳐 주었다.</option><option value="s39">039. 정직은 속임수보다 훨씬 중요했다.</option><option value="s40">040. 피노키오는 달라지겠다고 약속했다.</option><option value="s41">041. 한동안 그는 착하게 행동했다.</option><option value="s42">042. 그는 열심히 공부하고 다른 사람들을 도왔다.</option><option value="s43">043. 푸른 요정은 그의 발전을 기뻐했다.</option><option value="s44">044. 그녀는 그에게 보상을 주려고 했다.</option><option value="s45">045. 그러나 그 전에 피노키오는 나쁜 친구들을 만났다.</option><option value="s46">046. 그들은 그를 장난감 나라로 초대했다.</option><option value="s47">047. 그곳은 즐거움과 자유로 가득해 보였다.</option><option value="s48">048. 아이들은 공부하지 않고 하루 종일 놀았다.</option><option value="s49">049. 피노키오는 그 생각에 신이 났다.</option><option value="s50">050. 그는 그들과 함께 가기로 결정했다.</option><option value="s51">051. 처음에 장난감 나라의 생활은 정말 멋져 보였다.</option><option value="s52">052. 피노키오는 매일 게임을 하며 시간을 보냈다.</option><option value="s53">053. 그는 학교와 책임감을 잊어버렸다.</option><option value="s54">054. 아이들은 웃으며 즐겁게 지냈다.</option><option value="s55">055. 그러나 그 즐거움은 영원히 지속되지 않았다.</option><option value="s56">056. 어느 날 아침 피노키오는 이상한 점을 발견했다.</option><option value="s57">057. 그의 귀가 당나귀 귀처럼 길어져 있었다.</option><option value="s58">058. 곧 꼬리까지 생겨났다.</option><option value="s59">059. 피노키오는 당나귀로 변하고 있었다.</option><option value="s60">060. 그는 자신의 선택이 가져온 끔찍한 결과를 깨달았다.</option><option value="s61">061. 얼마 지나지 않아 그는 완전한 당나귀가 되었다.</option><option value="s62">062. 그는 서커스단 주인에게 팔려 갔다.</option><option value="s63">063. 주인은 그에게 재주를 부리도록 훈련시켰다.</option><option value="s64">064. 피노키오는 비참하고 부끄러웠다.</option><option value="s65">065. 공연 도중 그는 다치고 말았다.</option><option value="s66">066. 주인은 그가 더 이상 쓸모없다고 생각했다.</option><option value="s67">067. 피노키오는 바다에 던져졌다.</option><option value="s68">068. 바닷물은 그의 당나귀 모습을 씻어 내렸다.</option><option value="s69">069. 그는 다시 나무 인형이 되었다.</option><option value="s70">070. 피노키오는 안도했지만 여전히 외로웠다.</option><option value="s71">071. 헤엄치던 중 그는 제페토가 실종되었다는 사실을 알게 되었다</option><option value="s72">072. 제페토는 그를 찾으러 떠났었다.</option><option value="s73">073. 거대한 바다 괴물이 제페토를 삼켜 버렸다.</option><option value="s74">074. 피노키오는 즉시 그를 구하러 떠났다.</option><option value="s75">075. 그는 용감하게 바다를 헤엄쳐 갔다.</option><option value="s76">076. 결국 그 역시 괴물에게 삼켜지고 말았다.</option><option value="s77">077. 괴물의 뱃속에서 그는 살아 있는 제페토를 발견했다.</option><option value="s78">078. 재회한 두 사람은 매우 기뻤다.</option><option value="s79">079. 그들은 함께 탈출 계획을 세웠다.</option><option value="s80">080. 그들은 적절한 순간을 인내심 있게 기다렸다.</option><option value="s81">081. 어느 밤 바다 괴물은 잠이 들었다.</option><option value="s82">082. 피노키오와 제페토는 조용히 탈출했다.</option><option value="s83">083. 그들은 무사히 해안으로 돌아왔다.</option><option value="s84">084. 그들의 삶은 여전히 힘들었다.</option><option value="s85">085. 제페토는 늙고 쇠약해져 있었다.</option><option value="s86">086. 피노키오는 책임감을 갖기로 결심했다.</option><option value="s87">087. 그는 제페토를 부양하기 위해 열심히 일했다.</option><option value="s88">088. 그는 가능한 한 다른 사람들을 도왔다.</option><option value="s89">089. 그는 더욱 정직하고 이타적인 사람이 되었다.</option><option value="s90">090. 푸른 요정은 그의 성장을 자랑스럽게 지켜보았다.</option><option value="s91">091. 피노키오는 더 이상 쉽게 얻는 보상을 쫓지 않았다.</option><option value="s92">092. 그는 노력의 가치를 이해하게 되었다.</option><option value="s93">093. 그는 진실의 중요성도 배웠다.</option><option value="s94">094. 그의 친절함은 많은 사람들을 감동시켰다.</option><option value="s95">095. 푸른 요정은 그가 진정으로 변했다고 판단했다.</option><option value="s96">096. 그녀는 그의 선한 행동에 보답했다.</option><option value="s97">097. 어느 날 아침 피노키오는 진짜 소년이 되어 깨어났다.</option><option value="s98">098. 제페토는 그 변화를 보고 매우 기뻐했다.</option><option value="s99">099. 피노키오는 마침내 자신의 꿈을 이루었다.</option><option value="s100">100. 그는 정직하고 책임감 있는 소년으로 행복하게 살아갔다.</option>
+  </select>
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})">맨 위</button>
+</nav>
+
+<main>
+<section class="intro">
+  <h2>학습 구성</h2>
+  <p>각 장면은 <b>영어 문장 → 한글 번역 → 해당 문장을 활용한 파이썬 예시 코드</b> 순서로 구성했습니다.</p>
+  <table>
+    <thead><tr><th>단계</th><th>학습 요소</th><th>해당 문장 번호</th></tr></thead>
+    <tbody><tr><td>1단계</td><td>변수·자료형·print</td><td>1, 11, 21, 31, 41, 51, 61, 71, 81, 91</td></tr><tr><td>2단계</td><td>문자열·인덱싱·슬라이싱</td><td>2, 12, 22, 32, 42, 52, 62, 72, 82, 92</td></tr><tr><td>3단계</td><td>조건문 if</td><td>3, 13, 23, 33, 43, 53, 63, 73, 83, 93</td></tr><tr><td>4단계</td><td>반복문 for·while</td><td>4, 14, 24, 34, 44, 54, 64, 74, 84, 94</td></tr><tr><td>5단계</td><td>리스트·튜플·집합·딕셔너리</td><td>5, 15, 25, 35, 45, 55, 65, 75, 85, 95</td></tr><tr><td>6단계</td><td>함수·매개변수·반환값</td><td>6, 16, 26, 36, 46, 56, 66, 76, 86, 96</td></tr><tr><td>7단계</td><td>파일 처리·예외 처리</td><td>7, 17, 27, 37, 47, 57, 67, 77, 87, 97</td></tr><tr><td>8단계</td><td>OOP 클래스·객체</td><td>8, 18, 28, 38, 48, 58, 68, 78, 88, 98</td></tr><tr><td>9단계</td><td>모듈·라이브러리</td><td>9, 19, 29, 39, 49, 59, 69, 79, 89, 99</td></tr><tr><td>10단계</td><td>데코레이터·제너레이터</td><td>10, 20, 30, 40, 50, 60, 70, 80, 90, 100</td></tr></tbody>
+  </table>
+  <p class="small">코드 복사 버튼을 눌러 IDLE, VS Code, 코랩에서 바로 실행할 수 있습니다.</p>
+</section>
+
+
+<section class="card" id="s1">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>1. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Geppetto was a poor woodcarver who lived in a small village.</p>
+  <p class="kor"><b>한글 번역</b><br>제페토는 작은 마을에 사는 가난한 목수였다.</p>
+  <button onclick="copyCode('code1')">코드 복사</button>
+  <pre><code id="code1"># 1번 문장: 변수, 자료형, print()
+title = &quot;Pinocchio&quot;
+sentence_no = 1
+kor = &#x27;제페토는 작은 마을에 사는 가난한 목수였다.&#x27;
+eng = &#x27;Geppetto was a poor woodcarver who lived in a small village.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s2">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>2. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>One day, he received a special piece of wood.</p>
+  <p class="kor"><b>한글 번역</b><br>어느 날 그는 특별한 나무토막을 얻었다.</p>
+  <button onclick="copyCode('code2')">코드 복사</button>
+  <pre><code id="code2"># 2번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;어느 날 그는 특별한 나무토막을 얻었다.&#x27;
+eng = &#x27;One day, he received a special piece of wood.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s3">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>3. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The wood seemed alive and could speak.</p>
+  <p class="kor"><b>한글 번역</b><br>그 나무는 살아 있는 것처럼 말을 할 수 있었다.</p>
+  <button onclick="copyCode('code3')">코드 복사</button>
+  <pre><code id="code3"># 3번 문장: 조건문 if
+kor = &#x27;그 나무는 살아 있는 것처럼 말을 할 수 있었다.&#x27;
+keyword = &quot;진실&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s4">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>4. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Geppetto decided to carve a puppet from it.</p>
+  <p class="kor"><b>한글 번역</b><br>제페토는 그것으로 인형을 만들기로 했다.</p>
+  <button onclick="copyCode('code4')">코드 복사</button>
+  <pre><code id="code4"># 4번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Geppetto decided to carve a puppet from it.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s5">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>5. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>He named the puppet Pinocchio.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 그 인형에게 피노키오라는 이름을 붙였다.</p>
+  <button onclick="copyCode('code5')">코드 복사</button>
+  <pre><code id="code5"># 5번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 5,
+    &quot;title&quot;: &quot;피노키오&quot;,
+    &quot;kor&quot;: &#x27;그는 그 인형에게 피노키오라는 이름을 붙였다.&#x27;,
+    &quot;eng&quot;: &#x27;He named the puppet Pinocchio.&#x27;,
+    &quot;theme&quot;: &quot;정직과 성장&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s6">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>6. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>As soon as Pinocchio&#x27;s legs were finished, he began to move.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오의 다리가 완성되자마자 그는 움직이기 시작했다.</p>
+  <button onclick="copyCode('code6')">코드 복사</button>
+  <pre><code id="code6"># 6번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[피노키오 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(6, &#x27;피노키오의 다리가 완성되자마자 그는 움직이기 시작했다.&#x27;, &quot;As soon as Pinocchio&#x27;s legs were finished, he began to move.&quot;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s7">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>7. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The puppet surprised everyone with his energy.</p>
+  <p class="kor"><b>한글 번역</b><br>그 인형은 넘치는 활력으로 모두를 놀라게 했다.</p>
+  <button onclick="copyCode('code7')">코드 복사</button>
+  <pre><code id="code7"># 7번 문장: 예외 처리
+sentences = [&#x27;그 인형은 넘치는 활력으로 모두를 놀라게 했다.&#x27;, &#x27;The puppet surprised everyone with his energy.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s8">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>8. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio often acted without thinking.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 자주 생각 없이 행동했다.</p>
+  <button onclick="copyCode('code8')">코드 복사</button>
+  <pre><code id="code8"># 8번 문장: 클래스와 객체
+class PinocchioScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = PinocchioScene(8, &#x27;피노키오는 자주 생각 없이 행동했다.&#x27;, &#x27;Pinocchio often acted without thinking.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s9">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>9. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Geppetto wanted him to become a good boy.</p>
+  <p class="kor"><b>한글 번역</b><br>제페토는 그가 착한 아이가 되기를 바랐다.</p>
+  <button onclick="copyCode('code9')">코드 복사</button>
+  <pre><code id="code9"># 9번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Geppetto wanted him to become a good boy.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s10">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>10. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>He even sold his coat to buy schoolbooks.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 교과서를 사 주기 위해 자신의 외투까지 팔았다.</p>
+  <button onclick="copyCode('code10')">코드 복사</button>
+  <pre><code id="code10"># 10번 문장: 데코레이터
+def honesty_frame(func):
+    def wrapper():
+        print(&quot;🪵 피노키오 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@honesty_frame
+def show_scene():
+    print(&#x27;그는 교과서를 사 주기 위해 자신의 외투까지 팔았다.&#x27;)
+    print(&quot;→&quot;, &#x27;He even sold his coat to buy schoolbooks.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s11">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>11. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio promised to go to school.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 학교에 가겠다고 약속했다.</p>
+  <button onclick="copyCode('code11')">코드 복사</button>
+  <pre><code id="code11"># 11번 문장: 변수, 자료형, print()
+title = &quot;Pinocchio&quot;
+sentence_no = 11
+kor = &#x27;피노키오는 학교에 가겠다고 약속했다.&#x27;
+eng = &#x27;Pinocchio promised to go to school.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s12">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>12. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>However, he was easily distracted.</p>
+  <p class="kor"><b>한글 번역</b><br>그러나 그는 쉽게 유혹에 빠졌다.</p>
+  <button onclick="copyCode('code12')">코드 복사</button>
+  <pre><code id="code12"># 12번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그러나 그는 쉽게 유혹에 빠졌다.&#x27;
+eng = &#x27;However, he was easily distracted.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s13">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>13. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>On the way to school, he met a talking cricket.</p>
+  <p class="kor"><b>한글 번역</b><br>학교에 가는 길에 그는 말하는 귀뚜라미를 만났다.</p>
+  <button onclick="copyCode('code13')">코드 복사</button>
+  <pre><code id="code13"># 13번 문장: 조건문 if
+kor = &#x27;학교에 가는 길에 그는 말하는 귀뚜라미를 만났다.&#x27;
+keyword = &quot;진실&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s14">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>14. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The cricket tried to give him good advice.</p>
+  <p class="kor"><b>한글 번역</b><br>귀뚜라미는 그에게 좋은 충고를 해 주려 했다.</p>
+  <button onclick="copyCode('code14')">코드 복사</button>
+  <pre><code id="code14"># 14번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;The cricket tried to give him good advice.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s15">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>15. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio refused to listen carefully.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 그 말을 제대로 듣지 않았다.</p>
+  <button onclick="copyCode('code15')">코드 복사</button>
+  <pre><code id="code15"># 15번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 15,
+    &quot;title&quot;: &quot;피노키오&quot;,
+    &quot;kor&quot;: &#x27;피노키오는 그 말을 제대로 듣지 않았다.&#x27;,
+    &quot;eng&quot;: &#x27;Pinocchio refused to listen carefully.&#x27;,
+    &quot;theme&quot;: &quot;정직과 성장&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s16">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>16. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Soon he got into trouble.</p>
+  <p class="kor"><b>한글 번역</b><br>곧 그는 곤경에 빠졌다.</p>
+  <button onclick="copyCode('code16')">코드 복사</button>
+  <pre><code id="code16"># 16번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[피노키오 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(16, &#x27;곧 그는 곤경에 빠졌다.&#x27;, &#x27;Soon he got into trouble.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s17">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>17. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>He sold his schoolbook to watch a puppet show.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 인형극을 보기 위해 교과서를 팔아 버렸다.</p>
+  <button onclick="copyCode('code17')">코드 복사</button>
+  <pre><code id="code17"># 17번 문장: 예외 처리
+sentences = [&#x27;그는 인형극을 보기 위해 교과서를 팔아 버렸다.&#x27;, &#x27;He sold his schoolbook to watch a puppet show.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s18">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>18. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The puppet master noticed him.</p>
+  <p class="kor"><b>한글 번역</b><br>인형극 단장이 그를 발견했다.</p>
+  <button onclick="copyCode('code18')">코드 복사</button>
+  <pre><code id="code18"># 18번 문장: 클래스와 객체
+class PinocchioScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = PinocchioScene(18, &#x27;인형극 단장이 그를 발견했다.&#x27;, &#x27;The puppet master noticed him.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s19">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>19. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>At first, the master looked frightening.</p>
+  <p class="kor"><b>한글 번역</b><br>처음에는 단장이 무섭게 보였다.</p>
+  <button onclick="copyCode('code19')">코드 복사</button>
+  <pre><code id="code19"># 19번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;At first, the master looked frightening.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s20">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>20. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>But he eventually showed kindness.</p>
+  <p class="kor"><b>한글 번역</b><br>그러나 결국 그는 친절을 베풀었다.</p>
+  <button onclick="copyCode('code20')">코드 복사</button>
+  <pre><code id="code20"># 20번 문장: 데코레이터
+def honesty_frame(func):
+    def wrapper():
+        print(&quot;🪵 피노키오 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@honesty_frame
+def show_scene():
+    print(&#x27;그러나 결국 그는 친절을 베풀었다.&#x27;)
+    print(&quot;→&quot;, &#x27;But he eventually showed kindness.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s21">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>21. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The master gave Pinocchio several gold coins.</p>
+  <p class="kor"><b>한글 번역</b><br>단장은 피노키오에게 금화 몇 개를 주었다.</p>
+  <button onclick="copyCode('code21')">코드 복사</button>
+  <pre><code id="code21"># 21번 문장: 변수, 자료형, print()
+title = &quot;Pinocchio&quot;
+sentence_no = 21
+kor = &#x27;단장은 피노키오에게 금화 몇 개를 주었다.&#x27;
+eng = &#x27;The master gave Pinocchio several gold coins.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s22">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>22. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio planned to take them home.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 그것을 집으로 가져가려고 했다.</p>
+  <button onclick="copyCode('code22')">코드 복사</button>
+  <pre><code id="code22"># 22번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;피노키오는 그것을 집으로 가져가려고 했다.&#x27;
+eng = &#x27;Pinocchio planned to take them home.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s23">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>23. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Along the road, he met a Fox and a Cat.</p>
+  <p class="kor"><b>한글 번역</b><br>길에서 그는 여우와 고양이를 만났다.</p>
+  <button onclick="copyCode('code23')">코드 복사</button>
+  <pre><code id="code23"># 23번 문장: 조건문 if
+kor = &#x27;길에서 그는 여우와 고양이를 만났다.&#x27;
+keyword = &quot;진실&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s24">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>24. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The Fox and the Cat pretended to be his friends.</p>
+  <p class="kor"><b>한글 번역</b><br>여우와 고양이는 그의 친구인 척했다.</p>
+  <button onclick="copyCode('code24')">코드 복사</button>
+  <pre><code id="code24"># 24번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;The Fox and the Cat pretended to be his friends.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s25">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>25. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>They tricked him with promises of easy wealth.</p>
+  <p class="kor"><b>한글 번역</b><br>그들은 쉽게 부자가 될 수 있다고 속였다.</p>
+  <button onclick="copyCode('code25')">코드 복사</button>
+  <pre><code id="code25"># 25번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 25,
+    &quot;title&quot;: &quot;피노키오&quot;,
+    &quot;kor&quot;: &#x27;그들은 쉽게 부자가 될 수 있다고 속였다.&#x27;,
+    &quot;eng&quot;: &#x27;They tricked him with promises of easy wealth.&#x27;,
+    &quot;theme&quot;: &quot;정직과 성장&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s26">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>26. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio believed their lies.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 그들의 거짓말을 믿었다.</p>
+  <button onclick="copyCode('code26')">코드 복사</button>
+  <pre><code id="code26"># 26번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[피노키오 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(26, &#x27;피노키오는 그들의 거짓말을 믿었다.&#x27;, &#x27;Pinocchio believed their lies.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s27">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>27. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>They told him about a magical Field of Miracles.</p>
+  <p class="kor"><b>한글 번역</b><br>그들은 기적의 밭 이야기를 들려주었다.</p>
+  <button onclick="copyCode('code27')">코드 복사</button>
+  <pre><code id="code27"># 27번 문장: 예외 처리
+sentences = [&#x27;그들은 기적의 밭 이야기를 들려주었다.&#x27;, &#x27;They told him about a magical Field of Miracles.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s28">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>28. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>They claimed gold coins would grow into trees there.</p>
+  <p class="kor"><b>한글 번역</b><br>그곳에서는 금화가 나무로 자란다고 말했다.</p>
+  <button onclick="copyCode('code28')">코드 복사</button>
+  <pre><code id="code28"># 28번 문장: 클래스와 객체
+class PinocchioScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = PinocchioScene(28, &#x27;그곳에서는 금화가 나무로 자란다고 말했다.&#x27;, &#x27;They claimed gold coins would grow into trees there.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s29">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>29. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio buried his coins in the field.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 금화를 밭에 묻었다.</p>
+  <button onclick="copyCode('code29')">코드 복사</button>
+  <pre><code id="code29"># 29번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Pinocchio buried his coins in the field.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s30">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>30. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The coins were stolen.</p>
+  <p class="kor"><b>한글 번역</b><br>그러나 금화는 도난당했다.</p>
+  <button onclick="copyCode('code30')">코드 복사</button>
+  <pre><code id="code30"># 30번 문장: 데코레이터
+def honesty_frame(func):
+    def wrapper():
+        print(&quot;🪵 피노키오 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@honesty_frame
+def show_scene():
+    print(&#x27;그러나 금화는 도난당했다.&#x27;)
+    print(&quot;→&quot;, &#x27;The coins were stolen.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s31">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>31. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio felt sad and foolish.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 슬프고 어리석게 느껴졌다.</p>
+  <button onclick="copyCode('code31')">코드 복사</button>
+  <pre><code id="code31"># 31번 문장: 변수, 자료형, print()
+title = &quot;Pinocchio&quot;
+sentence_no = 31
+kor = &#x27;피노키오는 슬프고 어리석게 느껴졌다.&#x27;
+eng = &#x27;Pinocchio felt sad and foolish.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s32">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>32. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Soon he met a mysterious Blue Fairy.</p>
+  <p class="kor"><b>한글 번역</b><br>곧 그는 신비한 푸른 요정을 만났다.</p>
+  <button onclick="copyCode('code32')">코드 복사</button>
+  <pre><code id="code32"># 32번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;곧 그는 신비한 푸른 요정을 만났다.&#x27;
+eng = &#x27;Soon he met a mysterious Blue Fairy.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s33">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>33. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The Blue Fairy cared about Pinocchio.</p>
+  <p class="kor"><b>한글 번역</b><br>푸른 요정은 피노키오를 아껴 주었다.</p>
+  <button onclick="copyCode('code33')">코드 복사</button>
+  <pre><code id="code33"># 33번 문장: 조건문 if
+kor = &#x27;푸른 요정은 피노키오를 아껴 주었다.&#x27;
+keyword = &quot;피노키오&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s34">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>34. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>She wanted him to become honest and responsible.</p>
+  <p class="kor"><b>한글 번역</b><br>그녀는 그가 정직하고 책임감 있는 아이가 되기를 바랐다.</p>
+  <button onclick="copyCode('code34')">코드 복사</button>
+  <pre><code id="code34"># 34번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;She wanted him to become honest and responsible.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s35">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>35. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio often told lies.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 자주 거짓말을 했다.</p>
+  <button onclick="copyCode('code35')">코드 복사</button>
+  <pre><code id="code35"># 35번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 35,
+    &quot;title&quot;: &quot;피노키오&quot;,
+    &quot;kor&quot;: &#x27;피노키오는 자주 거짓말을 했다.&#x27;,
+    &quot;eng&quot;: &#x27;Pinocchio often told lies.&#x27;,
+    &quot;theme&quot;: &quot;정직과 성장&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s36">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>36. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Whenever he lied, his nose grew longer.</p>
+  <p class="kor"><b>한글 번역</b><br>그가 거짓말을 할 때마다 코가 길어졌다.</p>
+  <button onclick="copyCode('code36')">코드 복사</button>
+  <pre><code id="code36"># 36번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[피노키오 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(36, &#x27;그가 거짓말을 할 때마다 코가 길어졌다.&#x27;, &#x27;Whenever he lied, his nose grew longer.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s37">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>37. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The growing nose embarrassed him.</p>
+  <p class="kor"><b>한글 번역</b><br>길어지는 코는 그를 부끄럽게 만들었다.</p>
+  <button onclick="copyCode('code37')">코드 복사</button>
+  <pre><code id="code37"># 37번 문장: 예외 처리
+sentences = [&#x27;길어지는 코는 그를 부끄럽게 만들었다.&#x27;, &#x27;The growing nose embarrassed him.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s38">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>38. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The Blue Fairy taught him an important lesson.</p>
+  <p class="kor"><b>한글 번역</b><br>푸른 요정은 그에게 중요한 교훈을 가르쳐 주었다.</p>
+  <button onclick="copyCode('code38')">코드 복사</button>
+  <pre><code id="code38"># 38번 문장: 클래스와 객체
+class PinocchioScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = PinocchioScene(38, &#x27;푸른 요정은 그에게 중요한 교훈을 가르쳐 주었다.&#x27;, &#x27;The Blue Fairy taught him an important lesson.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s39">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>39. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Honesty was better than deception.</p>
+  <p class="kor"><b>한글 번역</b><br>정직은 속임수보다 훨씬 중요했다.</p>
+  <button onclick="copyCode('code39')">코드 복사</button>
+  <pre><code id="code39"># 39번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Honesty was better than deception.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s40">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>40. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio promised to improve.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 달라지겠다고 약속했다.</p>
+  <button onclick="copyCode('code40')">코드 복사</button>
+  <pre><code id="code40"># 40번 문장: 데코레이터
+def honesty_frame(func):
+    def wrapper():
+        print(&quot;🪵 피노키오 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@honesty_frame
+def show_scene():
+    print(&#x27;피노키오는 달라지겠다고 약속했다.&#x27;)
+    print(&quot;→&quot;, &#x27;Pinocchio promised to improve.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s41">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>41. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>For a while, he behaved well.</p>
+  <p class="kor"><b>한글 번역</b><br>한동안 그는 착하게 행동했다.</p>
+  <button onclick="copyCode('code41')">코드 복사</button>
+  <pre><code id="code41"># 41번 문장: 변수, 자료형, print()
+title = &quot;Pinocchio&quot;
+sentence_no = 41
+kor = &#x27;한동안 그는 착하게 행동했다.&#x27;
+eng = &#x27;For a while, he behaved well.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s42">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>42. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>He studied hard and helped others.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 열심히 공부하고 다른 사람들을 도왔다.</p>
+  <button onclick="copyCode('code42')">코드 복사</button>
+  <pre><code id="code42"># 42번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그는 열심히 공부하고 다른 사람들을 도왔다.&#x27;
+eng = &#x27;He studied hard and helped others.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s43">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>43. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The Blue Fairy was pleased with his progress.</p>
+  <p class="kor"><b>한글 번역</b><br>푸른 요정은 그의 발전을 기뻐했다.</p>
+  <button onclick="copyCode('code43')">코드 복사</button>
+  <pre><code id="code43"># 43번 문장: 조건문 if
+kor = &#x27;푸른 요정은 그의 발전을 기뻐했다.&#x27;
+keyword = &quot;요정&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s44">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>44. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>She prepared to reward him.</p>
+  <p class="kor"><b>한글 번역</b><br>그녀는 그에게 보상을 주려고 했다.</p>
+  <button onclick="copyCode('code44')">코드 복사</button>
+  <pre><code id="code44"># 44번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;She prepared to reward him.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s45">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>45. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Before that could happen, Pinocchio met bad companions.</p>
+  <p class="kor"><b>한글 번역</b><br>그러나 그 전에 피노키오는 나쁜 친구들을 만났다.</p>
+  <button onclick="copyCode('code45')">코드 복사</button>
+  <pre><code id="code45"># 45번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 45,
+    &quot;title&quot;: &quot;피노키오&quot;,
+    &quot;kor&quot;: &#x27;그러나 그 전에 피노키오는 나쁜 친구들을 만났다.&#x27;,
+    &quot;eng&quot;: &#x27;Before that could happen, Pinocchio met bad companions.&#x27;,
+    &quot;theme&quot;: &quot;정직과 성장&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s46">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>46. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>They invited him to the Land of Toys.</p>
+  <p class="kor"><b>한글 번역</b><br>그들은 그를 장난감 나라로 초대했다.</p>
+  <button onclick="copyCode('code46')">코드 복사</button>
+  <pre><code id="code46"># 46번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[피노키오 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(46, &#x27;그들은 그를 장난감 나라로 초대했다.&#x27;, &#x27;They invited him to the Land of Toys.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s47">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>47. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The place seemed full of fun and freedom.</p>
+  <p class="kor"><b>한글 번역</b><br>그곳은 즐거움과 자유로 가득해 보였다.</p>
+  <button onclick="copyCode('code47')">코드 복사</button>
+  <pre><code id="code47"># 47번 문장: 예외 처리
+sentences = [&#x27;그곳은 즐거움과 자유로 가득해 보였다.&#x27;, &#x27;The place seemed full of fun and freedom.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s48">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>48. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Children played all day without studying.</p>
+  <p class="kor"><b>한글 번역</b><br>아이들은 공부하지 않고 하루 종일 놀았다.</p>
+  <button onclick="copyCode('code48')">코드 복사</button>
+  <pre><code id="code48"># 48번 문장: 클래스와 객체
+class PinocchioScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = PinocchioScene(48, &#x27;아이들은 공부하지 않고 하루 종일 놀았다.&#x27;, &#x27;Children played all day without studying.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s49">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>49. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio was excited by the idea.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 그 생각에 신이 났다.</p>
+  <button onclick="copyCode('code49')">코드 복사</button>
+  <pre><code id="code49"># 49번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Pinocchio was excited by the idea.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s50">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>50. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>He decided to go with them.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 그들과 함께 가기로 결정했다.</p>
+  <button onclick="copyCode('code50')">코드 복사</button>
+  <pre><code id="code50"># 50번 문장: 데코레이터
+def honesty_frame(func):
+    def wrapper():
+        print(&quot;🪵 피노키오 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@honesty_frame
+def show_scene():
+    print(&#x27;그는 그들과 함께 가기로 결정했다.&#x27;)
+    print(&quot;→&quot;, &#x27;He decided to go with them.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s51">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>51. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>At first, life in the Land of Toys seemed wonderful.</p>
+  <p class="kor"><b>한글 번역</b><br>처음에 장난감 나라의 생활은 정말 멋져 보였다.</p>
+  <button onclick="copyCode('code51')">코드 복사</button>
+  <pre><code id="code51"># 51번 문장: 변수, 자료형, print()
+title = &quot;Pinocchio&quot;
+sentence_no = 51
+kor = &#x27;처음에 장난감 나라의 생활은 정말 멋져 보였다.&#x27;
+eng = &#x27;At first, life in the Land of Toys seemed wonderful.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s52">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>52. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio spent every day playing games.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 매일 게임을 하며 시간을 보냈다.</p>
+  <button onclick="copyCode('code52')">코드 복사</button>
+  <pre><code id="code52"># 52번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;피노키오는 매일 게임을 하며 시간을 보냈다.&#x27;
+eng = &#x27;Pinocchio spent every day playing games.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s53">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>53. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>He forgot about school and responsibility.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 학교와 책임감을 잊어버렸다.</p>
+  <button onclick="copyCode('code53')">코드 복사</button>
+  <pre><code id="code53"># 53번 문장: 조건문 if
+kor = &#x27;그는 학교와 책임감을 잊어버렸다.&#x27;
+keyword = &quot;진실&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s54">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>54. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The children laughed and enjoyed themselves.</p>
+  <p class="kor"><b>한글 번역</b><br>아이들은 웃으며 즐겁게 지냈다.</p>
+  <button onclick="copyCode('code54')">코드 복사</button>
+  <pre><code id="code54"># 54번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;The children laughed and enjoyed themselves.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s55">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>55. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>However, the fun did not last forever.</p>
+  <p class="kor"><b>한글 번역</b><br>그러나 그 즐거움은 영원히 지속되지 않았다.</p>
+  <button onclick="copyCode('code55')">코드 복사</button>
+  <pre><code id="code55"># 55번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 55,
+    &quot;title&quot;: &quot;피노키오&quot;,
+    &quot;kor&quot;: &#x27;그러나 그 즐거움은 영원히 지속되지 않았다.&#x27;,
+    &quot;eng&quot;: &#x27;However, the fun did not last forever.&#x27;,
+    &quot;theme&quot;: &quot;정직과 성장&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s56">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>56. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>One morning, Pinocchio noticed something strange.</p>
+  <p class="kor"><b>한글 번역</b><br>어느 날 아침 피노키오는 이상한 점을 발견했다.</p>
+  <button onclick="copyCode('code56')">코드 복사</button>
+  <pre><code id="code56"># 56번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[피노키오 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(56, &#x27;어느 날 아침 피노키오는 이상한 점을 발견했다.&#x27;, &#x27;One morning, Pinocchio noticed something strange.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s57">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>57. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>His ears had become long like a donkey&#x27;s ears.</p>
+  <p class="kor"><b>한글 번역</b><br>그의 귀가 당나귀 귀처럼 길어져 있었다.</p>
+  <button onclick="copyCode('code57')">코드 복사</button>
+  <pre><code id="code57"># 57번 문장: 예외 처리
+sentences = [&#x27;그의 귀가 당나귀 귀처럼 길어져 있었다.&#x27;, &quot;His ears had become long like a donkey&#x27;s ears.&quot;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s58">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>58. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Soon a tail appeared as well.</p>
+  <p class="kor"><b>한글 번역</b><br>곧 꼬리까지 생겨났다.</p>
+  <button onclick="copyCode('code58')">코드 복사</button>
+  <pre><code id="code58"># 58번 문장: 클래스와 객체
+class PinocchioScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = PinocchioScene(58, &#x27;곧 꼬리까지 생겨났다.&#x27;, &#x27;Soon a tail appeared as well.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s59">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>59. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio was turning into a donkey.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 당나귀로 변하고 있었다.</p>
+  <button onclick="copyCode('code59')">코드 복사</button>
+  <pre><code id="code59"># 59번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Pinocchio was turning into a donkey.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s60">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>60. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>He realized the terrible consequence of his choices.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 자신의 선택이 가져온 끔찍한 결과를 깨달았다.</p>
+  <button onclick="copyCode('code60')">코드 복사</button>
+  <pre><code id="code60"># 60번 문장: 데코레이터
+def honesty_frame(func):
+    def wrapper():
+        print(&quot;🪵 피노키오 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@honesty_frame
+def show_scene():
+    print(&#x27;그는 자신의 선택이 가져온 끔찍한 결과를 깨달았다.&#x27;)
+    print(&quot;→&quot;, &#x27;He realized the terrible consequence of his choices.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s61">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>61. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Before long, he became a complete donkey.</p>
+  <p class="kor"><b>한글 번역</b><br>얼마 지나지 않아 그는 완전한 당나귀가 되었다.</p>
+  <button onclick="copyCode('code61')">코드 복사</button>
+  <pre><code id="code61"># 61번 문장: 변수, 자료형, print()
+title = &quot;Pinocchio&quot;
+sentence_no = 61
+kor = &#x27;얼마 지나지 않아 그는 완전한 당나귀가 되었다.&#x27;
+eng = &#x27;Before long, he became a complete donkey.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s62">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>62. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>He was sold to a circus owner.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 서커스단 주인에게 팔려 갔다.</p>
+  <button onclick="copyCode('code62')">코드 복사</button>
+  <pre><code id="code62"># 62번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그는 서커스단 주인에게 팔려 갔다.&#x27;
+eng = &#x27;He was sold to a circus owner.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s63">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>63. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The owner trained him to perform tricks.</p>
+  <p class="kor"><b>한글 번역</b><br>주인은 그에게 재주를 부리도록 훈련시켰다.</p>
+  <button onclick="copyCode('code63')">코드 복사</button>
+  <pre><code id="code63"># 63번 문장: 조건문 if
+kor = &#x27;주인은 그에게 재주를 부리도록 훈련시켰다.&#x27;
+keyword = &quot;진실&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s64">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>64. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio felt miserable and ashamed.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 비참하고 부끄러웠다.</p>
+  <button onclick="copyCode('code64')">코드 복사</button>
+  <pre><code id="code64"># 64번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Pinocchio felt miserable and ashamed.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s65">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>65. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>During a performance, he injured himself.</p>
+  <p class="kor"><b>한글 번역</b><br>공연 도중 그는 다치고 말았다.</p>
+  <button onclick="copyCode('code65')">코드 복사</button>
+  <pre><code id="code65"># 65번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 65,
+    &quot;title&quot;: &quot;피노키오&quot;,
+    &quot;kor&quot;: &#x27;공연 도중 그는 다치고 말았다.&#x27;,
+    &quot;eng&quot;: &#x27;During a performance, he injured himself.&#x27;,
+    &quot;theme&quot;: &quot;정직과 성장&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s66">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>66. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The owner decided he was no longer useful.</p>
+  <p class="kor"><b>한글 번역</b><br>주인은 그가 더 이상 쓸모없다고 생각했다.</p>
+  <button onclick="copyCode('code66')">코드 복사</button>
+  <pre><code id="code66"># 66번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[피노키오 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(66, &#x27;주인은 그가 더 이상 쓸모없다고 생각했다.&#x27;, &#x27;The owner decided he was no longer useful.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s67">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>67. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio was thrown into the sea.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 바다에 던져졌다.</p>
+  <button onclick="copyCode('code67')">코드 복사</button>
+  <pre><code id="code67"># 67번 문장: 예외 처리
+sentences = [&#x27;피노키오는 바다에 던져졌다.&#x27;, &#x27;Pinocchio was thrown into the sea.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s68">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>68. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The seawater washed away the donkey form.</p>
+  <p class="kor"><b>한글 번역</b><br>바닷물은 그의 당나귀 모습을 씻어 내렸다.</p>
+  <button onclick="copyCode('code68')">코드 복사</button>
+  <pre><code id="code68"># 68번 문장: 클래스와 객체
+class PinocchioScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = PinocchioScene(68, &#x27;바닷물은 그의 당나귀 모습을 씻어 내렸다.&#x27;, &#x27;The seawater washed away the donkey form.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s69">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>69. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>He became a wooden puppet again.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 다시 나무 인형이 되었다.</p>
+  <button onclick="copyCode('code69')">코드 복사</button>
+  <pre><code id="code69"># 69번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;He became a wooden puppet again.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s70">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>70. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio was relieved but still lonely.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 안도했지만 여전히 외로웠다.</p>
+  <button onclick="copyCode('code70')">코드 복사</button>
+  <pre><code id="code70"># 70번 문장: 데코레이터
+def honesty_frame(func):
+    def wrapper():
+        print(&quot;🪵 피노키오 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@honesty_frame
+def show_scene():
+    print(&#x27;피노키오는 안도했지만 여전히 외로웠다.&#x27;)
+    print(&quot;→&quot;, &#x27;Pinocchio was relieved but still lonely.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s71">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>71. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>While swimming, he learned that Geppetto was missing.</p>
+  <p class="kor"><b>한글 번역</b><br>헤엄치던 중 그는 제페토가 실종되었다는 사실을 알게 되었다.</p>
+  <button onclick="copyCode('code71')">코드 복사</button>
+  <pre><code id="code71"># 71번 문장: 변수, 자료형, print()
+title = &quot;Pinocchio&quot;
+sentence_no = 71
+kor = &#x27;헤엄치던 중 그는 제페토가 실종되었다는 사실을 알게 되었다.&#x27;
+eng = &#x27;While swimming, he learned that Geppetto was missing.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s72">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>72. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Geppetto had gone searching for him.</p>
+  <p class="kor"><b>한글 번역</b><br>제페토는 그를 찾으러 떠났었다.</p>
+  <button onclick="copyCode('code72')">코드 복사</button>
+  <pre><code id="code72"># 72번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;제페토는 그를 찾으러 떠났었다.&#x27;
+eng = &#x27;Geppetto had gone searching for him.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s73">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>73. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>A giant sea creature had swallowed Geppetto.</p>
+  <p class="kor"><b>한글 번역</b><br>거대한 바다 괴물이 제페토를 삼켜 버렸다.</p>
+  <button onclick="copyCode('code73')">코드 복사</button>
+  <pre><code id="code73"># 73번 문장: 조건문 if
+kor = &#x27;거대한 바다 괴물이 제페토를 삼켜 버렸다.&#x27;
+keyword = &quot;제페토&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s74">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>74. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio immediately set out to rescue him.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 즉시 그를 구하러 떠났다.</p>
+  <button onclick="copyCode('code74')">코드 복사</button>
+  <pre><code id="code74"># 74번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Pinocchio immediately set out to rescue him.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s75">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>75. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>He bravely swam through the ocean.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 용감하게 바다를 헤엄쳐 갔다.</p>
+  <button onclick="copyCode('code75')">코드 복사</button>
+  <pre><code id="code75"># 75번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 75,
+    &quot;title&quot;: &quot;피노키오&quot;,
+    &quot;kor&quot;: &#x27;그는 용감하게 바다를 헤엄쳐 갔다.&#x27;,
+    &quot;eng&quot;: &#x27;He bravely swam through the ocean.&#x27;,
+    &quot;theme&quot;: &quot;정직과 성장&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s76">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>76. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Eventually, he was swallowed by the creature as well.</p>
+  <p class="kor"><b>한글 번역</b><br>결국 그 역시 괴물에게 삼켜지고 말았다.</p>
+  <button onclick="copyCode('code76')">코드 복사</button>
+  <pre><code id="code76"># 76번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[피노키오 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(76, &#x27;결국 그 역시 괴물에게 삼켜지고 말았다.&#x27;, &#x27;Eventually, he was swallowed by the creature as well.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s77">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>77. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Inside the creature, he found Geppetto alive.</p>
+  <p class="kor"><b>한글 번역</b><br>괴물의 뱃속에서 그는 살아 있는 제페토를 발견했다.</p>
+  <button onclick="copyCode('code77')">코드 복사</button>
+  <pre><code id="code77"># 77번 문장: 예외 처리
+sentences = [&#x27;괴물의 뱃속에서 그는 살아 있는 제페토를 발견했다.&#x27;, &#x27;Inside the creature, he found Geppetto alive.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s78">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>78. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The reunion filled them with joy.</p>
+  <p class="kor"><b>한글 번역</b><br>재회한 두 사람은 매우 기뻤다.</p>
+  <button onclick="copyCode('code78')">코드 복사</button>
+  <pre><code id="code78"># 78번 문장: 클래스와 객체
+class PinocchioScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = PinocchioScene(78, &#x27;재회한 두 사람은 매우 기뻤다.&#x27;, &#x27;The reunion filled them with joy.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s79">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>79. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Together they planned an escape.</p>
+  <p class="kor"><b>한글 번역</b><br>그들은 함께 탈출 계획을 세웠다.</p>
+  <button onclick="copyCode('code79')">코드 복사</button>
+  <pre><code id="code79"># 79번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Together they planned an escape.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s80">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>80. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>They waited patiently for the right moment.</p>
+  <p class="kor"><b>한글 번역</b><br>그들은 적절한 순간을 인내심 있게 기다렸다.</p>
+  <button onclick="copyCode('code80')">코드 복사</button>
+  <pre><code id="code80"># 80번 문장: 데코레이터
+def honesty_frame(func):
+    def wrapper():
+        print(&quot;🪵 피노키오 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@honesty_frame
+def show_scene():
+    print(&#x27;그들은 적절한 순간을 인내심 있게 기다렸다.&#x27;)
+    print(&quot;→&quot;, &#x27;They waited patiently for the right moment.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s81">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>81. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>One night, the sea creature fell asleep.</p>
+  <p class="kor"><b>한글 번역</b><br>어느 밤 바다 괴물은 잠이 들었다.</p>
+  <button onclick="copyCode('code81')">코드 복사</button>
+  <pre><code id="code81"># 81번 문장: 변수, 자료형, print()
+title = &quot;Pinocchio&quot;
+sentence_no = 81
+kor = &#x27;어느 밤 바다 괴물은 잠이 들었다.&#x27;
+eng = &#x27;One night, the sea creature fell asleep.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s82">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>82. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio and Geppetto quietly escaped.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오와 제페토는 조용히 탈출했다.</p>
+  <button onclick="copyCode('code82')">코드 복사</button>
+  <pre><code id="code82"># 82번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;피노키오와 제페토는 조용히 탈출했다.&#x27;
+eng = &#x27;Pinocchio and Geppetto quietly escaped.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s83">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>83. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>They returned safely to shore.</p>
+  <p class="kor"><b>한글 번역</b><br>그들은 무사히 해안으로 돌아왔다.</p>
+  <button onclick="copyCode('code83')">코드 복사</button>
+  <pre><code id="code83"># 83번 문장: 조건문 if
+kor = &#x27;그들은 무사히 해안으로 돌아왔다.&#x27;
+keyword = &quot;진실&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s84">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>84. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Life was still difficult for them.</p>
+  <p class="kor"><b>한글 번역</b><br>그들의 삶은 여전히 힘들었다.</p>
+  <button onclick="copyCode('code84')">코드 복사</button>
+  <pre><code id="code84"># 84번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Life was still difficult for them.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s85">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>85. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Geppetto was old and weak.</p>
+  <p class="kor"><b>한글 번역</b><br>제페토는 늙고 쇠약해져 있었다.</p>
+  <button onclick="copyCode('code85')">코드 복사</button>
+  <pre><code id="code85"># 85번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 85,
+    &quot;title&quot;: &quot;피노키오&quot;,
+    &quot;kor&quot;: &#x27;제페토는 늙고 쇠약해져 있었다.&#x27;,
+    &quot;eng&quot;: &#x27;Geppetto was old and weak.&#x27;,
+    &quot;theme&quot;: &quot;정직과 성장&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s86">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>86. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio decided to take responsibility.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 책임감을 갖기로 결심했다.</p>
+  <button onclick="copyCode('code86')">코드 복사</button>
+  <pre><code id="code86"># 86번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[피노키오 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(86, &#x27;피노키오는 책임감을 갖기로 결심했다.&#x27;, &#x27;Pinocchio decided to take responsibility.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s87">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>87. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>He worked hard to support Geppetto.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 제페토를 부양하기 위해 열심히 일했다.</p>
+  <button onclick="copyCode('code87')">코드 복사</button>
+  <pre><code id="code87"># 87번 문장: 예외 처리
+sentences = [&#x27;그는 제페토를 부양하기 위해 열심히 일했다.&#x27;, &#x27;He worked hard to support Geppetto.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s88">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>88. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>He helped people whenever he could.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 가능한 한 다른 사람들을 도왔다.</p>
+  <button onclick="copyCode('code88')">코드 복사</button>
+  <pre><code id="code88"># 88번 문장: 클래스와 객체
+class PinocchioScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = PinocchioScene(88, &#x27;그는 가능한 한 다른 사람들을 도왔다.&#x27;, &#x27;He helped people whenever he could.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s89">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>89. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>He became more honest and selfless.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 더욱 정직하고 이타적인 사람이 되었다.</p>
+  <button onclick="copyCode('code89')">코드 복사</button>
+  <pre><code id="code89"># 89번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;He became more honest and selfless.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s90">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>90. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The Blue Fairy watched his growth with pride.</p>
+  <p class="kor"><b>한글 번역</b><br>푸른 요정은 그의 성장을 자랑스럽게 지켜보았다.</p>
+  <button onclick="copyCode('code90')">코드 복사</button>
+  <pre><code id="code90"># 90번 문장: 데코레이터
+def honesty_frame(func):
+    def wrapper():
+        print(&quot;🪵 피노키오 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@honesty_frame
+def show_scene():
+    print(&#x27;푸른 요정은 그의 성장을 자랑스럽게 지켜보았다.&#x27;)
+    print(&quot;→&quot;, &#x27;The Blue Fairy watched his growth with pride.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s91">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>91. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio no longer chased easy rewards.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 더 이상 쉽게 얻는 보상을 쫓지 않았다.</p>
+  <button onclick="copyCode('code91')">코드 복사</button>
+  <pre><code id="code91"># 91번 문장: 변수, 자료형, print()
+title = &quot;Pinocchio&quot;
+sentence_no = 91
+kor = &#x27;피노키오는 더 이상 쉽게 얻는 보상을 쫓지 않았다.&#x27;
+eng = &#x27;Pinocchio no longer chased easy rewards.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s92">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>92. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>He understood the value of hard work.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 노력의 가치를 이해하게 되었다.</p>
+  <button onclick="copyCode('code92')">코드 복사</button>
+  <pre><code id="code92"># 92번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그는 노력의 가치를 이해하게 되었다.&#x27;
+eng = &#x27;He understood the value of hard work.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s93">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>93. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>He also learned the importance of truth.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 진실의 중요성도 배웠다.</p>
+  <button onclick="copyCode('code93')">코드 복사</button>
+  <pre><code id="code93"># 93번 문장: 조건문 if
+kor = &#x27;그는 진실의 중요성도 배웠다.&#x27;
+keyword = &quot;진실&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s94">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>94. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>His kindness touched many people.</p>
+  <p class="kor"><b>한글 번역</b><br>그의 친절함은 많은 사람들을 감동시켰다.</p>
+  <button onclick="copyCode('code94')">코드 복사</button>
+  <pre><code id="code94"># 94번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;His kindness touched many people.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s95">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>95. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>The Blue Fairy decided he had truly changed.</p>
+  <p class="kor"><b>한글 번역</b><br>푸른 요정은 그가 진정으로 변했다고 판단했다.</p>
+  <button onclick="copyCode('code95')">코드 복사</button>
+  <pre><code id="code95"># 95번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 95,
+    &quot;title&quot;: &quot;피노키오&quot;,
+    &quot;kor&quot;: &#x27;푸른 요정은 그가 진정으로 변했다고 판단했다.&#x27;,
+    &quot;eng&quot;: &#x27;The Blue Fairy decided he had truly changed.&#x27;,
+    &quot;theme&quot;: &quot;정직과 성장&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s96">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>96. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>She rewarded him for his goodness.</p>
+  <p class="kor"><b>한글 번역</b><br>그녀는 그의 선한 행동에 보답했다.</p>
+  <button onclick="copyCode('code96')">코드 복사</button>
+  <pre><code id="code96"># 96번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[피노키오 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(96, &#x27;그녀는 그의 선한 행동에 보답했다.&#x27;, &#x27;She rewarded him for his goodness.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s97">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>97. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>One morning, Pinocchio woke up as a real boy.</p>
+  <p class="kor"><b>한글 번역</b><br>어느 날 아침 피노키오는 진짜 소년이 되어 깨어났다.</p>
+  <button onclick="copyCode('code97')">코드 복사</button>
+  <pre><code id="code97"># 97번 문장: 예외 처리
+sentences = [&#x27;어느 날 아침 피노키오는 진짜 소년이 되어 깨어났다.&#x27;, &#x27;One morning, Pinocchio woke up as a real boy.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s98">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>98. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Geppetto was overjoyed to see the transformation.</p>
+  <p class="kor"><b>한글 번역</b><br>제페토는 그 변화를 보고 매우 기뻐했다.</p>
+  <button onclick="copyCode('code98')">코드 복사</button>
+  <pre><code id="code98"># 98번 문장: 클래스와 객체
+class PinocchioScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = PinocchioScene(98, &#x27;제페토는 그 변화를 보고 매우 기뻐했다.&#x27;, &#x27;Geppetto was overjoyed to see the transformation.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s99">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>99. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>Pinocchio finally achieved his dream.</p>
+  <p class="kor"><b>한글 번역</b><br>피노키오는 마침내 자신의 꿈을 이루었다.</p>
+  <button onclick="copyCode('code99')">코드 복사</button>
+  <pre><code id="code99"># 99번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Pinocchio finally achieved his dream.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s100">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>100. 피노키오 장면</h2>
+  <p class="eng"><b>English</b><br>He lived happily as an honest and responsible boy.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 정직하고 책임감 있는 소년으로 행복하게 살아갔다.</p>
+  <button onclick="copyCode('code100')">코드 복사</button>
+  <pre><code id="code100"># 100번 문장: 데코레이터
+def honesty_frame(func):
+    def wrapper():
+        print(&quot;🪵 피노키오 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@honesty_frame
+def show_scene():
+    print(&#x27;그는 정직하고 책임감 있는 소년으로 행복하게 살아갔다.&#x27;)
+    print(&quot;→&quot;, &#x27;He lived happily as an honest and responsible boy.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+</main>
+
+<footer>
+  Pinocchio × Python 10-Step Learning
+</footer>
+
+<script>
+function copyCode(id){
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(()=>alert("코드가 복사되었습니다."));
+}
+function goScene(){
+  const id = document.getElementById("jump").value;
+  if(id) document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"});
+}
+</script>
+</body>
+</html>
