@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>보물섬과 함께하는 즐겁고 신나는 파이썬</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Malgun Gothic","Nanum Gothic",Arial,sans-serif;
+  background:linear-gradient(135deg,#e0f2fe,#fef3c7);
+  color:#1f2937;
+  line-height:1.7;
+}
+header{
+  background:linear-gradient(135deg,#0f172a,#075985,#92400e);
+  color:white;
+  text-align:center;
+  padding:38px 18px;
+}
+header h1{margin:0;font-size:34px}
+header p{max-width:980px;margin:10px auto 0;font-size:18px}
+nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:white;
+  border-bottom:1px solid #bae6fd;
+  box-shadow:0 4px 14px rgba(0,0,0,.08);
+  padding:10px;
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+}
+select,button{
+  font-family:inherit;
+  font-size:14px;
+  border-radius:10px;
+  padding:9px 12px;
+}
+select{
+  min-width:360px;
+  max-width:85vw;
+  border:1px solid #38bdf8;
+}
+button{
+  border:none;
+  background:#075985;
+  color:white;
+  font-weight:800;
+  cursor:pointer;
+}
+button:hover{filter:brightness(1.12)}
+main{max-width:1150px;margin:24px auto 60px;padding:0 16px}
+.intro,.card{
+  background:white;
+  border-radius:20px;
+  padding:24px;
+  margin-bottom:22px;
+  box-shadow:0 10px 25px rgba(15,23,42,.10);
+}
+.intro h2,.card h2{margin-top:0;color:#075985}
+table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden}
+th,td{border:1px solid #bae6fd;padding:10px;vertical-align:top}
+th{background:#e0f2fe}
+.badge{
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:999px;
+  background:#fef3c7;
+  color:#92400e;
+  font-weight:900;
+  margin-bottom:10px;
+}
+.eng,.kor{
+  padding:13px 15px;
+  border-radius:14px;
+  margin:10px 0;
+}
+.eng{
+  background:#e0f2fe;
+  border-left:7px solid #0284c7;
+  font-size:18px;
+}
+.kor{
+  background:#fef3c7;
+  border-left:7px solid #f59e0b;
+  font-size:19px;
+  font-weight:700;
+}
+pre{
+  background:#111827;
+  color:#f8fafc;
+  padding:18px;
+  border-radius:14px;
+  overflow-x:auto;
+  font-size:15px;
+  line-height:1.55;
+}
+code{font-family:Consolas,"Courier New",monospace}
+footer{text-align:center;padding:28px;color:#475569}
+.small{color:#64748b;font-size:14px}
+@media(max-width:700px){
+  header h1{font-size:25px}
+  select{min-width:220px}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>🏴‍☠️ 《보물섬》과 함께하는 즐겁고 신나는 파이썬</h1>
+  <p>100개 줄거리 문장을 순서대로 빠짐없이 활용하여 파이썬 기초·응용·심화 10단계 문법을 서로 다른 예시 코드로 학습합니다.</p>
+</header>
+
+<nav>
+  <label for="jump"><b>장면 이동</b></label>
+  <select id="jump" onchange="goScene()">
+    <option value="">장면 선택</option>
+    <option value="s1">001. 어느 날 빌리 본즈가 애드미럴 벤보 여관에 찾아왔다.</option><option value="s2">002. 짐 호킨스는 가족과 함께 애드미럴 벤보 여관에서 살고 있었</option><option value="s3">003. 빌리 본즈는 종종 불안한 표정으로 바다를 바라보았다.</option><option value="s4">004. 그는 누군가 자신을 찾고 있는 것을 두려워하는 듯했다.</option><option value="s5">005. 빌리 본즈는 특히 검은 개라는 해적을 두려워했다.</option><option value="s6">006. 어느 날 검은 개가 여관에 나타났다.</option><option value="s7">007. 두 사람은 곧 격렬한 말다툼을 시작했다.</option><option value="s8">008. 검은 개는 싸움이 끝난 후 도망쳤다.</option><option value="s9">009. 그 충격으로 빌리 본즈는 쓰러지고 말았다.</option><option value="s10">010. 리브지 박사가 그를 치료하러 왔다.</option><option value="s11">011. 그러나 빌리 본즈는 럼주를 끊지 못했다.</option><option value="s12">012. 얼마 후 퓨라는 눈먼 거지가 찾아왔다.</option><option value="s13">013. 퓨는 빌리 본즈에게 검은 표식을 전달했다.</option><option value="s14">014. 빌리 본즈는 그것을 보고 크게 두려워했다.</option><option value="s15">015. 그는 곧 심장마비로 죽고 말았다.</option><option value="s16">016. 짐과 그의 어머니는 선원의 상자를 조사했다.</option><option value="s17">017. 그 안에서 금화와 오래된 지도를 발견했다.</option><option value="s18">018. 그 지도는 신비한 보물섬의 위치를 나타내고 있었다.</option><option value="s19">019. 바로 그때 해적들이 여관을 습격했다.</option><option value="s20">020. 퓨가 해적들을 이끌고 있었다.</option><option value="s21">021. 짐과 어머니는 가까스로 탈출했다.</option><option value="s22">022. 짐은 보물 지도를 리브지 박사에게 보여 주었다.</option><option value="s23">023. 리브지 박사는 트릴로니 지주에게 알렸다.</option><option value="s24">024. 트릴로니는 보물을 찾기로 결심했다.</option><option value="s25">025. 그는 항해를 위한 배를 준비하기 시작했다.</option><option value="s26">026. 배의 이름은 히스파니올라였다.</option><option value="s27">027. 선원들이 신중하게 모집되었다.</option><option value="s28">028. 그 과정에서 그들은 롱 존 실버를 만났다.</option><option value="s29">029. 실버는 외다리였지만 매우 친절해 보였다.</option><option value="s30">030. 그는 배의 요리사가 되었다.</option><option value="s31">031. 짐은 설레는 마음으로 히스파니올라 호에 올랐다.</option><option value="s32">032. 배는 보물섬을 향해 출항했다.</option><option value="s33">033. 항해는 순조롭게 시작되었다.</option><option value="s34">034. 짐은 많은 선원들과 친구가 되었다.</option><option value="s35">035. 그는 특히 롱 존 실버를 좋아했다.</option><option value="s36">036. 어느 날 밤 짐은 사과 통 안에 숨어 있었다.</option><option value="s37">037. 그곳에서 그는 충격적인 대화를 엿들었다.</option><option value="s38">038. 실버는 사실 해적들의 우두머리였다.</option><option value="s39">039. 많은 선원들이 비밀리에 그를 따르고 있었다.</option><option value="s40">040. 반란이 계획되고 있었다.</option><option value="s41">041. 짐은 들은 내용을 즉시 알렸다.</option><option value="s42">042. 리브지와 트릴로니는 위험에 대비했다.</option><option value="s43">043. 곧 배는 보물섬에 도착했다.</option><option value="s44">044. 몇몇 선원들이 상륙했다.</option><option value="s45">045. 짐도 몰래 뒤따라갔다.</option><option value="s46">046. 그는 섬의 숲을 탐험했다.</option><option value="s47">047. 그곳에서 그는 이상한 남자를 만났다.</option><option value="s48">048. 그 남자의 이름은 벤 건이었다.</option><option value="s49">049. 벤 건은 수년 동안 섬에 버려져 있었다.</option><option value="s50">050. 그는 섬에서 홀로 살아남았다.</option><option value="s51">051. 벤 건은 보물에 관한 많은 비밀을 알고 있었다.</option><option value="s52">052. 그는 짐과 그의 친구들을 돕겠다고 제안했다.</option><option value="s53">053. 한편 해적들은 반란을 일으키기 시작했다.</option><option value="s54">054. 충성파 선원들은 작은 요새로 피신했다.</option><option value="s55">055. 요새 주변에서 치열한 전투가 벌어졌다.</option><option value="s56">056. 총소리가 섬 전체에 울려 퍼졌다.</option><option value="s57">057. 여러 사람이 다치거나 목숨을 잃었다.</option><option value="s58">058. 짐은 큰 용기를 발휘했다.</option><option value="s59">059. 그는 중요한 정보를 동료들에게 전달했다.</option><option value="s60">060. 그의 용기는 모두에게 깊은 인상을 남겼다.</option><option value="s61">061. 짐은 혼자 모험을 떠나기로 결심했다.</option><option value="s62">062. 그는 벤 건이 만든 작은 배를 발견했다.</option><option value="s63">063. 밤에 그는 몰래 바다로 나갔다.</option><option value="s64">064. 그는 조용히 히스파니올라 호에 접근했다.</option><option value="s65">065. 짐은 배를 묶고 있던 밧줄을 잘랐다.</option><option value="s66">066. 배는 물살을 따라 떠내려갔다.</option><option value="s67">067. 해적들은 큰 혼란에 빠졌다.</option><option value="s68">068. 짐은 배를 다시 확보하는 데 성공했다.</option><option value="s69">069. 그러나 곧 큰 위험에 직면했다.</option><option value="s70">070. 그는 해적 한 명과 필사적으로 싸웠다.</option><option value="s71">071. 결국 짐은 상대를 물리쳤다.</option><option value="s72">072. 그는 무사히 동료들에게 돌아왔다.</option><option value="s73">073. 상황은 서서히 좋아지기 시작했다.</option><option value="s74">074. 롱 존 실버는 곤란한 처지에 놓이게 되었다.</option><option value="s75">075. 해적들은 마침내 보물 지도를 손에 넣었다.</option><option value="s76">076. 그들은 흥분하여 보물을 찾으러 달려갔다.</option><option value="s77">077. 마침내 그들은 지도에 표시된 장소에 도착했다.</option><option value="s78">078. 놀랍게도 보물은 사라지고 없었다.</option><option value="s79">079. 해적들은 충격과 분노에 휩싸였다.</option><option value="s80">080. 누군가 이미 보물을 가져가 버린 것이었다.</option><option value="s81">081. 사실 벤 건은 몇 년 전에 이미 보물을 발견했었다.</option><option value="s82">082. 그는 보물을 더 안전한 장소로 옮겨 두었다.</option><option value="s83">083. 해적들은 몹시 화가 났다.</option><option value="s84">084. 그들 중 일부는 실패의 책임을 실버에게 돌렸다.</option><option value="s85">085. 해적들 사이에서 다툼이 벌어졌다.</option><option value="s86">086. 충성파는 그 혼란을 기회로 이용했다.</option><option value="s87">087. 해적들은 전투에서 밀리기 시작했다.</option><option value="s88">088. 많은 해적들이 두려움에 도망쳤다.</option><option value="s89">089. 실버는 자신의 목숨을 지키기 위해 편을 바꾸었다.</option><option value="s90">090. 그는 짐과 그의 동료들을 도왔다.</option><option value="s91">091. 결국 보물은 안전하게 확보되었다.</option><option value="s92">092. 보물 상자에는 금화와 보석이 가득 들어 있었다.</option><option value="s93">093. 모두가 힘을 합쳐 보물을 배에 실었다.</option><option value="s94">094. 히스파니올라 호는 마침내 섬을 떠났다.</option><option value="s95">095. 몇몇 해적들은 섬에 남겨졌다.</option><option value="s96">096. 귀향 항해 중 실버는 사라졌다.</option><option value="s97">097. 그는 보물의 일부를 가지고 도망쳤다.</option><option value="s98">098. 짐은 무사히 영국으로 돌아왔다.</option><option value="s99">099. 보물은 살아남은 사람들에게 공정하게 나누어졌다.</option><option value="s100">100. 짐은 보물섬에서의 잊을 수 없는 모험을 평생 기억했다.</option>
+  </select>
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})">맨 위</button>
+</nav>
+
+<main>
+<section class="intro">
+  <h2>학습 구성</h2>
+  <p>각 장면은 <b>영어 문장 → 한글 번역 → 해당 문장을 활용한 파이썬 예시 코드</b> 순서로 구성했습니다.</p>
+  <table>
+    <thead><tr><th>단계</th><th>학습 요소</th><th>해당 문장 번호</th></tr></thead>
+    <tbody><tr><td>1단계</td><td>변수·자료형·print</td><td>1, 11, 21, 31, 41, 51, 61, 71, 81, 91</td></tr><tr><td>2단계</td><td>문자열·인덱싱·슬라이싱</td><td>2, 12, 22, 32, 42, 52, 62, 72, 82, 92</td></tr><tr><td>3단계</td><td>조건문 if</td><td>3, 13, 23, 33, 43, 53, 63, 73, 83, 93</td></tr><tr><td>4단계</td><td>반복문 for·while</td><td>4, 14, 24, 34, 44, 54, 64, 74, 84, 94</td></tr><tr><td>5단계</td><td>리스트·튜플·집합·딕셔너리</td><td>5, 15, 25, 35, 45, 55, 65, 75, 85, 95</td></tr><tr><td>6단계</td><td>함수·매개변수·반환값</td><td>6, 16, 26, 36, 46, 56, 66, 76, 86, 96</td></tr><tr><td>7단계</td><td>파일 처리·예외 처리</td><td>7, 17, 27, 37, 47, 57, 67, 77, 87, 97</td></tr><tr><td>8단계</td><td>OOP 클래스·객체</td><td>8, 18, 28, 38, 48, 58, 68, 78, 88, 98</td></tr><tr><td>9단계</td><td>모듈·라이브러리</td><td>9, 19, 29, 39, 49, 59, 69, 79, 89, 99</td></tr><tr><td>10단계</td><td>데코레이터·제너레이터</td><td>10, 20, 30, 40, 50, 60, 70, 80, 90, 100</td></tr></tbody>
+  </table>
+  <p class="small">코드 복사 버튼을 눌러 IDLE, VS Code, 코랩에서 바로 실행할 수 있습니다.</p>
+</section>
+
+
+<section class="card" id="s1">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>1. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Billy Bones arrived at the Admiral Benbow Inn one day.</p>
+  <p class="kor"><b>한글 번역</b><br>어느 날 빌리 본즈가 애드미럴 벤보 여관에 찾아왔다.</p>
+  <button onclick="copyCode('code1')">코드 복사</button>
+  <pre><code id="code1"># 1번 문장: 변수, 자료형, print()
+title = &quot;Treasure Island&quot;
+sentence_no = 1
+kor = &#x27;어느 날 빌리 본즈가 애드미럴 벤보 여관에 찾아왔다.&#x27;
+eng = &#x27;Billy Bones arrived at the Admiral Benbow Inn one day.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s2">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>2. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Jim Hawkins lived at the Admiral Benbow Inn with his family.</p>
+  <p class="kor"><b>한글 번역</b><br>짐 호킨스는 가족과 함께 애드미럴 벤보 여관에서 살고 있었다.</p>
+  <button onclick="copyCode('code2')">코드 복사</button>
+  <pre><code id="code2"># 2번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;짐 호킨스는 가족과 함께 애드미럴 벤보 여관에서 살고 있었다.&#x27;
+eng = &#x27;Jim Hawkins lived at the Admiral Benbow Inn with his family.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s3">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>3. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Billy Bones often watched the sea nervously.</p>
+  <p class="kor"><b>한글 번역</b><br>빌리 본즈는 종종 불안한 표정으로 바다를 바라보았다.</p>
+  <button onclick="copyCode('code3')">코드 복사</button>
+  <pre><code id="code3"># 3번 문장: 조건문 if
+kor = &#x27;빌리 본즈는 종종 불안한 표정으로 바다를 바라보았다.&#x27;
+keyword = &quot;섬&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s4">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>4. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>He seemed afraid that someone might be looking for him.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 누군가 자신을 찾고 있는 것을 두려워하는 듯했다.</p>
+  <button onclick="copyCode('code4')">코드 복사</button>
+  <pre><code id="code4"># 4번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;He seemed afraid that someone might be looking for him.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s5">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>5. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Billy Bones was especially afraid of a pirate called Black Dog.</p>
+  <p class="kor"><b>한글 번역</b><br>빌리 본즈는 특히 검은 개라는 해적을 두려워했다.</p>
+  <button onclick="copyCode('code5')">코드 복사</button>
+  <pre><code id="code5"># 5번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 5,
+    &quot;title&quot;: &quot;보물섬&quot;,
+    &quot;kor&quot;: &#x27;빌리 본즈는 특히 검은 개라는 해적을 두려워했다.&#x27;,
+    &quot;eng&quot;: &#x27;Billy Bones was especially afraid of a pirate called Black Dog.&#x27;,
+    &quot;theme&quot;: &quot;모험&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s6">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>6. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>One day, Black Dog appeared at the inn.</p>
+  <p class="kor"><b>한글 번역</b><br>어느 날 검은 개가 여관에 나타났다.</p>
+  <button onclick="copyCode('code6')">코드 복사</button>
+  <pre><code id="code6"># 6번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[보물섬 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(6, &#x27;어느 날 검은 개가 여관에 나타났다.&#x27;, &#x27;One day, Black Dog appeared at the inn.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s7">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>7. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The two men soon began a fierce argument.</p>
+  <p class="kor"><b>한글 번역</b><br>두 사람은 곧 격렬한 말다툼을 시작했다.</p>
+  <button onclick="copyCode('code7')">코드 복사</button>
+  <pre><code id="code7"># 7번 문장: 예외 처리
+sentences = [&#x27;두 사람은 곧 격렬한 말다툼을 시작했다.&#x27;, &#x27;The two men soon began a fierce argument.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s8">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>8. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Black Dog escaped after the fight.</p>
+  <p class="kor"><b>한글 번역</b><br>검은 개는 싸움이 끝난 후 도망쳤다.</p>
+  <button onclick="copyCode('code8')">코드 복사</button>
+  <pre><code id="code8"># 8번 문장: 클래스와 객체
+class TreasureScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = TreasureScene(8, &#x27;검은 개는 싸움이 끝난 후 도망쳤다.&#x27;, &#x27;Black Dog escaped after the fight.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s9">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>9. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The shock caused Billy Bones to collapse.</p>
+  <p class="kor"><b>한글 번역</b><br>그 충격으로 빌리 본즈는 쓰러지고 말았다.</p>
+  <button onclick="copyCode('code9')">코드 복사</button>
+  <pre><code id="code9"># 9번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;The shock caused Billy Bones to collapse.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s10">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>10. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Doctor Livesey came to treat him.</p>
+  <p class="kor"><b>한글 번역</b><br>리브지 박사가 그를 치료하러 왔다.</p>
+  <button onclick="copyCode('code10')">코드 복사</button>
+  <pre><code id="code10"># 10번 문장: 데코레이터
+def treasure_frame(func):
+    def wrapper():
+        print(&quot;🏴‍☠️ 보물섬 장면 시작&quot;)
+        func()
+        print(&quot;💰 파이썬 학습 완료&quot;)
+    return wrapper
+
+@treasure_frame
+def show_scene():
+    print(&#x27;리브지 박사가 그를 치료하러 왔다.&#x27;)
+    print(&quot;→&quot;, &#x27;Doctor Livesey came to treat him.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s11">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>11. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>However, Billy Bones could not stop drinking rum.</p>
+  <p class="kor"><b>한글 번역</b><br>그러나 빌리 본즈는 럼주를 끊지 못했다.</p>
+  <button onclick="copyCode('code11')">코드 복사</button>
+  <pre><code id="code11"># 11번 문장: 변수, 자료형, print()
+title = &quot;Treasure Island&quot;
+sentence_no = 11
+kor = &#x27;그러나 빌리 본즈는 럼주를 끊지 못했다.&#x27;
+eng = &#x27;However, Billy Bones could not stop drinking rum.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s12">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>12. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Some time later, a blind beggar named Pew arrived.</p>
+  <p class="kor"><b>한글 번역</b><br>얼마 후 퓨라는 눈먼 거지가 찾아왔다.</p>
+  <button onclick="copyCode('code12')">코드 복사</button>
+  <pre><code id="code12"># 12번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;얼마 후 퓨라는 눈먼 거지가 찾아왔다.&#x27;
+eng = &#x27;Some time later, a blind beggar named Pew arrived.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s13">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>13. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Pew delivered the Black Spot to Billy Bones.</p>
+  <p class="kor"><b>한글 번역</b><br>퓨는 빌리 본즈에게 검은 표식을 전달했다.</p>
+  <button onclick="copyCode('code13')">코드 복사</button>
+  <pre><code id="code13"># 13번 문장: 조건문 if
+kor = &#x27;퓨는 빌리 본즈에게 검은 표식을 전달했다.&#x27;
+keyword = &quot;섬&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s14">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>14. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Billy Bones was terrified when he saw it.</p>
+  <p class="kor"><b>한글 번역</b><br>빌리 본즈는 그것을 보고 크게 두려워했다.</p>
+  <button onclick="copyCode('code14')">코드 복사</button>
+  <pre><code id="code14"># 14번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Billy Bones was terrified when he saw it.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s15">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>15. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Soon afterward, he died of a heart attack.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 곧 심장마비로 죽고 말았다.</p>
+  <button onclick="copyCode('code15')">코드 복사</button>
+  <pre><code id="code15"># 15번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 15,
+    &quot;title&quot;: &quot;보물섬&quot;,
+    &quot;kor&quot;: &#x27;그는 곧 심장마비로 죽고 말았다.&#x27;,
+    &quot;eng&quot;: &#x27;Soon afterward, he died of a heart attack.&#x27;,
+    &quot;theme&quot;: &quot;모험&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s16">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>16. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Jim and his mother searched the sailor&#x27;s sea chest.</p>
+  <p class="kor"><b>한글 번역</b><br>짐과 그의 어머니는 선원의 상자를 조사했다.</p>
+  <button onclick="copyCode('code16')">코드 복사</button>
+  <pre><code id="code16"># 16번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[보물섬 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(16, &#x27;짐과 그의 어머니는 선원의 상자를 조사했다.&#x27;, &quot;Jim and his mother searched the sailor&#x27;s sea chest.&quot;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s17">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>17. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Inside, they found gold coins and an old map.</p>
+  <p class="kor"><b>한글 번역</b><br>그 안에서 금화와 오래된 지도를 발견했다.</p>
+  <button onclick="copyCode('code17')">코드 복사</button>
+  <pre><code id="code17"># 17번 문장: 예외 처리
+sentences = [&#x27;그 안에서 금화와 오래된 지도를 발견했다.&#x27;, &#x27;Inside, they found gold coins and an old map.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s18">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>18. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The map showed the location of a mysterious treasure island.</p>
+  <p class="kor"><b>한글 번역</b><br>그 지도는 신비한 보물섬의 위치를 나타내고 있었다.</p>
+  <button onclick="copyCode('code18')">코드 복사</button>
+  <pre><code id="code18"># 18번 문장: 클래스와 객체
+class TreasureScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = TreasureScene(18, &#x27;그 지도는 신비한 보물섬의 위치를 나타내고 있었다.&#x27;, &#x27;The map showed the location of a mysterious treasure island.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s19">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>19. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>At that moment, pirates attacked the inn.</p>
+  <p class="kor"><b>한글 번역</b><br>바로 그때 해적들이 여관을 습격했다.</p>
+  <button onclick="copyCode('code19')">코드 복사</button>
+  <pre><code id="code19"># 19번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;At that moment, pirates attacked the inn.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s20">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>20. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Pew was leading the group of pirates.</p>
+  <p class="kor"><b>한글 번역</b><br>퓨가 해적들을 이끌고 있었다.</p>
+  <button onclick="copyCode('code20')">코드 복사</button>
+  <pre><code id="code20"># 20번 문장: 데코레이터
+def treasure_frame(func):
+    def wrapper():
+        print(&quot;🏴‍☠️ 보물섬 장면 시작&quot;)
+        func()
+        print(&quot;💰 파이썬 학습 완료&quot;)
+    return wrapper
+
+@treasure_frame
+def show_scene():
+    print(&#x27;퓨가 해적들을 이끌고 있었다.&#x27;)
+    print(&quot;→&quot;, &#x27;Pew was leading the group of pirates.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s21">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>21. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Jim and his mother barely escaped.</p>
+  <p class="kor"><b>한글 번역</b><br>짐과 어머니는 가까스로 탈출했다.</p>
+  <button onclick="copyCode('code21')">코드 복사</button>
+  <pre><code id="code21"># 21번 문장: 변수, 자료형, print()
+title = &quot;Treasure Island&quot;
+sentence_no = 21
+kor = &#x27;짐과 어머니는 가까스로 탈출했다.&#x27;
+eng = &#x27;Jim and his mother barely escaped.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s22">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>22. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Jim showed the treasure map to Doctor Livesey.</p>
+  <p class="kor"><b>한글 번역</b><br>짐은 보물 지도를 리브지 박사에게 보여 주었다.</p>
+  <button onclick="copyCode('code22')">코드 복사</button>
+  <pre><code id="code22"># 22번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;짐은 보물 지도를 리브지 박사에게 보여 주었다.&#x27;
+eng = &#x27;Jim showed the treasure map to Doctor Livesey.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s23">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>23. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Doctor Livesey informed Squire Trelawney.</p>
+  <p class="kor"><b>한글 번역</b><br>리브지 박사는 트릴로니 지주에게 알렸다.</p>
+  <button onclick="copyCode('code23')">코드 복사</button>
+  <pre><code id="code23"># 23번 문장: 조건문 if
+kor = &#x27;리브지 박사는 트릴로니 지주에게 알렸다.&#x27;
+keyword = &quot;섬&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s24">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>24. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Trelawney decided to search for the treasure.</p>
+  <p class="kor"><b>한글 번역</b><br>트릴로니는 보물을 찾기로 결심했다.</p>
+  <button onclick="copyCode('code24')">코드 복사</button>
+  <pre><code id="code24"># 24번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Trelawney decided to search for the treasure.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s25">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>25. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>He began preparing a ship for the voyage.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 항해를 위한 배를 준비하기 시작했다.</p>
+  <button onclick="copyCode('code25')">코드 복사</button>
+  <pre><code id="code25"># 25번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 25,
+    &quot;title&quot;: &quot;보물섬&quot;,
+    &quot;kor&quot;: &#x27;그는 항해를 위한 배를 준비하기 시작했다.&#x27;,
+    &quot;eng&quot;: &#x27;He began preparing a ship for the voyage.&#x27;,
+    &quot;theme&quot;: &quot;모험&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s26">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>26. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The ship was called the Hispaniola.</p>
+  <p class="kor"><b>한글 번역</b><br>배의 이름은 히스파니올라였다.</p>
+  <button onclick="copyCode('code26')">코드 복사</button>
+  <pre><code id="code26"># 26번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[보물섬 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(26, &#x27;배의 이름은 히스파니올라였다.&#x27;, &#x27;The ship was called the Hispaniola.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s27">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>27. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The crew was carefully recruited.</p>
+  <p class="kor"><b>한글 번역</b><br>선원들이 신중하게 모집되었다.</p>
+  <button onclick="copyCode('code27')">코드 복사</button>
+  <pre><code id="code27"># 27번 문장: 예외 처리
+sentences = [&#x27;선원들이 신중하게 모집되었다.&#x27;, &#x27;The crew was carefully recruited.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s28">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>28. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>During this process, they met Long John Silver.</p>
+  <p class="kor"><b>한글 번역</b><br>그 과정에서 그들은 롱 존 실버를 만났다.</p>
+  <button onclick="copyCode('code28')">코드 복사</button>
+  <pre><code id="code28"># 28번 문장: 클래스와 객체
+class TreasureScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = TreasureScene(28, &#x27;그 과정에서 그들은 롱 존 실버를 만났다.&#x27;, &#x27;During this process, they met Long John Silver.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s29">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>29. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Silver had only one leg but seemed friendly.</p>
+  <p class="kor"><b>한글 번역</b><br>실버는 외다리였지만 매우 친절해 보였다.</p>
+  <button onclick="copyCode('code29')">코드 복사</button>
+  <pre><code id="code29"># 29번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Silver had only one leg but seemed friendly.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s30">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>30. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>He became the ship&#x27;s cook.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 배의 요리사가 되었다.</p>
+  <button onclick="copyCode('code30')">코드 복사</button>
+  <pre><code id="code30"># 30번 문장: 데코레이터
+def treasure_frame(func):
+    def wrapper():
+        print(&quot;🏴‍☠️ 보물섬 장면 시작&quot;)
+        func()
+        print(&quot;💰 파이썬 학습 완료&quot;)
+    return wrapper
+
+@treasure_frame
+def show_scene():
+    print(&#x27;그는 배의 요리사가 되었다.&#x27;)
+    print(&quot;→&quot;, &quot;He became the ship&#x27;s cook.&quot;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s31">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>31. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Jim boarded the Hispaniola with excitement.</p>
+  <p class="kor"><b>한글 번역</b><br>짐은 설레는 마음으로 히스파니올라 호에 올랐다.</p>
+  <button onclick="copyCode('code31')">코드 복사</button>
+  <pre><code id="code31"># 31번 문장: 변수, 자료형, print()
+title = &quot;Treasure Island&quot;
+sentence_no = 31
+kor = &#x27;짐은 설레는 마음으로 히스파니올라 호에 올랐다.&#x27;
+eng = &#x27;Jim boarded the Hispaniola with excitement.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s32">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>32. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The ship sailed toward Treasure Island.</p>
+  <p class="kor"><b>한글 번역</b><br>배는 보물섬을 향해 출항했다.</p>
+  <button onclick="copyCode('code32')">코드 복사</button>
+  <pre><code id="code32"># 32번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;배는 보물섬을 향해 출항했다.&#x27;
+eng = &#x27;The ship sailed toward Treasure Island.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s33">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>33. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The voyage began smoothly.</p>
+  <p class="kor"><b>한글 번역</b><br>항해는 순조롭게 시작되었다.</p>
+  <button onclick="copyCode('code33')">코드 복사</button>
+  <pre><code id="code33"># 33번 문장: 조건문 if
+kor = &#x27;항해는 순조롭게 시작되었다.&#x27;
+keyword = &quot;섬&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s34">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>34. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Jim became friends with many sailors.</p>
+  <p class="kor"><b>한글 번역</b><br>짐은 많은 선원들과 친구가 되었다.</p>
+  <button onclick="copyCode('code34')">코드 복사</button>
+  <pre><code id="code34"># 34번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Jim became friends with many sailors.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s35">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>35. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>He especially liked Long John Silver.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 특히 롱 존 실버를 좋아했다.</p>
+  <button onclick="copyCode('code35')">코드 복사</button>
+  <pre><code id="code35"># 35번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 35,
+    &quot;title&quot;: &quot;보물섬&quot;,
+    &quot;kor&quot;: &#x27;그는 특히 롱 존 실버를 좋아했다.&#x27;,
+    &quot;eng&quot;: &#x27;He especially liked Long John Silver.&#x27;,
+    &quot;theme&quot;: &quot;모험&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s36">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>36. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>One night, Jim hid inside an apple barrel.</p>
+  <p class="kor"><b>한글 번역</b><br>어느 날 밤 짐은 사과 통 안에 숨어 있었다.</p>
+  <button onclick="copyCode('code36')">코드 복사</button>
+  <pre><code id="code36"># 36번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[보물섬 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(36, &#x27;어느 날 밤 짐은 사과 통 안에 숨어 있었다.&#x27;, &#x27;One night, Jim hid inside an apple barrel.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s37">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>37. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>There he overheard a shocking conversation.</p>
+  <p class="kor"><b>한글 번역</b><br>그곳에서 그는 충격적인 대화를 엿들었다.</p>
+  <button onclick="copyCode('code37')">코드 복사</button>
+  <pre><code id="code37"># 37번 문장: 예외 처리
+sentences = [&#x27;그곳에서 그는 충격적인 대화를 엿들었다.&#x27;, &#x27;There he overheard a shocking conversation.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s38">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>38. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Silver was actually the leader of the pirates.</p>
+  <p class="kor"><b>한글 번역</b><br>실버는 사실 해적들의 우두머리였다.</p>
+  <button onclick="copyCode('code38')">코드 복사</button>
+  <pre><code id="code38"># 38번 문장: 클래스와 객체
+class TreasureScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = TreasureScene(38, &#x27;실버는 사실 해적들의 우두머리였다.&#x27;, &#x27;Silver was actually the leader of the pirates.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s39">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>39. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Many sailors secretly supported him.</p>
+  <p class="kor"><b>한글 번역</b><br>많은 선원들이 비밀리에 그를 따르고 있었다.</p>
+  <button onclick="copyCode('code39')">코드 복사</button>
+  <pre><code id="code39"># 39번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Many sailors secretly supported him.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s40">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>40. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>A mutiny was being planned.</p>
+  <p class="kor"><b>한글 번역</b><br>반란이 계획되고 있었다.</p>
+  <button onclick="copyCode('code40')">코드 복사</button>
+  <pre><code id="code40"># 40번 문장: 데코레이터
+def treasure_frame(func):
+    def wrapper():
+        print(&quot;🏴‍☠️ 보물섬 장면 시작&quot;)
+        func()
+        print(&quot;💰 파이썬 학습 완료&quot;)
+    return wrapper
+
+@treasure_frame
+def show_scene():
+    print(&#x27;반란이 계획되고 있었다.&#x27;)
+    print(&quot;→&quot;, &#x27;A mutiny was being planned.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s41">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>41. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Jim immediately reported what he heard.</p>
+  <p class="kor"><b>한글 번역</b><br>짐은 들은 내용을 즉시 알렸다.</p>
+  <button onclick="copyCode('code41')">코드 복사</button>
+  <pre><code id="code41"># 41번 문장: 변수, 자료형, print()
+title = &quot;Treasure Island&quot;
+sentence_no = 41
+kor = &#x27;짐은 들은 내용을 즉시 알렸다.&#x27;
+eng = &#x27;Jim immediately reported what he heard.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s42">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>42. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Livesey and Trelawney prepared for danger.</p>
+  <p class="kor"><b>한글 번역</b><br>리브지와 트릴로니는 위험에 대비했다.</p>
+  <button onclick="copyCode('code42')">코드 복사</button>
+  <pre><code id="code42"># 42번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;리브지와 트릴로니는 위험에 대비했다.&#x27;
+eng = &#x27;Livesey and Trelawney prepared for danger.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s43">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>43. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Soon the ship reached Treasure Island.</p>
+  <p class="kor"><b>한글 번역</b><br>곧 배는 보물섬에 도착했다.</p>
+  <button onclick="copyCode('code43')">코드 복사</button>
+  <pre><code id="code43"># 43번 문장: 조건문 if
+kor = &#x27;곧 배는 보물섬에 도착했다.&#x27;
+keyword = &quot;보물&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s44">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>44. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Several sailors went ashore.</p>
+  <p class="kor"><b>한글 번역</b><br>몇몇 선원들이 상륙했다.</p>
+  <button onclick="copyCode('code44')">코드 복사</button>
+  <pre><code id="code44"># 44번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Several sailors went ashore.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s45">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>45. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Jim secretly followed them.</p>
+  <p class="kor"><b>한글 번역</b><br>짐도 몰래 뒤따라갔다.</p>
+  <button onclick="copyCode('code45')">코드 복사</button>
+  <pre><code id="code45"># 45번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 45,
+    &quot;title&quot;: &quot;보물섬&quot;,
+    &quot;kor&quot;: &#x27;짐도 몰래 뒤따라갔다.&#x27;,
+    &quot;eng&quot;: &#x27;Jim secretly followed them.&#x27;,
+    &quot;theme&quot;: &quot;모험&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s46">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>46. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>He explored the island&#x27;s forest.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 섬의 숲을 탐험했다.</p>
+  <button onclick="copyCode('code46')">코드 복사</button>
+  <pre><code id="code46"># 46번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[보물섬 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(46, &#x27;그는 섬의 숲을 탐험했다.&#x27;, &quot;He explored the island&#x27;s forest.&quot;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s47">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>47. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>There he met a strange man.</p>
+  <p class="kor"><b>한글 번역</b><br>그곳에서 그는 이상한 남자를 만났다.</p>
+  <button onclick="copyCode('code47')">코드 복사</button>
+  <pre><code id="code47"># 47번 문장: 예외 처리
+sentences = [&#x27;그곳에서 그는 이상한 남자를 만났다.&#x27;, &#x27;There he met a strange man.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s48">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>48. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The man&#x27;s name was Ben Gunn.</p>
+  <p class="kor"><b>한글 번역</b><br>그 남자의 이름은 벤 건이었다.</p>
+  <button onclick="copyCode('code48')">코드 복사</button>
+  <pre><code id="code48"># 48번 문장: 클래스와 객체
+class TreasureScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = TreasureScene(48, &#x27;그 남자의 이름은 벤 건이었다.&#x27;, &quot;The man&#x27;s name was Ben Gunn.&quot;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s49">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>49. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Ben Gunn had been stranded on the island for years.</p>
+  <p class="kor"><b>한글 번역</b><br>벤 건은 수년 동안 섬에 버려져 있었다.</p>
+  <button onclick="copyCode('code49')">코드 복사</button>
+  <pre><code id="code49"># 49번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Ben Gunn had been stranded on the island for years.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s50">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>50. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>He survived alone on the island.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 섬에서 홀로 살아남았다.</p>
+  <button onclick="copyCode('code50')">코드 복사</button>
+  <pre><code id="code50"># 50번 문장: 데코레이터
+def treasure_frame(func):
+    def wrapper():
+        print(&quot;🏴‍☠️ 보물섬 장면 시작&quot;)
+        func()
+        print(&quot;💰 파이썬 학습 완료&quot;)
+    return wrapper
+
+@treasure_frame
+def show_scene():
+    print(&#x27;그는 섬에서 홀로 살아남았다.&#x27;)
+    print(&quot;→&quot;, &#x27;He survived alone on the island.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s51">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>51. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Ben Gunn knew many secrets about the treasure.</p>
+  <p class="kor"><b>한글 번역</b><br>벤 건은 보물에 관한 많은 비밀을 알고 있었다.</p>
+  <button onclick="copyCode('code51')">코드 복사</button>
+  <pre><code id="code51"># 51번 문장: 변수, 자료형, print()
+title = &quot;Treasure Island&quot;
+sentence_no = 51
+kor = &#x27;벤 건은 보물에 관한 많은 비밀을 알고 있었다.&#x27;
+eng = &#x27;Ben Gunn knew many secrets about the treasure.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s52">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>52. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>He offered to help Jim and his friends.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 짐과 그의 친구들을 돕겠다고 제안했다.</p>
+  <button onclick="copyCode('code52')">코드 복사</button>
+  <pre><code id="code52"># 52번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그는 짐과 그의 친구들을 돕겠다고 제안했다.&#x27;
+eng = &#x27;He offered to help Jim and his friends.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s53">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>53. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Meanwhile, the pirates started their rebellion.</p>
+  <p class="kor"><b>한글 번역</b><br>한편 해적들은 반란을 일으키기 시작했다.</p>
+  <button onclick="copyCode('code53')">코드 복사</button>
+  <pre><code id="code53"># 53번 문장: 조건문 if
+kor = &#x27;한편 해적들은 반란을 일으키기 시작했다.&#x27;
+keyword = &quot;해적&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s54">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>54. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The loyal crew retreated to a small fort.</p>
+  <p class="kor"><b>한글 번역</b><br>충성파 선원들은 작은 요새로 피신했다.</p>
+  <button onclick="copyCode('code54')">코드 복사</button>
+  <pre><code id="code54"># 54번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;The loyal crew retreated to a small fort.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s55">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>55. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>A fierce battle took place around the fort.</p>
+  <p class="kor"><b>한글 번역</b><br>요새 주변에서 치열한 전투가 벌어졌다.</p>
+  <button onclick="copyCode('code55')">코드 복사</button>
+  <pre><code id="code55"># 55번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 55,
+    &quot;title&quot;: &quot;보물섬&quot;,
+    &quot;kor&quot;: &#x27;요새 주변에서 치열한 전투가 벌어졌다.&#x27;,
+    &quot;eng&quot;: &#x27;A fierce battle took place around the fort.&#x27;,
+    &quot;theme&quot;: &quot;모험&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s56">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>56. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Gunshots echoed across the island.</p>
+  <p class="kor"><b>한글 번역</b><br>총소리가 섬 전체에 울려 퍼졌다.</p>
+  <button onclick="copyCode('code56')">코드 복사</button>
+  <pre><code id="code56"># 56번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[보물섬 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(56, &#x27;총소리가 섬 전체에 울려 퍼졌다.&#x27;, &#x27;Gunshots echoed across the island.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s57">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>57. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Several men were injured or killed.</p>
+  <p class="kor"><b>한글 번역</b><br>여러 사람이 다치거나 목숨을 잃었다.</p>
+  <button onclick="copyCode('code57')">코드 복사</button>
+  <pre><code id="code57"># 57번 문장: 예외 처리
+sentences = [&#x27;여러 사람이 다치거나 목숨을 잃었다.&#x27;, &#x27;Several men were injured or killed.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s58">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>58. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Jim acted with great courage.</p>
+  <p class="kor"><b>한글 번역</b><br>짐은 큰 용기를 발휘했다.</p>
+  <button onclick="copyCode('code58')">코드 복사</button>
+  <pre><code id="code58"># 58번 문장: 클래스와 객체
+class TreasureScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = TreasureScene(58, &#x27;짐은 큰 용기를 발휘했다.&#x27;, &#x27;Jim acted with great courage.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s59">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>59. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>He delivered important information to his friends.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 중요한 정보를 동료들에게 전달했다.</p>
+  <button onclick="copyCode('code59')">코드 복사</button>
+  <pre><code id="code59"># 59번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;He delivered important information to his friends.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s60">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>60. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>His bravery impressed everyone.</p>
+  <p class="kor"><b>한글 번역</b><br>그의 용기는 모두에게 깊은 인상을 남겼다.</p>
+  <button onclick="copyCode('code60')">코드 복사</button>
+  <pre><code id="code60"># 60번 문장: 데코레이터
+def treasure_frame(func):
+    def wrapper():
+        print(&quot;🏴‍☠️ 보물섬 장면 시작&quot;)
+        func()
+        print(&quot;💰 파이썬 학습 완료&quot;)
+    return wrapper
+
+@treasure_frame
+def show_scene():
+    print(&#x27;그의 용기는 모두에게 깊은 인상을 남겼다.&#x27;)
+    print(&quot;→&quot;, &#x27;His bravery impressed everyone.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s61">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>61. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Jim decided to go on an adventure alone.</p>
+  <p class="kor"><b>한글 번역</b><br>짐은 혼자 모험을 떠나기로 결심했다.</p>
+  <button onclick="copyCode('code61')">코드 복사</button>
+  <pre><code id="code61"># 61번 문장: 변수, 자료형, print()
+title = &quot;Treasure Island&quot;
+sentence_no = 61
+kor = &#x27;짐은 혼자 모험을 떠나기로 결심했다.&#x27;
+eng = &#x27;Jim decided to go on an adventure alone.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s62">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>62. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>He discovered a small boat made by Ben Gunn.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 벤 건이 만든 작은 배를 발견했다.</p>
+  <button onclick="copyCode('code62')">코드 복사</button>
+  <pre><code id="code62"># 62번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그는 벤 건이 만든 작은 배를 발견했다.&#x27;
+eng = &#x27;He discovered a small boat made by Ben Gunn.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s63">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>63. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>During the night, he secretly sailed out to sea.</p>
+  <p class="kor"><b>한글 번역</b><br>밤에 그는 몰래 바다로 나갔다.</p>
+  <button onclick="copyCode('code63')">코드 복사</button>
+  <pre><code id="code63"># 63번 문장: 조건문 if
+kor = &#x27;밤에 그는 몰래 바다로 나갔다.&#x27;
+keyword = &quot;섬&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s64">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>64. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>He approached the Hispaniola quietly.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 조용히 히스파니올라 호에 접근했다.</p>
+  <button onclick="copyCode('code64')">코드 복사</button>
+  <pre><code id="code64"># 64번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;He approached the Hispaniola quietly.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s65">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>65. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Jim cut the rope that held the ship in place.</p>
+  <p class="kor"><b>한글 번역</b><br>짐은 배를 묶고 있던 밧줄을 잘랐다.</p>
+  <button onclick="copyCode('code65')">코드 복사</button>
+  <pre><code id="code65"># 65번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 65,
+    &quot;title&quot;: &quot;보물섬&quot;,
+    &quot;kor&quot;: &#x27;짐은 배를 묶고 있던 밧줄을 잘랐다.&#x27;,
+    &quot;eng&quot;: &#x27;Jim cut the rope that held the ship in place.&#x27;,
+    &quot;theme&quot;: &quot;모험&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s66">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>66. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The ship drifted away with the current.</p>
+  <p class="kor"><b>한글 번역</b><br>배는 물살을 따라 떠내려갔다.</p>
+  <button onclick="copyCode('code66')">코드 복사</button>
+  <pre><code id="code66"># 66번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[보물섬 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(66, &#x27;배는 물살을 따라 떠내려갔다.&#x27;, &#x27;The ship drifted away with the current.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s67">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>67. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The pirates were thrown into confusion.</p>
+  <p class="kor"><b>한글 번역</b><br>해적들은 큰 혼란에 빠졌다.</p>
+  <button onclick="copyCode('code67')">코드 복사</button>
+  <pre><code id="code67"># 67번 문장: 예외 처리
+sentences = [&#x27;해적들은 큰 혼란에 빠졌다.&#x27;, &#x27;The pirates were thrown into confusion.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s68">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>68. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Jim managed to regain control of the ship.</p>
+  <p class="kor"><b>한글 번역</b><br>짐은 배를 다시 확보하는 데 성공했다.</p>
+  <button onclick="copyCode('code68')">코드 복사</button>
+  <pre><code id="code68"># 68번 문장: 클래스와 객체
+class TreasureScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = TreasureScene(68, &#x27;짐은 배를 다시 확보하는 데 성공했다.&#x27;, &#x27;Jim managed to regain control of the ship.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s69">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>69. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>However, he soon faced great danger.</p>
+  <p class="kor"><b>한글 번역</b><br>그러나 곧 큰 위험에 직면했다.</p>
+  <button onclick="copyCode('code69')">코드 복사</button>
+  <pre><code id="code69"># 69번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;However, he soon faced great danger.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s70">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>70. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>He fought desperately against a pirate.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 해적 한 명과 필사적으로 싸웠다.</p>
+  <button onclick="copyCode('code70')">코드 복사</button>
+  <pre><code id="code70"># 70번 문장: 데코레이터
+def treasure_frame(func):
+    def wrapper():
+        print(&quot;🏴‍☠️ 보물섬 장면 시작&quot;)
+        func()
+        print(&quot;💰 파이썬 학습 완료&quot;)
+    return wrapper
+
+@treasure_frame
+def show_scene():
+    print(&#x27;그는 해적 한 명과 필사적으로 싸웠다.&#x27;)
+    print(&quot;→&quot;, &#x27;He fought desperately against a pirate.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s71">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>71. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>In the end, Jim defeated his opponent.</p>
+  <p class="kor"><b>한글 번역</b><br>결국 짐은 상대를 물리쳤다.</p>
+  <button onclick="copyCode('code71')">코드 복사</button>
+  <pre><code id="code71"># 71번 문장: 변수, 자료형, print()
+title = &quot;Treasure Island&quot;
+sentence_no = 71
+kor = &#x27;결국 짐은 상대를 물리쳤다.&#x27;
+eng = &#x27;In the end, Jim defeated his opponent.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s72">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>72. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>He safely returned to his companions.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 무사히 동료들에게 돌아왔다.</p>
+  <button onclick="copyCode('code72')">코드 복사</button>
+  <pre><code id="code72"># 72번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그는 무사히 동료들에게 돌아왔다.&#x27;
+eng = &#x27;He safely returned to his companions.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s73">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>73. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The situation slowly began to improve.</p>
+  <p class="kor"><b>한글 번역</b><br>상황은 서서히 좋아지기 시작했다.</p>
+  <button onclick="copyCode('code73')">코드 복사</button>
+  <pre><code id="code73"># 73번 문장: 조건문 if
+kor = &#x27;상황은 서서히 좋아지기 시작했다.&#x27;
+keyword = &quot;섬&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s74">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>74. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Long John Silver found himself in a difficult position.</p>
+  <p class="kor"><b>한글 번역</b><br>롱 존 실버는 곤란한 처지에 놓이게 되었다.</p>
+  <button onclick="copyCode('code74')">코드 복사</button>
+  <pre><code id="code74"># 74번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Long John Silver found himself in a difficult position.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s75">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>75. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The pirates finally obtained the treasure map.</p>
+  <p class="kor"><b>한글 번역</b><br>해적들은 마침내 보물 지도를 손에 넣었다.</p>
+  <button onclick="copyCode('code75')">코드 복사</button>
+  <pre><code id="code75"># 75번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 75,
+    &quot;title&quot;: &quot;보물섬&quot;,
+    &quot;kor&quot;: &#x27;해적들은 마침내 보물 지도를 손에 넣었다.&#x27;,
+    &quot;eng&quot;: &#x27;The pirates finally obtained the treasure map.&#x27;,
+    &quot;theme&quot;: &quot;모험&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s76">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>76. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>They excitedly rushed to find the treasure.</p>
+  <p class="kor"><b>한글 번역</b><br>그들은 흥분하여 보물을 찾으러 달려갔다.</p>
+  <button onclick="copyCode('code76')">코드 복사</button>
+  <pre><code id="code76"># 76번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[보물섬 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(76, &#x27;그들은 흥분하여 보물을 찾으러 달려갔다.&#x27;, &#x27;They excitedly rushed to find the treasure.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s77">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>77. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>At last, they arrived at the marked location.</p>
+  <p class="kor"><b>한글 번역</b><br>마침내 그들은 지도에 표시된 장소에 도착했다.</p>
+  <button onclick="copyCode('code77')">코드 복사</button>
+  <pre><code id="code77"># 77번 문장: 예외 처리
+sentences = [&#x27;마침내 그들은 지도에 표시된 장소에 도착했다.&#x27;, &#x27;At last, they arrived at the marked location.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s78">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>78. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>To their surprise, the treasure was gone.</p>
+  <p class="kor"><b>한글 번역</b><br>놀랍게도 보물은 사라지고 없었다.</p>
+  <button onclick="copyCode('code78')">코드 복사</button>
+  <pre><code id="code78"># 78번 문장: 클래스와 객체
+class TreasureScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = TreasureScene(78, &#x27;놀랍게도 보물은 사라지고 없었다.&#x27;, &#x27;To their surprise, the treasure was gone.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s79">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>79. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The pirates were shocked and furious.</p>
+  <p class="kor"><b>한글 번역</b><br>해적들은 충격과 분노에 휩싸였다.</p>
+  <button onclick="copyCode('code79')">코드 복사</button>
+  <pre><code id="code79"># 79번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;The pirates were shocked and furious.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s80">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>80. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Someone had already taken the treasure away.</p>
+  <p class="kor"><b>한글 번역</b><br>누군가 이미 보물을 가져가 버린 것이었다.</p>
+  <button onclick="copyCode('code80')">코드 복사</button>
+  <pre><code id="code80"># 80번 문장: 데코레이터
+def treasure_frame(func):
+    def wrapper():
+        print(&quot;🏴‍☠️ 보물섬 장면 시작&quot;)
+        func()
+        print(&quot;💰 파이썬 학습 완료&quot;)
+    return wrapper
+
+@treasure_frame
+def show_scene():
+    print(&#x27;누군가 이미 보물을 가져가 버린 것이었다.&#x27;)
+    print(&quot;→&quot;, &#x27;Someone had already taken the treasure away.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s81">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>81. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>In fact, Ben Gunn had discovered it years earlier.</p>
+  <p class="kor"><b>한글 번역</b><br>사실 벤 건은 몇 년 전에 이미 보물을 발견했었다.</p>
+  <button onclick="copyCode('code81')">코드 복사</button>
+  <pre><code id="code81"># 81번 문장: 변수, 자료형, print()
+title = &quot;Treasure Island&quot;
+sentence_no = 81
+kor = &#x27;사실 벤 건은 몇 년 전에 이미 보물을 발견했었다.&#x27;
+eng = &#x27;In fact, Ben Gunn had discovered it years earlier.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s82">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>82. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>He had moved the treasure to a safer place.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 보물을 더 안전한 장소로 옮겨 두었다.</p>
+  <button onclick="copyCode('code82')">코드 복사</button>
+  <pre><code id="code82"># 82번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그는 보물을 더 안전한 장소로 옮겨 두었다.&#x27;
+eng = &#x27;He had moved the treasure to a safer place.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s83">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>83. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The pirates became extremely angry.</p>
+  <p class="kor"><b>한글 번역</b><br>해적들은 몹시 화가 났다.</p>
+  <button onclick="copyCode('code83')">코드 복사</button>
+  <pre><code id="code83"># 83번 문장: 조건문 if
+kor = &#x27;해적들은 몹시 화가 났다.&#x27;
+keyword = &quot;해적&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s84">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>84. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Some of them blamed Silver for their failure.</p>
+  <p class="kor"><b>한글 번역</b><br>그들 중 일부는 실패의 책임을 실버에게 돌렸다.</p>
+  <button onclick="copyCode('code84')">코드 복사</button>
+  <pre><code id="code84"># 84번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Some of them blamed Silver for their failure.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s85">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>85. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Arguments broke out among the pirates.</p>
+  <p class="kor"><b>한글 번역</b><br>해적들 사이에서 다툼이 벌어졌다.</p>
+  <button onclick="copyCode('code85')">코드 복사</button>
+  <pre><code id="code85"># 85번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 85,
+    &quot;title&quot;: &quot;보물섬&quot;,
+    &quot;kor&quot;: &#x27;해적들 사이에서 다툼이 벌어졌다.&#x27;,
+    &quot;eng&quot;: &#x27;Arguments broke out among the pirates.&#x27;,
+    &quot;theme&quot;: &quot;모험&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s86">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>86. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The loyal crew took advantage of the confusion.</p>
+  <p class="kor"><b>한글 번역</b><br>충성파는 그 혼란을 기회로 이용했다.</p>
+  <button onclick="copyCode('code86')">코드 복사</button>
+  <pre><code id="code86"># 86번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[보물섬 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(86, &#x27;충성파는 그 혼란을 기회로 이용했다.&#x27;, &#x27;The loyal crew took advantage of the confusion.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s87">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>87. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The pirates began to lose the fight.</p>
+  <p class="kor"><b>한글 번역</b><br>해적들은 전투에서 밀리기 시작했다.</p>
+  <button onclick="copyCode('code87')">코드 복사</button>
+  <pre><code id="code87"># 87번 문장: 예외 처리
+sentences = [&#x27;해적들은 전투에서 밀리기 시작했다.&#x27;, &#x27;The pirates began to lose the fight.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s88">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>88. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Many pirates fled in fear.</p>
+  <p class="kor"><b>한글 번역</b><br>많은 해적들이 두려움에 도망쳤다.</p>
+  <button onclick="copyCode('code88')">코드 복사</button>
+  <pre><code id="code88"># 88번 문장: 클래스와 객체
+class TreasureScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = TreasureScene(88, &#x27;많은 해적들이 두려움에 도망쳤다.&#x27;, &#x27;Many pirates fled in fear.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s89">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>89. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Silver changed sides to save himself.</p>
+  <p class="kor"><b>한글 번역</b><br>실버는 자신의 목숨을 지키기 위해 편을 바꾸었다.</p>
+  <button onclick="copyCode('code89')">코드 복사</button>
+  <pre><code id="code89"># 89번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Silver changed sides to save himself.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s90">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>90. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>He helped Jim and his companions.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 짐과 그의 동료들을 도왔다.</p>
+  <button onclick="copyCode('code90')">코드 복사</button>
+  <pre><code id="code90"># 90번 문장: 데코레이터
+def treasure_frame(func):
+    def wrapper():
+        print(&quot;🏴‍☠️ 보물섬 장면 시작&quot;)
+        func()
+        print(&quot;💰 파이썬 학습 완료&quot;)
+    return wrapper
+
+@treasure_frame
+def show_scene():
+    print(&#x27;그는 짐과 그의 동료들을 도왔다.&#x27;)
+    print(&quot;→&quot;, &#x27;He helped Jim and his companions.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+<section class="card" id="s91">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>91. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Eventually, the treasure was secured safely.</p>
+  <p class="kor"><b>한글 번역</b><br>결국 보물은 안전하게 확보되었다.</p>
+  <button onclick="copyCode('code91')">코드 복사</button>
+  <pre><code id="code91"># 91번 문장: 변수, 자료형, print()
+title = &quot;Treasure Island&quot;
+sentence_no = 91
+kor = &#x27;결국 보물은 안전하게 확보되었다.&#x27;
+eng = &#x27;Eventually, the treasure was secured safely.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+
+<section class="card" id="s92">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>92. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The treasure chests were filled with gold and jewels.</p>
+  <p class="kor"><b>한글 번역</b><br>보물 상자에는 금화와 보석이 가득 들어 있었다.</p>
+  <button onclick="copyCode('code92')">코드 복사</button>
+  <pre><code id="code92"># 92번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;보물 상자에는 금화와 보석이 가득 들어 있었다.&#x27;
+eng = &#x27;The treasure chests were filled with gold and jewels.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+
+<section class="card" id="s93">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>93. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Everyone worked together to load the treasure onto the ship.</p>
+  <p class="kor"><b>한글 번역</b><br>모두가 힘을 합쳐 보물을 배에 실었다.</p>
+  <button onclick="copyCode('code93')">코드 복사</button>
+  <pre><code id="code93"># 93번 문장: 조건문 if
+kor = &#x27;모두가 힘을 합쳐 보물을 배에 실었다.&#x27;
+keyword = &quot;보물&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+
+<section class="card" id="s94">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>94. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The Hispaniola finally left the island.</p>
+  <p class="kor"><b>한글 번역</b><br>히스파니올라 호는 마침내 섬을 떠났다.</p>
+  <button onclick="copyCode('code94')">코드 복사</button>
+  <pre><code id="code94"># 94번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;The Hispaniola finally left the island.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+
+<section class="card" id="s95">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>95. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>A few pirates were left behind on the island.</p>
+  <p class="kor"><b>한글 번역</b><br>몇몇 해적들은 섬에 남겨졌다.</p>
+  <button onclick="copyCode('code95')">코드 복사</button>
+  <pre><code id="code95"># 95번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 95,
+    &quot;title&quot;: &quot;보물섬&quot;,
+    &quot;kor&quot;: &#x27;몇몇 해적들은 섬에 남겨졌다.&#x27;,
+    &quot;eng&quot;: &#x27;A few pirates were left behind on the island.&#x27;,
+    &quot;theme&quot;: &quot;모험&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+
+<section class="card" id="s96">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>96. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>During the voyage home, Silver disappeared.</p>
+  <p class="kor"><b>한글 번역</b><br>귀향 항해 중 실버는 사라졌다.</p>
+  <button onclick="copyCode('code96')">코드 복사</button>
+  <pre><code id="code96"># 96번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[보물섬 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(96, &#x27;귀향 항해 중 실버는 사라졌다.&#x27;, &#x27;During the voyage home, Silver disappeared.&#x27;)
+print(result)</code></pre>
+</section>
+
+<section class="card" id="s97">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>97. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>He escaped with a small portion of the treasure.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 보물의 일부를 가지고 도망쳤다.</p>
+  <button onclick="copyCode('code97')">코드 복사</button>
+  <pre><code id="code97"># 97번 문장: 예외 처리
+sentences = [&#x27;그는 보물의 일부를 가지고 도망쳤다.&#x27;, &#x27;He escaped with a small portion of the treasure.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+
+<section class="card" id="s98">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>98. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Jim returned safely to England.</p>
+  <p class="kor"><b>한글 번역</b><br>짐은 무사히 영국으로 돌아왔다.</p>
+  <button onclick="copyCode('code98')">코드 복사</button>
+  <pre><code id="code98"># 98번 문장: 클래스와 객체
+class TreasureScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = TreasureScene(98, &#x27;짐은 무사히 영국으로 돌아왔다.&#x27;, &#x27;Jim returned safely to England.&#x27;)
+scene.show()</code></pre>
+</section>
+
+<section class="card" id="s99">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>99. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>The treasure was shared fairly among the survivors.</p>
+  <p class="kor"><b>한글 번역</b><br>보물은 살아남은 사람들에게 공정하게 나누어졌다.</p>
+  <button onclick="copyCode('code99')">코드 복사</button>
+  <pre><code id="code99"># 99번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;The treasure was shared fairly among the survivors.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+
+<section class="card" id="s100">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>100. 보물섬 장면</h2>
+  <p class="eng"><b>English</b><br>Jim never forgot his unforgettable adventure on Treasure Island.</p>
+  <p class="kor"><b>한글 번역</b><br>짐은 보물섬에서의 잊을 수 없는 모험을 평생 기억했다.</p>
+  <button onclick="copyCode('code100')">코드 복사</button>
+  <pre><code id="code100"># 100번 문장: 데코레이터
+def treasure_frame(func):
+    def wrapper():
+        print(&quot;🏴‍☠️ 보물섬 장면 시작&quot;)
+        func()
+        print(&quot;💰 파이썬 학습 완료&quot;)
+    return wrapper
+
+@treasure_frame
+def show_scene():
+    print(&#x27;짐은 보물섬에서의 잊을 수 없는 모험을 평생 기억했다.&#x27;)
+    print(&quot;→&quot;, &#x27;Jim never forgot his unforgettable adventure on Treasure Island.&#x27;)
+
+show_scene()</code></pre>
+</section>
+
+</main>
+
+<footer>
+  Treasure Island × Python 10-Step Learning
+</footer>
+
+<script>
+function copyCode(id){
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(()=>alert("코드가 복사되었습니다."));
+}
+function goScene(){
+  const id = document.getElementById("jump").value;
+  if(id) document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"});
+}
+</script>
+</body>
+</html>
