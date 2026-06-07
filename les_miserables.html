@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>레미제라블과 함께하는 즐겁고 신나는 파이썬</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Malgun Gothic","Nanum Gothic",Arial,sans-serif;background:linear-gradient(135deg,#e0f2fe,#fef3c7,#fee2e2);color:#1f2937;line-height:1.7}
+header{background:linear-gradient(135deg,#1e3a8a,#7f1d1d,#92400e);color:white;text-align:center;padding:38px 18px}header h1{margin:0;font-size:34px}header p{max-width:980px;margin:10px auto 0;font-size:18px}
+nav{position:sticky;top:0;z-index:20;background:white;border-bottom:1px solid #fecaca;box-shadow:0 4px 14px rgba(0,0,0,.08);padding:10px;display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap}
+select,button{font-family:inherit;font-size:14px;border-radius:10px;padding:9px 12px}select{min-width:360px;max-width:85vw;border:1px solid #ef4444}button{border:none;background:#7f1d1d;color:white;font-weight:800;cursor:pointer}button:hover{filter:brightness(1.12)}
+main{max-width:1150px;margin:24px auto 60px;padding:0 16px}.intro,.card{background:white;border-radius:20px;padding:24px;margin-bottom:22px;box-shadow:0 10px 25px rgba(15,23,42,.10)}.intro h2,.card h2{margin-top:0;color:#7f1d1d}
+table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden}th,td{border:1px solid #fecaca;padding:10px;vertical-align:top}th{background:#fee2e2}
+.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#dbeafe;color:#1e3a8a;font-weight:900;margin-bottom:10px}.eng,.kor{padding:13px 15px;border-radius:14px;margin:10px 0}.eng{background:#e0f2fe;border-left:7px solid #0284c7;font-size:18px}.kor{background:#fef3c7;border-left:7px solid #f59e0b;font-size:19px;font-weight:700}
+pre{background:#111827;color:#f8fafc;padding:18px;border-radius:14px;overflow-x:auto;font-size:15px;line-height:1.55}code{font-family:Consolas,"Courier New",monospace}footer{text-align:center;padding:28px;color:#475569}.small{color:#64748b;font-size:14px}
+@media(max-width:700px){header h1{font-size:25px}select{min-width:220px}}
+</style></head><body>
+<header><h1>🇫🇷 《레미제라블》과 함께하는 즐겁고 신나는 파이썬</h1><p>100개 줄거리 문장을 순서대로 빠짐없이 활용하여 파이썬 기초·응용·심화 10단계 문법을 서로 다른 예시 코드로 학습합니다.</p></header>
+<nav><label for="jump"><b>장면 이동</b></label><select id="jump" onchange="goScene()"><option value="">장면 선택</option><option value="s1">001. 장 발장은 프랑스에 사는 가난한 사람이었다.</option><option value="s2">002. 그는 가족을 사랑했고 그들이 살아남도록 돕고 싶었다.</option><option value="s3">003. 어느 겨울 그의 가족은 먹을 빵이 없었다.</option><option value="s4">004. 절박한 마음에 그는 빵 한 덩이를 훔쳤다.</option><option value="s5">005. 그는 절도죄로 체포되었다.</option><option value="s6">006. 법원은 그에게 징역형을 선고했다.</option><option value="s7">007. 여러 차례 탈옥을 시도하면서 형기는 더 길어졌다.</option><option value="s8">008. 장 발장은 감옥에서 19년을 보냈다.</option><option value="s9">009. 출소 후 그는 노란 통행증을 가지고 다녔다.</option><option value="s10">010. 그 문서는 그가 전과자임을 나타냈다.</option><option value="s11">011. 사람들은 그를 믿으려 하지 않았다.</option><option value="s12">012. 그는 음식과 잠자리를 구하는 데 어려움을 겪었다.</option><option value="s13">013. 어느 날 밤 한 주교가 그를 집으로 초대했다.</option><option value="s14">014. 주교는 그를 친절하게 대했다.</option><option value="s15">015. 장 발장은 그런 관대함에 놀랐다.</option><option value="s16">016. 그러나 그는 주교의 은식기를 훔쳤다.</option><option value="s17">017. 경찰은 곧 그를 다시 체포했다.</option><option value="s18">018. 그들은 그를 주교 앞으로 데려갔다.</option><option value="s19">019. 모두의 놀라움 속에 주교는 그를 용서했다.</option><option value="s20">020. 주교는 오히려 은촛대까지 그에게 주었다.</option><option value="s21">021. 이 행동은 장 발장의 삶을 영원히 바꾸었다.</option><option value="s22">022. 그는 정직한 사람이 되기로 결심했다.</option><option value="s23">023. 그는 새로운 신분으로 살아가기 시작했다.</option><option value="s24">024. 몇 년 후 그는 성공한 사업가가 되었다.</option><option value="s25">025. 그는 마을 사람들의 존경을 받았다.</option><option value="s26">026. 결국 그는 시장이 되었다.</option><option value="s27">027. 한편 자베르 경감은 그를 주의 깊게 지켜보았다.</option><option value="s28">028. 자베르는 발장이 전과자라고 의심했다.</option><option value="s29">029. 발장은 올바른 삶을 살기 위해 노력했다.</option><option value="s30">030. 어느 날 그는 팡틴이라는 가난한 여인을 알게 되었다.</option><option value="s31">031. 팡틴은 삶 속에서 큰 고통을 겪었다.</option><option value="s32">032. 그녀는 딸을 부양하기 위해 열심히 일했다.</option><option value="s33">033. 그녀의 딸 코제트는 잔인한 양육자들과 살고 있었다.</option><option value="s34">034. 그들은 코제트를 끊임없이 학대했다.</option><option value="s35">035. 팡틴은 중병에 걸렸다.</option><option value="s36">036. 죽기 전에 그녀는 발장에게 코제트를 부탁했다.</option><option value="s37">037. 발장은 아이를 지켜 주겠다고 약속했다.</option><option value="s38">038. 팡틴이 죽은 후 그는 코제트를 찾았다.</option><option value="s39">039. 그는 코제트가 비참하게 살고 있는 것을 발견했다.</option><option value="s40">040. 발장은 코제트를 그 고통에서 구해 냈다.</option><option value="s41">041. 그는 그녀를 데려와 친딸처럼 키웠다.</option><option value="s42">042. 코제트는 점차 행복하고 건강하게 자랐다.</option><option value="s43">043. 발장은 그녀를 깊이 사랑했다.</option><option value="s44">044. 두 사람은 함께 조용히 살아갔다.</option><option value="s45">045. 그러나 자베르는 발장을 찾는 일을 멈추지 않았다.</option><option value="s46">046. 발장은 체포를 피하기 위해 자주 이사해야 했다.</option><option value="s47">047. 세월이 흘러 코제트는 젊은 여성이 되었다.</option><option value="s48">048. 그녀는 마리우스라는 학생을 만났다.</option><option value="s49">049. 마리우스와 코제트는 곧 사랑에 빠졌다.</option><option value="s50">050. 그들의 사랑은 기쁨과 시련을 함께 가져왔다.</option><option value="s51">051. 한편 프랑스는 정치적 혼란을 겪고 있었다.</option><option value="s52">052. 많은 젊은이들은 더 나은 미래를 꿈꾸었다.</option><option value="s53">053. 마리우스는 혁명 학생들의 모임에 참여했다.</option><option value="s54">054. 학생들은 정의가 실현되어야 한다고 믿었다.</option><option value="s55">055. 그들은 파리에서 봉기를 준비했다.</option><option value="s56">056. 한편 마리우스는 계속 코제트를 생각했다.</option><option value="s57">057. 그는 다시는 그녀를 보지 못할까 두려워했다.</option><option value="s58">058. 발장은 두 사람의 사랑이 깊어지는 것을 알아차렸다.</option><option value="s59">059. 그는 슬펐지만 코제트가 행복하기를 바랐다.</option><option value="s60">060. 혁명가들은 거리마다 바리케이드를 쌓았다.</option><option value="s61">061. 곧 파리에서 전투가 벌어졌다.</option><option value="s62">062. 마리우스는 바리케이드 수비대에 합류했다.</option><option value="s63">063. 전투는 치열하고 위험해졌다.</option><option value="s64">064. 많은 혁명가들이 목숨을 잃었다.</option><option value="s65">065. 발장은 몰래 바리케이드로 향했다.</option><option value="s66">066. 그는 마리우스를 지키고 싶었다.</option><option value="s67">067. 바리케이드에서 발장은 자베르를 만났다.</option><option value="s68">068. 혁명가들은 그 경감을 붙잡아 두고 있었다.</option><option value="s69">069. 발장은 자베르를 처형할 기회를 얻었다.</option><option value="s70">070. 그러나 그는 몰래 자베르를 풀어 주었다.</option><option value="s71">071. 자베르는 이 자비에 큰 충격을 받았다.</option><option value="s72">072. 그는 발장의 선의를 이해할 수 없었다.</option><option value="s73">073. 곧 바리케이드는 정부군에게 함락되었다.</option><option value="s74">074. 마리우스는 전투 중 크게 다쳤다.</option><option value="s75">075. 발장은 의식을 잃은 청년을 업고 탈출했다.</option><option value="s76">076. 그는 어두운 파리의 하수도를 통해 빠져나갔다.</option><option value="s77">077. 하수도 탈출은 매우 힘든 여정이었다.</option><option value="s78">078. 그러나 발장은 포기하지 않았다.</option><option value="s79">079. 마침내 그는 안전한 곳에 도착했다.</option><option value="s80">080. 자베르는 다시 한번 그를 만났다.</option><option value="s81">081. 발장은 마리우스를 집으로 데려다줄 시간을 달라고 요청했다.</option><option value="s82">082. 자베르는 뜻밖에도 그 요청을 받아들였다.</option><option value="s83">083. 그 경감은 자신의 신념 때문에 괴로워했다.</option><option value="s84">084. 그는 범죄자는 절대 변할 수 없다고 믿었다.</option><option value="s85">085. 그러나 발장은 그 믿음이 틀렸음을 보여 주었다.</option><option value="s86">086. 자베르는 그 모순을 받아들일 수 없었다.</option><option value="s87">087. 혼란에 압도된 그는 스스로 목숨을 끊었다.</option><option value="s88">088. 한편 마리우스는 서서히 회복했다.</option><option value="s89">089. 그와 코제트는 마침내 다시 만났다.</option><option value="s90">090. 그들의 행복은 발장에게 큰 위안을 주었다.</option><option value="s91">091. 마리우스와 코제트는 결혼했다.</option><option value="s92">092. 발장은 조용히 그들의 새로운 삶을 도왔다.</option><option value="s93">093. 결국 그는 자신의 과거를 마리우스에게 털어놓았다.</option><option value="s94">094. 마리우스는 처음에 그를 오해했다.</option><option value="s95">095. 그 결과 발장은 외롭게 지내게 되었다.</option><option value="s96">096. 나중에 마리우스는 모든 진실을 알게 되었다.</option><option value="s97">097. 그는 발장이 얼마나 많은 희생을 했는지 깨달았다.</option><option value="s98">098. 마리우스와 코제트는 급히 그를 찾아갔다.</option><option value="s99">099. 사랑과 감사 속에서 발장은 평화롭게 세상을 떠났다.</option><option value="s100">100. 그의 삶은 구원과 연민, 그리고 희망의 영원한 상징이 되었</option></select><button onclick="window.scrollTo({top:0,behavior:'smooth'})">맨 위</button></nav>
+<main><section class="intro"><h2>학습 구성</h2><p>각 장면은 <b>영어 문장 → 한글 번역 → 해당 문장을 활용한 파이썬 예시 코드</b> 순서로 구성했습니다.</p><table><thead><tr><th>단계</th><th>학습 요소</th><th>해당 문장 번호</th></tr></thead><tbody><tr><td>1단계</td><td>변수·자료형·print</td><td>1, 11, 21, 31, 41, 51, 61, 71, 81, 91</td></tr><tr><td>2단계</td><td>문자열·인덱싱·슬라이싱</td><td>2, 12, 22, 32, 42, 52, 62, 72, 82, 92</td></tr><tr><td>3단계</td><td>조건문 if</td><td>3, 13, 23, 33, 43, 53, 63, 73, 83, 93</td></tr><tr><td>4단계</td><td>반복문 for·while</td><td>4, 14, 24, 34, 44, 54, 64, 74, 84, 94</td></tr><tr><td>5단계</td><td>리스트·튜플·집합·딕셔너리</td><td>5, 15, 25, 35, 45, 55, 65, 75, 85, 95</td></tr><tr><td>6단계</td><td>함수·매개변수·반환값</td><td>6, 16, 26, 36, 46, 56, 66, 76, 86, 96</td></tr><tr><td>7단계</td><td>파일 처리·예외 처리</td><td>7, 17, 27, 37, 47, 57, 67, 77, 87, 97</td></tr><tr><td>8단계</td><td>OOP 클래스·객체</td><td>8, 18, 28, 38, 48, 58, 68, 78, 88, 98</td></tr><tr><td>9단계</td><td>모듈·라이브러리</td><td>9, 19, 29, 39, 49, 59, 69, 79, 89, 99</td></tr><tr><td>10단계</td><td>데코레이터·제너레이터</td><td>10, 20, 30, 40, 50, 60, 70, 80, 90, 100</td></tr></tbody></table><p class="small">코드 복사 버튼을 눌러 IDLE, VS Code, 코랩에서 바로 실행할 수 있습니다.</p></section>
+
+<section class="card" id="s1">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>1. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Jean Valjean was a poor man living in France.</p>
+  <p class="kor"><b>한글 번역</b><br>장 발장은 프랑스에 사는 가난한 사람이었다.</p>
+  <button onclick="copyCode('code1')">코드 복사</button>
+  <pre><code id="code1"># 1번 문장: 변수, 자료형, print()
+title = &quot;Les Misérables&quot;
+sentence_no = 1
+kor = &#x27;장 발장은 프랑스에 사는 가난한 사람이었다.&#x27;
+eng = &#x27;Jean Valjean was a poor man living in France.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s2">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>2. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>He loved his family and wanted to help them survive.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 가족을 사랑했고 그들이 살아남도록 돕고 싶었다.</p>
+  <button onclick="copyCode('code2')">코드 복사</button>
+  <pre><code id="code2"># 2번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그는 가족을 사랑했고 그들이 살아남도록 돕고 싶었다.&#x27;
+eng = &#x27;He loved his family and wanted to help them survive.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s3">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>3. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>One winter, his family had no bread to eat.</p>
+  <p class="kor"><b>한글 번역</b><br>어느 겨울 그의 가족은 먹을 빵이 없었다.</p>
+  <button onclick="copyCode('code3')">코드 복사</button>
+  <pre><code id="code3"># 3번 문장: 조건문 if
+kor = &#x27;어느 겨울 그의 가족은 먹을 빵이 없었다.&#x27;
+keyword = &quot;희망&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s4">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>4. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Out of desperation, he stole a loaf of bread.</p>
+  <p class="kor"><b>한글 번역</b><br>절박한 마음에 그는 빵 한 덩이를 훔쳤다.</p>
+  <button onclick="copyCode('code4')">코드 복사</button>
+  <pre><code id="code4"># 4번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Out of desperation, he stole a loaf of bread.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s5">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>5. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>He was arrested for the theft.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 절도죄로 체포되었다.</p>
+  <button onclick="copyCode('code5')">코드 복사</button>
+  <pre><code id="code5"># 5번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 5,
+    &quot;title&quot;: &quot;레미제라블&quot;,
+    &quot;kor&quot;: &#x27;그는 절도죄로 체포되었다.&#x27;,
+    &quot;eng&quot;: &#x27;He was arrested for the theft.&#x27;,
+    &quot;theme&quot;: &quot;구원과 희망&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s6">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>6. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>The court sentenced him to prison.</p>
+  <p class="kor"><b>한글 번역</b><br>법원은 그에게 징역형을 선고했다.</p>
+  <button onclick="copyCode('code6')">코드 복사</button>
+  <pre><code id="code6"># 6번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[레미제라블 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(6, &#x27;법원은 그에게 징역형을 선고했다.&#x27;, &#x27;The court sentenced him to prison.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s7">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>7. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>His sentence became longer after several escape attempts.</p>
+  <p class="kor"><b>한글 번역</b><br>여러 차례 탈옥을 시도하면서 형기는 더 길어졌다.</p>
+  <button onclick="copyCode('code7')">코드 복사</button>
+  <pre><code id="code7"># 7번 문장: 예외 처리
+sentences = [&#x27;여러 차례 탈옥을 시도하면서 형기는 더 길어졌다.&#x27;, &#x27;His sentence became longer after several escape attempts.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s8">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>8. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Jean Valjean spent nineteen years in prison.</p>
+  <p class="kor"><b>한글 번역</b><br>장 발장은 감옥에서 19년을 보냈다.</p>
+  <button onclick="copyCode('code8')">코드 복사</button>
+  <pre><code id="code8"># 8번 문장: 클래스와 객체
+class LesMisScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = LesMisScene(8, &#x27;장 발장은 감옥에서 19년을 보냈다.&#x27;, &#x27;Jean Valjean spent nineteen years in prison.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s9">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>9. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>When he was released, he carried a yellow passport.</p>
+  <p class="kor"><b>한글 번역</b><br>출소 후 그는 노란 통행증을 가지고 다녔다.</p>
+  <button onclick="copyCode('code9')">코드 복사</button>
+  <pre><code id="code9"># 9번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;When he was released, he carried a yellow passport.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s10">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>10. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>The document marked him as a former prisoner.</p>
+  <p class="kor"><b>한글 번역</b><br>그 문서는 그가 전과자임을 나타냈다.</p>
+  <button onclick="copyCode('code10')">코드 복사</button>
+  <pre><code id="code10"># 10번 문장: 데코레이터
+def hope_frame(func):
+    def wrapper():
+        print(&quot;🇫🇷 레미제라블 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@hope_frame
+def show_scene():
+    print(&#x27;그 문서는 그가 전과자임을 나타냈다.&#x27;)
+    print(&quot;→&quot;, &#x27;The document marked him as a former prisoner.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s11">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>11. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>People refused to trust him.</p>
+  <p class="kor"><b>한글 번역</b><br>사람들은 그를 믿으려 하지 않았다.</p>
+  <button onclick="copyCode('code11')">코드 복사</button>
+  <pre><code id="code11"># 11번 문장: 변수, 자료형, print()
+title = &quot;Les Misérables&quot;
+sentence_no = 11
+kor = &#x27;사람들은 그를 믿으려 하지 않았다.&#x27;
+eng = &#x27;People refused to trust him.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s12">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>12. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>He struggled to find food and shelter.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 음식과 잠자리를 구하는 데 어려움을 겪었다.</p>
+  <button onclick="copyCode('code12')">코드 복사</button>
+  <pre><code id="code12"># 12번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그는 음식과 잠자리를 구하는 데 어려움을 겪었다.&#x27;
+eng = &#x27;He struggled to find food and shelter.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s13">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>13. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>One night, a bishop welcomed him into his home.</p>
+  <p class="kor"><b>한글 번역</b><br>어느 날 밤 한 주교가 그를 집으로 초대했다.</p>
+  <button onclick="copyCode('code13')">코드 복사</button>
+  <pre><code id="code13"># 13번 문장: 조건문 if
+kor = &#x27;어느 날 밤 한 주교가 그를 집으로 초대했다.&#x27;
+keyword = &quot;희망&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s14">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>14. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>The bishop treated him with kindness.</p>
+  <p class="kor"><b>한글 번역</b><br>주교는 그를 친절하게 대했다.</p>
+  <button onclick="copyCode('code14')">코드 복사</button>
+  <pre><code id="code14"># 14번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;The bishop treated him with kindness.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s15">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>15. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Jean Valjean was surprised by such generosity.</p>
+  <p class="kor"><b>한글 번역</b><br>장 발장은 그런 관대함에 놀랐다.</p>
+  <button onclick="copyCode('code15')">코드 복사</button>
+  <pre><code id="code15"># 15번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 15,
+    &quot;title&quot;: &quot;레미제라블&quot;,
+    &quot;kor&quot;: &#x27;장 발장은 그런 관대함에 놀랐다.&#x27;,
+    &quot;eng&quot;: &#x27;Jean Valjean was surprised by such generosity.&#x27;,
+    &quot;theme&quot;: &quot;구원과 희망&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s16">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>16. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>However, he stole the bishop&#x27;s silverware.</p>
+  <p class="kor"><b>한글 번역</b><br>그러나 그는 주교의 은식기를 훔쳤다.</p>
+  <button onclick="copyCode('code16')">코드 복사</button>
+  <pre><code id="code16"># 16번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[레미제라블 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(16, &#x27;그러나 그는 주교의 은식기를 훔쳤다.&#x27;, &quot;However, he stole the bishop&#x27;s silverware.&quot;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s17">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>17. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>The police soon arrested him again.</p>
+  <p class="kor"><b>한글 번역</b><br>경찰은 곧 그를 다시 체포했다.</p>
+  <button onclick="copyCode('code17')">코드 복사</button>
+  <pre><code id="code17"># 17번 문장: 예외 처리
+sentences = [&#x27;경찰은 곧 그를 다시 체포했다.&#x27;, &#x27;The police soon arrested him again.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s18">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>18. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>They brought him before the bishop.</p>
+  <p class="kor"><b>한글 번역</b><br>그들은 그를 주교 앞으로 데려갔다.</p>
+  <button onclick="copyCode('code18')">코드 복사</button>
+  <pre><code id="code18"># 18번 문장: 클래스와 객체
+class LesMisScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = LesMisScene(18, &#x27;그들은 그를 주교 앞으로 데려갔다.&#x27;, &#x27;They brought him before the bishop.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s19">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>19. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>To everyone&#x27;s surprise, the bishop forgave him.</p>
+  <p class="kor"><b>한글 번역</b><br>모두의 놀라움 속에 주교는 그를 용서했다.</p>
+  <button onclick="copyCode('code19')">코드 복사</button>
+  <pre><code id="code19"># 19번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &quot;To everyone&#x27;s surprise, the bishop forgave him.&quot;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s20">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>20. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>The bishop even gave him more silver.</p>
+  <p class="kor"><b>한글 번역</b><br>주교는 오히려 은촛대까지 그에게 주었다.</p>
+  <button onclick="copyCode('code20')">코드 복사</button>
+  <pre><code id="code20"># 20번 문장: 데코레이터
+def hope_frame(func):
+    def wrapper():
+        print(&quot;🇫🇷 레미제라블 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@hope_frame
+def show_scene():
+    print(&#x27;주교는 오히려 은촛대까지 그에게 주었다.&#x27;)
+    print(&quot;→&quot;, &#x27;The bishop even gave him more silver.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s21">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>21. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>This act changed Jean Valjean&#x27;s life forever.</p>
+  <p class="kor"><b>한글 번역</b><br>이 행동은 장 발장의 삶을 영원히 바꾸었다.</p>
+  <button onclick="copyCode('code21')">코드 복사</button>
+  <pre><code id="code21"># 21번 문장: 변수, 자료형, print()
+title = &quot;Les Misérables&quot;
+sentence_no = 21
+kor = &#x27;이 행동은 장 발장의 삶을 영원히 바꾸었다.&#x27;
+eng = &quot;This act changed Jean Valjean&#x27;s life forever.&quot;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s22">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>22. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>He decided to become an honest man.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 정직한 사람이 되기로 결심했다.</p>
+  <button onclick="copyCode('code22')">코드 복사</button>
+  <pre><code id="code22"># 22번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그는 정직한 사람이 되기로 결심했다.&#x27;
+eng = &#x27;He decided to become an honest man.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s23">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>23. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>He adopted a new identity.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 새로운 신분으로 살아가기 시작했다.</p>
+  <button onclick="copyCode('code23')">코드 복사</button>
+  <pre><code id="code23"># 23번 문장: 조건문 if
+kor = &#x27;그는 새로운 신분으로 살아가기 시작했다.&#x27;
+keyword = &quot;희망&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s24">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>24. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Years later, he became a successful businessman.</p>
+  <p class="kor"><b>한글 번역</b><br>몇 년 후 그는 성공한 사업가가 되었다.</p>
+  <button onclick="copyCode('code24')">코드 복사</button>
+  <pre><code id="code24"># 24번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Years later, he became a successful businessman.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s25">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>25. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>He was respected by the townspeople.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 마을 사람들의 존경을 받았다.</p>
+  <button onclick="copyCode('code25')">코드 복사</button>
+  <pre><code id="code25"># 25번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 25,
+    &quot;title&quot;: &quot;레미제라블&quot;,
+    &quot;kor&quot;: &#x27;그는 마을 사람들의 존경을 받았다.&#x27;,
+    &quot;eng&quot;: &#x27;He was respected by the townspeople.&#x27;,
+    &quot;theme&quot;: &quot;구원과 희망&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s26">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>26. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Eventually, he became the mayor of the town.</p>
+  <p class="kor"><b>한글 번역</b><br>결국 그는 시장이 되었다.</p>
+  <button onclick="copyCode('code26')">코드 복사</button>
+  <pre><code id="code26"># 26번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[레미제라블 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(26, &#x27;결국 그는 시장이 되었다.&#x27;, &#x27;Eventually, he became the mayor of the town.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s27">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>27. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Meanwhile, a police inspector named Javert watched him closely.</p>
+  <p class="kor"><b>한글 번역</b><br>한편 자베르 경감은 그를 주의 깊게 지켜보았다.</p>
+  <button onclick="copyCode('code27')">코드 복사</button>
+  <pre><code id="code27"># 27번 문장: 예외 처리
+sentences = [&#x27;한편 자베르 경감은 그를 주의 깊게 지켜보았다.&#x27;, &#x27;Meanwhile, a police inspector named Javert watched him closely.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s28">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>28. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Javert suspected that Valjean was a former convict.</p>
+  <p class="kor"><b>한글 번역</b><br>자베르는 발장이 전과자라고 의심했다.</p>
+  <button onclick="copyCode('code28')">코드 복사</button>
+  <pre><code id="code28"># 28번 문장: 클래스와 객체
+class LesMisScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = LesMisScene(28, &#x27;자베르는 발장이 전과자라고 의심했다.&#x27;, &#x27;Javert suspected that Valjean was a former convict.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s29">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>29. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Valjean tried to live a righteous life.</p>
+  <p class="kor"><b>한글 번역</b><br>발장은 올바른 삶을 살기 위해 노력했다.</p>
+  <button onclick="copyCode('code29')">코드 복사</button>
+  <pre><code id="code29"># 29번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Valjean tried to live a righteous life.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s30">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>30. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>One day, he learned about a poor woman named Fantine.</p>
+  <p class="kor"><b>한글 번역</b><br>어느 날 그는 팡틴이라는 가난한 여인을 알게 되었다.</p>
+  <button onclick="copyCode('code30')">코드 복사</button>
+  <pre><code id="code30"># 30번 문장: 데코레이터
+def hope_frame(func):
+    def wrapper():
+        print(&quot;🇫🇷 레미제라블 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@hope_frame
+def show_scene():
+    print(&#x27;어느 날 그는 팡틴이라는 가난한 여인을 알게 되었다.&#x27;)
+    print(&quot;→&quot;, &#x27;One day, he learned about a poor woman named Fantine.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s31">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>31. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Fantine had suffered greatly in life.</p>
+  <p class="kor"><b>한글 번역</b><br>팡틴은 삶 속에서 큰 고통을 겪었다.</p>
+  <button onclick="copyCode('code31')">코드 복사</button>
+  <pre><code id="code31"># 31번 문장: 변수, 자료형, print()
+title = &quot;Les Misérables&quot;
+sentence_no = 31
+kor = &#x27;팡틴은 삶 속에서 큰 고통을 겪었다.&#x27;
+eng = &#x27;Fantine had suffered greatly in life.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s32">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>32. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>She worked hard to support her daughter.</p>
+  <p class="kor"><b>한글 번역</b><br>그녀는 딸을 부양하기 위해 열심히 일했다.</p>
+  <button onclick="copyCode('code32')">코드 복사</button>
+  <pre><code id="code32"># 32번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그녀는 딸을 부양하기 위해 열심히 일했다.&#x27;
+eng = &#x27;She worked hard to support her daughter.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s33">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>33. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Her daughter Cosette lived with cruel caretakers.</p>
+  <p class="kor"><b>한글 번역</b><br>그녀의 딸 코제트는 잔인한 양육자들과 살고 있었다.</p>
+  <button onclick="copyCode('code33')">코드 복사</button>
+  <pre><code id="code33"># 33번 문장: 조건문 if
+kor = &#x27;그녀의 딸 코제트는 잔인한 양육자들과 살고 있었다.&#x27;
+keyword = &quot;코제트&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s34">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>34. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>The caretakers constantly mistreated Cosette.</p>
+  <p class="kor"><b>한글 번역</b><br>그들은 코제트를 끊임없이 학대했다.</p>
+  <button onclick="copyCode('code34')">코드 복사</button>
+  <pre><code id="code34"># 34번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;The caretakers constantly mistreated Cosette.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s35">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>35. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Fantine became seriously ill.</p>
+  <p class="kor"><b>한글 번역</b><br>팡틴은 중병에 걸렸다.</p>
+  <button onclick="copyCode('code35')">코드 복사</button>
+  <pre><code id="code35"># 35번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 35,
+    &quot;title&quot;: &quot;레미제라블&quot;,
+    &quot;kor&quot;: &#x27;팡틴은 중병에 걸렸다.&#x27;,
+    &quot;eng&quot;: &#x27;Fantine became seriously ill.&#x27;,
+    &quot;theme&quot;: &quot;구원과 희망&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s36">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>36. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Before she died, she begged Valjean to help Cosette.</p>
+  <p class="kor"><b>한글 번역</b><br>죽기 전에 그녀는 발장에게 코제트를 부탁했다.</p>
+  <button onclick="copyCode('code36')">코드 복사</button>
+  <pre><code id="code36"># 36번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[레미제라블 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(36, &#x27;죽기 전에 그녀는 발장에게 코제트를 부탁했다.&#x27;, &#x27;Before she died, she begged Valjean to help Cosette.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s37">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>37. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Valjean promised to protect the child.</p>
+  <p class="kor"><b>한글 번역</b><br>발장은 아이를 지켜 주겠다고 약속했다.</p>
+  <button onclick="copyCode('code37')">코드 복사</button>
+  <pre><code id="code37"># 37번 문장: 예외 처리
+sentences = [&#x27;발장은 아이를 지켜 주겠다고 약속했다.&#x27;, &#x27;Valjean promised to protect the child.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s38">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>38. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>After Fantine&#x27;s death, he searched for Cosette.</p>
+  <p class="kor"><b>한글 번역</b><br>팡틴이 죽은 후 그는 코제트를 찾았다.</p>
+  <button onclick="copyCode('code38')">코드 복사</button>
+  <pre><code id="code38"># 38번 문장: 클래스와 객체
+class LesMisScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = LesMisScene(38, &#x27;팡틴이 죽은 후 그는 코제트를 찾았다.&#x27;, &quot;After Fantine&#x27;s death, he searched for Cosette.&quot;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s39">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>39. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>He found her living in misery.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 코제트가 비참하게 살고 있는 것을 발견했다.</p>
+  <button onclick="copyCode('code39')">코드 복사</button>
+  <pre><code id="code39"># 39번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;He found her living in misery.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s40">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>40. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Valjean rescued Cosette from her suffering.</p>
+  <p class="kor"><b>한글 번역</b><br>발장은 코제트를 그 고통에서 구해 냈다.</p>
+  <button onclick="copyCode('code40')">코드 복사</button>
+  <pre><code id="code40"># 40번 문장: 데코레이터
+def hope_frame(func):
+    def wrapper():
+        print(&quot;🇫🇷 레미제라블 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@hope_frame
+def show_scene():
+    print(&#x27;발장은 코제트를 그 고통에서 구해 냈다.&#x27;)
+    print(&quot;→&quot;, &#x27;Valjean rescued Cosette from her suffering.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s41">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>41. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>He took her away and raised her as his own daughter.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 그녀를 데려와 친딸처럼 키웠다.</p>
+  <button onclick="copyCode('code41')">코드 복사</button>
+  <pre><code id="code41"># 41번 문장: 변수, 자료형, print()
+title = &quot;Les Misérables&quot;
+sentence_no = 41
+kor = &#x27;그는 그녀를 데려와 친딸처럼 키웠다.&#x27;
+eng = &#x27;He took her away and raised her as his own daughter.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s42">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>42. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Cosette gradually grew happy and healthy.</p>
+  <p class="kor"><b>한글 번역</b><br>코제트는 점차 행복하고 건강하게 자랐다.</p>
+  <button onclick="copyCode('code42')">코드 복사</button>
+  <pre><code id="code42"># 42번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;코제트는 점차 행복하고 건강하게 자랐다.&#x27;
+eng = &#x27;Cosette gradually grew happy and healthy.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s43">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>43. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Valjean loved her deeply.</p>
+  <p class="kor"><b>한글 번역</b><br>발장은 그녀를 깊이 사랑했다.</p>
+  <button onclick="copyCode('code43')">코드 복사</button>
+  <pre><code id="code43"># 43번 문장: 조건문 if
+kor = &#x27;발장은 그녀를 깊이 사랑했다.&#x27;
+keyword = &quot;발장&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s44">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>44. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>The two lived quietly together.</p>
+  <p class="kor"><b>한글 번역</b><br>두 사람은 함께 조용히 살아갔다.</p>
+  <button onclick="copyCode('code44')">코드 복사</button>
+  <pre><code id="code44"># 44번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;The two lived quietly together.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s45">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>45. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>However, Javert never stopped searching for Valjean.</p>
+  <p class="kor"><b>한글 번역</b><br>그러나 자베르는 발장을 찾는 일을 멈추지 않았다.</p>
+  <button onclick="copyCode('code45')">코드 복사</button>
+  <pre><code id="code45"># 45번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 45,
+    &quot;title&quot;: &quot;레미제라블&quot;,
+    &quot;kor&quot;: &#x27;그러나 자베르는 발장을 찾는 일을 멈추지 않았다.&#x27;,
+    &quot;eng&quot;: &#x27;However, Javert never stopped searching for Valjean.&#x27;,
+    &quot;theme&quot;: &quot;구원과 희망&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s46">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>46. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Valjean often had to move to avoid capture.</p>
+  <p class="kor"><b>한글 번역</b><br>발장은 체포를 피하기 위해 자주 이사해야 했다.</p>
+  <button onclick="copyCode('code46')">코드 복사</button>
+  <pre><code id="code46"># 46번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[레미제라블 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(46, &#x27;발장은 체포를 피하기 위해 자주 이사해야 했다.&#x27;, &#x27;Valjean often had to move to avoid capture.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s47">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>47. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Years passed, and Cosette became a young woman.</p>
+  <p class="kor"><b>한글 번역</b><br>세월이 흘러 코제트는 젊은 여성이 되었다.</p>
+  <button onclick="copyCode('code47')">코드 복사</button>
+  <pre><code id="code47"># 47번 문장: 예외 처리
+sentences = [&#x27;세월이 흘러 코제트는 젊은 여성이 되었다.&#x27;, &#x27;Years passed, and Cosette became a young woman.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s48">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>48. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>She met a student named Marius.</p>
+  <p class="kor"><b>한글 번역</b><br>그녀는 마리우스라는 학생을 만났다.</p>
+  <button onclick="copyCode('code48')">코드 복사</button>
+  <pre><code id="code48"># 48번 문장: 클래스와 객체
+class LesMisScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = LesMisScene(48, &#x27;그녀는 마리우스라는 학생을 만났다.&#x27;, &#x27;She met a student named Marius.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s49">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>49. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Marius and Cosette quickly fell in love.</p>
+  <p class="kor"><b>한글 번역</b><br>마리우스와 코제트는 곧 사랑에 빠졌다.</p>
+  <button onclick="copyCode('code49')">코드 복사</button>
+  <pre><code id="code49"># 49번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Marius and Cosette quickly fell in love.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s50">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>50. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Their love brought both joy and challenges.</p>
+  <p class="kor"><b>한글 번역</b><br>그들의 사랑은 기쁨과 시련을 함께 가져왔다.</p>
+  <button onclick="copyCode('code50')">코드 복사</button>
+  <pre><code id="code50"># 50번 문장: 데코레이터
+def hope_frame(func):
+    def wrapper():
+        print(&quot;🇫🇷 레미제라블 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@hope_frame
+def show_scene():
+    print(&#x27;그들의 사랑은 기쁨과 시련을 함께 가져왔다.&#x27;)
+    print(&quot;→&quot;, &#x27;Their love brought both joy and challenges.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s51">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>51. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>At the same time, France was facing political unrest.</p>
+  <p class="kor"><b>한글 번역</b><br>한편 프랑스는 정치적 혼란을 겪고 있었다.</p>
+  <button onclick="copyCode('code51')">코드 복사</button>
+  <pre><code id="code51"># 51번 문장: 변수, 자료형, print()
+title = &quot;Les Misérables&quot;
+sentence_no = 51
+kor = &#x27;한편 프랑스는 정치적 혼란을 겪고 있었다.&#x27;
+eng = &#x27;At the same time, France was facing political unrest.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s52">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>52. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Many young people dreamed of a better future.</p>
+  <p class="kor"><b>한글 번역</b><br>많은 젊은이들은 더 나은 미래를 꿈꾸었다.</p>
+  <button onclick="copyCode('code52')">코드 복사</button>
+  <pre><code id="code52"># 52번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;많은 젊은이들은 더 나은 미래를 꿈꾸었다.&#x27;
+eng = &#x27;Many young people dreamed of a better future.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s53">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>53. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Marius joined a group of revolutionary students.</p>
+  <p class="kor"><b>한글 번역</b><br>마리우스는 혁명 학생들의 모임에 참여했다.</p>
+  <button onclick="copyCode('code53')">코드 복사</button>
+  <pre><code id="code53"># 53번 문장: 조건문 if
+kor = &#x27;마리우스는 혁명 학생들의 모임에 참여했다.&#x27;
+keyword = &quot;희망&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s54">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>54. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>The students believed justice should prevail.</p>
+  <p class="kor"><b>한글 번역</b><br>학생들은 정의가 실현되어야 한다고 믿었다.</p>
+  <button onclick="copyCode('code54')">코드 복사</button>
+  <pre><code id="code54"># 54번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;The students believed justice should prevail.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s55">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>55. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>They prepared for an uprising in Paris.</p>
+  <p class="kor"><b>한글 번역</b><br>그들은 파리에서 봉기를 준비했다.</p>
+  <button onclick="copyCode('code55')">코드 복사</button>
+  <pre><code id="code55"># 55번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 55,
+    &quot;title&quot;: &quot;레미제라블&quot;,
+    &quot;kor&quot;: &#x27;그들은 파리에서 봉기를 준비했다.&#x27;,
+    &quot;eng&quot;: &#x27;They prepared for an uprising in Paris.&#x27;,
+    &quot;theme&quot;: &quot;구원과 희망&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s56">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>56. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Meanwhile, Marius continued to think about Cosette.</p>
+  <p class="kor"><b>한글 번역</b><br>한편 마리우스는 계속 코제트를 생각했다.</p>
+  <button onclick="copyCode('code56')">코드 복사</button>
+  <pre><code id="code56"># 56번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[레미제라블 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(56, &#x27;한편 마리우스는 계속 코제트를 생각했다.&#x27;, &#x27;Meanwhile, Marius continued to think about Cosette.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s57">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>57. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>He feared he might never see her again.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 다시는 그녀를 보지 못할까 두려워했다.</p>
+  <button onclick="copyCode('code57')">코드 복사</button>
+  <pre><code id="code57"># 57번 문장: 예외 처리
+sentences = [&#x27;그는 다시는 그녀를 보지 못할까 두려워했다.&#x27;, &#x27;He feared he might never see her again.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s58">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>58. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Valjean noticed their growing affection.</p>
+  <p class="kor"><b>한글 번역</b><br>발장은 두 사람의 사랑이 깊어지는 것을 알아차렸다.</p>
+  <button onclick="copyCode('code58')">코드 복사</button>
+  <pre><code id="code58"># 58번 문장: 클래스와 객체
+class LesMisScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = LesMisScene(58, &#x27;발장은 두 사람의 사랑이 깊어지는 것을 알아차렸다.&#x27;, &#x27;Valjean noticed their growing affection.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s59">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>59. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Although saddened, he wanted Cosette to be happy.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 슬펐지만 코제트가 행복하기를 바랐다.</p>
+  <button onclick="copyCode('code59')">코드 복사</button>
+  <pre><code id="code59"># 59번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Although saddened, he wanted Cosette to be happy.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s60">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>60. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>The revolutionaries built barricades in the streets.</p>
+  <p class="kor"><b>한글 번역</b><br>혁명가들은 거리마다 바리케이드를 쌓았다.</p>
+  <button onclick="copyCode('code60')">코드 복사</button>
+  <pre><code id="code60"># 60번 문장: 데코레이터
+def hope_frame(func):
+    def wrapper():
+        print(&quot;🇫🇷 레미제라블 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@hope_frame
+def show_scene():
+    print(&#x27;혁명가들은 거리마다 바리케이드를 쌓았다.&#x27;)
+    print(&quot;→&quot;, &#x27;The revolutionaries built barricades in the streets.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s61">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>61. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Fighting soon broke out in Paris.</p>
+  <p class="kor"><b>한글 번역</b><br>곧 파리에서 전투가 벌어졌다.</p>
+  <button onclick="copyCode('code61')">코드 복사</button>
+  <pre><code id="code61"># 61번 문장: 변수, 자료형, print()
+title = &quot;Les Misérables&quot;
+sentence_no = 61
+kor = &#x27;곧 파리에서 전투가 벌어졌다.&#x27;
+eng = &#x27;Fighting soon broke out in Paris.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s62">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>62. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Marius joined the defenders at the barricade.</p>
+  <p class="kor"><b>한글 번역</b><br>마리우스는 바리케이드 수비대에 합류했다.</p>
+  <button onclick="copyCode('code62')">코드 복사</button>
+  <pre><code id="code62"># 62번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;마리우스는 바리케이드 수비대에 합류했다.&#x27;
+eng = &#x27;Marius joined the defenders at the barricade.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s63">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>63. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>The battle became fierce and dangerous.</p>
+  <p class="kor"><b>한글 번역</b><br>전투는 치열하고 위험해졌다.</p>
+  <button onclick="copyCode('code63')">코드 복사</button>
+  <pre><code id="code63"># 63번 문장: 조건문 if
+kor = &#x27;전투는 치열하고 위험해졌다.&#x27;
+keyword = &quot;희망&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s64">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>64. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Many revolutionaries lost their lives.</p>
+  <p class="kor"><b>한글 번역</b><br>많은 혁명가들이 목숨을 잃었다.</p>
+  <button onclick="copyCode('code64')">코드 복사</button>
+  <pre><code id="code64"># 64번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Many revolutionaries lost their lives.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s65">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>65. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Valjean secretly went to the barricade.</p>
+  <p class="kor"><b>한글 번역</b><br>발장은 몰래 바리케이드로 향했다.</p>
+  <button onclick="copyCode('code65')">코드 복사</button>
+  <pre><code id="code65"># 65번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 65,
+    &quot;title&quot;: &quot;레미제라블&quot;,
+    &quot;kor&quot;: &#x27;발장은 몰래 바리케이드로 향했다.&#x27;,
+    &quot;eng&quot;: &#x27;Valjean secretly went to the barricade.&#x27;,
+    &quot;theme&quot;: &quot;구원과 희망&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s66">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>66. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>He wanted to protect Marius.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 마리우스를 지키고 싶었다.</p>
+  <button onclick="copyCode('code66')">코드 복사</button>
+  <pre><code id="code66"># 66번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[레미제라블 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(66, &#x27;그는 마리우스를 지키고 싶었다.&#x27;, &#x27;He wanted to protect Marius.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s67">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>67. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>At the barricade, Valjean encountered Javert.</p>
+  <p class="kor"><b>한글 번역</b><br>바리케이드에서 발장은 자베르를 만났다.</p>
+  <button onclick="copyCode('code67')">코드 복사</button>
+  <pre><code id="code67"># 67번 문장: 예외 처리
+sentences = [&#x27;바리케이드에서 발장은 자베르를 만났다.&#x27;, &#x27;At the barricade, Valjean encountered Javert.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s68">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>68. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>The revolutionaries had captured the inspector.</p>
+  <p class="kor"><b>한글 번역</b><br>혁명가들은 그 경감을 붙잡아 두고 있었다.</p>
+  <button onclick="copyCode('code68')">코드 복사</button>
+  <pre><code id="code68"># 68번 문장: 클래스와 객체
+class LesMisScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = LesMisScene(68, &#x27;혁명가들은 그 경감을 붙잡아 두고 있었다.&#x27;, &#x27;The revolutionaries had captured the inspector.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s69">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>69. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Valjean was given the chance to execute Javert.</p>
+  <p class="kor"><b>한글 번역</b><br>발장은 자베르를 처형할 기회를 얻었다.</p>
+  <button onclick="copyCode('code69')">코드 복사</button>
+  <pre><code id="code69"># 69번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Valjean was given the chance to execute Javert.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s70">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>70. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Instead, he secretly released him.</p>
+  <p class="kor"><b>한글 번역</b><br>그러나 그는 몰래 자베르를 풀어 주었다.</p>
+  <button onclick="copyCode('code70')">코드 복사</button>
+  <pre><code id="code70"># 70번 문장: 데코레이터
+def hope_frame(func):
+    def wrapper():
+        print(&quot;🇫🇷 레미제라블 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@hope_frame
+def show_scene():
+    print(&#x27;그러나 그는 몰래 자베르를 풀어 주었다.&#x27;)
+    print(&quot;→&quot;, &#x27;Instead, he secretly released him.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s71">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>71. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Javert was shocked by this mercy.</p>
+  <p class="kor"><b>한글 번역</b><br>자베르는 이 자비에 큰 충격을 받았다.</p>
+  <button onclick="copyCode('code71')">코드 복사</button>
+  <pre><code id="code71"># 71번 문장: 변수, 자료형, print()
+title = &quot;Les Misérables&quot;
+sentence_no = 71
+kor = &#x27;자베르는 이 자비에 큰 충격을 받았다.&#x27;
+eng = &#x27;Javert was shocked by this mercy.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s72">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>72. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>He could not understand Valjean&#x27;s kindness.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 발장의 선의를 이해할 수 없었다.</p>
+  <button onclick="copyCode('code72')">코드 복사</button>
+  <pre><code id="code72"># 72번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;그는 발장의 선의를 이해할 수 없었다.&#x27;
+eng = &quot;He could not understand Valjean&#x27;s kindness.&quot;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s73">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>73. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Soon the barricade fell to government forces.</p>
+  <p class="kor"><b>한글 번역</b><br>곧 바리케이드는 정부군에게 함락되었다.</p>
+  <button onclick="copyCode('code73')">코드 복사</button>
+  <pre><code id="code73"># 73번 문장: 조건문 if
+kor = &#x27;곧 바리케이드는 정부군에게 함락되었다.&#x27;
+keyword = &quot;희망&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s74">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>74. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Marius was seriously wounded in the fighting.</p>
+  <p class="kor"><b>한글 번역</b><br>마리우스는 전투 중 크게 다쳤다.</p>
+  <button onclick="copyCode('code74')">코드 복사</button>
+  <pre><code id="code74"># 74번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Marius was seriously wounded in the fighting.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s75">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>75. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Valjean carried the unconscious young man away.</p>
+  <p class="kor"><b>한글 번역</b><br>발장은 의식을 잃은 청년을 업고 탈출했다.</p>
+  <button onclick="copyCode('code75')">코드 복사</button>
+  <pre><code id="code75"># 75번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 75,
+    &quot;title&quot;: &quot;레미제라블&quot;,
+    &quot;kor&quot;: &#x27;발장은 의식을 잃은 청년을 업고 탈출했다.&#x27;,
+    &quot;eng&quot;: &#x27;Valjean carried the unconscious young man away.&#x27;,
+    &quot;theme&quot;: &quot;구원과 희망&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s76">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>76. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>He escaped through the dark Paris sewers.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 어두운 파리의 하수도를 통해 빠져나갔다.</p>
+  <button onclick="copyCode('code76')">코드 복사</button>
+  <pre><code id="code76"># 76번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[레미제라블 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(76, &#x27;그는 어두운 파리의 하수도를 통해 빠져나갔다.&#x27;, &#x27;He escaped through the dark Paris sewers.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s77">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>77. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>The journey through the sewers was exhausting.</p>
+  <p class="kor"><b>한글 번역</b><br>하수도 탈출은 매우 힘든 여정이었다.</p>
+  <button onclick="copyCode('code77')">코드 복사</button>
+  <pre><code id="code77"># 77번 문장: 예외 처리
+sentences = [&#x27;하수도 탈출은 매우 힘든 여정이었다.&#x27;, &#x27;The journey through the sewers was exhausting.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s78">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>78. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Yet Valjean refused to give up.</p>
+  <p class="kor"><b>한글 번역</b><br>그러나 발장은 포기하지 않았다.</p>
+  <button onclick="copyCode('code78')">코드 복사</button>
+  <pre><code id="code78"># 78번 문장: 클래스와 객체
+class LesMisScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = LesMisScene(78, &#x27;그러나 발장은 포기하지 않았다.&#x27;, &#x27;Yet Valjean refused to give up.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s79">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>79. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Eventually, he reached safety.</p>
+  <p class="kor"><b>한글 번역</b><br>마침내 그는 안전한 곳에 도착했다.</p>
+  <button onclick="copyCode('code79')">코드 복사</button>
+  <pre><code id="code79"># 79번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Eventually, he reached safety.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s80">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>80. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Javert met him once more.</p>
+  <p class="kor"><b>한글 번역</b><br>자베르는 다시 한번 그를 만났다.</p>
+  <button onclick="copyCode('code80')">코드 복사</button>
+  <pre><code id="code80"># 80번 문장: 데코레이터
+def hope_frame(func):
+    def wrapper():
+        print(&quot;🇫🇷 레미제라블 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@hope_frame
+def show_scene():
+    print(&#x27;자베르는 다시 한번 그를 만났다.&#x27;)
+    print(&quot;→&quot;, &#x27;Javert met him once more.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s81">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>81. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Valjean asked for time to deliver Marius home.</p>
+  <p class="kor"><b>한글 번역</b><br>발장은 마리우스를 집으로 데려다줄 시간을 달라고 요청했다.</p>
+  <button onclick="copyCode('code81')">코드 복사</button>
+  <pre><code id="code81"># 81번 문장: 변수, 자료형, print()
+title = &quot;Les Misérables&quot;
+sentence_no = 81
+kor = &#x27;발장은 마리우스를 집으로 데려다줄 시간을 달라고 요청했다.&#x27;
+eng = &#x27;Valjean asked for time to deliver Marius home.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s82">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>82. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Javert unexpectedly agreed.</p>
+  <p class="kor"><b>한글 번역</b><br>자베르는 뜻밖에도 그 요청을 받아들였다.</p>
+  <button onclick="copyCode('code82')">코드 복사</button>
+  <pre><code id="code82"># 82번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;자베르는 뜻밖에도 그 요청을 받아들였다.&#x27;
+eng = &#x27;Javert unexpectedly agreed.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s83">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>83. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>The inspector struggled with his beliefs.</p>
+  <p class="kor"><b>한글 번역</b><br>그 경감은 자신의 신념 때문에 괴로워했다.</p>
+  <button onclick="copyCode('code83')">코드 복사</button>
+  <pre><code id="code83"># 83번 문장: 조건문 if
+kor = &#x27;그 경감은 자신의 신념 때문에 괴로워했다.&#x27;
+keyword = &quot;희망&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s84">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>84. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>He believed criminals could never change.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 범죄자는 절대 변할 수 없다고 믿었다.</p>
+  <button onclick="copyCode('code84')">코드 복사</button>
+  <pre><code id="code84"># 84번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;He believed criminals could never change.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s85">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>85. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Yet Valjean had proven otherwise.</p>
+  <p class="kor"><b>한글 번역</b><br>그러나 발장은 그 믿음이 틀렸음을 보여 주었다.</p>
+  <button onclick="copyCode('code85')">코드 복사</button>
+  <pre><code id="code85"># 85번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 85,
+    &quot;title&quot;: &quot;레미제라블&quot;,
+    &quot;kor&quot;: &#x27;그러나 발장은 그 믿음이 틀렸음을 보여 주었다.&#x27;,
+    &quot;eng&quot;: &#x27;Yet Valjean had proven otherwise.&#x27;,
+    &quot;theme&quot;: &quot;구원과 희망&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s86">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>86. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Javert could not reconcile the contradiction.</p>
+  <p class="kor"><b>한글 번역</b><br>자베르는 그 모순을 받아들일 수 없었다.</p>
+  <button onclick="copyCode('code86')">코드 복사</button>
+  <pre><code id="code86"># 86번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[레미제라블 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(86, &#x27;자베르는 그 모순을 받아들일 수 없었다.&#x27;, &#x27;Javert could not reconcile the contradiction.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s87">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>87. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Overwhelmed by confusion, he took his own life.</p>
+  <p class="kor"><b>한글 번역</b><br>혼란에 압도된 그는 스스로 목숨을 끊었다.</p>
+  <button onclick="copyCode('code87')">코드 복사</button>
+  <pre><code id="code87"># 87번 문장: 예외 처리
+sentences = [&#x27;혼란에 압도된 그는 스스로 목숨을 끊었다.&#x27;, &#x27;Overwhelmed by confusion, he took his own life.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s88">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>88. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Meanwhile, Marius slowly recovered.</p>
+  <p class="kor"><b>한글 번역</b><br>한편 마리우스는 서서히 회복했다.</p>
+  <button onclick="copyCode('code88')">코드 복사</button>
+  <pre><code id="code88"># 88번 문장: 클래스와 객체
+class LesMisScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = LesMisScene(88, &#x27;한편 마리우스는 서서히 회복했다.&#x27;, &#x27;Meanwhile, Marius slowly recovered.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s89">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>89. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>He and Cosette were finally reunited.</p>
+  <p class="kor"><b>한글 번역</b><br>그와 코제트는 마침내 다시 만났다.</p>
+  <button onclick="copyCode('code89')">코드 복사</button>
+  <pre><code id="code89"># 89번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;He and Cosette were finally reunited.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s90">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>90. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Their happiness brought great comfort to Valjean.</p>
+  <p class="kor"><b>한글 번역</b><br>그들의 행복은 발장에게 큰 위안을 주었다.</p>
+  <button onclick="copyCode('code90')">코드 복사</button>
+  <pre><code id="code90"># 90번 문장: 데코레이터
+def hope_frame(func):
+    def wrapper():
+        print(&quot;🇫🇷 레미제라블 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@hope_frame
+def show_scene():
+    print(&#x27;그들의 행복은 발장에게 큰 위안을 주었다.&#x27;)
+    print(&quot;→&quot;, &#x27;Their happiness brought great comfort to Valjean.&#x27;)
+
+show_scene()</code></pre>
+</section>
+<section class="card" id="s91">
+  <div class="badge">1단계 · 변수·자료형·print</div>
+  <h2>91. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Marius and Cosette were married.</p>
+  <p class="kor"><b>한글 번역</b><br>마리우스와 코제트는 결혼했다.</p>
+  <button onclick="copyCode('code91')">코드 복사</button>
+  <pre><code id="code91"># 91번 문장: 변수, 자료형, print()
+title = &quot;Les Misérables&quot;
+sentence_no = 91
+kor = &#x27;마리우스와 코제트는 결혼했다.&#x27;
+eng = &#x27;Marius and Cosette were married.&#x27;
+
+print(title)
+print(sentence_no, &quot;번 문장&quot;)
+print(&quot;한글:&quot;, kor)
+print(&quot;영어:&quot;, eng)</code></pre>
+</section>
+<section class="card" id="s92">
+  <div class="badge">2단계 · 문자열·인덱싱·슬라이싱</div>
+  <h2>92. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Valjean quietly supported their new life.</p>
+  <p class="kor"><b>한글 번역</b><br>발장은 조용히 그들의 새로운 삶을 도왔다.</p>
+  <button onclick="copyCode('code92')">코드 복사</button>
+  <pre><code id="code92"># 92번 문장: 문자열 인덱싱과 슬라이싱
+kor = &#x27;발장은 조용히 그들의 새로운 삶을 도왔다.&#x27;
+eng = &#x27;Valjean quietly supported their new life.&#x27;
+
+print(&quot;한글 첫 글자:&quot;, kor[0])
+print(&quot;영어 첫 단어:&quot;, eng.split()[0])
+print(&quot;한글 앞 12글자:&quot;, kor[:12])
+print(&quot;영어 뒤 10글자:&quot;, eng[-10:])</code></pre>
+</section>
+<section class="card" id="s93">
+  <div class="badge">3단계 · 조건문 if</div>
+  <h2>93. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Eventually, he revealed his past to Marius.</p>
+  <p class="kor"><b>한글 번역</b><br>결국 그는 자신의 과거를 마리우스에게 털어놓았다.</p>
+  <button onclick="copyCode('code93')">코드 복사</button>
+  <pre><code id="code93"># 93번 문장: 조건문 if
+kor = &#x27;결국 그는 자신의 과거를 마리우스에게 털어놓았다.&#x27;
+keyword = &quot;희망&quot;
+
+if keyword in kor:
+    print(&quot;핵심 단어 발견:&quot;, keyword)
+else:
+    print(&quot;핵심 단어가 없습니다.&quot;)
+
+if len(kor) &gt;= 30:
+    print(&quot;긴 줄거리 문장입니다.&quot;)
+else:
+    print(&quot;짧은 줄거리 문장입니다.&quot;)</code></pre>
+</section>
+<section class="card" id="s94">
+  <div class="badge">4단계 · 반복문 for·while</div>
+  <h2>94. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Marius initially misunderstood him.</p>
+  <p class="kor"><b>한글 번역</b><br>마리우스는 처음에 그를 오해했다.</p>
+  <button onclick="copyCode('code94')">코드 복사</button>
+  <pre><code id="code94"># 94번 문장: for문으로 영어 단어 번호 붙이기
+eng = &#x27;Marius initially misunderstood him.&#x27;
+words = eng.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for idx, word in enumerate(words, start=1):
+    print(idx, word)
+
+print(&quot;총 단어 수:&quot;, len(words))</code></pre>
+</section>
+<section class="card" id="s95">
+  <div class="badge">5단계 · 리스트·튜플·집합·딕셔너리</div>
+  <h2>95. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>As a result, Valjean became isolated.</p>
+  <p class="kor"><b>한글 번역</b><br>그 결과 발장은 외롭게 지내게 되었다.</p>
+  <button onclick="copyCode('code95')">코드 복사</button>
+  <pre><code id="code95"># 95번 문장: 리스트와 딕셔너리
+scene = {
+    &quot;no&quot;: 95,
+    &quot;title&quot;: &quot;레미제라블&quot;,
+    &quot;kor&quot;: &#x27;그 결과 발장은 외롭게 지내게 되었다.&#x27;,
+    &quot;eng&quot;: &#x27;As a result, Valjean became isolated.&#x27;,
+    &quot;theme&quot;: &quot;구원과 희망&quot;
+}
+
+print(&quot;키 목록:&quot;, list(scene.keys()))
+print(&quot;한글:&quot;, scene[&quot;kor&quot;])
+print(&quot;영어:&quot;, scene[&quot;eng&quot;])</code></pre>
+</section>
+<section class="card" id="s96">
+  <div class="badge">6단계 · 함수·매개변수·반환값</div>
+  <h2>96. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Later, Marius learned the full truth.</p>
+  <p class="kor"><b>한글 번역</b><br>나중에 마리우스는 모든 진실을 알게 되었다.</p>
+  <button onclick="copyCode('code96')">코드 복사</button>
+  <pre><code id="code96"># 96번 문장: 함수와 반환값
+def make_scene(no, kor, eng):
+    return f&quot;&quot;&quot;[레미제라블 {no}번 장면]
+KOR: {kor}
+ENG: {eng}&quot;&quot;&quot;
+
+result = make_scene(96, &#x27;나중에 마리우스는 모든 진실을 알게 되었다.&#x27;, &#x27;Later, Marius learned the full truth.&#x27;)
+print(result)</code></pre>
+</section>
+<section class="card" id="s97">
+  <div class="badge">7단계 · 파일 처리·예외 처리</div>
+  <h2>97. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>He realized how much Valjean had sacrificed.</p>
+  <p class="kor"><b>한글 번역</b><br>그는 발장이 얼마나 많은 희생을 했는지 깨달았다.</p>
+  <button onclick="copyCode('code97')">코드 복사</button>
+  <pre><code id="code97"># 97번 문장: 예외 처리
+sentences = [&#x27;그는 발장이 얼마나 많은 희생을 했는지 깨달았다.&#x27;, &#x27;He realized how much Valjean had sacrificed.&#x27;]
+
+try:
+    choice = 1
+    print(&quot;선택한 문장:&quot;, sentences[choice])
+except IndexError:
+    print(&quot;없는 문장 번호입니다.&quot;)
+finally:
+    print(&quot;장면 확인 완료&quot;)</code></pre>
+</section>
+<section class="card" id="s98">
+  <div class="badge">8단계 · OOP 클래스·객체</div>
+  <h2>98. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Marius and Cosette rushed to see him.</p>
+  <p class="kor"><b>한글 번역</b><br>마리우스와 코제트는 급히 그를 찾아갔다.</p>
+  <button onclick="copyCode('code98')">코드 복사</button>
+  <pre><code id="code98"># 98번 문장: 클래스와 객체
+class LesMisScene:
+    def __init__(self, no, kor, eng):
+        self.no = no
+        self.kor = kor
+        self.eng = eng
+
+    def show(self):
+        print(f&quot;[{self.no}번 장면]&quot;)
+        print(self.kor)
+        print(self.eng)
+
+scene = LesMisScene(98, &#x27;마리우스와 코제트는 급히 그를 찾아갔다.&#x27;, &#x27;Marius and Cosette rushed to see him.&#x27;)
+scene.show()</code></pre>
+</section>
+<section class="card" id="s99">
+  <div class="badge">9단계 · 모듈·라이브러리</div>
+  <h2>99. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>Surrounded by love and gratitude, Valjean passed away peacefully.</p>
+  <p class="kor"><b>한글 번역</b><br>사랑과 감사 속에서 발장은 평화롭게 세상을 떠났다.</p>
+  <button onclick="copyCode('code99')">코드 복사</button>
+  <pre><code id="code99"># 99번 문장: collections 모듈 활용
+from collections import Counter
+
+eng = &#x27;Surrounded by love and gratitude, Valjean passed away peacefully.&#x27;
+letters = [ch.lower() for ch in eng if ch.isalpha()]
+counter = Counter(letters)
+
+print(&quot;가장 많이 나온 알파벳 5개:&quot;)
+print(counter.most_common(5))</code></pre>
+</section>
+<section class="card" id="s100">
+  <div class="badge">10단계 · 데코레이터·제너레이터</div>
+  <h2>100. 레미제라블 장면</h2>
+  <p class="eng"><b>English</b><br>His life became a lasting symbol of redemption, compassion, and hope.</p>
+  <p class="kor"><b>한글 번역</b><br>그의 삶은 구원과 연민, 그리고 희망의 영원한 상징이 되었다.</p>
+  <button onclick="copyCode('code100')">코드 복사</button>
+  <pre><code id="code100"># 100번 문장: 데코레이터
+def hope_frame(func):
+    def wrapper():
+        print(&quot;🇫🇷 레미제라블 장면 시작&quot;)
+        func()
+        print(&quot;🐍 파이썬 학습 완료&quot;)
+    return wrapper
+
+@hope_frame
+def show_scene():
+    print(&#x27;그의 삶은 구원과 연민, 그리고 희망의 영원한 상징이 되었다.&#x27;)
+    print(&quot;→&quot;, &#x27;His life became a lasting symbol of redemption, compassion, and hope.&#x27;)
+
+show_scene()</code></pre>
+</section>
+</main><footer>Les Misérables × Python 10-Step Learning</footer>
+<script>
+function copyCode(id){const text=document.getElementById(id).innerText;navigator.clipboard.writeText(text).then(()=>alert("코드가 복사되었습니다."));}
+function goScene(){const id=document.getElementById("jump").value;if(id)document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"});}
+</script></body></html>
