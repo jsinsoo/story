@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>소철의 노자해 100줄 문장 - 표 없는 HTML</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:'Malgun Gothic','Noto Sans KR',sans-serif;background:#f4f6f8;margin:0;color:#1f2933;line-height:1.7}
+header{background:linear-gradient(135deg,#263238,#607d8b);color:white;padding:34px 18px;text-align:center}
+header h1{margin:0;font-size:30px}
+header p{margin:10px 0 0;font-size:15px;opacity:.92}
+main{max-width:980px;margin:24px auto;padding:0 16px 40px}
+.controls{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-radius:16px;padding:15px;box-shadow:0 4px 16px rgba(0,0,0,.08);margin-bottom:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+input{flex:1;min-width:220px;padding:12px 14px;border:1px solid #cfd8dc;border-radius:10px;font-size:16px}
+button{padding:11px 14px;border:0;border-radius:10px;background:#455a64;color:white;cursor:pointer;font-size:15px}
+button:hover{background:#263238}
+.card{background:white;border-radius:18px;padding:22px 24px;margin:16px 0;box-shadow:0 4px 16px rgba(0,0,0,.08);border-left:7px solid #607d8b}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.num{display:inline-flex;align-items:center;justify-content:center;background:#263238;color:white;border-radius:999px;min-width:54px;height:34px;font-weight:bold;letter-spacing:.5px}
+.tag{font-size:13px;color:#607d8b;background:#eef3f5;border-radius:999px;padding:5px 10px}
+.hanzi{font-family:'SimSun','Noto Serif CJK KR','Malgun Gothic',serif;font-size:34px;font-weight:bold;color:#111827;margin:12px 0 18px;letter-spacing:1px;line-height:1.45}
+.block{border-top:1px solid #e5e7eb;padding-top:10px;margin-top:10px}
+.block strong{display:inline-block;color:#37474f;margin-bottom:3px}
+.block p{margin:2px 0 0;font-size:17px}
+.english p{color:#374151}
+mark{background:#fff59d;padding:0 2px;border-radius:3px}
+.notice{font-size:14px;color:#546e7a;margin:6px 2px 12px}
+@media print{.controls{display:none} body{background:white} .card{break-inside:avoid;box-shadow:none;border:1px solid #ddd;border-left:6px solid #777}}
+@media(max-width:640px){header h1{font-size:23px} .hanzi{font-size:26px} .card{padding:18px 16px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>소철의 노자해 100줄 문장</h1>
+  <p>한자 · 한글 독음 · 한글 설명 · 영어 번역 | 표 없는 카드형 HTML</p>
+</header>
+<main>
+  <div class="controls">
+    <input id="search" placeholder="검색어 입력: 한자, 독음, 설명, 영어">
+    <button onclick="resetSearch()">전체 보기</button>
+    <button onclick="window.print()">인쇄 / PDF 저장</button>
+  </div>
+  <p class="notice">※ 표를 사용하지 않고, 각 문장을 카드형 문단으로 정리했습니다.</p>
+  <div id="cards">
+
+<section class="card">
+  <div class="card-top"><span class="num">001</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">道可道非常道</div>
+  <div class="block"><strong>한글 독음</strong><p>도가도 비상도</p></div>
+  <div class="block"><strong>한글 설명</strong><p>말로 규정할 수 있는 도는 영원히 변하지 않는 도가 아니다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The Dao that can be spoken is not the constant Dao.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">002</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">名可名非常名</div>
+  <div class="block"><strong>한글 독음</strong><p>명가명 비상명</p></div>
+  <div class="block"><strong>한글 설명</strong><p>이름 붙여진 것은 이미 한정된 것이므로 영원한 이름이 아니다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The name that can be named is not the constant name.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">003</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">無名天地之始</div>
+  <div class="block"><strong>한글 독음</strong><p>무명 천지지시</p></div>
+  <div class="block"><strong>한글 설명</strong><p>이름 없음은 하늘과 땅이 시작되는 근원이다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The nameless is the beginning of Heaven and Earth.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">004</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">有名萬物之母</div>
+  <div class="block"><strong>한글 독음</strong><p>유명 만물지모</p></div>
+  <div class="block"><strong>한글 설명</strong><p>이름 있음은 만물이 드러나고 분별되는 어머니이다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The named is the mother of all things.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">005</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">常無欲以觀其妙</div>
+  <div class="block"><strong>한글 독음</strong><p>상무욕 이관기묘</p></div>
+  <div class="block"><strong>한글 설명</strong><p>욕심을 비우면 도의 오묘한 본질을 볼 수 있다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>With constant non-desire, one observes its mystery.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">006</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">常有欲以觀其徼</div>
+  <div class="block"><strong>한글 독음</strong><p>상유욕 이관기교</p></div>
+  <div class="block"><strong>한글 설명</strong><p>욕심이 있으면 사물의 경계와 겉모습만 보게 된다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>With constant desire, one observes its boundaries.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">007</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">玄之又玄衆妙之門</div>
+  <div class="block"><strong>한글 독음</strong><p>현지우현 중묘지문</p></div>
+  <div class="block"><strong>한글 설명</strong><p>도는 깊고 또 깊어 온갖 신비가 들어오는 문이다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Mystery upon mystery, the gateway of all wonders.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">008</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">天下皆知美之爲美斯惡已</div>
+  <div class="block"><strong>한글 독음</strong><p>천하개지 미지위미 사오이</p></div>
+  <div class="block"><strong>한글 설명</strong><p>아름다움을 세우면 그 반대인 추함도 함께 생긴다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>When all know beauty as beauty, ugliness has already arisen.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">009</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">皆知善之爲善斯不善已</div>
+  <div class="block"><strong>한글 독음</strong><p>개지선지위선 사불선이</p></div>
+  <div class="block"><strong>한글 설명</strong><p>선을 분별하면 선하지 않음도 함께 드러난다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>When all know good as good, non-good has already arisen.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">010</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">有無相生</div>
+  <div class="block"><strong>한글 독음</strong><p>유무상생</p></div>
+  <div class="block"><strong>한글 설명</strong><p>있음과 없음은 서로 기대어 생겨난다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Being and non-being give rise to each other.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">011</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">難易相成</div>
+  <div class="block"><strong>한글 독음</strong><p>난이상성</p></div>
+  <div class="block"><strong>한글 설명</strong><p>어려움과 쉬움은 서로 비교되어 완성된다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Difficulty and ease complete each other.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">012</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">長短相形</div>
+  <div class="block"><strong>한글 독음</strong><p>장단상형</p></div>
+  <div class="block"><strong>한글 설명</strong><p>길고 짧음은 서로 견주어 드러난다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Long and short shape each other.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">013</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">高下相傾</div>
+  <div class="block"><strong>한글 독음</strong><p>고하상경</p></div>
+  <div class="block"><strong>한글 설명</strong><p>높고 낮음은 서로 의지해 위치가 정해진다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>High and low lean on each other.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">014</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">音聲相和</div>
+  <div class="block"><strong>한글 독음</strong><p>음성상화</p></div>
+  <div class="block"><strong>한글 설명</strong><p>소리와 음성은 서로 어울려 조화를 이룬다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Tone and voice harmonize with each other.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">015</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">前後相隨</div>
+  <div class="block"><strong>한글 독음</strong><p>전후상수</p></div>
+  <div class="block"><strong>한글 설명</strong><p>앞과 뒤는 서로 따라 존재한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Before and after follow each other.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">016</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">聖人處無爲之事</div>
+  <div class="block"><strong>한글 독음</strong><p>성인처 무위지사</p></div>
+  <div class="block"><strong>한글 설명</strong><p>성인은 억지로 꾸미지 않는 일에 머문다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The sage dwells in the work of non-action.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">017</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">行不言之教</div>
+  <div class="block"><strong>한글 독음</strong><p>행불언지교</p></div>
+  <div class="block"><strong>한글 설명</strong><p>성인은 말보다 삶과 행실로 가르친다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The sage practices teaching without words.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">018</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">萬物作焉而不辭</div>
+  <div class="block"><strong>한글 독음</strong><p>만물작언 이불사</p></div>
+  <div class="block"><strong>한글 설명</strong><p>만물이 일어나도 도는 거절하거나 차별하지 않는다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>All things arise, yet it does not refuse them.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">019</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">生而不有</div>
+  <div class="block"><strong>한글 독음</strong><p>생이불유</p></div>
+  <div class="block"><strong>한글 설명</strong><p>낳고 기르지만 자기 소유로 삼지 않는다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>It gives life but does not possess.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">020</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">爲而不恃</div>
+  <div class="block"><strong>한글 독음</strong><p>위이불시</p></div>
+  <div class="block"><strong>한글 설명</strong><p>일을 이루어도 그 공에 기대지 않는다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>It acts but does not rely on its achievement.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">021</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">功成而弗居</div>
+  <div class="block"><strong>한글 독음</strong><p>공성이불거</p></div>
+  <div class="block"><strong>한글 설명</strong><p>공이 이루어져도 그 자리에 머물러 자랑하지 않는다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Accomplishing the work, it does not dwell in credit.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">022</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">夫唯弗居是以不去</div>
+  <div class="block"><strong>한글 독음</strong><p>부유불거 시이불거</p></div>
+  <div class="block"><strong>한글 설명</strong><p>공을 차지하지 않기 때문에 그 공은 사라지지 않는다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Because it does not dwell in credit, the merit does not depart.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">023</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">不尚賢使民不爭</div>
+  <div class="block"><strong>한글 독음</strong><p>불상현 사민부쟁</p></div>
+  <div class="block"><strong>한글 설명</strong><p>지나친 경쟁적 높임을 만들지 않으면 백성이 다투지 않는다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Do not exalt the worthy, and people will not contend.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">024</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">不貴難得之貨使民不爲盜</div>
+  <div class="block"><strong>한글 독음</strong><p>불귀난득지화 사민불위도</p></div>
+  <div class="block"><strong>한글 설명</strong><p>희귀한 물건을 귀하게 여기지 않으면 도둑질이 줄어든다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Do not value rare goods, and people will not become thieves.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">025</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">不見可欲使民心不亂</div>
+  <div class="block"><strong>한글 독음</strong><p>불현가욕 사민심불란</p></div>
+  <div class="block"><strong>한글 설명</strong><p>탐욕을 자극하지 않으면 사람의 마음이 어지러워지지 않는다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Do not display objects of desire, and minds will not be disturbed.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">026</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">虛其心實其腹</div>
+  <div class="block"><strong>한글 독음</strong><p>허기심 실기복</p></div>
+  <div class="block"><strong>한글 설명</strong><p>마음의 헛된 욕망은 비우고 삶의 기본은 채운다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Empty the mind and fill the belly.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">027</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">弱其志強其骨</div>
+  <div class="block"><strong>한글 독음</strong><p>약기지 강기골</p></div>
+  <div class="block"><strong>한글 설명</strong><p>헛된 야망은 약하게 하고 삶의 근본은 튼튼하게 한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Soften ambition and strengthen the bones.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">028</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">常使民無知無欲</div>
+  <div class="block"><strong>한글 독음</strong><p>상사민 무지무욕</p></div>
+  <div class="block"><strong>한글 설명</strong><p>교만한 지식과 지나친 욕망에서 멀어지게 한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Always guide people away from cunning knowledge and desire.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">029</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">爲無爲則無不治</div>
+  <div class="block"><strong>한글 독음</strong><p>위무위 즉무불치</p></div>
+  <div class="block"><strong>한글 설명</strong><p>무위로 다스리면 다스려지지 않는 것이 없다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Act through non-action, and nothing remains ungoverned.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">030</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">道沖而用之或不盈</div>
+  <div class="block"><strong>한글 독음</strong><p>도충이용지 혹불영</p></div>
+  <div class="block"><strong>한글 설명</strong><p>도는 비어 있는 듯하지만 아무리 써도 가득 차거나 고갈되지 않는다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The Dao is empty, yet in use it is never filled.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">031</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">淵兮似萬物之宗</div>
+  <div class="block"><strong>한글 독음</strong><p>연혜 사만물지종</p></div>
+  <div class="block"><strong>한글 설명</strong><p>도는 깊은 못처럼 만물의 근원과 같다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Deep indeed, it seems the ancestor of all things.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">032</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">挫其銳解其紛</div>
+  <div class="block"><strong>한글 독음</strong><p>좌기예 해기분</p></div>
+  <div class="block"><strong>한글 설명</strong><p>날카로움을 누그러뜨리고 얽힌 것을 풀어야 한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Blunt sharpness and untie tangles.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">033</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">和其光同其塵</div>
+  <div class="block"><strong>한글 독음</strong><p>화기광 동기진</p></div>
+  <div class="block"><strong>한글 설명</strong><p>빛을 부드럽게 하고 세상의 먼지와 함께한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Soften the light and become one with the dust.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">034</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">湛兮似或存</div>
+  <div class="block"><strong>한글 독음</strong><p>담혜 사혹존</p></div>
+  <div class="block"><strong>한글 설명</strong><p>도는 맑고 고요하여 있는 듯 없는 듯하다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Clear and still, it seems to exist.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">035</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">天地不仁以萬物爲芻狗</div>
+  <div class="block"><strong>한글 독음</strong><p>천지불인 이만물위추구</p></div>
+  <div class="block"><strong>한글 설명</strong><p>하늘과 땅은 사사로운 정으로 만물을 편애하지 않는다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Heaven and Earth are impartial, treating all things like straw dogs.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">036</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">聖人不仁以百姓爲芻狗</div>
+  <div class="block"><strong>한글 독음</strong><p>성인불인 이백성위추구</p></div>
+  <div class="block"><strong>한글 설명</strong><p>성인은 사사로운 편애 없이 백성을 자연의 이치대로 대한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The sage is impartial, treating the people like straw dogs.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">037</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">天地之間其猶橐籥乎</div>
+  <div class="block"><strong>한글 독음</strong><p>천지지간 기유탁약호</p></div>
+  <div class="block"><strong>한글 설명</strong><p>하늘과 땅 사이는 풀무처럼 비어 있으면서 작용한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The space between Heaven and Earth is like a bellows.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">038</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">虛而不屈動而愈出</div>
+  <div class="block"><strong>한글 독음</strong><p>허이불굴 동이유출</p></div>
+  <div class="block"><strong>한글 설명</strong><p>비어 있으나 다하지 않고 움직일수록 더 나온다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Empty yet inexhaustible, moving it brings forth more.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">039</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">多言數窮不如守中</div>
+  <div class="block"><strong>한글 독음</strong><p>다언삭궁 불여수중</p></div>
+  <div class="block"><strong>한글 설명</strong><p>말이 많으면 자주 막히니 중심을 지키는 것만 못하다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Too many words soon exhaust; better to hold the center.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">040</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">谷神不死是謂玄牝</div>
+  <div class="block"><strong>한글 독음</strong><p>곡신불사 시위현빈</p></div>
+  <div class="block"><strong>한글 설명</strong><p>비어 받아들이는 골짜기의 정신은 사라지지 않는다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The valley spirit never dies; it is called the mysterious female.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">041</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">玄牝之門是謂天地根</div>
+  <div class="block"><strong>한글 독음</strong><p>현빈지문 시위천지근</p></div>
+  <div class="block"><strong>한글 설명</strong><p>깊은 생명의 문은 천지의 뿌리라 할 수 있다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The gate of the mysterious female is the root of Heaven and Earth.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">042</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">綿綿若存用之不勤</div>
+  <div class="block"><strong>한글 독음</strong><p>면면약존 용지불근</p></div>
+  <div class="block"><strong>한글 설명</strong><p>끊어질 듯 이어져 있으며 써도 애써 고갈되지 않는다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Continuous as if existing, its use is never exhausted.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">043</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">天長地久</div>
+  <div class="block"><strong>한글 독음</strong><p>천장지구</p></div>
+  <div class="block"><strong>한글 설명</strong><p>하늘과 땅은 오래 지속된다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Heaven is long-lasting and Earth endures.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">044</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">天地所以能長且久者以其不自生</div>
+  <div class="block"><strong>한글 독음</strong><p>천지소이능장차구자 이기불자생</p></div>
+  <div class="block"><strong>한글 설명</strong><p>천지가 오래가는 까닭은 자기만을 위해 살지 않기 때문이다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Heaven and Earth endure because they do not live for themselves.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">045</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">聖人後其身而身先</div>
+  <div class="block"><strong>한글 독음</strong><p>성인후기신 이신선</p></div>
+  <div class="block"><strong>한글 설명</strong><p>성인은 자신을 뒤에 두므로 오히려 앞서게 된다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The sage puts himself last, and therefore comes first.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">046</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">外其身而身存</div>
+  <div class="block"><strong>한글 독음</strong><p>외기신 이신존</p></div>
+  <div class="block"><strong>한글 설명</strong><p>자기 집착을 밖에 두므로 오히려 자신을 보존한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>He puts himself outside himself, and therefore remains.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">047</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">非以其無私邪故能成其私</div>
+  <div class="block"><strong>한글 독음</strong><p>비이기무사야 고능성기사</p></div>
+  <div class="block"><strong>한글 설명</strong><p>사사로움이 없기 때문에 참으로 자신을 이룬다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Because he is selfless, he fulfills himself.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">048</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">上善若水</div>
+  <div class="block"><strong>한글 독음</strong><p>상선약수</p></div>
+  <div class="block"><strong>한글 설명</strong><p>가장 높은 선은 물과 같다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The highest goodness is like water.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">049</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">水善利萬物而不爭</div>
+  <div class="block"><strong>한글 독음</strong><p>수선리만물 이부쟁</p></div>
+  <div class="block"><strong>한글 설명</strong><p>물은 만물을 이롭게 하면서도 다투지 않는다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Water benefits all things and does not contend.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">050</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">處衆人之所惡故幾於道</div>
+  <div class="block"><strong>한글 독음</strong><p>처중인지소오 고기어도</p></div>
+  <div class="block"><strong>한글 설명</strong><p>사람들이 싫어하는 낮은 곳에 머무르므로 도에 가깝다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>It dwells where people dislike; therefore it is close to the Dao.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">051</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">居善地心善淵</div>
+  <div class="block"><strong>한글 독음</strong><p>거선지 심선연</p></div>
+  <div class="block"><strong>한글 설명</strong><p>머묾은 낮은 땅을 좋게 여기고 마음은 깊은 못처럼 한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>In dwelling, value the ground; in mind, value depth.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">052</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">與善仁言善信</div>
+  <div class="block"><strong>한글 독음</strong><p>여선인 언선신</p></div>
+  <div class="block"><strong>한글 설명</strong><p>사람을 대할 때는 어짊을, 말할 때는 믿음을 귀하게 여긴다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>In giving, value kindness; in speech, value trust.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">053</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">正善治事善能</div>
+  <div class="block"><strong>한글 독음</strong><p>정선치 사선능</p></div>
+  <div class="block"><strong>한글 설명</strong><p>바르게 다스리고 일에는 능력을 다한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>In governance, value order; in affairs, value ability.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">054</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">動善時夫唯不爭故無尤</div>
+  <div class="block"><strong>한글 독음</strong><p>동선시 부유부쟁 고무우</p></div>
+  <div class="block"><strong>한글 설명</strong><p>움직일 때는 때를 살피고 다투지 않으므로 허물이 없다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>In action, value timing; because there is no contention, there is no blame.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">055</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">持而盈之不如其已</div>
+  <div class="block"><strong>한글 독음</strong><p>지이영지 불여기이</p></div>
+  <div class="block"><strong>한글 설명</strong><p>가득 채워 붙드는 것은 그만두는 것만 못하다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Holding and filling it is not as good as stopping.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">056</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">揣而銳之不可長保</div>
+  <div class="block"><strong>한글 독음</strong><p>췌이예지 불가장보</p></div>
+  <div class="block"><strong>한글 설명</strong><p>지나치게 날카롭게 갈면 오래 보존할 수 없다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Sharpen it too much, and it cannot be long preserved.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">057</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">金玉滿堂莫之能守</div>
+  <div class="block"><strong>한글 독음</strong><p>금옥만당 막지능수</p></div>
+  <div class="block"><strong>한글 설명</strong><p>금과 옥이 집에 가득해도 끝까지 지키기는 어렵다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>A hall full of gold and jade cannot be guarded forever.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">058</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">富貴而驕自遺其咎</div>
+  <div class="block"><strong>한글 독음</strong><p>부귀이교 자유기구</p></div>
+  <div class="block"><strong>한글 설명</strong><p>부귀하여 교만하면 스스로 재앙을 남긴다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Wealth and rank with arrogance bring misfortune upon oneself.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">059</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">功遂身退天之道</div>
+  <div class="block"><strong>한글 독음</strong><p>공수신퇴 천지도</p></div>
+  <div class="block"><strong>한글 설명</strong><p>공이 이루어지면 물러나는 것이 하늘의 도이다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>When the work is done, withdraw; this is the way of Heaven.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">060</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">載營魄抱一能無離乎</div>
+  <div class="block"><strong>한글 독음</strong><p>재영백포일 능무리호</p></div>
+  <div class="block"><strong>한글 설명</strong><p>몸과 마음을 하나로 품어 흩어지지 않게 할 수 있는가.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Can you embrace the One and keep body and soul from parting?</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">061</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">專氣致柔能嬰兒乎</div>
+  <div class="block"><strong>한글 독음</strong><p>전기치유 능영아호</p></div>
+  <div class="block"><strong>한글 설명</strong><p>기를 모아 부드러움에 이르면 갓난아이 같아질 수 있는가.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Can you concentrate the breath and become soft like an infant?</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">062</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">滌除玄覽能無疵乎</div>
+  <div class="block"><strong>한글 독음</strong><p>척제현람 능무자호</p></div>
+  <div class="block"><strong>한글 설명</strong><p>깊은 마음의 거울을 씻어 흠이 없게 할 수 있는가.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Can you cleanse the mysterious mirror until it is spotless?</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">063</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">愛民治國能無知乎</div>
+  <div class="block"><strong>한글 독음</strong><p>애민치국 능무지호</p></div>
+  <div class="block"><strong>한글 설명</strong><p>백성을 사랑하고 나라를 다스리되 잔꾀에 의존하지 않을 수 있는가.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Can you love the people and govern without cunning?</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">064</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">生之畜之生而不有</div>
+  <div class="block"><strong>한글 독음</strong><p>생지축지 생이불유</p></div>
+  <div class="block"><strong>한글 설명</strong><p>낳고 기르되 소유하려 하지 않는다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Give life and nurture it, yet do not possess it.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">065</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">長而不宰是謂玄德</div>
+  <div class="block"><strong>한글 독음</strong><p>장이불재 시위현덕</p></div>
+  <div class="block"><strong>한글 설명</strong><p>기르면서도 지배하지 않는 것을 깊은 덕이라 한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>To lead without ruling is called mysterious virtue.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">066</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">三十輻共一轂</div>
+  <div class="block"><strong>한글 독음</strong><p>삼십폭 공일곡</p></div>
+  <div class="block"><strong>한글 설명</strong><p>서른 개 바퀴살이 하나의 바퀴통에 모인다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Thirty spokes share one hub.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">067</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">當其無有車之用</div>
+  <div class="block"><strong>한글 독음</strong><p>당기무 유차지용</p></div>
+  <div class="block"><strong>한글 설명</strong><p>그 빈 공간이 있어 수레의 쓰임이 생긴다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>It is the empty space that makes the cart useful.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">068</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">埏埴以爲器</div>
+  <div class="block"><strong>한글 독음</strong><p>연식이위기</p></div>
+  <div class="block"><strong>한글 설명</strong><p>진흙을 빚어 그릇을 만든다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Clay is shaped to make a vessel.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">069</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">當其無有器之用</div>
+  <div class="block"><strong>한글 독음</strong><p>당기무 유기지용</p></div>
+  <div class="block"><strong>한글 설명</strong><p>그릇 속 빈 곳 때문에 그릇의 쓰임이 생긴다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>It is the empty space that makes the vessel useful.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">070</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">鑿戶牖以爲室</div>
+  <div class="block"><strong>한글 독음</strong><p>착호유 이위실</p></div>
+  <div class="block"><strong>한글 설명</strong><p>문과 창을 뚫어 방을 만든다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Doors and windows are cut to make a room.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">071</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">當其無有室之用</div>
+  <div class="block"><strong>한글 독음</strong><p>당기무 유실지용</p></div>
+  <div class="block"><strong>한글 설명</strong><p>방 안의 빈 곳 때문에 방의 쓰임이 생긴다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>It is the empty space that makes the room useful.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">072</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">故有之以爲利無之以爲用</div>
+  <div class="block"><strong>한글 독음</strong><p>고유지이위리 무지이위용</p></div>
+  <div class="block"><strong>한글 설명</strong><p>있는 것은 이로움을 주고 없는 것은 쓰임을 만든다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Being provides advantage; non-being provides usefulness.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">073</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">五色令人目盲</div>
+  <div class="block"><strong>한글 독음</strong><p>오색 영인목맹</p></div>
+  <div class="block"><strong>한글 설명</strong><p>화려한 색은 사람의 눈을 멀게 한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The five colors blind the eyes.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">074</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">五音令人耳聾</div>
+  <div class="block"><strong>한글 독음</strong><p>오음 영인이롱</p></div>
+  <div class="block"><strong>한글 설명</strong><p>지나친 음악은 사람의 귀를 둔하게 한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The five tones deafen the ears.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">075</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">五味令人口爽</div>
+  <div class="block"><strong>한글 독음</strong><p>오미 영인구상</p></div>
+  <div class="block"><strong>한글 설명</strong><p>지나친 맛은 사람의 입맛을 상하게 한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The five flavors dull the mouth.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">076</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">馳騁畋獵令人心發狂</div>
+  <div class="block"><strong>한글 독음</strong><p>치빙전렵 영인심발광</p></div>
+  <div class="block"><strong>한글 설명</strong><p>사냥과 쾌락의 질주는 마음을 미치게 한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Racing and hunting make the mind wild.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">077</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">難得之貨令人行妨</div>
+  <div class="block"><strong>한글 독음</strong><p>난득지화 영인행방</p></div>
+  <div class="block"><strong>한글 설명</strong><p>얻기 어려운 재물은 사람의 행동을 그르치게 한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Rare goods obstruct proper conduct.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">078</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">是以聖人爲腹不爲目</div>
+  <div class="block"><strong>한글 독음</strong><p>시이성인 위복불위목</p></div>
+  <div class="block"><strong>한글 설명</strong><p>성인은 삶의 실질을 위하고 눈의 욕망을 좇지 않는다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Therefore the sage works for the belly, not for the eye.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">079</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">寵辱若驚貴大患若身</div>
+  <div class="block"><strong>한글 독음</strong><p>총욕약경 귀대환약신</p></div>
+  <div class="block"><strong>한글 설명</strong><p>총애와 모욕에 놀라는 것은 몸에 집착하기 때문이다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Favor and disgrace startle us because we value the self.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">080</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">吾所以有大患者爲吾有身</div>
+  <div class="block"><strong>한글 독음</strong><p>오소이유대환자 위오유신</p></div>
+  <div class="block"><strong>한글 설명</strong><p>큰 근심이 있는 까닭은 나라는 몸에 집착하기 때문이다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>The reason I have great trouble is that I have a body-self.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">081</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">及吾無身吾有何患</div>
+  <div class="block"><strong>한글 독음</strong><p>급오무신 오유하환</p></div>
+  <div class="block"><strong>한글 설명</strong><p>자기 집착이 없다면 무슨 근심이 있겠는가.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>If I had no self-body, what trouble would I have?</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">082</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">視之不見名曰夷</div>
+  <div class="block"><strong>한글 독음</strong><p>시지불견 명왈이</p></div>
+  <div class="block"><strong>한글 설명</strong><p>보아도 보이지 않는 것을 이라 한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Looked at but not seen, it is called subtle.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">083</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">聽之不聞名曰希</div>
+  <div class="block"><strong>한글 독음</strong><p>청지불문 명왈희</p></div>
+  <div class="block"><strong>한글 설명</strong><p>들어도 들리지 않는 것을 희라 한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Listened to but not heard, it is called rarefied.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">084</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">搏之不得名曰微</div>
+  <div class="block"><strong>한글 독음</strong><p>박지부득 명왈미</p></div>
+  <div class="block"><strong>한글 설명</strong><p>잡으려 해도 잡히지 않는 것을 미라 한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Grasped but not obtained, it is called minute.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">085</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">此三者不可致詰故混而爲一</div>
+  <div class="block"><strong>한글 독음</strong><p>차삼자 불가치힐 고혼이위일</p></div>
+  <div class="block"><strong>한글 설명</strong><p>이 셋은 따져 물을 수 없으므로 섞여 하나가 된다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>These three cannot be fully examined, so they merge into one.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">086</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">執古之道以御今之有</div>
+  <div class="block"><strong>한글 독음</strong><p>집고지도 이어금지유</p></div>
+  <div class="block"><strong>한글 설명</strong><p>오래된 도를 붙들어 오늘의 일을 다스린다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Hold the ancient Dao to govern present existence.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">087</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">知古始是謂道紀</div>
+  <div class="block"><strong>한글 독음</strong><p>지고시 시위도기</p></div>
+  <div class="block"><strong>한글 설명</strong><p>태초의 시작을 아는 것이 도의 실마리이다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>To know the ancient beginning is the thread of the Dao.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">088</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">古之善爲士者微妙玄通</div>
+  <div class="block"><strong>한글 독음</strong><p>고지선위사자 미묘현통</p></div>
+  <div class="block"><strong>한글 설명</strong><p>옛날의 참된 선비는 미묘하고 깊으며 통달하였다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Those of old who were good at the Way were subtle, mysterious, and penetrating.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">089</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">豫兮若冬涉川</div>
+  <div class="block"><strong>한글 독음</strong><p>예혜 약동섭천</p></div>
+  <div class="block"><strong>한글 설명</strong><p>겨울에 냇물을 건너듯 조심한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Cautious, as if crossing a river in winter.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">090</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">猶兮若畏四鄰</div>
+  <div class="block"><strong>한글 독음</strong><p>유혜 약외사린</p></div>
+  <div class="block"><strong>한글 설명</strong><p>사방의 이웃을 두려워하듯 신중하다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Hesitant, as if fearing neighbors on all sides.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">091</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">儼兮其若客</div>
+  <div class="block"><strong>한글 독음</strong><p>엄혜 기약객</p></div>
+  <div class="block"><strong>한글 설명</strong><p>손님처럼 공손하고 삼간다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Respectful, like a guest.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">092</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">渙兮若冰之將釋</div>
+  <div class="block"><strong>한글 독음</strong><p>환혜 약빙지장석</p></div>
+  <div class="block"><strong>한글 설명</strong><p>녹으려는 얼음처럼 부드럽게 풀린다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Yielding, like ice about to melt.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">093</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">敦兮其若樸</div>
+  <div class="block"><strong>한글 독음</strong><p>돈혜 기약박</p></div>
+  <div class="block"><strong>한글 설명</strong><p>다듬지 않은 통나무처럼 두텁고 순박하다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Simple and solid, like uncarved wood.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">094</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">曠兮其若谷</div>
+  <div class="block"><strong>한글 독음</strong><p>광혜 기약곡</p></div>
+  <div class="block"><strong>한글 설명</strong><p>골짜기처럼 넓고 비어 있다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Open and spacious, like a valley.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">095</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">混兮其若濁</div>
+  <div class="block"><strong>한글 독음</strong><p>혼혜 기약탁</p></div>
+  <div class="block"><strong>한글 설명</strong><p>흐린 물처럼 섞여 드러내지 않는다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Mixed and obscure, like muddy water.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">096</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">致虛極守靜篤</div>
+  <div class="block"><strong>한글 독음</strong><p>치허극 수정독</p></div>
+  <div class="block"><strong>한글 설명</strong><p>비움을 지극히 하고 고요함을 두텁게 지킨다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Attain utmost emptiness and hold firm stillness.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">097</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">萬物並作吾以觀復</div>
+  <div class="block"><strong>한글 독음</strong><p>만물병작 오이관복</p></div>
+  <div class="block"><strong>한글 설명</strong><p>만물이 함께 일어나도 나는 그 돌아감을 본다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>All things arise together; I observe their return.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">098</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">夫物芸芸各復歸其根</div>
+  <div class="block"><strong>한글 독음</strong><p>부물운운 각복귀기근</p></div>
+  <div class="block"><strong>한글 설명</strong><p>무성한 만물은 저마다 그 뿌리로 돌아간다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>All flourishing things return to their roots.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">099</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">歸根曰靜是謂復命</div>
+  <div class="block"><strong>한글 독음</strong><p>귀근왈정 시위복명</p></div>
+  <div class="block"><strong>한글 설명</strong><p>뿌리로 돌아감을 고요라 하고, 이것을 명으로 돌아감이라 한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Returning to the root is stillness; this is returning to destiny.</p></div>
+</section>
+
+<section class="card">
+  <div class="card-top"><span class="num">100</span><span class="tag">蘇轍 老子解 · 핵심 문장</span></div>
+  <div class="hanzi">知常曰明</div>
+  <div class="block"><strong>한글 독음</strong><p>지상왈명</p></div>
+  <div class="block"><strong>한글 설명</strong><p>변하지 않는 이치를 아는 것을 밝음이라 한다.</p></div>
+  <div class="block english"><strong>English Translation</strong><p>Knowing constancy is called enlightenment.</p></div>
+</section>
+  </div>
+</main>
+<script>
+const search = document.getElementById('search');
+const cards = document.querySelectorAll('.card');
+search.addEventListener('input', function(){
+  const q = this.value.toLowerCase().trim();
+  cards.forEach(card=>{
+    card.style.display = card.innerText.toLowerCase().includes(q) ? '' : 'none';
+  });
+});
+function resetSearch(){
+  search.value='';
+  cards.forEach(card=>card.style.display='');
+}
+</script>
+</body>
+</html>
